@@ -1,0 +1,73 @@
+@import "./global/fonts.css";
+@import "./global/spacing.css";
+@import "./global/color.css";
+@import "./global/typography.css";
+@import "./utility/utility.css";
+@import "../components/UI/logo/logo.css";
+@import "../components/UI/btn/btn.css";
+@import "../components/UI/btnMenu/btnMenu.css";
+@import "../components/UI/btnLike/btnLike.css";
+@import "../components/UI/btnLikePrimary/btnLikePrimary.css";
+@import "../components/UI/btnEye/btnEye.css";
+@import "../components/UI/btnIcon/btnIcon.css";
+@import "../components/UI/inputPassword/inputPassword.css";
+@import "../components/UI/input/input.css";
+@import "../components/UI/link/link.css";
+@import "../components/UI/tab/tab.css";
+@import "../components/UI/cardProduct/cardProduct.css";
+@import "../components/header/header.css";
+@import "../components/menu/menu.css";
+@import "../components/footer/footer.css";
+@import "../components/socialLinks/socialLinks.css";
+@import "../components/navMain/navMain.css";
+@import "../components/navMenu/navMenu.css";
+@import "../components/navProduct/navProduct.css";
+@import "../components/navAccaunt/navAccaunt.css";
+@import "../components/listLink/listLink.css";
+@import "../components/icon/icon.css";
+@import "../components/formError/formError.css";
+@import "../components/form/form.css";
+@import "../components/tabs/tabs.css";
+
+/* --- style for bootstrap grid --- */
+:root {
+  --bs-gutter-x: var(--md-space);
+}
+
+.row {
+  --bs-gutter-x: calc(var(--md-space) * 2);
+}
+
+/* --- end style for bootstrap grid --- */
+
+/* --- common style for all pages --- */
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  height: 100%;
+  background-color: var(--bs-body-bg, #fff);
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+/* --- end common style for all pages --- */
+
+@media (min-width: 992px) {
+  .container-xl {
+    max-width: 1152px;
+    margin: 0 auto;
+  }
+}

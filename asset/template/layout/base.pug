@@ -1,0 +1,28 @@
+doctype html
+html(lang='ru')
+  head
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1' name='viewport')
+    meta(name="referrer" content="strict-origin-when-cross-origin")
+    meta(name='description' content='')
+    title #{htmlWebpackPlugin.options.title}
+    block preload
+    link(rel='icon' href=require('Images/favicon/favicon.ico')  sizes='any')
+    link(rel='icon' href=require('Images/favicon/icon.svg') type='image/svg+xml')
+    link(rel='apple-touch-icon' href=require('Images/favicon/apple-touch-icon.png'))
+    <meta name="theme-color" content="#ffffff">
+    block styles
+    each file in htmlWebpackPlugin.files.css
+      link(rel='stylesheet' href=`${file}`)
+      if file === '../asset/css/common.css'
+        each file in htmlWebpackPlugin.files.extracted.css
+          link(rel='stylesheet' href=`../${file.file}` media=`${file.query}`)
+      if file === 'asset/css/common.css'
+        each file in htmlWebpackPlugin.files.extracted.css
+          link(rel='stylesheet' href=`${file.file}` media=`${file.query}`)
+  body
+    block content
+    each file in htmlWebpackPlugin.files.js
+      script(defer="defer" src=`${file}`)
+
+    

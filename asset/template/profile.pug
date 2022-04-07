@@ -1,0 +1,66 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: TTNorms;
+      font-weight: 400;
+      src:
+        url(#{require("Fonts/TTNorms-400.woff2")}) format("woff2"),
+        url(#{require("Fonts/TTNorms-400.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: TTNorms;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/TTNorms-500.woff2")}) format("woff2"),
+        url(#{require("Fonts/TTNorms-500.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PFRegalDisplayPro;
+      font-weight: 500;
+      font-style: italic;
+      src:
+        url(#{require("Fonts/PFRegalDisplayPro-500-Italic.woff2")}) format("woff2"),
+        url(#{require("Fonts/PFRegalDisplayPro-500-Italic.woff")}) format("woff");
+    }
+
+block content
+  - const products = require('BD/products.json')
+  // wrapper
+  div(class='wrapper')
+    include ../components/header/header.pug
+    // main
+    main(class='main container-xl')
+      div(class='row')
+        // mainNav
+        div(class='col-lg-2 mainNav')
+          include ../components/navAccaunt/navAccaunt.pug
+        // end mainNav
+        div(class='col-lg-10')
+          // mainContent
+          div(class='mainContent')
+            // mainHeading
+            h1(class='mainHeading') профиль
+            // end mainHeading
+            include ../components/formProfile/formProfile.pug
+          // end mainContent
+    // end main
+    // aside
+    div(class='aside')
+      div(class='container-xl')
+        include ../components/carouselProduct/carouselProduct.pug
+    // end aside
+    include ../components/footer/footer.pug
+    // icon-sprite
+    include ../images/icons/icon-sprite.svg
+    // end icon-sprite
+  // end wrapper
+  

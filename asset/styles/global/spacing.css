@@ -1,0 +1,13 @@
+/* --- style spacing --- */
+:root {
+  --xxs-space: 4px;
+  --xs-space: 8px;
+  --sm-space: 12px;
+  --md-space: 16px;
+  --lg-space: 24px;
+  --xl-space: 32px;
+  --xxl-space: 48px;
+  --xxxl-space: 80px;
+}
+
+/* --- end style spacing --- */

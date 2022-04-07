@@ -1,0 +1,39 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: TTNorms;
+      font-weight: 400;
+      src:
+        url(#{require("Fonts/TTNorms-400.woff2")}) format("woff2"),
+        url(#{require("Fonts/TTNorms-400.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: TTNorms;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/TTNorms-500.woff2")}) format("woff2"),
+        url(#{require("Fonts/TTNorms-500.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PFRegalDisplayPro;
+      font-weight: 500;
+      font-style: italic;
+      src:
+        url(#{require("Fonts/PFRegalDisplayPro-500-Italic.woff2")}) format("woff2"),
+        url(#{require("Fonts/PFRegalDisplayPro-500-Italic.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    include ../components/header/header.pug
+    include ../components/footer/footer.pug
+    include ../images/icons/icon-sprite.svg

@@ -1,0 +1,30 @@
+/* --- style fonts --- */
+:root {
+  --font-main: ttnorms;
+  --font-serif: pfregaldisplaypro, serif;
+  --bs-font-sans-serif:
+    var(--font-main),
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    roboto,
+    "Helvetica Neue",
+    arial,
+    "Noto Sans",
+    "Liberation Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+body {
+  font-family: var(--bs-font-sans-serif);
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+/* --- end style fonts --- */

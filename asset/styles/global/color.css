@@ -1,0 +1,19 @@
+:root {
+  --bs-primary: #21242e;
+  --bs-primary-rgb: 33, 36, 46;
+  --bs-secondary: #d0bc7a;
+  --bs-secondary-rgb: 208, 188, 122;
+  --bs-gray: #ebebeb;
+  --bs-white: #fff;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-red: #eb5757;
+  --bs-dark: #21242e;
+  --bs-dark-rgb: 33, 36, 46;
+  --bs-light: #f7f7f7;
+  --bs-light-rgb: 249, 250, 251;
+  --bs-danger: #da7070;
+  --bs-danger-rgb: 218, 112, 112;
+  --bs-body-color: #21242e;
+  --bs-body-rgb: 33, 36, 46;
+  --bs-body-bg: #fff;
+}
