@@ -1,0 +1,71 @@
+/* --- style ui-btnInverse  --- */
+.ui-btnInverse {
+  background-color: rgba(255,255,255, 0);
+  color: inherit;
+  position: relative;
+  font-size: 1.8rem;
+  line-height: 0.9;
+  letter-spacing: -2%;
+  text-transform: lowercase;
+  font-weight: 500;
+  color: var(--bs-contrast, rgba(255,255,255, 1));
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+/* 
+:after .ui-btnInverse:hover background,
+:before .ui-btnInverse border
+*/
+.ui-btnInverse:before,
+.ui-btnInverse:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+.ui-btnInverse:after{
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 1));
+  transform-origin: center top;
+  transform: scaleY(0);
+  transition-property: transform;
+  z-index: 1;
+}
+
+.ui-btnInverse:before {
+  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 1));
+  z-index: 1;
+}
+
+.ui-btnInverse:hover {
+  color: inherit;
+}
+
+.ui-btnInverse:hover:after {
+  transform: scaleY(0);
+}
+
+.ui-btnInverse .text,
+.ui-btnInverse.icon {
+  position:relative;
+  z-index: 2;
+}
+
+.ui-btnInverse .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.ui-btnInverse .icon + *,
+.ui-btnInverse * + .icon {
+  margin-left: 0.4rem;
+}
+
+.ui-btnInverse .icon svg {
+  fill: currentColor;
+}
+/* --- end style ui-btnInverse --- */

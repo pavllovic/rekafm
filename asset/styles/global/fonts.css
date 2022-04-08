@@ -1,7 +1,7 @@
 /* --- style fonts --- */
 :root {
-  --font-main: ttnorms;
-  --font-serif: pfregaldisplaypro, serif;
+  --font-accent: DrukCyr;
+  --font-main: PTRootUI;
   --bs-font-sans-serif:
     var(--font-main),
     system-ui,
@@ -22,9 +22,4 @@
 body {
   font-family: var(--bs-font-sans-serif);
 }
-
-.font-serif {
-  font-family: var(--font-serif), serif;
-}
-
 /* --- end style fonts --- */

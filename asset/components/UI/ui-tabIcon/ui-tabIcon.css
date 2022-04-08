@@ -1,0 +1,40 @@
+/* --- style ui-tabIcon --- */
+.ui-tabIcon {
+  display: flex;
+  align-items: center;
+  border: none;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+  color: var(--bs-secondary, rgba(173, 173, 173, 1));
+  background-color: rgba(255, 255, 255, 0);
+  font-family: var(--font-main);
+  line-height: 1;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -2%;
+}
+
+.ui-tabIcon:hover,
+.ui-tabIcon:active {
+  color: inherit;
+}
+
+.ui-tabIcon .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.ui-tabIcon .icon + *,
+.ui-tabIcon * + .icon {
+  margin-left: 0.4rem
+}
+
+.ui-tabIcon .icon:last-child {
+  margin-right: 0;
+}
+
+.ui-tabIcon .icon svg {
+  fill: currentColor;
+}
+/* --- end style ui-tabIcon --- */

@@ -1,0 +1,44 @@
+/* --- style ui-btnArrow --- */
+.ui-btnArrow,
+.ui-btnArrowBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  color: inherit;
+  border-width: 0.15rem;
+  border-style: solid;
+  border-color: var(--bs-light, rgba(228, 228, 228, 1));
+  transition-property: border-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+.ui-btnArrowBack {
+  transform: scaleX(-1);
+}
+
+.ui-btnArrow:hover,
+.ui-btnArrowBack:hover {
+  border-color: currentColor;
+}
+
+.ui-btnArrow:disabled,
+.ui-btnArrowBack:disabled {
+  border-color: var(--bs-light, rgba(228, 228, 228, 1));
+}
+
+.ui-btnArrow .icon,
+.ui-btnArrowBack .icon {
+  fill: currentColor;
+  height: 1rem;
+  width: auto;
+}
+
+.ui-btnArrow:disabled .icon,
+.ui-btnArrowBack:disabled .icon {
+  fill: var(--bs-light, rgba(228, 228, 228, 1));
+}
+/* --- end style ui-btnArrow --- */

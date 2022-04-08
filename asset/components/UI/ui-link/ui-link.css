@@ -1,0 +1,13 @@
+/* --- style ui-link --- */
+.ui-link {
+  color: inherit;
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+.ui-link:hover {
+  color: var(--bs-corporate, rgba(138, 140, 206, 1));
+}
+/* --- end style ui-link --- */

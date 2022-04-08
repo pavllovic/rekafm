@@ -1,5 +1,8 @@
 /* --- style typograhpy --- */
 :root {
+  /* font-size = 10px if user agent font-size = 16px */
+  font-size: 62.5%;
+  
   /* font-size */
   --fs-1: 35px;
   --fs-2: 28px;
@@ -31,67 +34,90 @@
 }
 
 body {
-  font-size: var(--fs-5, 16px);
-  font-weight: 400;
-  line-height: var(--lh-5, 1.5);
-}
-
-h1,
-.fs-1 {
-  font-size: var(--fs-1);
-}
-
-h2,
-.fs-2 {
-  font-size: var(--fs-2);
-}
-
-h3,
-.fs-3 {
-  font-size: var(--fs-3);
-}
-
-h4,
-.fs-4 {
-  font-size: var(--fs-4);
-}
-
-h5,
-.fs-5 {
-  font-size: var(--fs-5);
-}
-
-h6,
-.fs-6 {
-  font-size: var(--fs-6);
-}
-
-.lh-1 {
-  line-height: var(--lh-1);
-}
-
-.lh-2 {
-  line-height: var(--lh-2);
-}
-
-.lh-3 {
-  line-height: var(--lh-3);
-}
-
-.lh-4 {
-  line-height: var(--lh-4);
-}
-
-.lh-5 {
-  line-height: var(--lh-5);
-}
-
-.lh-6 {
-  line-height: var(--lh-6);
-}
-
-.fw-medium {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: -2%;
+  font-size: var(--font-main);
   font-weight: 500;
 }
 
+h1 {
+  font-size: 4.8rem;
+  letter-spacing: 3%;
+  line-height: 1;
+  font-size: var(--font-accent);
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 4rem;
+  letter-spacing: 3%;
+  line-height: 1;
+  font-size: var(--font-accent);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 2.4rem;
+  letter-spacing: -1%;
+  line-height: 1;
+  font-size: var(--font-main);
+  font-weight: 700;
+}
+
+.text-accent {
+  font-size: 2.8rem;
+  line-height: 1.1;
+  letter-spacing: 3%;
+  font-size: var(--font-accent);
+  font-weight: 500;
+}
+
+.text-lead {
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -2%;
+  font-size: var(--font-main);
+  font-weight: 500;
+}
+
+.text-primary {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: -2%;
+  font-size: var(--font-main);
+  font-weight: 500;
+}
+
+.text-secondary {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-size: var(--font-main);
+  font-weight: 500;
+}
+
+.text-caption {
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -2%;
+  font-size: var(--font-main);
+  font-weight: 500;
+}
+
+@media(min-width: 60em) {
+  h1 {
+    font-size: 9.6rem;
+    letter-spacing: 1%;
+  }
+  
+  h2 {
+    font-size: 7.2rem;
+    letter-spacing: 2%;
+  }
+
+  .text-accent {
+    font-size: 4.8rem;
+  }
+}
 /* --- end style typograhpy --- */

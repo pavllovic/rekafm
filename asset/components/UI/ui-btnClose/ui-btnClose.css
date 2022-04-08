@@ -1,0 +1,41 @@
+/* --- style ui-btnClose --- */
+.ui-btnClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  background-color: rgba(255,255,255, 0);
+  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 1));
+  position:relative;
+  color: inherit;
+}
+
+.ui-btnClose span {
+  position: absolute;
+  background-color: currentColor;
+  width: 1.6rem;
+  height: 0.25rem;
+  transform-origin: center;
+  transition-property: transform, opacity;
+  transition-duration: 0.15s, 0.15s;
+  transition-timing-function: ease-out, ease-out;
+}
+
+.ui-btnClose span:nth-child(1) {
+  transform: rotateZ(225deg);
+}
+
+.ui-btnClose span:nth-child(2) {
+  transform: rotateZ(315deg);
+}
+
+.ui-btnClose:hover span:nth-child(1) {
+  transform: rotateZ(0);
+}
+
+.ui-btnClose:hover span:nth-child(2) {
+  transform: rotateZ(0) scaleX(0);
+  opacity: 0;
+}
+/* --- end style ui-btnClose --- */

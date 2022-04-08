@@ -1,0 +1,32 @@
+/* --- style ui-btnDownloadIcon --- */
+.ui-btnDownloadIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 1));
+  color: inherit;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+.ui-btnDownloadIcon:before {
+  width: 1rem;
+  height: 1rem;
+  padding: 0.125rem;
+  content: '';
+  position: absolute;
+  top: 0.275rem;
+  right: 0.275rem;
+}
+
+.ui-btnDownloadIcon:hover {
+  color: var(--bs-corporate, rgba(138, 140, 206, 1));
+}
+
+.ui-btnDownloadIcon .icon {
+  fill: currentColor
+}
+/* --- end style ui-btnDownloadIcon --- */

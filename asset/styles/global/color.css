@@ -1,19 +1,36 @@
 :root {
-  --bs-primary: #21242e;
-  --bs-primary-rgb: 33, 36, 46;
-  --bs-secondary: #d0bc7a;
-  --bs-secondary-rgb: 208, 188, 122;
-  --bs-gray: #ebebeb;
-  --bs-white: #fff;
-  --bs-white-rgb: 255, 255, 255;
-  --bs-red: #eb5757;
-  --bs-dark: #21242e;
-  --bs-dark-rgb: 33, 36, 46;
-  --bs-light: #f7f7f7;
-  --bs-light-rgb: 249, 250, 251;
-  --bs-danger: #da7070;
-  --bs-danger-rgb: 218, 112, 112;
-  --bs-body-color: #21242e;
-  --bs-body-rgb: 33, 36, 46;
-  --bs-body-bg: #fff;
+  --bs-primary: rgba(46, 46, 46, 1);
+  --bs-primary-rgb: 46, 46, 46;
+  --bs-secondary: rgba(173, 173, 173, 1);
+  --bs-secondary-rgb: 173, 173, 173;
+  --bs-contrast: rgba(255, 255, 255, 1);
+  --bs-contrast-rgb: 255, 255, 255;
+  --bs-corporate: rgba(138, 140, 206, 1);
+  --bs-corporate-rgb: 138, 140, 206;
+  --bs-danger: rgba(238, 106, 95, 1);
+  --bs-dark: rgba(77, 77, 77, 1);
+  --bs-dark-rgb: 77, 77, 77;
+  --bs-light: rgba(228, 228, 228, 1);
+  --bs-light-rgb: 228, 228, 228;
+
+  /* --bs-gray: #ebebeb; */
+  /* --bs-white: #fff; */
+  /* --bs-white-rgb: 255, 255, 255; */
+  /* --bs-red: #eb5757; */
+  /* --bs-dark: #21242e; */
+  /* --bs-dark-rgb: 33, 36, 46; */
+  /* --bs-light: #f7f7f7; */
+  /* --bs-light-rgb: 249, 250, 251; */
+  /* --bs-danger-rgb: 218, 112, 112; */
+  /* --bs-body-color: #21242e; */
+  /* --bs-body-rgb: 33, 36, 46; */
+  /* --bs-body-bg: #fff; */
 }
+
+/*
+--bg-primary:rgba(46, 46, 46, 1);
+--bg-contrast: rgba(255, 255, 255, 1);
+--bs-secondary: rgba(173, 173, 173, 1);
+--bg-corporate: rgba(138, 140, 206, 1);
+--bs-danger: rgba(238, 106, 95, 1);
+*/
