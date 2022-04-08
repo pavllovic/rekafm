@@ -3,39 +3,32 @@
 @import "./global/color.css";
 @import "./global/typography.css";
 @import "./utility/utility.css";
-@import "../components/UI/logo/logo.css";
-@import "../components/UI/btn/btn.css";
-@import "../components/UI/btnMenu/btnMenu.css";
-@import "../components/UI/btnLike/btnLike.css";
-@import "../components/UI/btnLikePrimary/btnLikePrimary.css";
-@import "../components/UI/btnEye/btnEye.css";
-@import "../components/UI/btnIcon/btnIcon.css";
-@import "../components/UI/inputPassword/inputPassword.css";
-@import "../components/UI/input/input.css";
-@import "../components/UI/link/link.css";
-@import "../components/UI/tab/tab.css";
-@import "../components/UI/cardProduct/cardProduct.css";
-@import "../components/header/header.css";
-@import "../components/menu/menu.css";
-@import "../components/footer/footer.css";
-@import "../components/socialLinks/socialLinks.css";
-@import "../components/navMain/navMain.css";
-@import "../components/navMenu/navMenu.css";
-@import "../components/navProduct/navProduct.css";
-@import "../components/navAccaunt/navAccaunt.css";
-@import "../components/listLink/listLink.css";
-@import "../components/icon/icon.css";
-@import "../components/formError/formError.css";
-@import "../components/form/form.css";
-@import "../components/tabs/tabs.css";
+@import "../components/UI/ui-btn/ui-btn.css";
+@import "../components/UI/ui-btnInverse/ui-btnInverse.css";
+@import "../components/UI/ui-btnSecondary/ui-btnSecondary.css";
+@import "../components/UI/ui-btnArrow/ui-btnArrow.css";
+@import "../components/UI/ui-btnClose/ui-btnClose.css";
+@import "../components/UI/ui-btnDownload/ui-btnDownload.css";
+@import "../components/UI/ui-btnDownloadIcon/ui-btnDownloadIcon.css";
+@import "../components/UI/ui-input/ui-input.css";
+@import "../components/UI/ui-link/ui-link.css";
+@import "../components/UI/ui-tab/ui-tab.css";
+@import "../components/UI/ui-tabIcon/ui-tabIcon.css";
+@import "../components/UI/ui-thumb/ui-thumb.css";
+@import "../components/UI/ui-toggle/ui-toggle.css";
 
 /* --- style for bootstrap grid --- */
 :root {
-  --bs-gutter-x: var(--md-space);
+  --bs-gutter-x: 1.6rem;
 }
 
 .row {
-  --bs-gutter-x: calc(var(--md-space) * 2);
+  --bs-gutter-x: calc(1.6rem * 2);
+}
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
 /* --- end style for bootstrap grid --- */
@@ -49,7 +42,8 @@ html {
 body {
   min-width: 320px;
   height: 100%;
-  background-color: var(--bs-body-bg, #fff);
+
+  /* background-color: var(--bs-body-bg, #fff); */
 }
 
 .wrapper {
@@ -57,6 +51,12 @@ body {
   display: flex;
   min-height: 100%;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.wrapper > * {
+  margin-bottom: 2rem;
 }
 
 .footer {
@@ -65,7 +65,7 @@ body {
 
 /* --- end common style for all pages --- */
 
-@media (min-width: 992px) {
+@media (min-width: 80em) {
   .container-xl {
     max-width: 1152px;
     margin: 0 auto;

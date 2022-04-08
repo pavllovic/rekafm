@@ -33,8 +33,42 @@ block styles
 
 block content
   div(class='wrapper')
-    include ../images/icons/sprite-icon-16.svg
-    include ../images/icons/sprite-icon-24.svg
-    include ../images/icons/sprite-icon-32.svg
-    include ../images/icons/sprite-icon-72.svg
-    include ../images/icons/sprite-icon-btn.svg
+    button(class='ui-btn') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnInverse') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnSecondary') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnDownload') 
+      span(class='text') скачать презентацию
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-btn-top-right')
+    button(class='ui-btnDownloadIcon') 
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-32-pdf')
+    div(class='ui-toggle')
+      input(type='checkbox' id='' name='')
+      span
+    button(class='ui-tab') Покупка
+    button(class='ui-tabIcon')
+      svg(class='icon')
+        use(href='#icon-16-card')
+      span карточками
+    button(class='ui-btnArrow')
+      svg(class='icon')
+        use(href='#icon-16-go-hover')
+    button(class='ui-btnArrow')
+      svg(class='icon')
+        use(href='#icon-16-back')
+    a(class='ui-link' href='#') продажа и аренда
+    include ../images/icons/icon-16/sprite-icon-16.svg
+    include ../images/icons/icon-24/sprite-icon-24.svg
+    include ../images/icons/icon-32/sprite-icon-32.svg
+    include ../images/icons/icon-72/sprite-icon-72.svg
+    include ../images/icons/icon-btn/sprite-icon-btn.svg

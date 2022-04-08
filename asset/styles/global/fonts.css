@@ -1,7 +1,7 @@
 /* --- style fonts --- */
 :root {
-  --font-accent: DrukCyr;
-  --font-main: PTRootUI;
+  --font-accent: drukcyr;
+  --font-main: ptrootui;
   --bs-font-sans-serif:
     var(--font-main),
     system-ui,
@@ -22,4 +22,5 @@
 body {
   font-family: var(--bs-font-sans-serif);
 }
+
 /* --- end style fonts --- */

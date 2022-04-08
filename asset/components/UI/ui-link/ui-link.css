@@ -1,9 +1,16 @@
 /* --- style ui-link --- */
+
+/*
+в макете ссылки с разным font-size выделенны в самостоятельные компоненты.
+Можно сделать для каждого варианта свой класс.
+Можно в html к ссылкам добавлять класс типографики (styles/global/typograthy.css).
+Можно через наследование от родителя, который задает контекст для типографики.
+*/
 .ui-link {
   color: inherit;
   text-decoration: none;
-  transition-property: color;
   transition-duration: 0.15s;
+  transition-property: color;
   transition-timing-function: ease-out;
 }
 
@@ -13,6 +20,7 @@
 }
 
 .ui-link:hover {
-  color: var(--bs-corporate, rgba(138, 140, 206, 1));
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
 }
+
 /* --- end style ui-link --- */

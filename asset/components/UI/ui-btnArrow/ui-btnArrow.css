@@ -1,44 +1,39 @@
 /* --- style ui-btnArrow --- */
-.ui-btnArrow,
-.ui-btnArrowBack {
+.ui-btnArrow {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 4rem;
   height: 4rem;
-  border-radius: 50%;
-  color: inherit;
+  align-items: center;
+  justify-content: center;
   border-width: 0.15rem;
   border-style: solid;
-  border-color: var(--bs-light, rgba(228, 228, 228, 1));
-  transition-property: border-color;
+  border-color: var(--bs-light, rgba(228, 228, 228, 100%));
+  background-color: rgba(255, 255, 255, 0%);
+  border-radius: 50%;
+  color: inherit;
   transition-duration: 0.15s;
+  transition-property: border-color;
   transition-timing-function: ease-out;
 }
 
-.ui-btnArrowBack {
-  transform: scaleX(-1);
+.ui-btnArrow:hover {
+  border-color: currentcolor;
 }
 
-.ui-btnArrow:hover,
-.ui-btnArrowBack:hover {
-  border-color: currentColor;
+.ui-btnArrow:disabled {
+  border-color: var(--bs-light, rgba(228, 228, 228, 100%));
 }
 
-.ui-btnArrow:disabled,
-.ui-btnArrowBack:disabled {
-  border-color: var(--bs-light, rgba(228, 228, 228, 1));
+.ui-btnArrow .icon {
+  --color: currentcolor;
+
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color, currentColor);
 }
 
-.ui-btnArrow .icon,
-.ui-btnArrowBack .icon {
-  fill: currentColor;
-  height: 1rem;
-  width: auto;
+.ui-btnArrow:disabled .icon {
+  fill: var(--bs-light, rgba(228, 228, 228, 100%));
 }
 
-.ui-btnArrow:disabled .icon,
-.ui-btnArrowBack:disabled .icon {
-  fill: var(--bs-light, rgba(228, 228, 228, 1));
-}
 /* --- end style ui-btnArrow --- */

@@ -2,122 +2,104 @@
 :root {
   /* font-size = 10px if user agent font-size = 16px */
   font-size: 62.5%;
-  
-  /* font-size */
-  --fs-1: 35px;
-  --fs-2: 28px;
-  --fs-3: 20px;
-  --fs-4: 18px;
-  --fs-5: 16px;
-  --fs-6: 14px;
-
-  /* lihe-height */
-  --lh-1: calc(40 / 35);
-  --lh-2: calc(32 / 28);
-  --lh-3: 1;
-  --lh-4: 1;
-  --lh-5: 1.5;
-  --lh-6: calc(18 / 14);
-}
-
-@media (min-width: 992px) {
-  :root {
-    /* font-size */
-    --fs-1: 80px;
-    --fs-2: 48px;
-    --fs-3: 24px;
-
-    /* lihe-height */
-    --lh-1: 1;
-    --lh-2: calc(56 / 48);
-  }
 }
 
 body {
+  font-family: var(--font-main);
   font-size: 1.6rem;
-  line-height: 1.4;
-  letter-spacing: -2%;
-  font-size: var(--font-main);
   font-weight: 500;
+
+  /* letter-spacing: -0.032em; */
+  line-height: 1.4;
 }
 
 h1 {
+  font-family: var(--font-accent);
   font-size: 4.8rem;
-  letter-spacing: 3%;
-  line-height: 1;
-  font-size: var(--font-accent);
   font-weight: 500;
+
+  /* letter-spacing: 0.144em; */
+  line-height: 1;
 }
 
 h2 {
+  font-family: var(--font-accent);
   font-size: 4rem;
-  letter-spacing: 3%;
-  line-height: 1;
-  font-size: var(--font-accent);
   font-weight: 500;
+
+  /* letter-spacing: 0.12em; */
+  line-height: 1;
 }
 
 h3 {
+  /* font-family: var(--font-main); */
   font-size: 2.4rem;
-  letter-spacing: -1%;
-  line-height: 1;
-  font-size: var(--font-main);
   font-weight: 700;
+
+  /* letter-spacing: -0.1rem; */
+  line-height: 1;
 }
 
 .text-accent {
+  font-family: var(--font-accent);
   font-size: 2.8rem;
-  line-height: 1.1;
-  letter-spacing: 3%;
-  font-size: var(--font-accent);
   font-weight: 500;
+
+  /* letter-spacing: 0.072em; */
+  line-height: 1.1;
 }
 
 .text-lead {
+  /* font-family: var(--font-main); */
   font-size: 2rem;
-  line-height: 1.4;
-  letter-spacing: -2%;
-  font-size: var(--font-main);
   font-weight: 500;
+
+  /* letter-spacing: -0.2rem; */
+  line-height: 1.4;
 }
 
 .text-primary {
+  /* font-family: var(--font-main); */
   font-size: 1.6rem;
-  line-height: 1.4;
-  letter-spacing: -2%;
-  font-size: var(--font-main);
   font-weight: 500;
+
+  /* letter-spacing: -0.04em; */
+  line-height: 1.4;
 }
 
 .text-secondary {
+  /* font-family: var(--font-main); */
   font-size: 1.4rem;
-  line-height: 1.4;
-  letter-spacing: 0;
-  font-size: var(--font-main);
   font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 .text-caption {
+  /* font-family: var(--font-main); */
   font-size: 1.2rem;
-  line-height: 1;
-  letter-spacing: -2%;
-  font-size: var(--font-main);
   font-weight: 500;
+
+  /* letter-spacing: -0.024em; */
+  line-height: 1;
 }
 
-@media(min-width: 60em) {
+@media (min-width: 80em) {
   h1 {
     font-size: 9.6rem;
-    letter-spacing: 1%;
+
+    /* letter-spacing: 0.096em; */
   }
-  
+
   h2 {
     font-size: 7.2rem;
-    letter-spacing: 2%;
+
+    /* letter-spacing: 0.144em; */
   }
 
   .text-accent {
     font-size: 4.8rem;
   }
 }
+
 /* --- end style typograhpy --- */

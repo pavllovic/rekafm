@@ -2,17 +2,18 @@
 .ui-tabIcon {
   display: flex;
   align-items: center;
+  padding: 1.2rem 0.8rem;
   border: none;
-  transition-property: color;
-  transition-duration: 0.15s;
-  transition-timing-function: ease-out;
-  color: var(--bs-secondary, rgba(173, 173, 173, 1));
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0%);
+  color: var(--bs-secondary, rgba(173, 173, 173, 100%));
   font-family: var(--font-main);
-  line-height: 1;
   font-size: 1.6rem;
   font-weight: 500;
-  letter-spacing: -2%;
+  letter-spacing: -0.032em;
+  line-height: 1;
+  transition-duration: 0.15s;
+  transition-property: color;
+  transition-timing-function: ease-out;
 }
 
 .ui-tabIcon:hover,
@@ -21,20 +22,20 @@
 }
 
 .ui-tabIcon .icon {
+  --color: currentcolor;
+
   width: 1.6rem;
   height: 1.6rem;
+  fill: var(--color, currentColor);
 }
 
 .ui-tabIcon .icon + *,
 .ui-tabIcon * + .icon {
-  margin-left: 0.4rem
+  margin-left: 0.4rem;
 }
 
 .ui-tabIcon .icon:last-child {
   margin-right: 0;
 }
 
-.ui-tabIcon .icon svg {
-  fill: currentColor;
-}
 /* --- end style ui-tabIcon --- */

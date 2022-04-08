@@ -35,20 +35,24 @@ const copyWebpackPlugin = (isDev) => {
   let patterns = [];
   if(isDev) {
     patterns = [
-      {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
-      {from: 'node_modules/owl.carousel/dist/', to: `${pathToCopy}/owl.carousel/`},
-      {from: 'node_modules/jquery/dist/', to: `${pathToCopy}/jquery/`},
-      {from: 'node_modules/imask/dist/', to: `${pathToCopy}/imask/`},
-      {from: './asset/fonts/icon-font.woff', to: 'asset/fonts/'}
+      // {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
+      // {from: 'node_modules/owl.carousel/dist/', to: `${pathToCopy}/owl.carousel/`},
+      // {from: 'node_modules/jquery/dist/', to: `${pathToCopy}/jquery/`},
+      // {from: 'node_modules/imask/dist/', to: `${pathToCopy}/imask/`},
+      // {from: './asset/fonts/iconmoon-16.woff', to: 'asset/fonts/'},
+      // {from: './asset/fonts/iconmoon-24.woff', to: 'asset/fonts/'},
+      // {from: './asset/fonts/iconmoon-32.woff', to: 'asset/fonts/'},
+      // {from: './asset/fonts/iconmoon-72.woff', to: 'asset/fonts/'},
+      // {from: './asset/fonts/iconmoon-btn.woff', to: 'asset/fonts/'},
     ]
   } else {
     patterns = [
-      {from: 'node_modules/bootstrap/dist/css/bootstrap.min.css', to: `${pathToCopy}/bootstrap/css/bootstrap.min.css`},
-      {from: 'node_modules/owl.carousel/dist/owl.carousel.min.js', to: `${pathToCopy}/owl.carousel/owl.carousel.min.js`},
-      {from: 'node_modules/owl.carousel/dist/assets/owl.carousel.min.css', to: `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`},
-      {from: 'node_modules/jquery/dist/jquery.min.js', to: `${pathToCopy}/jquery/jquery.min.js`},
-      {from: 'node_modules/imask/dist/imask.min.js', to: `${pathToCopy}/imask/imask.min.js`},
-      {from: './asset/fonts/icon-font.woff', to: 'asset/fonts/'}
+      // {from: 'node_modules/bootstrap/dist/css/bootstrap.min.css', to: `${pathToCopy}/bootstrap/css/bootstrap.min.css`},
+      // {from: 'node_modules/owl.carousel/dist/owl.carousel.min.js', to: `${pathToCopy}/owl.carousel/owl.carousel.min.js`},
+      // {from: 'node_modules/owl.carousel/dist/assets/owl.carousel.min.css', to: `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`},
+      // {from: 'node_modules/jquery/dist/jquery.min.js', to: `${pathToCopy}/jquery/jquery.min.js`},
+      // {from: 'node_modules/imask/dist/imask.min.js', to: `${pathToCopy}/imask/imask.min.js`},
+      // {from: './asset/fonts/icon-font.woff', to: 'asset/fonts/'}
     ]
   }
   return new CopyWebpackPlugin({
@@ -97,7 +101,7 @@ const htmlWebpackSkipAssetsPlugin = () => {
 const htmlWebpackPlagin = (isDev) => {
   const pages = [
     {name: 'index', title: 'рекафм', chunks: ['common']},
-    {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
+    // {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
   ];
 
   return pages.map((page) => {
@@ -106,7 +110,7 @@ const htmlWebpackPlagin = (isDev) => {
       filename: isDev ? `_html/${page.name}.html` : `${page.name}.html`,
       template: `./asset/template/${page.name}.pug`,
       // inject: 'body',
-      inject: false,
+      inject: true,
       chunks: page.chunks,
       minify: {
         collapseWhitespace: !isDev,
@@ -156,10 +160,10 @@ const compressionPlugin = () => {
 module.exports = (isDev, env) => {
   let webpackPluginsConfig = [
     miniCssExtractPlugin(isDev),
-    mediaQueryPlugin(),
-    copyWebpackPlugin(),
+    // mediaQueryPlugin(),
+    // copyWebpackPlugin(),
     ...htmlWebpackPlagin(isDev),
-    ...htmlWebpackTagsPlugin(isDev),
+    // ...htmlWebpackTagsPlugin(isDev),
     stylelintPlugin(),
     eslintPlugin(),
     cleanWebpackPlugin(),

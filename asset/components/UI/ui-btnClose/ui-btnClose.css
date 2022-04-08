@@ -1,24 +1,24 @@
 /* --- style ui-btnClose --- */
 .ui-btnClose {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 6.4rem;
   height: 6.4rem;
-  background-color: rgba(255,255,255, 0);
-  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 1));
-  position:relative;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  background-color: rgba(255, 255, 255, 0%);
   color: inherit;
 }
 
 .ui-btnClose span {
   position: absolute;
-  background-color: currentColor;
   width: 1.6rem;
   height: 0.25rem;
+  background-color: currentcolor;
   transform-origin: center;
-  transition-property: transform, opacity;
   transition-duration: 0.15s, 0.15s;
+  transition-property: transform, opacity;
   transition-timing-function: ease-out, ease-out;
 }
 
@@ -35,7 +35,8 @@
 }
 
 .ui-btnClose:hover span:nth-child(2) {
-  transform: rotateZ(0) scaleX(0);
   opacity: 0;
+  transform: rotateZ(0) scaleX(0);
 }
+
 /* --- end style ui-btnClose --- */

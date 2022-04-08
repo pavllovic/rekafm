@@ -1,0 +1,23 @@
+/* --- style ui-slider --- */
+.ui-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ui-slider .track {
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  background:
+    linear-gradient(
+      to right,
+      var(--bs-dark, rgba(228, 228, 228, 100%)),
+      var(--bs-dark, rgba(228, 228, 228, 100%)) var(--value-from, 0%),
+      var(--bs-corporate, rgba(138, 140, 206, 100%)) var(--value-from, 0%),
+      var(--bs-corporate, rgba(138, 140, 206, 100%))  var(--value-to, 100%),
+      var(--bs-dark, rgba(228, 228, 228, 100%)) var(--value-to, 100%)
+    ),;
+}
+
+/* --- end style ui-slider --- */

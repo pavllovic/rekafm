@@ -3,23 +3,28 @@
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
-.ui-toggle input[type="ckeckbox"] {
-  background-color: var(--bs-ligth, rgba(228, 228, 228, 1));
-  transition-property: background-color, opacity;
-  transition-duration: 0.15s, 0.15s;
-  transition-timing-function: ease-out, ease-out;
+.ui-toggle input[type="checkbox"] {
   width: 4rem;
   height: 2rem;
+  border: none;
+  appearance: none;
+  background-color: var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border-radius: 10rem;
+  cursor: pointer;
+  transition-duration: 0.15s, 0.15s;
+  transition-property: background-color, opacity;
+  transition-timing-function: ease-out, ease-out;
 }
 
-.ui-toggle input[type="ckeckbox"]:hover {
+.ui-toggle input[type="checkbox"]:hover {
   opacity: 0.7;
 }
 
-.ui-toggle input[type="ckeckbox"]:checked {
-  background-color: var(--bs-corporate, rgba(138, 140, 206, 1));
+.ui-toggle input[type="checkbox"]:checked {
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
 }
 
 .ui-toggle span {
@@ -27,15 +32,17 @@
   left: 0;
   width: 2rem;
   height: 2rem;
-  border: 0.2rem solid rgba(255, 255, 255, 0);
+  border: 0.2rem solid rgba(255, 255, 255, 0%);
+  background-clip: padding-box;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   border-radius: 50%;
-  background-color: var(--bs-contrast, rgba(255, 255, 255, 1));
-  transition-property: transform;
   transition-duration: 0.15s;
+  transition-property: transform;
   transition-timing-function: ease-out;
 }
 
-.ui-toggle input[type="ckeckbox"]:checked + span {
+.ui-toggle input[type="checkbox"]:checked + span {
   transform: translateX(100%);
 }
+
 /* --- end style ui-link --- */

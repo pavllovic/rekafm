@@ -1,0 +1,37 @@
+/* --- style ui-thumb --- */
+.ui-thumb {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.ui-thumb::after {
+  position: absolute;
+  z-index: 1;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 0%));
+  border-radius: inherit;
+  opacity: 0.48;
+  transition-duration: 0.15s;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+}
+
+.ui-thumb:hover::after,
+.ui-thumb:active::after {
+  opacity: 0;
+}
+
+.ui-thumb .text {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.032rem;
+  line-height: 1;
+}
+
+/* --- end style ui-thumb --- */

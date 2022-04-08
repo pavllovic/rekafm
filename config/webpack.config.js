@@ -7,9 +7,7 @@ const webpackResolveConfig = require('./webpackResolve/webpackResolve.config.js'
 const optimization = require('./webpackOptimization/optimization.config');
 
 const entry = {
-  common: './asset/common.js',
-  profile: './asset/profile.js', 
-  uikit: './asset/styles/uikit.css',
+  common: './asset/styles/common.css',
 }
 
 const devOutput = {
@@ -45,7 +43,7 @@ module.exports = (env) => {
     ],
     devServer: webpackDevServerConfig,
     resolve: webpackResolveConfig,
-    devtool: (!isDev || env.WEBPACK_BUILD) ? false : true,
+    devtool: (!isDev || env.WEBPACK_BUILD) ? false : 'source-map',
     cache: isDev ? true : false,
     optimization: optimization(isDev),
   }

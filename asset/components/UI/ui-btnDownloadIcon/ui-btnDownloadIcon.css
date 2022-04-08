@@ -1,33 +1,45 @@
 /* --- style ui-btnDownloadIcon --- */
 .ui-btnDownloadIcon {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 6.4rem;
   height: 6.4rem;
-  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 1));
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  background-color: rgba(255, 255, 255, 0%);
   color: inherit;
-  transition-property: color;
   transition-duration: 0.15s;
+  transition-property: color;
   transition-timing-function: ease-out;
 }
 
-.ui-btnDownloadIcon:before {
-  width: 1rem;
-  height: 1rem;
-  padding: 0.125rem;
-  content: '';
+.ui-btnDownloadIcon::before {
   position: absolute;
   top: 0.275rem;
   right: 0.275rem;
-  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.16667 1.5V2.33333H1.08333V6.91667H5.66667V4.83333H6.5V7.33333C6.5 7.44384 6.4561 7.54982 6.37796 7.62796C6.29982 7.7061 6.19384 7.75 6.08333 7.75H0.666667C0.55616 7.75 0.450179 7.7061 0.372039 7.62796C0.293899 7.54982 0.25 7.44384 0.25 7.33333V1.91667C0.25 1.80616 0.293899 1.70018 0.372039 1.62204C0.450179 1.5439 0.55616 1.5 0.666667 1.5H3.16667ZM7.75 0.25V3.58333H6.91667V1.67208L3.66958 4.91958L3.08042 4.33042L6.32708 1.08333H4.41667V0.25H7.75Z' fill='%23ADADAD'/%3E%3C/svg%3E%0A")
+  width: 1rem;
+  height: 1rem;
+  padding: 0.125rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.16667 1.5V2.33333H1.08333V6.91667H5.66667V4.83333H6.5V7.33333C6.5 7.44384 6.4561 7.54982 6.37796 7.62796C6.29982 7.7061 6.19384 7.75 6.08333 7.75H0.666667C0.55616 7.75 0.450179 7.7061 0.372039 7.62796C0.293899 7.54982 0.25 7.44384 0.25 7.33333V1.91667C0.25 1.80616 0.293899 1.70018 0.372039 1.62204C0.450179 1.5439 0.55616 1.5 0.666667 1.5H3.16667ZM7.75 0.25V3.58333H6.91667V1.67208L3.66958 4.91958L3.08042 4.33042L6.32708 1.08333H4.41667V0.25H7.75Z' fill='%23ADADAD'/%3E%3C/svg%3E%0A");
+  background-position: 0.125rem;
+  background-repeat: no-repeat;
+  background-size: 0.75rem 0.75rem;
+  content: "";
 }
 
 .ui-btnDownloadIcon:hover {
-  color: var(--bs-corporate, rgba(138, 140, 206, 1));
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
 }
 
 .ui-btnDownloadIcon .icon {
-  fill: currentColor
+  --color-bg: rgba(255, 255, 255, 100%);
+  --color: currentcolor;
+
+  width: auto;
+  height: 100%;
+  fill: var(--color, currentcolor);
 }
+
 /* --- end style ui-btnDownloadIcon --- */
