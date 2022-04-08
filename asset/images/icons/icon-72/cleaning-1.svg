@@ -1,10 +1,1 @@
-<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M64.5489 7H7.39062V11.7423H64.5489V7Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M64.5489 61.1875H7.39062V65.9298H64.5489V61.1875Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M62.4551 60.5264H9.5022V11.7432H36.3097H62.4551V60.5264Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M56.5318 55.0681H15.4258V17.2012H36.2383H56.5318V55.0681Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M36.2383 17.2012V55.0681" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M15.4258 36.1348H56.5318" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M27.8632 17.2012L18.2891 36.1346H24.2662L33.6792 17.2012H27.8632Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M48.3534 36.1348L38.7793 55.0682H44.7564L54.1695 36.1348H48.3534Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-</svg>
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><defs><style>.cls-1{fill:#8a8cce;}</style></defs><title>cleaning-1</title><path class="cls-1" d="M64.55,12.49H7.39l-0.75-.75V7l0.75-.75H64.55L65.3,7v4.74ZM8.14,11H63.8V7.75H8.14V11Z"/><path class="cls-1" d="M64.55,66.68H7.39l-0.75-.75V61.19l0.75-.75H64.55l0.75,0.75v4.74ZM8.14,65.18H63.8V61.94H8.14v3.24Z"/><path class="cls-1" d="M62.46,61.28H9.5l-0.75-.75V11.74L9.5,11h53l0.75,0.75V60.53Zm-52.2-1.5H61.71V12.49H10.25V59.78Z"/><path class="cls-1" d="M56.53,55.82H15.43l-0.75-.75V17.2l0.75-.75H56.53l0.75,0.75V55.07Zm-40.36-1.5H55.78V18H16.18V54.32Z"/><rect class="cls-1" x="35.49" y="17.2" width="1.5" height="37.87"/><rect class="cls-1" x="15.43" y="35.38" width="41.11" height="1.5"/><path class="cls-1" d="M24.27,36.88h-6L17.62,35.8l9.57-18.93,0.67-.41h5.82l0.67,1.08L24.94,36.47Zm-4.76-1.5H23.8L32.47,18H28.32Z"/><path class="cls-1" d="M44.76,55.82h-6l-0.67-1.09L47.68,35.8l0.67-.41h5.82l0.67,1.08L45.43,55.4ZM40,54.32h4.29L53,36.88H48.81Z"/></svg>

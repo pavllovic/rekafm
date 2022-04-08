@@ -23,11 +23,11 @@
 }
 
 .ui-btnClose span:nth-child(1) {
-  transform: rotateZ(225deg);
+  transform: rotateZ(45deg);
 }
 
 .ui-btnClose span:nth-child(2) {
-  transform: rotateZ(315deg);
+  transform: rotateZ(-45deg);
 }
 
 .ui-btnClose:hover span:nth-child(1) {

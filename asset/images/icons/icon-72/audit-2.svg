@@ -1,13 +1,1 @@
-<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M47.4395 17.7196V4L61.4678 17.7196H47.4395Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M47.4419 4H21.988C21.9874 21.5477 21.9929 39.0954 21.9878 56.6431H61.4703C61.4703 43.6686 61.4703 30.6941 61.4703 17.7196L47.4419 4Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M21.9854 8.94043H17.0445C17.0474 26.4881 17.0333 44.0358 17.0449 61.5835H56.5269C56.5269 59.9366 56.5269 58.2897 56.5269 56.6427" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M17.0458 13.8672H12.1047C12.1159 31.4149 12.088 48.9626 12.1056 66.5103H51.5873C51.5873 64.8633 51.5873 63.2164 51.5873 61.5695" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M55.865 47.7617H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M55.865 41.9385H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M55.865 36.1299H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M55.865 30.3213H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M55.865 24.5137H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M44.1453 18.6904H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M43.4836 12.8818H27.573" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-</svg>
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><defs><style>.cls-1{fill:#8a8cce;}</style></defs><title>audit-2</title><path class="cls-1" d="M61.47,18.47h-14l-0.75-.75V4L48,3.46,62,17.18ZM48.19,17H59.63L48.19,5.78V17Z"/><path class="cls-1" d="M61.47,57.39H22l-0.75-.75q0-16.75,0-33.5V4L22,3.25H47.44L48,3.46,62,17.18l0.23,0.54V56.64Zm-38.73-1.5h38V18L47.14,4.75H22.74V23.14Q22.74,39.52,22.74,55.89Z"/><path class="cls-1" d="M56.53,62.33H17l-0.75-.75q0-15.85,0-31.71V8.94L17,8.19H22v1.5H17.79V29.88q0,15.48,0,31h38V56.64h1.5v4.94Z"/><path class="cls-1" d="M51.59,67.26H12.11l-0.75-.75q0-14.15,0-28.3,0-12.17,0-24.34l0.75-.75H17v1.5H12.85q0,11.8,0,23.59,0,13.78,0,27.55h38V61.57h1.5v4.94Z"/><rect class="cls-1" x="27.57" y="47.01" width="28.29" height="1.5"/><rect class="cls-1" x="27.57" y="41.19" width="28.29" height="1.5"/><rect class="cls-1" x="27.57" y="35.38" width="28.29" height="1.5"/><rect class="cls-1" x="27.57" y="29.57" width="28.29" height="1.5"/><rect class="cls-1" x="27.57" y="23.76" width="28.29" height="1.5"/><rect class="cls-1" x="27.57" y="17.94" width="16.57" height="1.5"/><rect class="cls-1" x="27.57" y="12.13" width="15.91" height="1.5"/></svg>

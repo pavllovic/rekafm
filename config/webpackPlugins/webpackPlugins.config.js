@@ -96,9 +96,8 @@ const htmlWebpackSkipAssetsPlugin = () => {
 
 const htmlWebpackPlagin = (isDev) => {
   const pages = [
-    {name: 'index', title: 'CEDRO', chunks: ['common']},
-    {name: 'profile', title: 'CEDRO | Профиль', chunks: ['profile', 'common']},
-    {name: 'uikit', title: 'CEDRO | uikit', chunks: ['uikit', 'common']},
+    {name: 'index', title: 'рекафм', chunks: ['common']},
+    {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
   ];
 
   return pages.map((page) => {

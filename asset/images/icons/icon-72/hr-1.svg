@@ -1,12 +1,1 @@
-<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M44 15L55 26H44V15Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M44.3196 15.0002L16.3081 15C16.3081 15 16.3081 15.5597 16.3081 16.2474L16.3661 62.2227C16.3661 62.9103 16.3661 63.47 16.3661 63.47H54.8903C54.8903 63.47 54.8903 62.9103 54.8903 62.2227V25.5055L44.3196 15.0002Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M47.7738 8.39355H59V67.5152H12.24V8.39355H23.4662" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M48 6H23V10H48V6Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M27 22H21V28H27V22Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M27 36H21V42H27V36Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M27 51H21V57H27V51Z" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M31.6858 28H41.5527" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M31.6858 42H51.8354" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-<path d="M31.4941 57H51.6278" stroke="#8A8CCE" stroke-width="1.5" stroke-miterlimit="10" stroke-linejoin="bevel"/>
-</svg>
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><defs><style>.cls-1{fill:#8a8cce;}</style></defs><title>hr-1</title><path class="cls-1" d="M55,26.75H44L43.25,26V15l1.28-.53,11,11Zm-10.25-1.5h8.44l-8.44-8.44v8.44Z"/><path class="cls-1" d="M54.89,64.22H16.37l-0.75-.75V62.22L15.56,15l0.75-.75h28l0.53,0.22L55.42,25l0.22,0.53v38Zm-37.77-1.5h37V25.82L44,15.75h-27v0.5Z"/><polygon class="cls-1" points="59 68.27 12.24 68.27 11.49 67.52 11.49 8.39 12.24 7.64 23.47 7.64 23.47 9.14 12.99 9.14 12.99 66.77 58.25 66.77 58.25 9.14 47.77 9.14 47.77 7.64 59 7.64 59.75 8.39 59.75 67.52 59 68.27"/><path class="cls-1" d="M48,10.75H23L22.25,10V6L23,5.25H48L48.75,6v4ZM23.75,9.25h23.5V6.75H23.75v2.5Z"/><path class="cls-1" d="M27,28.75H21L20.25,28V22L21,21.25h6L27.75,22v6Zm-5.25-1.5h4.5v-4.5h-4.5v4.5Z"/><path class="cls-1" d="M27,42.75H21L20.25,42V36L21,35.25h6L27.75,36v6Zm-5.25-1.5h4.5v-4.5h-4.5v4.5Z"/><path class="cls-1" d="M27,57.75H21L20.25,57V51L21,50.25h6L27.75,51v6Zm-5.25-1.5h4.5v-4.5h-4.5v4.5Z"/><rect class="cls-1" x="31.69" y="27.25" width="9.87" height="1.5"/><rect class="cls-1" x="31.69" y="41.25" width="20.15" height="1.5"/><rect class="cls-1" x="31.49" y="56.25" width="20.13" height="1.5"/></svg>
