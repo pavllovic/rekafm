@@ -13,7 +13,7 @@
 
 .ui-btnClose span {
   position: absolute;
-  width: 1.6rem;
+  width: 2.2rem;
   height: 0.25rem;
   background-color: currentcolor;
   transform-origin: center;
@@ -36,7 +36,7 @@
 
 .ui-btnClose:hover span:nth-child(2) {
   opacity: 0;
-  transform: rotateZ(0) scaleX(0);
+  transform: rotateZ(0);
 }
 
 /* --- end style ui-btnClose --- */

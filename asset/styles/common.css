@@ -3,6 +3,7 @@
 @import "./global/color.css";
 @import "./global/typography.css";
 @import "./utility/utility.css";
+@import "./utility/reset.css";
 @import "../components/UI/ui-btn/ui-btn.css";
 @import "../components/UI/ui-btnInverse/ui-btnInverse.css";
 @import "../components/UI/ui-btnSecondary/ui-btnSecondary.css";
@@ -13,6 +14,7 @@
 @import "../components/UI/ui-input/ui-input.css";
 @import "../components/UI/ui-link/ui-link.css";
 @import "../components/UI/ui-tab/ui-tab.css";
+@import "../components/UI/ui-slider/ui-slider.css";
 @import "../components/UI/ui-tabIcon/ui-tabIcon.css";
 @import "../components/UI/ui-thumb/ui-thumb.css";
 @import "../components/UI/ui-toggle/ui-toggle.css";

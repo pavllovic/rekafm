@@ -201,6 +201,75 @@ h3 {
   color: var(--bs-secondary, #d0bc7a);
 }
 /* --- end utility class --- */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Remove default padding */
+/* Remove list styles on ul, ol elements with a class attribute */
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+/* Set core body defaults */
+body {
+  /* min-height: 100vh; */
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  text-rendering: optimizespeed;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
+/* Natural flow and rhythm in articles by default */
+/* article > * + * {
+  margin-top: 1em;
+} */
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 /* --- style ui-btn --- */
 /*
 .ui-btn, .ui-btnInverse, .ui-btnSecondary
@@ -482,7 +551,7 @@ h3 {
 }
 .ui-btnClose span {
   position: absolute;
-  width: 1.6rem;
+  width: 2.2rem;
   height: 0.25rem;
   background-color: currentcolor;
   transform-origin: center;
@@ -501,7 +570,7 @@ h3 {
 }
 .ui-btnClose:hover span:nth-child(2) {
   opacity: 0;
-  transform: rotateZ(0) scaleX(0);
+  transform: rotateZ(0);
 }
 /* --- end style ui-btnClose --- */
 /* --- style ui-btnDownload --- */
@@ -630,13 +699,15 @@ h3 {
 /* --- style ui-input --- */
 .ui-input::-moz-placeholder {
   color: inherit;
+  font-family: drukcyr;
+  font-family: var(--font-accent);
   font-size: 2.8rem;
-  font-size: drukcyr;
-  font-size: var(--font-accent);
   font-weight: 500;
-  letter-spacing: 0.084em;
   line-height: 1.1;
+
+  /* letter-spacing: 0.084em; */
   text-decoration: none;
+  text-transform: uppercase;
   transition-duration: 0.4s;
   -moz-transition-property: color;
   transition-property: color;
@@ -644,13 +715,15 @@ h3 {
 }
 .ui-input:-ms-input-placeholder {
   color: inherit;
+  font-family: drukcyr;
+  font-family: var(--font-accent);
   font-size: 2.8rem;
-  font-size: drukcyr;
-  font-size: var(--font-accent);
   font-weight: 500;
-  letter-spacing: 0.084em;
   line-height: 1.1;
+
+  /* letter-spacing: 0.084em; */
   text-decoration: none;
+  text-transform: uppercase;
   transition-duration: 0.4s;
   -ms-transition-property: color;
   transition-property: color;
@@ -659,23 +732,27 @@ h3 {
 .ui-input,
 .ui-input::placeholder {
   color: inherit;
+  font-family: drukcyr;
+  font-family: var(--font-accent);
   font-size: 2.8rem;
-  font-size: drukcyr;
-  font-size: var(--font-accent);
   font-weight: 500;
-  letter-spacing: 0.084em;
   line-height: 1.1;
+
+  /* letter-spacing: 0.084em; */
   text-decoration: none;
+  text-transform: uppercase;
   transition-duration: 0.4s;
   transition-property: color;
   transition-timing-function: ease-out;
 }
 .ui-input {
   padding-bottom: 1.6rem;
+  border-width: 0;
   border-style: solid;
   border-color: rgba(77, 77, 77, 100%);
   border-color: var(--bs-dark, rgba(77, 77, 77, 100%));
   border-bottom-width: 0.1rem;
+  background-color: rgba(255, 255, 255, 0%);
   transition-duration: 0.15s, 0.15s;
   transition-property: color, border-color;
   transition-timing-function: ease-out, ease-out;
@@ -702,24 +779,46 @@ h3 {
   border-color: rgba(255, 255, 255, 100%);
   border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
+.ui-input:focus {
+  border-color: rgba(255, 255, 255, 100%);
+  border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  outline: none;
+}
 .ui-input.invalid::-moz-placeholder {
+  border-color: rgba(238, 106, 95, 100%);
+  border-color: var(--bs-danger, rgba(238, 106, 95, 100%));
   color: rgba(238, 106, 95, 100%);
   color: var(--bs-danger, rgba(238, 106, 95, 100%));
 }
 .ui-input.invalid:-ms-input-placeholder {
+  border-color: rgba(238, 106, 95, 100%);
+  border-color: var(--bs-danger, rgba(238, 106, 95, 100%));
   color: rgba(238, 106, 95, 100%);
   color: var(--bs-danger, rgba(238, 106, 95, 100%));
 }
 .ui-input.invalid,
 .ui-input.invalid::placeholder {
+  border-color: rgba(238, 106, 95, 100%);
+  border-color: var(--bs-danger, rgba(238, 106, 95, 100%));
   color: rgba(238, 106, 95, 100%);
   color: var(--bs-danger, rgba(238, 106, 95, 100%));
 }
 @media (min-width: 60em) {
-  .ui-input {
+  .ui-input::-moz-placeholder {
     font-size: 4.8rem;
-    letter-spacing: 3%;
-    line-height: 1.1;
+
+    /* letter-spacing: 3%; */
+  }
+  .ui-input:-ms-input-placeholder {
+    font-size: 4.8rem;
+
+    /* letter-spacing: 3%; */
+  }
+  .ui-input,
+  .ui-input::placeholder {
+    font-size: 4.8rem;
+
+    /* letter-spacing: 3%; */
   }
 }
 /* --- end style ui-input --- */
@@ -769,6 +868,150 @@ h3 {
   color: inherit;
 }
 /* --- end style ui-tab --- */
+/* --- style ui-slider --- */
+.ui-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ui-slider .track {
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  background:
+    linear-gradient(
+      to right,
+      rgba(77, 77, 77, 100%),
+      rgba(77, 77, 77, 100%) 0%,
+      rgba(138, 140, 206, 100%) 0%,
+      rgba(138, 140, 206, 100%)  100%,
+      rgba(77, 77, 77, 100%) 100%
+    );
+  background:
+    linear-gradient(
+      to right,
+      var(--bs-dark, rgba(228, 228, 228, 100%)),
+      var(--bs-dark, rgba(228, 228, 228, 100%)) var(--value-from, 0%),
+      var(--bs-corporate, rgba(138, 140, 206, 100%)) var(--value-from, 0%),
+      var(--bs-corporate, rgba(138, 140, 206, 100%))  var(--value-to, 100%),
+      var(--bs-dark, rgba(228, 228, 228, 100%)) var(--value-to, 100%)
+    );
+}
+.ui-slider .label {
+  position: absolute;
+  display: block;
+  width: 100%;
+}
+.ui-slider input {
+  display: block;
+  width: 100%;
+  border: none;
+  margin: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: hsla(0, 100%, 100%, 0);
+  background-color: hsl(0deg, 100%, 100%, 0%);
+  pointer-events: none;
+}
+.ui-slider input::-webkit-slider-runnable-track {
+  height: 0;
+  -webkit-appearance: none;
+          appearance: none;
+}
+.ui-slider input::-moz-range-track {
+  height: 5px;
+  -moz-appearance: none;
+       appearance: none;
+}
+.ui-slider input::-ms-track {
+  height: 5px;
+  appearance: none;
+}
+.ui-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+.ui-slider input::-moz-range-thumb {
+  -moz-appearance: none;
+       appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+.ui-slider input::-ms-thumb {
+  appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+.ui-slider input[data-range="slider-from"]::-webkit-slider-thumb {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+.ui-slider input[data-range="slider-to"]::-webkit-slider-thumb {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+.ui-slider input[data-range="slider-from"]::-moz-range-thumb {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+.ui-slider input[data-range="slider-to"]::-moz-range-thumb {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+.ui-slider input[data-range="slider-from"]::-ms-thumb {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+.ui-slider input[data-range="slider-to"]::-ms-thumb {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid rgba(255, 255, 255, 100%);
+  border: 2px solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: rgba(138, 140, 206, 100%);
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  border-radius: 50%;
+  box-shadow: 0 1px 4px 0 rgba(123, 97, 255, 16%);
+}
+/* --- end style ui-slider --- */
 /* --- style ui-tabIcon --- */
 .ui-tabIcon {
   display: flex;

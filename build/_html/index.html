@@ -87,7 +87,28 @@
           <use href="#icon-16-back"></use>
         </svg>
       </button>
+      <button class="ui-btnClose">
+        <span> </span>
+        <span></span>
+      </button>
       <a class="ui-link" href="#">продажа и аренда</a>
+      <div class="ui-slider" style="width: 400px">
+        <div class="track" data-range="track">
+          <label class="label" for="slider-to">
+            <input type="range" min="0" max="1000" value="1000" id="slider-to" data-range="slider-to"
+              data-filter="max-price">
+          </label>
+          <label class="label" for="slider-from">
+            <input type="range" min="0" max="1000" value="0" id="slider-from" data-range="slider-from"
+              data-filter="min-price">
+          </label>
+        </div>
+      </div>
+      <div
+        style="background-color: rgba(46, 46, 46, 1); padding: 2rem; color: white; display: flex; flex-direction: column; gap: 1rem">
+        <input class="ui-input" type="text" placeholder="ваше имя">
+        <input class="ui-input invalid" type="text" placeholder="ваше имя">
+      </div>
       <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>

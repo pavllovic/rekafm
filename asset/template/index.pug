@@ -66,7 +66,19 @@ block content
     button(class='ui-btnArrow')
       svg(class='icon')
         use(href='#icon-16-back')
+    button(class='ui-btnClose')
+      span 
+      span
     a(class='ui-link' href='#') продажа и аренда
+    div(class='ui-slider' style='width: 400px')
+      div(class='track' data-range='track')
+        label(class='label' for="slider-to")
+          input(type='range' min='0' max='1000' value='1000' id='slider-to' data-range='slider-to' data-filter='max-price')
+        label(class='label' for="slider-from")
+          input(type='range' min='0' max='1000' value='0' id='slider-from' data-range='slider-from' data-filter='min-price')
+    div(style='background-color: rgba(46, 46, 46, 1); padding: 2rem; color: white; display: flex; flex-direction: column; gap: 1rem')
+      input(class='ui-input' type='text' placeholder='ваше имя')
+      input(class='ui-input invalid' type='text' placeholder='ваше имя')
     include ../images/icons/icon-16/sprite-icon-16.svg
     include ../images/icons/icon-24/sprite-icon-24.svg
     include ../images/icons/icon-32/sprite-icon-32.svg

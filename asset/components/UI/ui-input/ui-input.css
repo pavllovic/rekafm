@@ -2,12 +2,14 @@
 .ui-input,
 .ui-input::placeholder {
   color: inherit;
+  font-family: var(--font-accent);
   font-size: 2.8rem;
-  font-size: var(--font-accent);
   font-weight: 500;
-  letter-spacing: 0.084em;
   line-height: 1.1;
+
+  /* letter-spacing: 0.084em; */
   text-decoration: none;
+  text-transform: uppercase;
   transition-duration: 0.4s;
   transition-property: color;
   transition-timing-function: ease-out;
@@ -15,9 +17,11 @@
 
 .ui-input {
   padding-bottom: 1.6rem;
+  border-width: 0;
   border-style: solid;
   border-color: var(--bs-dark, rgba(77, 77, 77, 100%));
   border-bottom-width: 0.1rem;
+  background-color: rgba(255, 255, 255, 0%);
   transition-duration: 0.15s, 0.15s;
   transition-property: color, border-color;
   transition-timing-function: ease-out, ease-out;
@@ -34,16 +38,23 @@
   border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
+.ui-input:focus {
+  border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  outline: none;
+}
+
 .ui-input.invalid,
 .ui-input.invalid::placeholder {
+  border-color: var(--bs-danger, rgba(238, 106, 95, 100%));
   color: var(--bs-danger, rgba(238, 106, 95, 100%));
 }
 
 @media (min-width: 60em) {
-  .ui-input {
+  .ui-input,
+  .ui-input::placeholder {
     font-size: 4.8rem;
-    letter-spacing: 3%;
-    line-height: 1.1;
+
+    /* letter-spacing: 3%; */
   }
 }
 
