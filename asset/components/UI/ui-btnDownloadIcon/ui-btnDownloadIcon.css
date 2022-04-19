@@ -7,9 +7,10 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
+  cursor: pointer;
   transition-duration: 0.15s;
   transition-property: color;
   transition-timing-function: ease-out;

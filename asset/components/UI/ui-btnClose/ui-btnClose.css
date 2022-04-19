@@ -6,9 +6,10 @@
   height: 6.4rem;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  border: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
+  cursor: pointer;
 }
 
 .ui-btnClose span {

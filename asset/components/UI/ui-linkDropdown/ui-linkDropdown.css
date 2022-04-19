@@ -1,0 +1,118 @@
+/* --- style ui-linkDropdown --- */
+.ui-linkDropdown {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: calc(1em / 1.5) calc(1em / 0.9);
+  padding-right: calc(1em / 2.25 + 1em / 0.9 + 16px);
+  color: inherit;
+  font-size: var(--fs-menu-link);
+  line-height: calc(16 / 18);
+  text-decoration: none;
+}
+
+.ui-linkDropdown .text {
+  color: inherit;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-linkDropdown .icon {
+  position: absolute;
+  right: calc(1em / 0.9);
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid var(--bs-light, rgba(228, 228, 228, 100%));
+  border-radius: 50%;
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+/* icon fill */
+.ui-linkDropdown .icon::after,
+.ui-linkDropdown .icon::before {
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background-color: currentcolor;
+  content: "";
+  transform-origin: center;
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-linkDropdown .icon::before {
+  transform: rotateZ(-90deg);
+}
+
+.ui-linkDropdown:hover,
+.ui-linkDropdown.is-open {
+  color: inherit;
+}
+
+.ui-linkDropdown:hover .text,
+.ui-linkDropdown.is-open .text {
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+}
+
+.ui-linkDropdown:hover .icon,
+.ui-linkDropdown.is-open .icon,
+.ui-linkDropdown:hover .icon::after,
+.ui-linkDropdown.is-open .icon::after {
+  transform: rotateZ(-90deg);
+}
+
+@media (min-width: 80em) {
+  .ui-linkDropdown.is-open:not(:hover) .text {
+    color: inherit;
+  }
+
+  .ui-linkDropdown.is-open:not(:hover) .icon,
+  .ui-linkDropdown.is-open:not(:hover) .icon::after {
+    transform: rotateZ(0deg);
+  }
+}
+
+@media (min-width: 137.5em) {
+  .ui-linkDropdown {
+    padding-right: calc(1em / 2.25 + 1em / 0.9 + 24px);
+  }
+
+  .ui-linkDropdown .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ui-linkDropdown .icon::after,
+  .ui-linkDropdown .icon::before {
+    width: 9px;
+    height: 3px;
+  }
+}
+
+@media (min-width: 160em) {
+  .ui-linkDropdown {
+    padding-right: calc(1em / 2.25 + 1em / 0.9 + 32px);
+  }
+
+  .ui-linkDropdown .icon {
+    width: 32px;
+    height: 32px;
+    margin-top: 4px;
+  }
+
+  .ui-linkDropdown .icon::after,
+  .ui-linkDropdown .icon::before {
+    width: 12px;
+    height: 4px;
+  }
+}
+
+/* --- end style ui-linkDropdown --- */

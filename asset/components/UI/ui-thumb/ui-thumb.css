@@ -7,31 +7,92 @@
   height: 4rem;
   align-items: center;
   justify-content: center;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   border-radius: 50%;
+  cursor: pointer;
 }
 
-.ui-thumb::after {
-  position: absolute;
-  z-index: 1;
-  background-color: var(--bs-contrast, rgba(255, 255, 255, 0%));
+.ui-thumb .image {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
   border-radius: inherit;
+}
+
+/* overlay */
+.ui-thumb .image:only-child::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  border-radius: inherit;
+  content: "";
   opacity: 0.48;
   transition-duration: 0.15s;
   transition-property: opacity;
   transition-timing-function: ease-out;
 }
 
-.ui-thumb:hover::after,
-.ui-thumb:active::after {
-  opacity: 0;
+.ui-thumb .image img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* backround if image didn't load */
+.ui-thumb .image img::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  border-radius: inherit;
+  content: "";
 }
 
 .ui-thumb .text {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: -0.032rem;
   line-height: 1;
+}
+
+/* background for text */
+.ui-thumb .text::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 50%;
+  content: "";
+  opacity: 0.48;
+}
+
+.ui-thumb:hover .image::after,
+.ui-thumb:active .image::after,
+.ui-thumb.active .image::after {
+  opacity: 0;
 }
 
 /* --- end style ui-thumb --- */

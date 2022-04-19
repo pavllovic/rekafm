@@ -1,0 +1,17 @@
+nav(class='nav js-nav')
+  button(class='ui-btnOpenMenu' aria-expanded='false' aria-controls='nav-menu' data-nav="open")
+    span(class='icon' aria-hidden='true')
+      span
+    span(class='text') меню
+  div(data-nav="menu" id='nav-menu')
+    div(class='header')
+      include ../logo/logo.pug
+      button(class='ui-btnCloseMenu' aria-controls='nav-menu' data-nav="close")
+        span(class='icon' aria-hidden='true')
+        span(class='text') закрыть
+    include ../menu/menu.pug
+    div(class='footer')
+      button(class='ui-btn') 
+        span(class='text') связаться с нами
+        svg(class='icon' focusable='false' aria-hidden='true')
+          use(href='#icon-16-go')

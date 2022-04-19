@@ -1,17 +1,55 @@
 /* --- style ui-link --- */
-
-/*
-в макете ссылки с разным font-size выделенны в самостоятельные компоненты.
-Можно сделать для каждого варианта свой класс.
-Можно в html к ссылкам добавлять класс типографики (styles/global/typograthy.css).
-Можно через наследование от родителя, который задает контекст для типографики.
-*/
 .ui-link {
+  display: flex;
+  align-items: center;
   color: inherit;
+  cursor: pointer;
   text-decoration: none;
-  transition-duration: 0.15s;
+}
+
+.ui-link .text {
+  color: inherit;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-link .text[data-text] {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.2em;
+  padding-top: 1.2em;
+  line-height: 1.2;
+}
+
+.ui-link .text[data-text]::before,
+.ui-link .text[data-text]::after {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  content: attr(data-text);
+  transition-duration: var(--dur-quick);
+  transition-property: transform;
+  transition-timing-function: var(--easing-quick);
+}
+
+.ui-link .text[data-text]::before {
+  top: 0;
+  color: inherit;
+}
+
+.ui-link .text[data-text]::after {
+  top: 1.2em;
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+}
+
+.ui-link .icon {
+  --color: currentcolor;
+
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color, currentcolor);
 }
 
 .ui-link * + .icon,
@@ -20,7 +58,20 @@
 }
 
 .ui-link:hover {
+  color: inherit;
+}
+
+.ui-link:hover .text {
   color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+}
+
+.ui-link:hover .text[data-text] {
+  color: inherit;
+}
+
+.ui-link:hover .text[data-text]::before,
+.ui-link:hover .text[data-text]::after {
+  transform: translateY(-1.2em);
 }
 
 /* --- end style ui-link --- */

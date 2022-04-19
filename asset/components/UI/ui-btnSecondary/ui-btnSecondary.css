@@ -3,15 +3,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 2.3rem 3.9rem;
-  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  padding: 2.4rem 4rem;
+  border: none;
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
   cursor: pointer;
   font-size: 1.8rem;
   font-weight: 500;
-
-  /* letter-spacing: -0.036em; */
   line-height: 0.9;
   text-transform: lowercase;
   transition-duration: 0.15s;
@@ -19,25 +17,35 @@
   transition-timing-function: ease-out;
 }
 
+/*
+:after .ui-btnSecondary:hover background,
+:before .ui-btnSecondary border
+*/
+.ui-btnSecondary::before,
 .ui-btnSecondary::after {
   position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  align-self: flex-end;
-  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
-
-  /* transition-duration: 0.2s; */
-
-  /* transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); */
   content: "";
+}
+
+.ui-btnSecondary::after {
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
   transform: scaleY(0);
   transform-origin: center bottom;
   transition-duration: 0.15s;
   transition-property: transform;
   transition-timing-function: ease-out;
+}
+
+.ui-btnSecondary::before {
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  border: 1px solid var(--bs-dark, rgba(77, 77, 77, 100%));
 }
 
 .ui-btnSecondary:hover {
@@ -59,7 +67,7 @@
 
   width: 1.6rem;
   height: 1.6rem;
-  fill: var(--color, currentColor);
+  fill: var(--color, currentcolor);
 }
 
 .ui-btnSecondary .icon + *,

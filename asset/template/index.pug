@@ -33,54 +33,147 @@ block styles
 
 block content
   div(class='wrapper')
-    button(class='ui-btn') 
-      span(class='text') связаться с нами
-      svg(class='icon' focusable='false' aria-hidden='true')
-        use(href='#icon-16-go')
-    button(class='ui-btnInverse') 
-      span(class='text') связаться с нами
-      svg(class='icon' focusable='false' aria-hidden='true')
-        use(href='#icon-16-go')
-    button(class='ui-btnSecondary') 
-      span(class='text') связаться с нами
-      svg(class='icon' focusable='false' aria-hidden='true')
-        use(href='#icon-16-go')
-    button(class='ui-btnDownload') 
-      span(class='text') скачать презентацию
-      svg(class='icon' focusable='false' aria-hidden='true')
-        use(href='#icon-btn-top-right')
-    button(class='ui-btnDownloadIcon') 
-      svg(class='icon' focusable='false' aria-hidden='true')
-        use(href='#icon-32-pdf')
-    div(class='ui-toggle')
-      input(type='checkbox' id='' name='')
-      span
-    button(class='ui-tab') Покупка
-    button(class='ui-tabIcon')
-      svg(class='icon')
-        use(href='#icon-16-card')
-      span карточками
-    button(class='ui-btnArrow')
-      svg(class='icon')
-        use(href='#icon-16-go-hover')
-    button(class='ui-btnArrow')
-      svg(class='icon')
-        use(href='#icon-16-back')
-    button(class='ui-btnClose')
-      span 
-      span
-    a(class='ui-link' href='#') продажа и аренда
-    div(class='ui-slider' style='width: 400px')
-      div(class='track' data-range='track')
-        label(class='label' for="slider-to")
-          input(type='range' min='0' max='1000' value='1000' id='slider-to' data-range='slider-to' data-filter='max-price')
-        label(class='label' for="slider-from")
-          input(type='range' min='0' max='1000' value='0' id='slider-from' data-range='slider-from' data-filter='min-price')
-    div(style='background-color: rgba(46, 46, 46, 1); padding: 2rem; color: white; display: flex; flex-direction: column; gap: 1rem')
-      input(class='ui-input' type='text' placeholder='ваше имя')
-      input(class='ui-input invalid' type='text' placeholder='ваше имя')
-    include ../images/icons/icon-16/sprite-icon-16.svg
-    include ../images/icons/icon-24/sprite-icon-24.svg
-    include ../images/icons/icon-32/sprite-icon-32.svg
-    include ../images/icons/icon-72/sprite-icon-72.svg
-    include ../images/icons/icon-btn/sprite-icon-btn.svg
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      div(class='heading')
+        h1 Управляющая компания и брокер с базой недвижимости</br> в 7 городах России
+        p(class='title') Снимаем с владельцев зданий все задачи по администрированию и подбираем недвижимость для инвестиций, покупки и аренды.
+      picture
+        source
+        source
+        img(src=require('Images/hero/2.jpg'))
+      picture(class='top')
+        source
+        source
+        img(src=require('Images/hero/bottom.png'))
+    //- section(class='promo container-xl')
+    section(class='promo container-fluid')
+      div(class='map')
+        h2(class='heading') под нашим управлением
+        div(class='info')
+          div()
+            p(class='text-accent') 377 га
+            p() земли
+          div()
+            p(class='text-accent') 2 000 000 м²
+            p() жилой и коммерческой<br/> недвижимости
+      div(class='cards')
+        h2 С кем мы сотрудничаем
+        div(class='cardsList row')
+          div(class='cardWork col-xl-4')
+            div(class='image')
+              include ../images/card/work/2.svg
+            div(class='body')
+              h3(class='heading') С арендодателями
+              p(class='text') Берём на себя все заботы по управлению помещениями: ищем арендаторов, решаем юридические вопросы, готовим налоговые отчёты и нанимаем персонал.
+              a(class='link') 
+                span(class='link-text') подробнее
+                  svg(class='icon')
+                    use(href='#icon-16-go')
+          div(class='cardWork col-xl-4')
+            div(class='image')
+              include ../images/card/work/2.svg
+            div(class='body')
+              h3(class='heading') С арендодателями
+              p(class='text') Берём на себя все заботы по управлению помещениями: ищем арендаторов, решаем юридические вопросы, готовим налоговые отчёты и нанимаем персонал.
+              a(class='link') 
+                span(class='link-text') подробнее
+                  svg(class='icon')
+                    use(href='#icon-16-go')
+          div(class='cardWork col-xl-4')
+            div(class='image')
+              include ../images/card/work/2.svg
+            div(class='body')
+              h3(class='heading') С арендодателями
+              p(class='text') Берём на себя все заботы по управлению помещениями: ищем арендаторов, решаем юридические вопросы, готовим налоговые отчёты и нанимаем персонал.
+              a(class='link') 
+                span(class='link-text') подробнее
+                  svg(class='icon')
+                    use(href='#icon-16-go')
+    section(class='benefits')
+      h2(class='heading') Нас выбирают, потому что<br/> мы автоматизируем все процессы и предлагаем комплексные решения
+      div(class='benefitsList')
+        section(class='benefit')
+          span(class='number') 01
+          div(class='text')
+            h3(class='title') Клиенты «Реки ФМ» следят<br/>за расходами онлайн
+            p Для этого у нас есть программа Oddin. Там мы публикуем отчёты о проделанной работе, например если заменили лампочку или устранили аварию. Всё с фото, датами и чеками.
+          div(class='content')
+            picture 
+              source
+              source
+              img(src=require('Images/benefits/1.jpg'))
+        section(class='benefit')
+          span(class='number') 02
+          div(class='text')
+            h3(class='title') Налаживаем<br/>управление зданием с нуля
+            p Оснащаем техникой, например системой дымоудаления или сигнализацией. Нанимаем персонал в охрану, клининг и администрацию.
+          div(class='content')
+            picture 
+              source
+              source
+              img(src=require('Images/benefits/2.jpg'))
+        section(class='benefit')
+          span(class='number') 03
+          div(class='text')
+            h3(class='title') Наша команда — эксперты<br/>в управлении недвижимостью
+            p Они знают, как организовать процессы, чтобы доход клиента был максимальным, а участие в администрировании — минимальным.
+          div(class='content')
+            picture 
+              source
+              source
+              img(src=require('Images/benefits/1.jpg'))
+    //- section(class='news container-xl')
+    section(class='news container-fluid')
+      h2 Наши новости
+      div(class='carousel')
+        div(class='controls')
+          button(class='ui-btnArrow')
+            svg(class='icon' focusable='false' aria-hidden='true')
+              use(href='#icon-16-back')
+            span(class='visually-hidden') назад
+          button(class='ui-btnArrow')
+            svg(class='icon' focusable='false' aria-hidden='true')
+              use(href='#icon-16-go-hover')
+            span(class='visually-hidden') вперед
+        div(class='slideList row')
+          div(class='cardNews slide col-xl-4')
+            picture(class='image')
+              source
+              source
+              img(src=require('Images/card/news/1.jpg'))
+            div(class='body')
+              div(class='date') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+              h3(class='title') Заголовок новости
+              p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+          div(class='cardNews slide col-xl-4')
+            picture(class='image')
+              source
+              source
+              img(src=require('Images/card/news/1.jpg'))
+            div(class='body')
+              div(class='date') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+              h3(class='title') Заголовок новости
+              p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+          div(class='newsGroup slide col-xl-4')
+            div(class='cardNews')
+              div(class='body')
+                div(class='date') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+                h3(class='title') Длинный заголовок новости в две строки 
+                p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+            div(class='cardNews')
+              div(class='body')
+                div(class='date') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+                h3(class='title') Заголовок новости
+                p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+      a(class='ui-btn' href='#') 
+        span(class='text') все новости
+        svg(class='icon' focusable='false' aria-hidden='true')
+          use(href='#icon-16-go')
+  include ../components/footer/footer.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg

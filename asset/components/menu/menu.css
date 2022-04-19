@@ -1,0 +1,206 @@
+/* --- style component menu --- */
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+}
+
+.menu .item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.menu .ui-link {
+  padding: calc(1em / 1.5) calc(1em / 0.9);
+  font-size: var(--fs-menu-link);
+  line-height: calc(16 / 18);
+}
+
+.menu [data-dropdown="panel"] {
+  --height-dropdown: 0;
+
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc(var(--height-dropdown) * 1px);
+  transition-duration: var(--dur-main);
+  transition-property: height;
+  transition-timing-function: var(--easing-main);
+  will-change: height;
+}
+
+.menu [data-dropdown="panel"]::after,
+.menu [data-dropdown="panel"]::before {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--bs-dark, rgba(77, 77, 77, 100%));
+  content: "";
+  opacity: 0;
+  transition-duration: var(--dur-main);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-main);
+}
+
+.menu [data-dropdown="panel"]::after {
+  bottom: 0;
+}
+
+.menu [data-dropdown="panel"]::before {
+  top: 0;
+}
+
+.submenu {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  padding: calc(1em / 1.5) 0;
+  transition-duration: var(--dur-main);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-main);
+}
+
+.submenu .item {
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.submenu .ui-link {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  color: inherit;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.submenu .ui-link::before {
+  position: absolute;
+  z-index: -1;
+
+  /* top: 0; */
+
+  top: 100%;
+  left: 0;
+  width: 100%;
+
+  /* height: calc(100% + 10px); */
+  height: 60px;
+  background-color: var(--bs-corparate, rgba(138, 140, 206, 100%));
+  content: "";
+
+  /* transform: scaleY(0); */
+  transform-origin: bottom center;
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.submenu .ui-link:hover {
+  z-index: 2;
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.submenu .ui-link:hover::before {
+  transform: translateY(calc(-100% + 5px));
+
+  /* transform: scaleY(1); */
+}
+
+.menu .ui-linkDropdown.is-open + [data-dropdown="panel"]::after,
+.menu .ui-linkDropdown.is-open + [data-dropdown="panel"]::before {
+  opacity: 1;
+}
+
+@media (min-width: 80em) {
+  .menu {
+    position: relative;
+    z-index: 1;
+    flex-direction: row;
+    padding: 0;
+    text-align: left;
+  }
+
+  /* скрывает выподающий submenu при начальном состоянии */
+  .menu::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: var(--border-light);
+    border-right: none;
+    background-color: var(--bs-contrast);
+    content: "";
+  }
+
+  .menu .item {
+    width: auto;
+  }
+
+  .menu .ui-link,
+  .menu .ui-linkDropdown {
+    padding-top: calc(1em / 0.75);
+    padding-bottom: calc(1em / 0.75);
+  }
+
+  .menu [data-dropdown="panel"] {
+    position: static;
+    height: 0;
+  }
+
+  .menu [data-dropdown="panel"]::after,
+  .menu [data-dropdown="panel"]::before {
+    display: none;
+  }
+
+  .submenu {
+    position: absolute;
+    z-index: -2;
+    bottom: 0;
+    left: 0;
+    width: calc(100% + 0.1rem);
+    height: auto;
+    padding: calc(1em / 1.5) 0;
+    border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+    margin-top: 0;
+    background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+    opacity: 1;
+    transform: translateY(calc(100% - 0.2rem));
+    transform-origin: top center;
+    transition-delay: var(--dur-main), 0s;
+    transition-duration: var(--dur-main), var(--dur-main);
+    transition-property: visibility, transform;
+    transition-timing-function: var(--easing-main), var(--easing-main);
+
+    /* visibility: hidden; */
+  }
+
+  .submenu .ui-link {
+    padding: calc(1em / 1.5)  calc(1em / 1.125);
+  }
+
+  .menu .item:hover .submenu {
+    z-index: -1;
+
+    /* transform: translateY(calc(100% - 0.1rem)); */
+
+    /* transform: translateY(calc(100% - 0.2rem)); */
+    transition-delay: 0s, 0s;
+    visibility: visible;
+  }
+}
+
+/* --- end style component menu --- */

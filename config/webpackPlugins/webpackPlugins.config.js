@@ -35,7 +35,8 @@ const copyWebpackPlugin = (isDev) => {
   let patterns = [];
   if(isDev) {
     patterns = [
-      // {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
+      {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
+      // {from: './asset/lib/accordion/', to: `${pathToCopy}/accordion/`},
       // {from: 'node_modules/owl.carousel/dist/', to: `${pathToCopy}/owl.carousel/`},
       // {from: 'node_modules/jquery/dist/', to: `${pathToCopy}/jquery/`},
       // {from: 'node_modules/imask/dist/', to: `${pathToCopy}/imask/`},
@@ -63,22 +64,27 @@ const copyWebpackPlugin = (isDev) => {
 const htmlWebpackTagsPlugin = (isDev) => {
   const pathToCopy = 'asset/lib';
   return [
-    new HtmlWebpackTagsPlugin({
-      links: [
-        `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`
-      ],
-      scripts: [
-        `${pathToCopy}/jquery/jquery.min.js`,
-        `${pathToCopy}/owl.carousel/owl.carousel.min.js`,
-        `${pathToCopy}/imask/imask.min.js`,
-      ],
-      files: isDev ? ['_html/profile.html'] : ['profile.html'],
-      append: false
-    }),
+    // new HtmlWebpackTagsPlugin({
+    //   links: [
+    //     `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`
+    //   ],
+    //   scripts: [
+    //     `${pathToCopy}/jquery/jquery.min.js`,
+    //     `${pathToCopy}/owl.carousel/owl.carousel.min.js`,
+    //     `${pathToCopy}/imask/imask.min.js`,
+    //   ],
+    //   files: isDev ? ['_html/profile.html'] : ['profile.html'],
+    //   append: false
+    // }),
     new HtmlWebpackTagsPlugin({
       links: [
         `${pathToCopy}/bootstrap/css/bootstrap.min.css`, 
       ],
+      // scripts: [
+        // `${pathToCopy}/accordion/accordion.min.js`,
+        // `${pathToCopy}/owl.carousel/owl.carousel.min.js`,
+        // `${pathToCopy}/imask/imask.min.js`,
+      // ],
       append: false
     })
   ]
@@ -101,7 +107,7 @@ const htmlWebpackSkipAssetsPlugin = () => {
 const htmlWebpackPlagin = (isDev) => {
   const pages = [
     {name: 'index', title: 'рекафм', chunks: ['common']},
-    // {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
+    {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
   ];
 
   return pages.map((page) => {
@@ -161,9 +167,9 @@ module.exports = (isDev, env) => {
   let webpackPluginsConfig = [
     miniCssExtractPlugin(isDev),
     // mediaQueryPlugin(),
-    // copyWebpackPlugin(),
+    copyWebpackPlugin(isDev),
     ...htmlWebpackPlagin(isDev),
-    // ...htmlWebpackTagsPlugin(isDev),
+    ...htmlWebpackTagsPlugin(isDev),
     stylelintPlugin(),
     eslintPlugin(),
     cleanWebpackPlugin(),

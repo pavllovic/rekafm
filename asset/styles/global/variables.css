@@ -1,0 +1,7 @@
+/* --- variables --- */
+:root {
+  --border-light: 0.1rem solid var(--bs-light, rgba(228, 228, 228, 100%));
+  --border-dark: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
+}
+
+/* --- variables --- */

@@ -12,7 +12,7 @@
   white-space: nowrap;
 }
 
-.h-dividing-line,
+/* .h-dividing-line,
 .v-dividing-line {
   background-color: currentcolor;
   color: var(--bs-gray, #ebebeb);
@@ -26,15 +26,6 @@
 .v-dividing-line {
   width: 1px;
   height: 100%;
-}
-
-.text-faded {
-  color: inherit;
-  opacity: 0.4;
-}
-
-.text-accent {
-  color: var(--bs-secondary, #d0bc7a);
-}
+} */
 
 /* --- end utility class --- */

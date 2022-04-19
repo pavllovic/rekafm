@@ -1,0 +1,70 @@
+@import "./utility/utility.css";
+@import "./utility/reset.css";
+@import "./global/fonts.css";
+@import "./global/spacing.css";
+@import "./global/color.css";
+@import "./global/typography.css";
+@import "../components/UI/ui-btn/ui-btn.css";
+@import "../components/UI/ui-btnInverse/ui-btnInverse.css";
+@import "../components/UI/ui-btnSecondary/ui-btnSecondary.css";
+@import "../components/UI/ui-btnArrow/ui-btnArrow.css";
+@import "../components/UI/ui-btnClose/ui-btnClose.css";
+@import "../components/UI/ui-btnDownload/ui-btnDownload.css";
+@import "../components/UI/ui-btnDownloadIcon/ui-btnDownloadIcon.css";
+@import "../components/UI/ui-input/ui-input.css";
+@import "../components/UI/ui-link/ui-link.css";
+@import "../components/UI/ui-linkDropdown/ui-linkDropdown.css";
+@import "../components/UI/ui-tab/ui-tab.css";
+@import "../components/UI/ui-slider/ui-slider.css";
+@import "../components/UI/ui-rangeBar/ui-rangeBar.css";
+@import "../components/UI/ui-tabIcon/ui-tabIcon.css";
+@import "../components/UI/ui-thumb/ui-thumb.css";
+@import "../components/UI/ui-toggle/ui-toggle.css";
+@import "../components/UI/ui-select/ui-select.css";
+@import "../components/logo/logo.css";
+@import "../components/header/header.css";
+@import "../components/menu/menu.css";
+@import "../components/hero/hero.css";
+@import "../components/cardWork/cardWork.css";
+@import "../components/cardNews/cardNews.css";
+
+/* --- style for bootstrap grid --- */
+:root {
+  --bs-gutter-x: 1.6rem;
+}
+
+.row {
+  --bs-gutter-x: calc(1.6rem * 2);
+}
+
+/* --- end style for bootstrap grid --- */
+
+/* --- common style for all pages --- */
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  height: 100%;
+  background-color: var(--bs-body-bg, #fff);
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.wrapper > * {
+  margin-bottom: 2rem;
+}
+
+.footer {
+  margin-top: auto;
+}

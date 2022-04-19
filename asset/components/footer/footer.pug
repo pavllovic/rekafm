@@ -1,0 +1,26 @@
+footer(class='footer')
+  include ../ticker/ticker.pug
+  div(class='box')
+    include ../logo/logo.pug
+    include ../menu/menu.pug
+    div(class='contacts')
+      div(class='contact')
+        p(class='label') приезжайте в наш офис
+        address(class='address') Самарская область, Тольятти,<br/> ул. Юбилейная, 40, офис 1801
+        a(class='ui-linkFade' href='#') смотреть на карте
+      div(class='contact')
+        p(class='label') звоните
+        a(class='ui-link' href='tel:+78002006316') 
+          span(class='text' data-text='8 (800) 200-63-16') 8 (800) 200-63-16
+      div(class='contact')
+        p(class='label') пишите
+        a(class='ui-link'  href='mailto:info@reka.fm') 
+          span(class='text' data-text='info@reka.fm') info@reka.fm
+      div(class='contact')
+        p(class='label') следите за нами
+        include ../socialLinks/socialLinks.pug
+    div(class='note')
+      p ГК «РЕКА» — управляем недвижимостью с 2013 года
+      a(class='ui-linkFade' href='#') политика конфиденциальности
+      p сайт сделан в CEDRO
+

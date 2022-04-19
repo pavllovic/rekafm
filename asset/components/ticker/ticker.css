@@ -1,0 +1,63 @@
+/* --- styles component ticker --- */
+.ticker {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 5.25em;
+  padding-bottom: 5.25em;
+}
+
+.line {
+  display: flex;
+  flex-wrap: nowrap;
+  color: inherit;
+  font-family: var(--font-accent);
+  font-size: var(--fs-headline-1);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.line:nth-child(1) {
+  margin-left: -140%;
+}
+
+.line:nth-child(2) {
+  margin-right: -33%;
+}
+
+.line:nth-child(3) {
+  margin-left: -58%;
+}
+
+.line[data-ticker-inverse] {
+  align-self: flex-end;
+}
+
+.group-track {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.line:nth-child(even) .group-track .track:nth-child(odd),
+.line:nth-child(odd) .group-track .track:nth-child(even) {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px currentcolor;
+}
+
+.track-item {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.pointer {
+  display: block;
+  margin-right: 0.555em;
+  margin-left: 0.555em;
+  -webkit-text-fill-color: currentcolor;
+  -webkit-text-stroke: 1px none;
+}
+
+/* --- end styles component ticker --- */

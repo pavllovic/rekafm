@@ -1,0 +1,28 @@
+/* --- style component logo --- */
+.logo {
+  height: 3em;
+  padding: 0 calc(1em / 1.125);
+  padding-top: 1em;
+  padding-bottom: calc(1em / 1.6);
+  border: var(--border-light);
+  font-size: var(--fs-body);
+}
+
+.logo svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  fill: currentcolor;
+}
+
+@media (min-width: 80em) {
+  .logo {
+    height: calc(1em / 0.28125); /* stylelint-disable number-max-precision */
+    padding: 0 calc(1em / 0.45);
+    padding-top: calc(1em / 0.75);
+    padding-bottom: 1em;
+    font-size: var(--fs-btn);
+  }
+}
+
+/* --- end style component logo --- */

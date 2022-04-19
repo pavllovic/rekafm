@@ -1,22 +1,47 @@
 /* --- style ui-tab --- */
 .ui-tab {
+  position: relative;
+  z-index: 0;
   padding: 4rem 8rem;
   border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
-  background-color: rgba(239, 239, 239, 100%);
+  background-color: rgba(255, 255, 255, 0%);
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
+  cursor: pointer;
   font-family: var(--font-main);
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
-  transition-duration: 0.15s, 0.15s;
-  transition-property: background-color, color;
-  transition-timing-function: ease-out, ease-out;
+  transition-duration: 0.15s;
+  transition-property: color;
+  transition-timing-function: ease-out;
+}
+
+/* background ui-tab */
+.ui-tab::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(239, 239, 239, 100%);
+  content: "";
+  opacity: 1;
+  transition-duration: 0.15s;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
 }
 
 .ui-tab:hover,
-.ui-tab:active {
-  background-color: rgba(239, 239, 239, 0%);
+.ui-tab:active,
+.ui-tab.active {
   color: inherit;
+}
+
+.ui-tab:hover::after,
+.ui-tab:active::after,
+.ui-tab.active::after {
+  opacity: 0;
 }
 
 /* --- end style ui-tab --- */

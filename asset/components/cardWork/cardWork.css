@@ -1,0 +1,110 @@
+/* --- style component cardWork --- */
+.cardWork {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  height: 33.75em;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0.1rem solid var(--bs-light, rgba(255, 255, 255, 100%));
+  color: inherit;
+  cursor: pointer;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+/* background cardWork for hover */
+.cardWork::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  content: "";
+  opacity: 0;
+  transition-duration: var(--dur-main);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-main);
+}
+
+.cardWork .image {
+  display: flex;
+  max-width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 1.5em;
+}
+
+.cardWork .image svg {
+  width: auto;
+  height: 100%;
+  fill: currentcolor;
+}
+
+.cardWork .body {
+  max-width: 22em;
+  margin-right: 1.5em;
+  margin-bottom: 4em;
+  margin-left: 1.5em;
+}
+
+.cardWork .heading {
+  margin-bottom: 0.75em;
+}
+
+/* .cardWork .text {
+  line-height: 1.4;
+} */
+
+.cardWork .link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: flex-end;
+  padding: 1.5em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardWork .link-text {
+  display: flex;
+  width: 100%;
+  max-width: 22em;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.cardWork .link-text .icon {
+  --color: currentcolor;
+
+  width: 1em;
+  height: 1em;
+  margin-left: 0.25em;
+  fill: var(--color, currentcolor);
+}
+
+.cardWork:hover {
+  z-index: 1;
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.cardWork:hover::before {
+  opacity: 1;
+}
+
+@media (min-width: 80em) {
+  .cardWork .body {
+    margin-top: 1.5em;
+  }
+}
+
+/* --- end style component cardWork --- */

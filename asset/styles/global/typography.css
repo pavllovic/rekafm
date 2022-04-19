@@ -2,103 +2,162 @@
 :root {
   /* font-size = 10px if user agent font-size = 16px */
   font-size: 62.5%;
+
+  /* font-size body */
+  --fs-body: 1.6rem;
+
+  /* font-size h1, h2, h3 */
+  --fs-headline-1: 4.8rem;
+  --fs-headline-2: 4rem;
+  --fs-headline-3: 2.4rem;
+
+  /* font-size ui-btn */
+  --fs-btn: 1.8rem;
+
+  /* font-size ui-link, ui-linkDropdown */
+  --fs-menu-link: 1.8rem;
+
+  /* font-size text-accent */
+  --fs-text-accent: 2.8rem;
+
+  /* font-size text-lead */
+  --fs-text-lead: 2rem;
+
+  /* font-size card-title */
+  --fs-card-title: 2.8rem;
+
+  /* font-size text-caption */
+  --fs-text-caption: 1.2rem;
+
+  /* font-size text-secondary */
+  --fs-text-secondary: 1.4rem;
 }
 
-body {
+body,
+.text-primary {
   font-family: var(--font-main);
-  font-size: 1.6rem;
+  font-size: var(--fs-body);
   font-weight: 500;
-
-  /* letter-spacing: -0.032em; */
   line-height: 1.4;
 }
 
 h1 {
   font-family: var(--font-accent);
-  font-size: 4.8rem;
+  font-size: var(--fs-headline-1);
   font-weight: 500;
-
-  /* letter-spacing: 0.144em; */
   line-height: 1;
+  text-transform: uppercase;
 }
 
 h2 {
+  margin-bottom: 2.4rem;
   font-family: var(--font-accent);
-  font-size: 4rem;
+  font-size: var(--fs-headline-2);
   font-weight: 500;
-
-  /* letter-spacing: 0.12em; */
   line-height: 1;
+  text-transform: uppercase;
 }
 
 h3 {
-  /* font-family: var(--font-main); */
-  font-size: 2.4rem;
+  font-size: var(--fs-headline-3);
   font-weight: 700;
-
-  /* letter-spacing: -0.1rem; */
   line-height: 1;
 }
 
 .text-accent {
   font-family: var(--font-accent);
-  font-size: 2.8rem;
+  font-size: var(--fs-text-accent);
   font-weight: 500;
-
-  /* letter-spacing: 0.072em; */
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .text-lead {
-  /* font-family: var(--font-main); */
-  font-size: 2rem;
+  font-size: var(--fs-text-lead);
   font-weight: 500;
-
-  /* letter-spacing: -0.2rem; */
-  line-height: 1.4;
-}
-
-.text-primary {
-  /* font-family: var(--font-main); */
-  font-size: 1.6rem;
-  font-weight: 500;
-
-  /* letter-spacing: -0.04em; */
   line-height: 1.4;
 }
 
 .text-secondary {
-  /* font-family: var(--font-main); */
-  font-size: 1.4rem;
+  font-size: var(--fs-text-secondary);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.4;
 }
 
 .text-caption {
-  /* font-family: var(--font-main); */
-  font-size: 1.2rem;
+  font-size: var(--fs-text-caption);
   font-weight: 500;
-
-  /* letter-spacing: -0.024em; */
   line-height: 1;
 }
 
 @media (min-width: 80em) {
-  h1 {
-    font-size: 9.6rem;
+  :root {
+    /* font-size body */
+    --fs-body: calc(0.96rem + 0.5vw);
 
-    /* letter-spacing: 0.096em; */
+    /* font-size h1, h2, h3 */
+    --fs-headline-1: calc(8.96rem + 0.5vw);
+    --fs-headline-2: calc(6.56rem + 0.5vw);
+    --fs-headline-3: calc(1.76rem + 0.5vw);
+
+    /* font-size ui-btn */
+    --fs-btn: calc(1.16rem + 0.5vw);
+
+    /* font-size ui-link, ui-linkDropdown */
+    --fs-menu-link: calc(1.16rem + 0.5vw);
+
+    /* font-size text-accent */
+    --fs-text-accent: calc(4.16rem + 0.5vw);
+
+    /* font-size text-lead */
+    --fs-text-lead: calc(1.36rem + 0.5vw);
+
+    /* font-size card-title */
+    --fs-card-title: calc(2.56rem + 0.5vw);
+
+    /* font-size text-caption */
+    --fs-text-caption: calc(0.56rem + 0.5vw);
+
+    /* font-size text-secondary */
+    --fs-text-secondary: calc(0.76rem + 0.5vw);
   }
 
   h2 {
-    font-size: 7.2rem;
-
-    /* letter-spacing: 0.144em; */
+    margin-bottom: 4rem;
   }
+}
 
-  .text-accent {
-    font-size: 4.8rem;
+@media (min-width: 160em) {
+  :root {
+    /* font-size body */
+    --fs-body: calc(1.92rem + 0.5vw);
+
+    /* font-size h1, h2, h3 */
+    --fs-headline-1: calc(17.92rem + 0.5vw);
+    --fs-headline-2: calc(13.12rem + 0.5vw);
+    --fs-headline-3: calc(3.52rem + 0.5vw);
+
+    /* font-size ui-btn */
+    --fs-btn: calc(2.32rem + 0.5vw);
+
+    /* font-size ui-link, ui-linkDropdown */
+    --fs-menu-link: calc(2.32rem + 0.5vw);
+
+    /* font-size text-accent */
+    --fs-text-accent: calc(8.32rem + 0.5vw);
+
+    /* font-size text-lead */
+    --fs-text-lead: calc(2.72rem + 0.5vw);
+
+    /* font-size card-title */
+    --fs-card-title: calc(5.12rem + 0.5vw);
+
+    /* font-size text-caption */
+    --fs-text-caption: calc(1.12rem + 0.5vw);
+
+    /* font-size text-secondary */
+    --fs-text-secondary: calc(1.52rem + 0.5vw);
   }
 }
 

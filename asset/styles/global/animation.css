@@ -1,0 +1,13 @@
+/* --- style animation&transition --- */
+:root {
+  --easing-main: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easing-second: cubic-bezier(0.77, 0, 0.175, 1);
+  --easing-quick: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --dur-main: 0.6s;
+  --dur-second: 1s;
+  --dur-quick: 0.3s;
+}
+
+/* transform 1s  */
+
+/* --- end style animation&transition --- */

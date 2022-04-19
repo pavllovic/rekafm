@@ -9,8 +9,8 @@ block styles
       font-family: DrukCyr;
       font-weight: 500;
       src:
-        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
-        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+        url(#{require('Fonts/DrukCyr-Medium.woff2')}) format('woff2'),
+        url(#{require('Fonts/DrukCyr-Medium.woff')}) format('woff');
     }
 
     @font-face {
@@ -18,8 +18,8 @@ block styles
       font-family: PTRootUI;
       font-weight: 500;
       src:
-        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
-        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+        url(#{require('Fonts/PTRootUI-Medium.woff2')}) format('woff2'),
+        url(#{require('Fonts/PTRootUI-Medium.woff')}) format('woff');
     }
 
     @font-face {
@@ -27,9 +27,138 @@ block styles
       font-family: PTRootUI;
       font-weight: 700;
       src:
-        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
-        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+        url(#{require('Fonts/PTRootUI-Bold.woff2')}) format('woff2'),
+        url(#{require('Fonts/PTRootUI-Bold.woff')}) format('woff');
+    }
+
+    .wrapper {
+      padding: 2rem;
+    }
+
+    .wrapper > * {
+      margin-bottom: 2rem;
     }
 
 block content
   div(class='wrapper')
+    button(class='ui-btn') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnInverse') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnSecondary') 
+      span(class='text') связаться с нами
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-go')
+    button(class='ui-btnDownload') 
+      span(class='text') скачать презентацию
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-btn-top-right')
+    button(class='ui-btnDownloadIcon') 
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-32-pdf')
+    div(class='ui-toggle')
+      input(type='checkbox' id='' name='')
+      span
+    button(class='ui-tab') Покупка
+    button(class='ui-tabIcon')
+      svg(class='icon')
+        use(href='#icon-16-card')
+      span карточками
+    button(class='ui-btnArrow')
+      svg(class='icon')
+        use(href='#icon-16-go-hover')
+    button(class='ui-btnArrow')
+      svg(class='icon')
+        use(href='#icon-16-back')
+    button(class='ui-btnClose')
+      span 
+      span
+    a(class='ui-link' href='#') продажа и аренда
+    div(class='ui-slider' style='width: 400px')
+      div(class='track' data-range='track')
+        label(class='label' for='slider-to')
+          input(type='range' min='0' max='1000' value='1000' id='slider-to' data-range='slider-to' data-filter='max-price')
+        label(class='label' for='slider-from')
+          input(type='range' min='0' max='1000' value='0' id='slider-from' data-range='slider-from' data-filter='min-price')
+    div(style='background-color: rgba(46, 46, 46, 1); padding: 2rem; color: white; display: flex; flex-direction: column; gap: 1rem')
+      input(class='ui-input' type='text' placeholder='ваше имя')
+      input(class='ui-input invalid' type='text' placeholder='ваше имя')
+    div(class='ui-rangeBar' id='js-rangeBar')
+      p(class='heading') цена, млн руб
+      div(class='label' for='input-from')
+        span от
+        span(class='value' data-range='input-from') 34
+      div(class='label' for='input-to')
+        span до
+        span(class='value' data-range='input-to') 340
+      div(class='ui-slider')
+        div(class='track' data-range='track')
+          label(class='label' for='slider-to')
+            input(type='range' min='0' max='1000' value='1000' id='slider-to' data-range='slider-to' data-filter='max-price')
+          label(class='label' for='slider-from')
+            input(type='range' min='0' max='1000' value='0' id='slider-from' data-range='slider-from' data-filter='min-price')
+    div(class='ui-thumb')
+      div(class='image')
+        img(src='')
+    div(class='ui-thumb')
+      div(class='image')
+        img(src='')
+      span(class='text') +7
+    div(class='ui-select js-select')
+      div(class='input js-input' role='combobox' tabindex='0' id='combobox'
+        aria-activedescendant=''
+        aria-autocomplete='none'
+        aria-owns='listbox'
+        aria-expanded='false'
+        aria-haspopup='listbox'
+        aria-labelledby='combobox-label')
+        div(class='label') тип площади
+        div(class='value') любое
+        span(class='icon')
+          svg(focusable='false' aria-hidden='true')
+            use(href='#icon-16-dropdown-open')
+      div(class='options js-options' role='listbox' id='listbox')
+        div(class='option js-option' role='option' id='option-0'  aria-selected='false') любое
+    div(class='ui-select js-select open')
+      div(class='input js-input' role='combobox' tabindex='0' id='combobox'
+        aria-activedescendant=''
+        aria-autocomplete='none'
+        aria-owns='listbox'
+        aria-expanded='false'
+        aria-haspopup='listbox'
+        aria-labelledby='combobox-label')
+        div(class='label') тип площади
+        div(class='value') любое
+        span(class='icon')
+          svg(focusable='false' aria-hidden='true')
+            use(href='#icon-16-dropdown-open')
+      div(class='options js-options' role='listbox' id='listbox')
+        div(class='reset js-reset' role='option' id='option-0'  aria-selected='false')
+          svg(class='icon')
+            use(href='#icon-16-close')
+          span любое
+        div(class='option js-option' role='option' id='option-0'  aria-selected='false')
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span не любое
+        div(class='option js-option' role='option' id='option-0'  aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span не любое
+        div(class='option selected js-option' role='option' id='option-0'  aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span не любое
+        div(class='option selected js-option' role='option' id='option-0'  aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span не любое
+    include ../images/icons/icon-16/sprite-icon-16.svg
+    include ../images/icons/icon-24/sprite-icon-24.svg
+    include ../images/icons/icon-32/sprite-icon-32.svg
+    include ../images/icons/icon-72/sprite-icon-72.svg
+    include ../images/icons/icon-btn/sprite-icon-btn.svg

@@ -1,0 +1,15 @@
+/* --- style ui-linkFade --- */
+.ui-linkFade {
+  color: rgba(112, 112, 112, 100%);
+  cursor: pointer;
+  text-decoration: underline;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-linkFade:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+/* --- end style ui-linkFade --- */

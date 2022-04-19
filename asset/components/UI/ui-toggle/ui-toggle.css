@@ -36,6 +36,7 @@
   background-clip: padding-box;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   border-radius: 50%;
+  pointer-events: none;
   transition-duration: 0.15s;
   transition-property: transform;
   transition-timing-function: ease-out;

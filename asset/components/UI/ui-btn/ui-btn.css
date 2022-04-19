@@ -1,30 +1,22 @@
 /* --- style ui-btn --- */
-
-/*
-.ui-btn, .ui-btnInverse, .ui-btnSecondary
-сделаны отдельными друг от друга, но во многом повторяют друг друга.
-Можно сделать их через расширяющие классы (.ui-btn .ui-btnInvers);
-Можно записать в один файл общие стили через группировку селекторов (.ui-btn, .ui-btnInverse);
-Или оставить как есть самостоятельными компонентами.
-*/
 .ui-btn {
   position: relative;
   display: flex;
+  overflow: hidden;
   align-items: center;
-  padding: 2.4rem 4rem;
+  padding: calc(1em / 0.75) calc(1em / 0.45);
   border: none;
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: var(--fs-btn);
   font-weight: 500;
-
-  /* letter-spacing: -0.036em; */
-  line-height: 0.9;
+  line-height: calc(16 / 18);
+  text-decoration: none;
   text-transform: lowercase;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 /*
@@ -39,19 +31,17 @@
   content: "";
 }
 
+/* +10px for subpixel */
 .ui-btn::after {
-  /* transition-duration: 0.2s; */
-
-  /* transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); */
   z-index: 1;
-  bottom: 0;
+  top: calc(100%);
   left: 0;
+  height: calc(100% + 10px);
+  padding: inherit;
   background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
-  transform: scaleY(0);
-  transform-origin: center bottom;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: transform;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-btn::before {
@@ -65,8 +55,9 @@
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
+/* +5px for subpixel */
 .ui-btn:hover::after {
-  transform: scaleY(1);
+  transform: translateY(calc(-100% + 5px));
 }
 
 .ui-btn .text,
@@ -78,18 +69,25 @@
 .ui-btn .icon {
   --color: currentcolor;
 
-  width: 1.6rem;
-  height: 1.6rem;
+  width: calc(1em / 1.125);
+  height: calc(1em / 1.125);
   fill: var(--color, currentcolor);
 }
 
 .ui-btn .icon + *,
 .ui-btn * + .icon {
-  margin-left: 0.4rem;
+  margin-left: calc(1em / 4.5);
 }
 
-.ui-btn .icon svg {
-  fill: currentcolor;
+/* @media (min-width: 80em) {
+  .ui-btn {
+  }
 }
+
+@media (min-width: 160em) {
+  .ui-btn {
+
+  }
+} */
 
 /* --- end style ui-btn --- */

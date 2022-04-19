@@ -1,0 +1,112 @@
+/* --- style ui-btnOpenMenu --- */
+.ui-btnOpenMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1.6rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0%);
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+/*
+:after .ui-btnOpenMenu:hover background,
+:before .ui-btnOpenMenu border
+*/
+.ui-btnOpenMenu::before,
+.ui-btnOpenMenu::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.ui-btnOpenMenu::after {
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnOpenMenu::before {
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+}
+
+.ui-btnOpenMenu:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.ui-btnOpenMenu:hover::after {
+  transform: scaleY(1);
+}
+
+.ui-btnOpenMenu .text,
+.ui-btnOpenMenu .icon {
+  position: relative;
+  z-index: 2;
+}
+
+.ui-btnOpenMenu .icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8rem;
+}
+
+/* span, span::after, span::before - icon humburger */
+.ui-btnOpenMenu .icon span {
+  position: relative;
+  width: 1.4rem;
+  height: 0.15rem;
+  background-color: currentcolor;
+}
+
+.ui-btnOpenMenu .icon span::after,
+.ui-btnOpenMenu .icon span::before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: currentcolor;
+  content: "";
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnOpenMenu .icon span::after {
+  top: -0.4rem;
+}
+
+.ui-btnOpenMenu .icon span::before {
+  bottom: -0.4rem;
+}
+
+.ui-btnOpenMenu:hover .icon span::after {
+  transform: translateY(-0.2rem);
+}
+
+.ui-btnOpenMenu:hover .icon span::before {
+  transform: translateY(0.2rem);
+}
+
+/* --- end style ui-btnOpenMenu --- */

@@ -7,7 +7,7 @@ const webpackResolveConfig = require('./webpackResolve/webpackResolve.config.js'
 const optimization = require('./webpackOptimization/optimization.config');
 
 const entry = {
-  common: './asset/styles/common.css',
+  common: './asset/common.js',
 }
 
 const devOutput = {
@@ -27,7 +27,6 @@ const prodOutput = {
 
 module.exports = (env) => {
   const isDev = process.env.NODE_ENV === 'development';
-
   return {
     mode: isDev ? 'development' : 'production',
     entry: entry,

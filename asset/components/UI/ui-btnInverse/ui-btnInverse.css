@@ -39,7 +39,7 @@
   z-index: 1;
   background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
   transform: scaleY(1);
-  transform-origin: center bottom;
+  transform-origin: center top;
   transition-property: transform;
 }
 

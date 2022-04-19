@@ -1,0 +1,27 @@
+/* --- style component socialLinks --- */
+.socialLinks {
+  display: flex;
+}
+
+.link {
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+}
+
+.link:not(:last-child) {
+  margin-right: calc(1em * 0.6);
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- end style component socialLinks --- */

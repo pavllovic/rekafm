@@ -6,10 +6,12 @@
   border: none;
   background-color: rgba(255, 255, 255, 0%);
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
+  cursor: pointer;
   font-family: var(--font-main);
   font-size: 1.6rem;
   font-weight: 500;
-  letter-spacing: -0.032em;
+
+  /* letter-spacing: -0.032em; */
   line-height: 1;
   transition-duration: 0.15s;
   transition-property: color;

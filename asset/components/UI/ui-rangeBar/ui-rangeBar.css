@@ -1,6 +1,38 @@
 /* --- style ui-rangeBar --- */
 .ui-rangeBar {
+  position: relative;
   display: flex;
+  min-width: 25.6rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.6rem;
+  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  color: var(--bs-secondary, rgba(173, 173, 173, 100%));
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.ui-rangeBar .heading {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.ui-rangeBar .label {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.ui-rangeBar .value {
+  margin-left: 0.6rem;
+  color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  font-size: 1.6rem;
+}
+
+.ui-rangeBar .ui-slider {
+  position: absolute;
+  bottom: -0.1rem;
+  left: 0;
+  width: 100%;
 }
 
 /* --- end style ui-rangeBar --- */
