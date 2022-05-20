@@ -1,0 +1,30 @@
+/* --- style ui-btnFilter --- */
+.ui-btnFilter {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em 1em;
+  border: none;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  cursor: pointer;
+  font-family: var(--font-accent);
+  font-size: var(--fs-text-accent);
+  text-transform: uppercase;
+}
+
+.ui-btnFilter .icon {
+  --color: currentcolor;
+
+  width: calc(1em / 0.875);
+  height: calc(1em / 0.875);
+  margin-left: 0.25em;
+  fill: var(--color, currentColor);
+}
+
+.ui-btnFilter .icon,
+.ui-btnFilter .text {
+  pointer-events: none;
+}
+
+/* --- end style ui-btnFilter --- */

@@ -14,9 +14,9 @@
   /* letter-spacing: -0.036em; */
   line-height: 0.9;
   text-transform: lowercase;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 /*
@@ -31,8 +31,8 @@
   width: 100%;
   height: 100%;
   content: "";
-  transition-duration: 0.15s;
-  transition-timing-function: ease-out;
+  transition-duration: var(--dur-main);
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-btnInverse::after {
@@ -60,6 +60,7 @@
 .ui-btnInverse .icon {
   position: relative;
   z-index: 2;
+  pointer-events: none;
 }
 
 .ui-btnInverse .icon {

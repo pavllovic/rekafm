@@ -2,8 +2,8 @@
 .ui-btnArrow {
   position: relative;
   display: flex;
-  width: 4rem;
-  height: 4rem;
+  width: 2.5em;
+  height: 2.5em;
   align-items: center;
   justify-content: center;
   border: none;
@@ -27,10 +27,11 @@ ui-btnArrow::before - border for normal/disabled
   left: 0;
   width: 100%;
   height: 100%;
-  border-width: 0.1rem;
+  border-width: var(--border-size);
   border-style: solid;
   border-radius: inherit;
   content: "";
+  pointer-events: none;
   transition-duration: var(--dur-main);
   transition-property: opacity;
   transition-timing-function: var(--easing-main);
@@ -43,6 +44,7 @@ ui-btnArrow::before - border for normal/disabled
 
 .ui-btnArrow::before {
   border-color: var(--bs-light, rgba(228, 228, 228, 100%));
+  opacity: 1;
 }
 
 .ui-btnArrow:hover::after {
@@ -58,11 +60,18 @@ ui-btnArrow::before - border for normal/disabled
 }
 
 .ui-btnArrow .icon {
+  width: 1em;
+  height: 1em;
+  pointer-events: none;
+}
+
+.ui-btnArrow .icon svg {
   --color: currentcolor;
 
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 100%;
+  height: 100%;
   fill: var(--color, currentColor);
+  pointer-events: none;
 }
 
 /* --- end style ui-btnArrow --- */

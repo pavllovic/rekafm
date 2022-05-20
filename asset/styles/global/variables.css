@@ -1,7 +1,18 @@
 /* --- variables --- */
+
+/* исправить на em */
 :root {
   --border-light: 0.1rem solid var(--bs-light, rgba(228, 228, 228, 100%));
   --border-dark: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  --border-size: 1px;
+  --header-height: calc(var(--fs-menu-link) + (var(--fs-menu-link) / 0.75) * 2);
+  --max-width: calc(64rem - (100vw - 100%) + 50vw);
+}
+
+@media (min-width: 160em) {
+  :root {
+    --border-size: 2px;
+  }
 }
 
 /* --- variables --- */

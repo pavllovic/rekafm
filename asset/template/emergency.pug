@@ -1,0 +1,442 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/emergency.jpg`)}, ${require(`Images/hero/emergency-2x.jpg`)} 2x, ${require(`Images/hero/emergency-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/emergency.jpg') width='1280' height='656' alt='помещение')
+      div(class='body')
+        div(class='heading')
+          h1 Аварийно-диспетчерская служба
+        ul(class='feature-list')
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-emergency-1')
+            p(class='text') Устраняем поломки и следим за исправностью внутридомовых систем на своих объектах.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-emergency-2')
+            p(class='text') Предоставляем услуги АДС другим управляющим компаниям из Самарской и Московской областей.
+      a(class='ui-btnDownload' download='cleaning.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2(class='visually-hidden') Аварийно-диспетчерские работы.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body body-fluid')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-emergency-1')
+              h3(class='heading') Принимаем заявки круглосуточно
+              ul(class='list')
+                li(class='list-item')
+                  span Не более 5 минут отвечаем на звонок
+                li(class='list-item')
+                  span За 30 минут локализуем аварию
+                li(class='list-item')
+                  span За 2 часа устраняем засоры в мусоропроводе и канализации
+                li(class='list-item')
+                  span За 3 дня ликвидируем крупные аварии
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-emergency-2')
+              h3(class='heading-sm') Устраняем поломки любой сложности
+              p Меняем лампочки, ликвидируем протечки и ремонтируем сети электроснабжения. Если авария масштабная, подключаем другие службы, например пожарных или газовщиков.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-emergency-3')
+              h3(class='heading') Следим за исправностью внутридомовых инженерных сетей
+              p Регулярно обходим подвалы и чердаки, осматриваем трубопроводы и проводим гидравлические испытания сетей.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-emergency-4')
+              h3(class='heading') Обеспечиваем безопасность граждан во время аварии
+              p Эвакуируем людей и следим, чтобы во время работ в здание не попали посторонние.
+    // for viewport >= 1280px
+    section(class='block block-tariff block-tariff-lg')
+      h2(class='visually-hidden') Тарифы
+      // component tableTariff
+      table(class='tableTariff')
+        thead
+          tr
+            th
+              span(class='name') 
+                span тарифы
+            td
+              span(class='tariff')
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-1')
+                span(class='text') Аварийный
+            td
+              span(class='tariff') 
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-2')
+                span(class='text') Оптимальный
+            td
+              span(class='tariff')
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-3')
+                span(class='text') Профилактика
+        tbody
+          tr
+            th
+              span(class='prop') Сливаем и заполняем стояки при прорывах и авариях на системах отопления, перекрываем горячую и холодную воду
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Круглосуточно принимаем заявки на выезд аварийной бригады
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Осматриваем системы электроснабжения и устраняем неисправности
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Устраняем механические засоры в канализации
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Обходим чердаки и подвалы, осматриваем трубопроводы и восстанавливаем изоляцию
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Устраняем механические засоры в канализации до колодцев — до 20 м
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Ремонтируем приборы учёта электроэнергии, автоматические выключатели, рубильники, предохранители и трансформаторы тока
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Утепляем и прочищаем дымовентиляционные каналы
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Осматриваем теплоносители для систем отопления — контролируем расход, температуру и давление, восстанавливаем герметичность систем
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Проводим гидравлические испытания сетей перед отопительным сезоном или после замены участков трубопровода
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok')
+                span(class='visually-hidden') да
+        tfoot
+          tr
+            th 
+              span(class='visually-hidden') цена
+            td 
+              span(class='price') 
+                span(class='count') 1,8
+                | рублей за м<sup>2</sup>/мес 
+            td 
+              span(class='price') 
+                span(class='count') 2,5 
+                | рублей за м<sup>2</sup>/мес
+            td 
+              span(class='price') 
+                span(class='count') 3,8 
+                | рублей за м<sup>2</sup>/мес            
+    // for viewport < 1280px
+    section(class='block block-tariff')
+      h2 Тарифы
+      // component carousel-tariff
+      div(class='carousel js-carousel' aria-roledescription='carousel')
+        div(class='carousel-controls')
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='prev-slide')
+            span(class='icon')
+              svg(focusable='false' aria-hidden='true')
+                use(href='#icon-16-up')
+            span(class='visually-hidden') назад
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='next-slide')
+            span(class='icon')
+              svg(focusable='false' aria-hidden='true')
+                use(href='#icon-16-down')
+            span(class='visually-hidden') вперед
+        div(class='carousel-slides' id='carousel-slides')
+          div(class='carousel-slide is-active' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-1')
+                  div(class='heading')
+                    h3(class='name') Аварийный
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Сливаем и заполняем стояки при прорывах и авариях на системах отопления, перекрываем горячую и холодную воду
+                    li(class='item') Круглосуточно принимаем заявки на выезд аварийной бригады
+                    li(class='item') Осматриваем системы электроснабжения и устраняем неисправности
+                    li(class='item') Устраняем механические засоры в канализации
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom')
+                  p(class='price') 
+                    span(class='value') 1,8 
+                    | рублей за м<sup>2</sup>/мес
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-2')
+                  div(class='heading')
+                    h3(class='name') Оптимальный
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Сливаем и заполняем стояки при прорывах и авариях на системах отопления, перекрываем горячую и холодную воду
+                    li(class='item') Круглосуточно принимаем заявки на выезд аварийной бригады
+                    li(class='item') Осматриваем системы электроснабжения и устраняем неисправности
+                    li(class='item') Устраняем механические засоры в канализации
+                    li(class='item') Обходим чердаки и подвалы, осматриваем трубопроводы и восстанавливаем изоляцию
+                    li(class='item') Устраняем механические засоры в канализации до колодцев — до 20 м
+                    li(class='item') Ремонтируем приборы учёта электроэнергии, автоматические выключатели, рубильники, предохранители и трансформаторы тока
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom')
+                  p(class='price') 
+                    span(class='value') 2,5 
+                    | рублей за м<sup>2</sup>/мес
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-3')
+                  div(class='heading') 
+                    h3(class='name') Профилактика
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Сливаем и заполняем стояки при прорывах и авариях на системах отопления, перекрываем горячую и холодную воду
+                    li(class='item') Круглосуточно принимаем заявки на выезд аварийной бригады
+                    li(class='item') Осматриваем системы электроснабжения и устраняем неисправности
+                    li(class='item') Устраняем механические засоры в канализации
+                    li(class='item') Обходим чердаки и подвалы, осматриваем трубопроводы и восстанавливаем изоляцию
+                    li(class='item') Устраняем механические засоры в канализации до колодцев — до 20 м
+                    li(class='item') Ремонтируем приборы учёта электроэнергии, автоматические выключатели, рубильники, предохранители и трансформаторы тока
+                    li(class='item') Утепляем и прочищаем дымовентиляционные каналы
+                    li(class='item') Осматриваем теплоносители для систем отопления — контролируем расход, температуру и давление, восстанавливаем герметичность систем
+                    li(class='item') Проводим гидравлические испытания сетей перед отопительным сезоном или после замены участков трубопровода
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom')
+                  p(class='price') 
+                    span(class='value') 3,8 
+                    | рублей за м<sup>2</sup>/мес
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

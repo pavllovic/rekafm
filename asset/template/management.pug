@@ -1,0 +1,200 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/management.jpg`)}, ${require(`Images/hero/management-2x.jpg`)} 2x, ${require(`Images/hero/management-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/management.jpg') width='1280' height='656' alt='жилой многоэтажный дом')
+      div(class='body')
+        div(class='heading-sm')
+          h1 Управление<br/> недвижимостью
+        ul(class='feature-list')
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-management-3')
+            p(class='text') Сотрудничаем с собственниками зданий, сооружений и земельных участков.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-management-2')
+            p(class='text') Снимаем с арендодателей все задачи по администрированию и эксплуатации.
+      a(class='ui-btnDownload' href='#order-audit')
+        span(class='text') рассчитать стоимость
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-bottom-right')
+    section
+      h2(class='visually-hidden') Работы по управлению недвижимостью.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-1')
+              h3(class='heading') Проводим комплексную проверку недвижимости
+              p Выявляем проблемы в конструкции и инженерных системах, оцениваем экологичность материалов и рассчитываем, сколько ещё нужно вложить в здание.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-2')
+              h3(class='heading') Занимаемся бухгалтерией и кадрами
+              p Готовим налоговые и статистические отчёты в госорганы, нанимаем сотрудников, начисляем им зарплату и ведём воинский учёт.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-3')
+              h3(class='heading') Осматриваем и ремонтируем внутридомовые системы
+              p Например, водопровод, электрощитки, отопительные приборы, пожарную сигнализацию и лифты.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-4')
+              h3(class='heading') Занимаемся юридическими вопросами
+              p Консультируем, представляем интересы клиента в переговорах и суде, улаживаем споры и сопровождаем налоговые проверки.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-5')
+              h3(class='heading') Следим за пожарной безопасностью
+              p У нас есть нужные лицензии. Устанавливаем пожарную сигнализацию, рассчитываем риски, готовим здание к проверке ГосПожНадзором и защищаем конструкции от огня.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-6')
+              h3(class='heading') Привлекаем арендаторов
+              p С помощью рекламных кампаний и через арендные площадки. Если это ТЦ — следим, чтобы арендаторы сочетались друг с другом и подходили под целевую аудиторию.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-7')
+              h3(class='heading') Сохраняем чистоту и порядок
+              p Ежедневно проводим уборку и следим за соблюдением мер эпидемиологической безопасности в офисах и ТЦ.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-management-8')
+              h3(class='heading') Устраняем поломки
+              p У нас своя аварийно-диспетчерская служба — она круглосуточно принимает заявки и локализует аварии за полчаса.
+            a(class='ui-btnForward' href='./audit.html')
+              span(class='text') подробнее
+              span(class='icon')
+                svg(class='icon-go' focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+    section(class='block block-order')
+      div(class='body')
+        h2(class='heading') Закажите технический<br/> аудит объекта
+        p(class='text') Мы предложим выгодное коммерческое предложение исходя из ваших требований и желаний.
+      form(class='form js-order-audit' name='order-audit' id='order-audit')
+        label
+          span(class='visually-hidden' for='order-audit-name') ваше имя
+          input(class='ui-input' type='text' name='name' placeholder='ваше имя' id='order-audit-name')
+        label
+          span(class='visually-hidden' for='order-audit-phone') телефон
+          input(class='ui-input' type='text' inputmode='numeric' name='phone' placeholder='телефон' id='order-audit-phone')
+        label
+          span(class='visually-hidden' for='order-audit-square') площадь помещения
+          input(class='ui-input' type='text' inputmode='numeric' name='square' placeholder='площадь помещения' id='order-audit-square')
+        div(class='form-value')
+          | Стоимость: <span data-audit='value'>23 000</span> рублей
+        button(class='ui-btnForward' type='submit')
+          span(class='text') заказать
+          span(class='icon')
+            svg(focusable='false' aria-hidden='true')
+              use(href='#icon-16-go')
+        p(class='note') Нажимая на кнопку «Заказать», вы даете согласие на обработку персональных данных и соглашаетесь с 
+          a(class='ui-linkFade' href="#") политикой конфиденциальности
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

@@ -1,0 +1,102 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/femida.jpg`)}, ${require(`Images/hero/femida-2x.jpg`)} 2x, ${require(`Images/hero/femida-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/femida.jpg') width='1280' height='656' alt='кабинет')
+      div(class='body')
+        div(class='heading-sm')
+          h1 Юридическое<br/> сопровождение
+        ul(class='feature-list')
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-legal-2')
+            p(class='text') Работаем в интересах собственников,</br> арендаторов и управляющих.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-legal-3')
+            p(class='text') Подбираем абонемент исходя</br> из размеров бизнеса и задач клиента.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-legal-1')
+            p(class='text') Предлагаем абонементы и разовые</br> юридические услуги.
+      a(class='ui-btnDownload' download='femida.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2(class='visually-hidden') Работы по юридическому сопровождению.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-femida-1')
+              h3(class='heading-sm') Представляем интересы клиента
+              p Например, в переговорах с контрагентами и партнёрами, судах и спорах с госорганами.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-femida-2')
+              h3(class='heading-sm') Помогаем с документами
+              p Составляем заключения о финансово-хозяйственной деятельности компании и проверяем договоры.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-femida-3')
+              h3(class='heading-sm') Консультируем
+              p Рассказываем, как зарегистрировать товарный знак, оформить лицензию или защитить интеллектуальную собственность.
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

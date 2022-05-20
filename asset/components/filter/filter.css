@@ -1,0 +1,107 @@
+/* --- style component filter --- */
+.filter {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.filter-top {
+  display: grid;
+  padding: 1.5em 1em;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  grid-gap: 1.25em;
+  grid-template-columns: 1fr;
+}
+
+.filter-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em;
+}
+
+.filter-bottom .ui-toggle {
+  padding: 0.625em 0;
+}
+
+.filter-button {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.filter-button .ui-btn,
+.filter-button .ui-btnInverse {
+  justify-content: center;
+  text-align: center;
+}
+
+.filter-button .ui-btn {
+  color: var(--bs-danger, rgba(238, 106, 95, 100%));
+}
+
+.filter-button .ui-btn::after,
+.filter-button .ui-btn::before {
+  display: none;
+}
+
+.filter .tablistView {
+  display: none;
+
+  /* width: calc(21.5em + 4em); */
+  width: calc(21.5em);
+  margin-left: auto;
+}
+
+.filter .ui-tabToggle {
+  border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  background-color: rgba(239, 239, 239, 100%);
+}
+
+@media (min-width: 80em) {
+  .filter-top {
+    position: relative;
+    display: grid;
+    padding: var(--border-size);
+    padding-top: 0;
+    background-color: var(--bs-light, rgba(228, 228, 228, 100%));
+    grid-gap: var(--border-size);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .filter .ui-select .input,
+  .filter .ui-rangeBar {
+    border: none;
+  }
+
+  .filter .ui-select:first-child .input {
+    padding-left: 2.5em;
+  }
+
+  .filter .ui-rangeBar:last-child {
+    padding-right: 2.5em;
+  }
+
+  .filter-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5em 2.5em;
+    background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  }
+
+  .filter-bottom .ui-toggle:not(:last-child) {
+    margin-right: 1.25em;
+  }
+
+  .filter-button {
+    display: none;
+  }
+
+  .filter .tablistView {
+    display: flex;
+  }
+}
+
+/* --- end style component filter --- */

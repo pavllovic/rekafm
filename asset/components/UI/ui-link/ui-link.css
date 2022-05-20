@@ -4,11 +4,13 @@
   align-items: center;
   color: inherit;
   cursor: pointer;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
 .ui-link .text {
   color: inherit;
+  pointer-events: none;
   transition-duration: var(--dur-main);
   transition-property: color;
   transition-timing-function: var(--easing-main);
@@ -50,6 +52,9 @@
   width: 1.6rem;
   height: 1.6rem;
   fill: var(--color, currentcolor);
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-link * + .icon,

@@ -1,0 +1,339 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/audit.jpg`)}, ${require(`Images/hero/audit-2x.jpg`)} 2x, ${require(`Images/hero/audit-4x.jpg`)} 4x`
+            type='image/jpg')
+        source
+        img(src=require('Images/hero/audit.jpg') width='1280' height='656' alt='помещение')
+      div(class='body')
+        div(class='heading-sm')
+          h1 Технический аудит<br/> недвижимости
+          p(class='text') Проводим комплексную проверку здания и даём рекомендации, например указываем на слабые места и подсчитываем, сколько ещё нужно вложить в объект.
+      a(class='ui-btnDownload' download='audit.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2(class='visually-hidden') Виды работ по техническому аудиту недвижимости.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-audit-1')
+              h3(class='heading-sm') Обследуем инженерные системы
+              p Оцениваем их работу и состояние.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-audit-2')
+              h3(class='heading-sm') Сверяемся с документами
+              p Проверяем, соответствует ли объект проекту и ГОСТам.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-audit-3')
+              h3(class='heading') Проводим лабораторные и инструментальные измерения
+              p Чтобы понять, подходит ли помещение для склада или офиса, замеряем температуру и влажность воздуха.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-audit-4')
+              h3(class='heading') Составляем подробный техотчёт с рекомендациями
+              p Как результат — оптимизируем эксплуатационные расходы на 20% и снижаем риск штрафов на 95%.
+    // for viewport >= 1280px
+    section(class='block block-tariff block-tariff-lg')
+      h2(class='visually-hidden') Тарифы
+      // component tableTariff
+      table(class='tableTariff')
+        thead
+          tr
+            th
+              span(class='name') 
+                span тарифы
+            td
+              span(class='tariff')
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-1')
+                span(class='text') Базовый
+                span(class='note') 2 — 10 рабочих дней
+            td
+              span(class='tariff') 
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-2')
+                span(class='text') Общий
+                span(class='note') 3 — 15 рабочих дней
+            td
+              span(class='tariff')
+                span(class='token' aria-hidden='true')
+                  svg(focusable='false')
+                    use(href='#icon-24-lvl-3')
+                span(class='text') Комплексный
+                span(class='note') 5 — 30 рабочих дней
+        tbody
+          tr
+            th
+              span(class='prop') Проверяем, есть ли нужные исполнительные и эксплуатационные документы
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Обследуем инженерные системы объекта
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Составляем отчёт с фотографиями</br> недостатков и несоответствий
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Готовим заключение с рекомендациями
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Проводим лабораторные и инструментальные измерения
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+          tr
+            th
+              span(class='prop') Проверяем качество оказанных подрядчиком услуг, например по обслуживанию инженерных систем или ремонту
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') нет
+            td
+              span(class='value' data-value='yes')
+                svg(class='icon' aria-hidden='true' focusable='false')
+                  use(href='#icon-24-ok') 
+                span(class='visually-hidden') да
+        tfoot
+          tr
+            th 
+              span(class='visually-hidden') цена
+            td 
+              p(class='price') от <span class='count'>15 500</span> рублей 
+            td 
+              p(class='price') от <span class='count'>27 550</span> рублей 
+            td 
+              p(class='price') от <span class='count'>43 950</span> рублей             
+    // for viewport < 1280px
+    section(class='block block-tariff')
+      h2 Тарифы
+      // component carousel-tariff
+      div(class='carousel js-carousel' aria-roledescription='carousel')
+        div(class='carousel-controls')
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='prev-slide')
+            span(class='icon')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-up')
+            span(class='visually-hidden') назад
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='next-slide')
+            span(class='icon')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-down')
+            span(class='visually-hidden') вперед
+        div(class='carousel-slides' id='carousel-slides')
+          div(class='carousel-slide is-active' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-1')
+                  div(class='heading')
+                    h3(class='name') Базовый
+                    span(class='note') 2 — 10 рабочих дней
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Проверяем, есть ли нужные исполнительные и эксплуатационные документы
+                    li(class='item') Обследуем инженерные системы объекта
+                    li(class='item') Составляем отчёт с фотографиями недостатков и несоответствий
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom') 
+                  p(class='price') от <span class='value'>15 500</span> рублей
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-2')
+                  div(class='heading')
+                    h3(class='name') Общий
+                    span(class='note') 3 — 15 рабочих дней
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Проверяем, есть ли нужные исполнительные и эксплуатационные документы
+                    li(class='item') Обследуем инженерные системы объекта
+                    li(class='item') Составляем отчёт с фотографиями недостатков и несоответствий
+                    li(class='item') Готовим заключение с рекомендациями
+                    li(class='item') Проводим лабораторные и инструментальные измерения
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom') 
+                  p(class='price') от <span class='value'>27 570</span> рублей
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardTariff
+              article(class='cardTariff js-cardTariff')
+                header(class='top')
+                  span(class='token')
+                    svg(focusable='false')
+                      use(href='#icon-24-lvl-3')
+                  div(class='heading')
+                    h3(class='name') Комплексный
+                    span(class='note') 5 — 30 рабочих дней
+                div(class='list-prop')
+                  ul(class='list' data-show-list='list')
+                    li(class='item') Проверяем, есть ли нужные исполнительные и эксплуатационные документы
+                    li(class='item') Обследуем инженерные системы объекта
+                    li(class='item') Составляем отчёт с фотографиями недостатков и несоответствий
+                    li(class='item') Готовим заключение с рекомендациями
+                    li(class='item') Проводим лабораторные и инструментальные измерения
+                    li(class='item') Проверяем качество оказанных подрядчиком услуг, например по обслуживанию инженерных систем или ремонту
+                  button(class='btn-more' type='button' aria-hidden='true' data-show-list='toggle')
+                    svg(class='icon' aria-hidden='true' focusable='false')
+                      use(href='#icon-16-dropdown-open')
+                    span(class='text') 
+                      span посмотреть все услуги
+                      span скрыть
+                footer(class='bottom') 
+                  p(class='price') от <span class='value'>43 950</span> рублей
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

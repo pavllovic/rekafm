@@ -1,12 +1,22 @@
 /* --- styles component ticker --- */
 .ticker {
+  position: relative;
+  width: 100%;
+  padding-top: 5.25em;
+  padding-bottom: 5.25em;
+}
+
+.ticker-content {
+  /* position: relative; */
   display: flex;
   overflow: hidden;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 5.25em;
-  padding-bottom: 5.25em;
+  cursor: none;
+
+  /* padding-top: 5.25em;
+  padding-bottom: 5.25em; */
 }
 
 .line {
@@ -14,7 +24,8 @@
   flex-wrap: nowrap;
   color: inherit;
   font-family: var(--font-accent);
-  font-size: var(--fs-headline-1);
+  font-size: var(--fs-headline-2);
+  letter-spacing: 0.03em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
@@ -44,7 +55,7 @@
 .line:nth-child(even) .group-track .track:nth-child(odd),
 .line:nth-child(odd) .group-track .track:nth-child(even) {
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px currentcolor;
+  -webkit-text-stroke: var(--border-size) currentcolor;
 }
 
 .track-item {
@@ -57,7 +68,66 @@
   margin-right: 0.555em;
   margin-left: 0.555em;
   -webkit-text-fill-color: currentcolor;
-  -webkit-text-stroke: 1px none;
+  -webkit-text-stroke: var(--border-size) none;
+}
+
+/* style cursor */
+.ticker-cursor {
+  --x: 0;
+  --y: 0;
+
+  /* position: absolute; */
+  position: fixed;
+  z-index: 1;
+  top: calc(var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+  width: 8.75em;
+  height: 8.75em;
+  backdrop-filter: blur(24px);
+  background-color: rgba(var(--bs-corporate-rgb), 0.64);
+  border-radius: 50%;
+  box-shadow:
+    0 0.25em 0.25em 0 rgba(23, 23, 23, 20%),
+    0 0.5em 1.5em 0 rgba(23, 23, 23, 32%);
+  cursor: none;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: scale(0) translateX(-50%) translateY(-50%);
+  transform-origin: center;
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: transform, opacity;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+}
+
+.ticker-cursor.show {
+  opacity: 1;
+  transform: scale(1) translateX(-50%) translateY(-50%);
+}
+
+.ticker-cursor button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: rgba(var(--bs-corporate-rgb), 0);
+  border-radius: inherit;
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  cursor: none;
+  font-size: var(--fs-btn);
+  line-height: 0.9;
+  text-align: center;
+  transform: rotateZ(-15deg);
+}
+
+/* end style cursor */
+
+@media (min-width: 80em) {
+  .line {
+    letter-spacing: 0.02em;
+  }
 }
 
 /* --- end styles component ticker --- */

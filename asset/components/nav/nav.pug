@@ -11,7 +11,8 @@ nav(class='nav js-nav')
         span(class='text') закрыть
     include ../menu/menu.pug
     div(class='footer')
-      button(class='ui-btn') 
+      button(class='ui-btnForward' data-btn='modal-call') 
         span(class='text') связаться с нами
-        svg(class='icon' focusable='false' aria-hidden='true')
-          use(href='#icon-16-go')
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-16-go')

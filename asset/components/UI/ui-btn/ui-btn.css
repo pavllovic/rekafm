@@ -48,7 +48,8 @@
   z-index: 1;
   bottom: 0;
   left: 0;
-  border: 1px solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border: var(--border-size) solid var(--bs-light, rgba(228, 228, 228, 100%));
+  font-size: var(--fs-body);
 }
 
 .ui-btn:hover {
@@ -64,6 +65,8 @@
 .ui-btn .icon {
   position: relative;
   z-index: 2;
+  flex-shrink: 0;
+  pointer-events: none;
 }
 
 .ui-btn .icon {
@@ -78,16 +81,5 @@
 .ui-btn * + .icon {
   margin-left: calc(1em / 4.5);
 }
-
-/* @media (min-width: 80em) {
-  .ui-btn {
-  }
-}
-
-@media (min-width: 160em) {
-  .ui-btn {
-
-  }
-} */
 
 /* --- end style ui-btn --- */

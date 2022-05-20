@@ -3,8 +3,8 @@
   position: relative;
   display: flex;
   overflow: hidden;
-  width: 4rem;
-  height: 4rem;
+  width: 2.5em;
+  height: 2.5em;
   align-items: center;
   justify-content: center;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
@@ -18,6 +18,7 @@
   width: 100%;
   height: 100%;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 /* overlay */
@@ -31,9 +32,9 @@
   border-radius: inherit;
   content: "";
   opacity: 0.48;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: opacity;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-thumb .image img {
@@ -44,6 +45,8 @@
   border-radius: inherit;
   object-fit: cover;
   object-position: center;
+
+  /* pointer-events: none; */
 }
 
 /* backround if image didn't load */
@@ -54,6 +57,7 @@
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   border-radius: inherit;
   content: "";
+  pointer-events: none;
 }
 
 .ui-thumb .text {
@@ -69,10 +73,10 @@
   justify-content: center;
   border-radius: inherit;
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-  font-size: 1.6rem;
+  font-size: var(--fs-body);
   font-weight: 500;
-  letter-spacing: -0.032rem;
   line-height: 1;
+  pointer-events: none;
 }
 
 /* background for text */

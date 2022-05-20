@@ -2,37 +2,167 @@
 .ui-rangeBar {
   position: relative;
   display: flex;
-  min-width: 25.6rem;
+  min-width: 16em;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 1.6rem;
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  padding: 1em;
+  border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
-  font-size: 1.2rem;
-  line-height: 1;
+}
+
+.ui-rangeBarSelect {
+  margin-top: 2.25em;
+}
+
+.ui-rangeBarSelect .ui-select {
+  position: absolute;
+  top: -3em;
+  left: 0;
 }
 
 .ui-rangeBar .heading {
+  display: flex;
   width: 100%;
-  margin-bottom: 1.2rem;
+  align-items: center;
+  margin-bottom: 1em;
+  font-size: var(--fs-text-caption);
+  line-height: 1;
 }
 
-.ui-rangeBar .label {
+.ui-rangeBar > .label {
   display: inline-flex;
   align-items: flex-end;
+  font-size: var(--fs-text-caption);
+  line-height: 1;
 }
 
 .ui-rangeBar .value {
-  margin-left: 0.6rem;
+  margin-left: 0.375em;
   color: var(--bs-primary, rgba(46, 46, 46, 100%));
-  font-size: 1.6rem;
+  font-size: var(--fs-body);
+  line-height: 1;
 }
 
 .ui-rangeBar .ui-slider {
   position: absolute;
-  bottom: -0.1rem;
+  bottom: calc(var(--border-size) * -1);
   left: 0;
   width: 100%;
+}
+
+.ui-rangeBar .ui-select {
+  min-width: auto;
+  box-shadow: none;
+}
+
+.ui-rangeBar .ui-select .input {
+  padding: 0;
+  padding-right: calc(1em / 0.375);
+  padding-left: calc(1em / 3);
+  border: none;
+}
+
+.ui-rangeBar .ui-select .input .value {
+  margin-left: 0;
+  font-size: var(--fs-body);
+  line-height: 1;
+}
+
+.ui-rangeBar .ui-select .input .icon {
+  right: 1em;
+  width: calc(1em / 0.75);
+  height: calc(1em / 0.75);
+  border: none;
+}
+
+.ui-rangeBar .ui-select .options {
+  left: 50%;
+  width: max-content;
+  padding: 1em 0;
+  box-shadow:
+    0 0.4rem 0.8rem 0 rgba(187, 187, 187, 0%),
+    0 0.8rem 3.2rem 0 rgba(187, 187, 187, 0%);
+  transform: translateY(-5px) translateX(-50%);
+  transition-delay: var(--dur-quick), 0s, var(--dur-quick), var(--dur-quick);
+  transition-duration: var(--dur-quick), var(--dur-quick), 0s, var(--dur-quick);
+  transition-property: transform, opacity, visibility, box-shadow;
+  transition-timing-function: var(--easing-quick), var(--easing-quick), var(--easing-quick), var(--easing-quick);
+}
+
+.ui-rangeBar .ui-select.open {
+  box-shadow: none;
+}
+
+.ui-rangeBar .ui-select.open .options {
+  box-shadow:
+    0 0.4rem 0.8rem 0 rgba(187, 187, 187, 16%),
+    0 0.8rem 3.2rem 0 rgba(187, 187, 187, 32%);
+  transform: translateY(4px) translateX(-50%);
+  transition-delay: 0s, 0s, 0s, 0s;
+}
+
+.ui-rangeBar .ui-select .option {
+  justify-content: center;
+  padding: 0.375em 1.25em;
+  font-size: var(--fs-body);
+  line-height: 1;
+  text-align: center;
+}
+
+.ui-rangeBar .ui-select .option:not(:last-child):nth-child(even) {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.ui-rangeBar .ui-select .option:not(:last-child):nth-child(even)::before {
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  width: 100%;
+  height: var(--border-size);
+  background-color: var(--bs-ligth, rgba(228, 228, 228, 100%));
+  content: "";
+}
+
+@media (min-width: 80em) {
+  .ui-rangeBarSelect {
+    margin-top: 0;
+  }
+
+  .ui-rangeBarSelect .ui-select {
+    position: relative;
+    top: 0;
+  }
+
+  .ui-rangeBar .ui-select .input {
+    padding: 0;
+    padding-right: calc(1em / 0.6);
+    padding-left: calc(1em / 3);
+  }
+
+  .ui-rangeBar .ui-select .input .icon {
+    right: calc(1em / 3);
+    width: 1em;
+    height: 1em;
+  }
+
+  .ui-rangeBar .ui-select .input .value {
+    font-size: var(--fs-text-caption);
+  }
+
+  .ui-rangeBar .ui-select .option {
+    padding: 0.5em calc(1em / 0.75);
+    font-size: var(--fs-text-caption);
+  }
+
+  .ui-rangeBar .ui-select .option:not(:last-child):nth-child(even) {
+    margin-bottom: calc(1em / 0.75);
+  }
+
+  .ui-rangeBar .ui-select .option:not(:last-child):nth-child(even)::before {
+    bottom: calc(1em / -1.5);
+  }
 }
 
 /* --- end style ui-rangeBar --- */

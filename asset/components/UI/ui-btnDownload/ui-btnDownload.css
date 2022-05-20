@@ -4,26 +4,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.75rem 2.1rem;
-  border-width: 0.3rem;
-  border-style: solid;
-  border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  padding: calc(1em / 1.2) 1em;
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
   cursor: pointer;
   font-family: var(--font-accent);
-  font-size: 3.2rem;
+  font-size: var(--fs-btn-download);
   font-weight: 500;
-
-  /* letter-spacing: 0.048em; */
   line-height: 0.96;
   text-align: left;
+  text-decoration: none;
   text-transform: uppercase;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
+.ui-btnDownload::after,
 .ui-btnDownload::before {
   position: absolute;
   z-index: 1;
@@ -31,13 +28,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   content: "";
+  pointer-events: none;
+}
+
+.ui-btnDownload::before {
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   transform: scaleY(0);
   transform-origin: center bottom;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: transform;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnDownload::after {
+  border-width: calc(var(--border-size) * 3);
+  border-style: solid;
+  border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
 .ui-btnDownload:hover {
@@ -52,27 +59,68 @@
 .ui-btnDownload .icon {
   position: relative;
   z-index: 2;
+  pointer-events: none;
 }
 
 .ui-btnDownload .icon {
-  --color: currentcolor;
-
-  width: 1.6rem;
-  height: 1.6rem;
-  fill: var(--color, currentcolor);
+  width: calc(1em / 1.5);
+  height: calc(1em / 1.5);
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
 }
+
+.ui-btnDownload .icon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--color, currentcolor);
+
+  --color: currentcolor;
+}
+
+.ui-btnDownload:hover .icon {
+  transform: rotateZ(45deg);
+}
+
+/* .ui-btnDownload .icon-go {
+  transition-delay: 0s, var(--dur-main);
+  transition-duration: 0s, var(--dur-main);
+} */
+
+/* .ui-btnDownload .icon-go-hover {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition-delay: calc(var(--dur-main) / 2), 0s;
+  transition-duration: 0s, calc(var(--dur-main) / 2);
+}
+
+.ui-btnDownload:hover .icon-go-hover {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0s, 0s;
+  transition-duration: var(--dur-main), var(--dur-main);
+} */
 
 @media (min-width: 80em) {
   .ui-btnDownload {
-    width: 18rem;
-    height: 18rem;
+    width: 5.625em;
+    height: 5.625em;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem 1.4rem;
-    border-width: 0.6rem;
+    padding: 0.625em;
+    padding-top: 0.5em;
+  }
+
+  .ui-btnDownload::after {
+    border-width: calc(var(--border-size) * 6);
   }
 
   .ui-btnDownload .icon {
+    width: 0.5em;
+    height: 0.5em;
     align-self: flex-end;
   }
 }

@@ -1,1 +1,3 @@
-<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:#8a8cce;}</style></defs><title>square-2</title><path class="cls-1" d="M21,21.75H15v-1.5h6v1.5Zm-9,0H6v-1.5h6v1.5ZM3.75,21H2.25V15h1.5v6Zm18-3h-1.5V12h1.5v6Zm-18-6H2.25V6h1.5v6Zm18-3h-1.5V3h1.5V9ZM18,3.75H12V2.25h6v1.5Zm-9,0H3V2.25H9v1.5Z"/></svg>
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1.33301" y="1" width="18" height="18" stroke="#8A8CCE" stroke-width="1.5" stroke-linejoin="bevel" stroke-dasharray="6 3"/>
+</svg>

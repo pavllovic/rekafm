@@ -1,0 +1,146 @@
+div(class='filter')
+  div(class='filter-top')
+    div(class='ui-select js-multiSelect')
+      div(class='input js-input' role='combobox' tabindex='0' id='combobox'
+        aria-activedescendant=''
+        aria-autocomplete='none'
+        aria-owns='listbox'
+        aria-expanded='false'
+        aria-haspopup='listbox'
+        aria-labelledby='combobox-label')
+        div(class='label') город
+        div(class='value') все
+        span(class='icon')
+          svg(focusable='false' aria-hidden='true')
+            use(href='#icon-16-dropdown-open')
+      div(class='options js-options' role='listbox' id='listbox')
+        div(class='reset' role='option' id='option-city-1' aria-selected='true' data-combobox='reset')
+          svg(class='icon')
+            use(href='#icon-16-close')
+          span(class='text') все
+        div(class='option' role='option' id='option-city-2' aria-selected='false')
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Москва
+        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Санкт-Петербург
+        div(class='option' role='option' id='option-city-4' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Самара
+        div(class='option' role='option' id='option-city-5' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Саратов
+        div(class='option' role='option' id='option-city-6' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Нижний Новгород
+        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Казань
+        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') Сочи
+    div(class='ui-select js-multiSelect')
+      div(class='input js-input' role='combobox' tabindex='0' id='combobox'
+        aria-activedescendant=''
+        aria-autocomplete='none'
+        aria-owns='listbox'
+        aria-expanded='false'
+        aria-haspopup='listbox'
+        aria-labelledby='combobox-label')
+        div(class='label') тип площади
+        div(class='value') любое
+        span(class='icon')
+          svg(focusable='false' aria-hidden='true')
+            use(href='#icon-16-dropdown-open')
+      div(class='options js-options' role='listbox' id='listbox')
+        div(class='reset js-reset' role='option' id='option-type-1' aria-selected='true' data-combobox='reset')
+          svg(class='icon')
+            use(href='#icon-16-close')
+          span(class='text') любое
+        div(class='option js-option' role='option' id='option-type-2' aria-selected='false')
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') офисы
+        div(class='option js-option' role='option' id='option-type-3' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') адм. здания
+        div(class='option js-option' role='option' id='option-type-4' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') склады
+        div(class='option js-option' role='option' id='option-type-5' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') производство
+        div(class='option js-option' role='option' id='option-type-6' aria-selected='false') 
+          svg(class='icon')
+              use(href='#icon-16-ok')
+          span(class='text') общежития
+    div(class='ui-rangeBar js-rangeBarFloat')
+      div(class='heading') цена, млн руб
+      div(class='label' for='input-from')
+        span от
+        span(class='value' data-range='input-from') 0
+      div(class='label' for='input-to')
+        span до
+        span(class='value' data-range='input-to') 1000
+      div(class='ui-slider')
+        div(class='track' data-range='track')
+          label(class='label' for='price-to')
+            input(type='range' min='0' max='1000000000' value='1000000000' id='price-to' data-range='slider-to' data-filter='max-price')
+          label(class='label' for='price-from')
+            input(type='range' min='0' max='1000000000' value='0' id='price-from' data-range='slider-from' data-filter='min-price')
+    div(class='ui-rangeBar js-rangeBarInt')
+      div(class='heading') площадь, м²
+      div(class='label' for='input-from')
+        span от
+        span(class='value' data-range='input-from') 0
+      div(class='label' for='input-to')
+        span до
+        span(class='value' data-range='input-to') 100000
+      div(class='ui-slider')
+        div(class='track' data-range='track')
+          label(class='label' for='size-to')
+            input(type='range' min='0' max='100000' value='100000' id='size-to' data-range='slider-to' data-filter='max-size')
+          label(class='label' for='size-from')
+            input(type='range' min='0' max='100000' value='0' id='size-from' data-range='slider-from' data-filter='min-size')
+  div(class='filter-bottom')
+    div(class='ui-toggle')
+      input(type='checkbox' id='object-full' name='object-full')
+      span
+      label(for='object-full') объект продается целиком
+    div(class='ui-toggle')
+      input(type='checkbox' id='ready-rental' name='ready-rental')
+      span
+      label(for='ready-rental') готовый арендный бизнес
+    div(class='ui-toggle')
+      input(type='checkbox' id='object-sold' name='object-sold')
+      span
+      label(for='object-sold') проданные объекты
+    div(class='tablist tablistView js-tablistView' role='tablist' aria-label='вариант отображения резельтатов фильтрации')
+      div(class='ui-tabToggle')
+        button(class='tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-card' id='tab-card')
+          svg(class='icon' focusable='false' aria-hidden='true')
+            use(href='#icon-16-card')
+          span(class='text') карточками
+        button(class='tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-map' id='tab-map')
+          svg(class='icon' focusable='false' aria-hidden='true')
+            use(href='#icon-16-map')
+          span(class='text') на карте
+  div(class='filter-button')
+    button(class='ui-btnInverse' type='button' data-filter='apply')
+      span(class='text') применить фильтры
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-ok')
+    button(class='ui-btn' type='button' data-filter='reset')
+      span(class='text') сбросить фильтры
+      svg(class='icon' focusable='false' aria-hidden='true')
+        use(href='#icon-16-refresh')

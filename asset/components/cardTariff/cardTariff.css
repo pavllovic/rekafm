@@ -1,0 +1,195 @@
+/* --- style component cardTariff --- */
+.cardTariff {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-size) solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+}
+
+.cardTariff .top {
+  display: flex;
+  align-items: center;
+  padding: 1.5em;
+  border-bottom: var(--border-size) solid var(--bs-dark, rgba(77, 77, 77, 100%));
+}
+
+.cardTariff .bottom {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.5em;
+  border-top: var(--border-size) solid var(--bs-dark, rgba(77, 77, 77, 100%));
+}
+
+.cardTariff .heading {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: initial;
+}
+
+.cardTariff .name {
+  font-size: var(--fs-card-title);
+}
+
+.cardTariff .note {
+  margin-top: calc(1em / 7);
+  color: rgba(112, 112, 112, 100%);
+  font-size: var(--fs-text-secondary);
+}
+
+.cardTariff .token {
+  position: relative;
+  display: flex;
+  width: 3em;
+  height: 3em;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75em;
+  background-color: rgba(var(--bs-corporate-rgb), 0.16);
+  border-radius: 50%;
+}
+
+.cardTariff .token::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: var(--border-size) solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  border-radius: inherit;
+  content: "";
+}
+
+.cardTariff .token svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.cardTariff .list-prop {
+  position: relative;
+  overflow: hidden;
+  height: 22.75em;
+  padding-bottom: 4em;
+  margin-bottom: auto;
+  transition-duration: var(--dur-main);
+  transition-property: height;
+  transition-timing-function: var(--easing-main);
+}
+
+.carousel-slide.is-active .cardTariff .list-prop {
+  --outer-height: 22.75em;
+
+  height: var(--outer-height);
+}
+
+.cardTariff .list {
+  --inner-height: auto;
+
+  display: flex;
+  overflow: hidden;
+  height: var(--inner-height);
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 0.75em;
+  transition-duration: var(--dur-main);
+  transition-property: height;
+  transition-timing-function: var(--easing-main);
+}
+
+.cardTariff.static .list {
+  overflow: visible;
+}
+
+.cardTariff .list-prop .item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5em 1em;
+}
+
+.cardTariff .list-prop .item::before {
+  width: 0.375em;
+  height: 0.375em;
+  flex-shrink: 0;
+  margin: 0.5em;
+  margin-right: 0.75em;
+  background-color: var(--bs-corporate);
+  clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
+  content: "";
+}
+
+/* price style */
+.cardTariff .price {
+  font-family: var(--font-accent);
+  font-size: var(--fs-body);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.cardTariff .price .value {
+  font-size: var(--fs-text-accent);
+}
+
+/* end price style */
+
+/* show/hide button */
+.cardTariff .btn-more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 1.5em 1em;
+  border: none;
+  background-color: rgba(47, 47, 47, 100%);
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  cursor: pointer;
+  font-size: var(--fs-body);
+  line-height: 1;
+}
+
+.cardTariff .btn-more .text {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 1em;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.cardTariff .btn-more .text span {
+  margin-bottom: var(--border-size);
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.cardTariff.open .btn-more .text span {
+  transform: translateY(calc(-100% - var(--border-size)));
+}
+
+.cardTariff .btn-more .icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  fill: currentcolor;
+  pointer-events: none;
+  transform: translateY(var(--border-size));
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.cardTariff.open .btn-more .icon {
+  transform: translateY(var(--border-size)) rotate(540deg);
+}
+
+.cardTariff.static .btn-more {
+  display: none;
+}
+
+/* end show/hide button */
+
+/* --- endstyle component cardTariff --- */

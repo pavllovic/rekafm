@@ -1,0 +1,55 @@
+/* *** styles page emergency *** */
+
+/* --- style block-tariff --- */
+.block-tariff {
+  display: none;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: var(--bs-primary, rgba(47, 47, 47, 100%));
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.block-tariff + .block-tariff {
+  display: block;
+}
+
+@media (min-width: 80em) {
+  .block-tariff {
+    display: block;
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+
+  .block-tariff + .block-tariff {
+    display: none;
+  }
+}
+
+/* --- end style block-tariff --- */
+
+/* style footer */
+.footer {
+  --footer-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  --footer-bg: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  --border-color: var(--bs-ligth, rgba(228, 228, 228, 100%));
+
+  /* --menu-border-color: var(--border-color); */
+}
+
+.footer .contact .label,
+.footer .ui-linkFade,
+.footer .note {
+  color: var(--bs-secondary, rgba(173, 173, 173, 100%));
+}
+
+.socialLinks .ui-linkSocial .icon {
+  --color-bg: rgba(239, 239, 239, 100%);
+}
+
+.footer .ui-linkFade:hover {
+  color: var(--bs-primary, rgba(46, 46, 46, 100%));
+}
+
+/* end style footer */
+
+/* *** end styles page emergency *** */

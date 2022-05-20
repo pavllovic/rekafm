@@ -1,0 +1,29 @@
+/* --- style component shareLinks --- */
+.shareLinks {
+  display: flex;
+  align-items: center;
+}
+
+.shareLinks .ui-linkSocial:not(:first-child) {
+  margin-left: 1em;
+}
+
+.shareLinks .ui-linkSocial:first-child {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.shareLinks .ui-linkSocial:first-child::after {
+  position: absolute;
+  left: calc(100% - 1px);
+  width: var(--border-size);
+  height: 1em;
+  margin-right: 1em;
+  background-color: var(--bs-light, rgba(228, 228, 228, 100%));
+  content: "";
+  transform: translateX(1em);
+}
+
+/* --- end style component shareLinks --- */

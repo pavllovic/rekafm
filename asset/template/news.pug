@@ -1,0 +1,159 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='news-nav')
+      a(class='ui-link' href='./news_list.html' alt='список новостей')
+        svg(class='icon')
+          use(href='#icon-16-back')
+        span(class='text') к списку новостей
+    article(class='news')
+      div(class='news-heading')
+        h1 Очень длинный заголовок в две или больше строк
+        div(class='badge') <span>13</span> ⁄ <span>02</span> ⁄ <span>22</span>
+      picture(class='news-image')
+        source
+        source
+        img(src=require('Images/news/1/1.jpg'))
+      div(class='news-body')
+        div(class='text-block')
+          p(class='accent') Акцентный текстовый блок. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента. Не слишком большой — буквально один абзац, чтобы погрузить в суть. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+        div(class='text-block')
+          h2 Заголовок в блоке
+          ul 
+            li Пункт маркированного списка. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+            li Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+            li Пункт маркированного списка.
+        div(class='text-block')
+          p(class='lead') Лид абзац. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента. Не слишком большой — буквально один абзац, чтобы погрузить в суть.
+          p Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента. Не слишком большой — буквально один абзац, чтобы погрузить в суть. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+          p Не слишком большой — буквально один абзац, чтобы погрузить в суть. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+        div(class='text-block')
+          h2 Заголовок в блоке
+          ol
+            li Пункт нумированного списка. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+            li Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+            li Пункт нумированного списка. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+            li Пункт нумированного списка. 
+            li Пункт нумированного списка. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
+      div(class='news-share')
+        p(class='title') Поделиться новостью
+        div(class='shareLinks')
+          a(class='ui-linkSocial' href="#")
+            svg(class='icon' focusable='false' aria-hidden='true') 
+              use(href='#icon-social-link')
+            span(class='visually-hidden') получить ссылку на статью.
+          a(class='ui-linkSocial' href='https://vk.com/share.php?url=https://news.html' target='_blank')
+            svg(class='icon' focusable='false' aria-hidden='true')
+              use(href='#icon-social-vk')
+            span(class='visually-hidden') пошерить в вконтакте.
+          a(class='ui-linkSocial' href='https://vk.com/share.php?url=https://news.html' target='_blank')
+            svg(class='icon' focusable='false' aria-hidden='true') 
+              use(href='#icon-social-tlgrm')
+            span(class='visually-hidden') пошерить в телеграм.
+          a(class='ui-linkSocial' href='https://vk.com/share.php?url=https://news.html' target='_blank')
+            svg(class='icon' focusable='false' aria-hidden='true')
+              use(href='#icon-social-wtspp')
+            span(class='visually-hidden') пошерить в watsapp.
+    aside(class='block-aside')
+      div(class='top')
+        h2(class='heading') похожие новости
+      // component carousel
+      div(class='carousel js-carousel' aria-roledescription='carousel')
+        div(class='carousel-controls')
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='prev-slide')
+            span(class='icon')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-up')
+            span(class='visually-hidden') назад
+          button(class='ui-btnArrow' aria-controls='carousel-slides' data-carousel='next-slide')
+            span(class='icon')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-down')
+            span(class='visually-hidden') вперед
+        div(class='carousel-slides' id='carousel-slides')
+          div(class='carousel-slide is-active' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardNews
+              article(class='cardNews')
+                // add webp and sizes
+                picture(class='image')
+                  source
+                  source
+                  img(src=require(`Images/news/${7}/card/1.jpg`))
+                div(class='body')
+                  div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+                  h3(class='title') Заголовок новости
+                  p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+                a(class='link' href='./news.html')
+                  span(class='visually-hidden') перейти на страницу новости
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardNews
+              article(class='cardNews')
+                // add webp and sizes
+                picture(class='image')
+                  source
+                  source
+                  img(src=require(`Images/news/${5}/card/1.jpg`))
+                div(class='body')
+                  div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+                  h3(class='title') Заголовок новости
+                  p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+                a(class='link' href='./news.html')
+                  span(class='visually-hidden') перейти на страницу новости
+          div(class='carousel-slide' aria-roledescription='slide' data-carousel='slide')
+            div(class='carousel-slide-inner')
+              // component cardNews
+              article(class='cardNews')
+                // add webp and sizes
+                picture(class='image')
+                  source
+                  source
+                  img(src=require(`Images/news/${6}/card/1.jpg`))
+                div(class='body')
+                  div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
+                  h3(class='title') Заголовок новости
+                  p(class='text') Также как реализация намеченных плановых заданий предполагает независимые способы реализации плановых заданий предполагает независимые дальнейших действий.
+                a(class='link' href='./news.html')
+                  span(class='visually-hidden') перейти на страницу новости
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

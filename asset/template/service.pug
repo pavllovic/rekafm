@@ -1,0 +1,129 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/service.jpg`)}, ${require(`Images/hero/service-2x.jpg`)} 2x, ${require(`Images/hero/service-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/service.jpg') width='1280' height='656' alt='техническое помещение')
+      div(class='body')
+        div(class='heading')
+          h1 Эксплуатация и техническое<br/> обслуживание недвижимости
+        ul(class='feature-list')
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-service-1')
+            p(class='text') Следим за исправностью водопровода, пожарной сигнализации, отопительного оборудования и других систем.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-service-2')
+            p(class='text') Чиним лифты, заделываем трещины в стенах, обслуживаем автоматические ворота и шлагбаумы.
+      a(class='ui-btnDownload' download='cleaning.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2 Какие системы мы обслуживаем
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-1')
+              h3(class='heading-sm') Электроснабжения
+              p Обслуживаем линии электропередач и электрощитки, фиксируем расход электроэнергии и ремонтируем уличное освещение.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-2')
+              h3(class='heading-sm') Пожаротушения
+              p Проверяем работоспособность системы в ручном и автоматическом режиме, следим за исправностью резервных источников питания.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-3')
+              h3(class='heading-sm') Газоснабжения
+              p Следим за исправностью газопровода и соблюдением мер безопасности на опасных объектах.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-4')
+              h3(class='heading-sm') Водоснабжения
+              p Проверяем состояние колодцев и запорной арматуры, контролируем расход воды и устраняем засоры.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-5')
+              h3(class='heading-sm') Теплоснабжения
+              p Проводим гидравлические испытания сетей перед отопительным сезоном и контролируем температуру в зданиях.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-6')
+              h3(class='heading') Автоматического контроля
+              p Тестируем датчики температуры, проверяем алгоритмы управления холодильными установками, насосами и электроклапанами в разных условиях.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-service-7')
+              h3(class='heading') Дымоудаления и вентиляции
+              p Устраняем загрязнения, меняем ремни вентиляторов и ремонтируем воздуховоды.
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

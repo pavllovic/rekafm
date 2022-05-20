@@ -1,13 +1,15 @@
-const RangeBar = function(parent) {
+const RangeBarInt = function(parent, output) {
   this.wrapper = parent;
   this.inputFrom = parent.querySelector('[data-range="input-from"]');
   this.inputTo = parent.querySelector('[data-range="input-to"]');
   this.sliderFrom = parent.querySelector('[data-range="slider-from"]');
   this.sliderTo = parent.querySelector('[data-range="slider-to"]');
-  this.minGap = 100000;
+  // this.minGap = 10;
+  this.minGap = 0;
+  this.output = output;
 };
 
-RangeBar.prototype = {
+RangeBarInt.prototype = {
   init: function() {
     this.setListeners();
     this.valueFrom = parseInt(this.sliderFrom.value, 10);
@@ -22,16 +24,16 @@ RangeBar.prototype = {
 
   updateValueFrom: function(rawValue) {
     const value = parseInt(rawValue, 10);
-    if((value + this.minGap) <= this.valueTo) {
-      this.valueFrom = value;
-    }
+    ((value + this.minGap) <= this.valueTo)
+      ? this.valueFrom = value
+      : this.valueFrom = this.valueTo;
   },
 
   updateValueTo: function(rawValue) {
     const value = parseInt(rawValue, 10);
-    if((value - this.minGap) >= this.valueFrom) {
-      this.valueTo = value;
-    }
+    ((value - this.minGap) >= this.valueFrom)
+      ? this.valueTo = value
+      : this.valueTo = this.valueFrom;
   },
 
   passValueFrom: function() {
@@ -47,13 +49,21 @@ RangeBar.prototype = {
   updateElementsFrom: function() {
     this.sliderFrom.value = this.valueFrom;
     this.inputFrom.value = this.valueFrom;
-    this.inputFrom.innerText = this.valueFrom;
+    this.inputFrom.innerText = this.output === 'float'
+      ? this.setFloatValue(this.valueFrom)
+      : this.valueFrom;
   },
 
   updateElementsTo: function() {
     this.sliderTo.value = this.valueTo;
     this.inputTo.value = this.valueTo;
-    this.inputTo.innerText = this.valueTo;
+    this.inputTo.innerText = this.output === 'float'
+      ? this.setFloatValue(this.valueTo)
+      : this.valueTo;
+  },
+
+  setFloatValue: function(value) {
+    return (value / 1000000).toFixed(1);
   },
 
   onInputFrom: function(value) {
@@ -89,4 +99,4 @@ RangeBar.prototype = {
   },
 };
 
-export default RangeBar;
+export default RangeBarInt;

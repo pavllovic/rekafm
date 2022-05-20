@@ -1,0 +1,70 @@
+/* --- common style for all project forms --- */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form label:not(:first-child) {
+  margin-top: 1em;
+}
+
+.form [type="submit"] {
+  justify-content: center;
+  margin-top: calc(1em / 0.75);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  text-align: center;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.form [type="submit"]:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.form .note {
+  /* max-width: 23.6em; */
+  max-width: 25em;
+  margin-top: 1em;
+  color: rgba(112, 112, 112, 100%);
+  font-size: var(--fs-text-caption);
+  letter-spacing: -0.02px;
+  line-height: 1;
+}
+
+/* style error message */
+
+.formError {
+  overflow: hidden;
+  margin-top: 0.25em;
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: opacity, height;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+}
+
+.formError .msg {
+  color: var(--bs-danger, rgba(238, 106, 95, 100%));
+  font-size: var(--fs-text-caption);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  transition-duration: var(--dur-main);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-main);
+}
+
+/* end style error message */
+
+@media (min-width: 80em) {
+  .form .note {
+    /* max-width: 39.2em; */
+    max-width: 48em;
+  }
+
+  .form [type="submit"] {
+    margin-top: calc(1em / 0.5625);
+  }
+}
+
+/* --- end common style for all project forms --- */

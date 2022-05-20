@@ -11,9 +11,10 @@ html(lang='ru')
     //- link(rel='icon' href=require('Images/favicon/icon.svg') type='image/svg+xml')
     //- link(rel='apple-touch-icon' href=require('Images/favicon/apple-touch-icon.png'))
     //- <meta name="theme-color" content="#ffffff">
+    block scripts
     block styles
-    //- each file in htmlWebpackPlugin.files.css
-    //-   link(rel='stylesheet' href=`${file}`)
+    each file in htmlWebpackPlugin.files.css
+      link(rel='stylesheet' href=`${file}`)
     //-   if file === '../asset/css/common.css'
     //-     each file in htmlWebpackPlugin.files.extracted.css
     //-       link(rel='stylesheet' href=`../${file.file}` media=`${file.query}`)
@@ -22,7 +23,7 @@ html(lang='ru')
     //-       link(rel='stylesheet' href=`${file.file}` media=`${file.query}`)
   body
     block content
-    //- each file in htmlWebpackPlugin.files.js
-    //-   script(defer="defer" src=`${file}`)
+    each file in htmlWebpackPlugin.files.js
+      script(defer="defer" src=`${file}`)
 
     

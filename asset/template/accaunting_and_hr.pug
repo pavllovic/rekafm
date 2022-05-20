@@ -1,0 +1,87 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/accaunting_and_hr.jpg`)}, ${require(`Images/hero/accaunting_and_hr-2x.jpg`)} 2x, ${require(`Images/hero/accaunting_and_hr-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/accaunting_and_hr.jpg') width='1280' height='656' alt='группа людей')
+      div(class='body')
+        div(class='heading-sm')
+          h1 Бухгалтерские<br/> и кадровые услуги
+          p(class='text') Рассчитываем налоги, начисляем зарплаты и помогаем подготовиться к проверкам.
+      a(class='ui-btnDownload' download='accaunting_and_hr.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2(class='visually-hidden') Виды бухгалтерских и кадровых услуг.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-hr-1')
+              h3(class='heading-sm') Сдаём отчёты в госорганы
+              p Например, бухгалтерские, налоговые и статистические.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-hr-2')
+              h3(class='heading-sm') Работаем с кадрами
+              p Начисляем сотрудникам зарплату и ведём миграционный и воинский учёт.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-hr-3')
+              h3(class='heading-sm') Сопровождаем налоговые проверки
+              p Минимизируем риски штрафов и анализируем требования налоговой.
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

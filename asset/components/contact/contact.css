@@ -1,0 +1,26 @@
+/* --- styles component contact --- */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.2em;
+  padding-top: 0;
+  font-size: var(--fs-text-lead);
+}
+
+.contact .label {
+  margin-bottom: calc(1em / 1.5);
+  color: rgba(112, 112, 112, 100%);
+  font-size: var(--fs-text-caption);
+  line-height: 1;
+}
+
+/* .contact .socialLinks {
+  margin-top: calc(1em / 2.5);
+} */
+
+/* @media (min-width: 80em) {
+
+} */
+
+/* --- end styles component contact --- */

@@ -1,3 +1,4 @@
+/* --- style component cardNews --- */
 .cardNews {
   position: relative;
   display: flex;
@@ -55,7 +56,7 @@
 }
 
 .cardNews .body:only-child::before {
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
 }
 
 .cardNews:hover .body:only-child {
@@ -66,18 +67,12 @@
   opacity: 1;
 }
 
-.cardNews .date {
-  padding: 0.333em 0.5em;
-  border: 0.1rem solid rgba(255, 255, 255, 32%);
+.cardNews .badge {
   margin-bottom: 1em;
-  background-color: rgba(255, 255, 255, 24%);
-  border-radius: 0.833em;
-  font-size: var(--fs-text-caption);
-  line-height: 1;
 }
 
-.cardNews .body:only-child .date {
-  border: 0.1rem solid var(--bs-light, rgba(228, 228, 228, 100%));
+.cardNews .body:only-child .badge {
+  border-color: var(--bs-light, rgba(228, 228, 228, 100%));
 }
 
 .cardNews .title {
@@ -102,7 +97,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: bottom;
+  object-position: top;
   transform-style: preserve-3d;
   transition-duration: 0.7s;
   transition-property: transform;
@@ -112,3 +107,13 @@
 .cardNews:hover .image img {
   transform: scale(1.1);
 }
+
+.cardNews .link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- end style component cardNews --- */

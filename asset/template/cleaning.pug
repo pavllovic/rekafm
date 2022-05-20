@@ -1,0 +1,128 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/cleaning.jpg`)}, ${require(`Images/hero/cleaning-2x.jpg`)} 2x, ${require(`Images/hero/cleaning-4x.jpg`)} 4x`
+          type='image/jpg')
+        source
+        img(src=require('Images/hero/cleaning.jpg') width='1280' height='656' alt='газонокосильщики')
+      div(class='body')
+        div(class='heading')
+          h1 Клининг
+        ul(class='feature-list')
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-cleaning-1')
+            p(class='text') Поддерживаем чистоту в офисах,<br/> складах, на производствах и уличных<br/> торговых точках.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-cleaning-2')
+            p(class='text') Готовим индивидуальные техкарты<br/> по уборке каждого объекта.
+          li(class='item')
+            span(class='icon' aria-hidden='true')
+              svg(focusable='false')
+                use(href='#icon-24-cleaning-3')
+            p(class='text') Используем профессиональные моющие средства и уборочную технику.
+      a(class='ui-btnDownload' download='cleaning.pdf' href='#')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          //- svg(class='icon-go-hover' focusable='false' aria-hidden='true')
+          //-   use(href='#icon-btn-right')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section
+      h2(class='visually-hidden') Клининговые работы.
+      ul(class='card-list')
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-1')
+              h3(class='heading') Моем фасады
+              p А ещё большие панорамные окна, баннеры и стенды. После обрабатываем их от белёсых разводов.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-2')
+              h3(class='heading') Стираем текстиль
+              p Чистим ковры и выводим пятна с подушек, штор и диванов.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-3')
+              h3(class='heading-sm') Убираем после ремонта или переезда
+              p Отмываем кафельную плитку и протираем все поверхности от строительной пыли.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-4')
+              h3(class='heading-sm') Полируем каменные напольные покрытия
+              p С помощью роторной машины или болгарки. Так мы удаляем даже мелкие царапины.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-5')
+              h3(class='heading-sm') Ухаживаем за растениями
+              p Стрижём траву, подрезаем деревья, убираем листву и поливаем цветы.
+        li(class='item')
+          article(class='cardFeature')
+            div(class='body')
+              span(class='token' aria-hidden='true')
+                svg(focusable='false')
+                  use(href='#icon-72-cleaning-6')
+              h3(class='heading') Убираем снег
+              p Следим за состояние тротуаров и проезжей части, посыпаем землю реагентами.
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

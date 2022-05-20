@@ -1,14 +1,21 @@
 /* --- style spacing --- */
 
-/* :root {
-  --xxs-space: 4px;
-  --xs-space: 8px;
-  --sm-space: 12px;
-  --md-space: 16px;
-  --lg-space: 24px;
-  --xl-space: 32px;
-  --xxl-space: 48px;
-  --xxxl-space: 80px;
-} */
+:root {
+  /* --xxs-space: 4px; */
+
+  /* --xs-space: 8px; */
+
+  /* --sm-space: 12px; */
+
+  /* --md-space: 1em; */
+
+  /* --lg-space: 1.5em; */
+
+  /* --xl-space: 2.5em; */
+
+  /* --xxl-space: 4em; */
+
+  /* --xxxl-space: 6em; */
+}
 
 /* --- end style spacing --- */

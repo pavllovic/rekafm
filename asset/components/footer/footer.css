@@ -1,12 +1,18 @@
 /* --- style component footer --- */
 .footer {
+  --footer-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  --footer-bg: var(--bs-primary, rgba(46, 46, 46, 100%));
+  --border-color: var(--bs-dark, rgba(77, 77, 77, 100%));
+
+  /* --menu-border-color: var(--border-color); */
+
   display: flex;
   overflow: hidden;
   width: 100%;
   min-height: 100vh;
   flex-direction: column;
-  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
-  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  background-color: var(--footer-bg);
+  color: var(--footer-color);
 }
 
 .footer .box {
@@ -29,41 +35,53 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  border: var(--border-size) solid var(--border-color);
   content: "";
 }
 
 .footer .logo {
   display: flex;
-  height: calc(1em / 0.28125); /* stylelint-disable number-max-precision */
+  height: 4em;
+  align-items: center;
   justify-content: center;
-  padding-top: calc(1em / 0.75);
+  padding-top: 1.5em;
   padding-bottom: 1em;
-  border-color: var(--bs-dark, rgba(77, 77, 77, 100%));
-  font-size: var(--fs-btn);
+}
+
+.footer .logo::after {
+  border-color: var(--border-color);
 }
 
 .footer .menu {
   padding: calc(1em / 1.5) 0;
-  font-size: 1.8rem;
+  font-size: var(--fs-menu-link);
   line-height: calc(16 / 18);
 }
 
 .footer .menu .submenu {
   align-items: center;
-  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  background-color: var(--footer-bg);
 }
 
 .footer .contacts {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2em var(--bs-gutter-x);
-  border: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  padding: 1.2em 0.8em;
+  border-width: var(--border-size);
+  border-style: solid;
+  border-color: var(--border-color);
   font-size: var(--fs-text-lead);
 }
 
+.footer .contact {
+  align-items: center;
+  letter-spacing: -0.02em;
+}
+
 .footer .contact:not(:last-child) {
+  padding-right: 0.2em;
+  padding-left: 0.2em;
   margin-bottom: 1em;
 }
 
@@ -71,6 +89,7 @@
   margin-bottom: calc(1em / 6);
   color: rgba(112, 112, 112, 100%);
   font-size: var(--fs-text-caption);
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -100,8 +119,10 @@
 .footer .note {
   display: flex;
   flex-direction: column;
-  padding: 1em var(--bs-gutter-x);
-  border: 0.1rem solid var(--bs-dark, rgba(77, 77, 77, 100%));
+  padding: 1em calc(1em / 0.75);
+  border-width: var(--border-size);
+  border-style: solid;
+  border-color: var(--border-color);
   color: rgba(112, 112, 112, 100%);
   font-size: var(--fs-text-caption);
   line-height: 1;
@@ -133,6 +154,10 @@
     flex-direction: row;
   }
 
+  .footer .menu .link-news {
+    display: flex;
+  }
+
   .footer .contacts {
     align-items: flex-start;
     justify-content: space-between;
@@ -143,9 +168,22 @@
   .footer .contacts,
   .footer .note {
     padding-right: 2em;
-    padding-left: 1em;
+    padding-left: 0.8em;
     border-top: none;
     grid-column: 2;
+  }
+
+  .footer .contact {
+    align-items: flex-start;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .footer .note {
+    padding-top: calc(1em / 0.75);
+    padding-right: calc(1em / 0.3);
+    padding-bottom: calc(1em / 0.75);
+    padding-left: calc(1em / 0.6);
   }
 
   .footer .contacts .socialLinks {
@@ -156,13 +194,15 @@
     flex-grow: 1;
     padding-top: 0;
     padding-bottom: 0;
-    font-size: calc(1.16rem + 0.5vw);
+    font-size: var(--fs-menu-link);
   }
 
   /* скрывает выподающий submenu при начальном состоянии */
   .footer .menu::after {
-    border: var(--border-dark);
-    background-color: var(--bs-primary);
+    border-width: var(--border-size);
+    border-style: solid;
+    border-color: var(--border-color);
+    background-color: var(--footer-bg);
   }
 
   .footer .menu .item {
@@ -177,18 +217,12 @@
   .footer .submenu {
     left: 0;
     width: 100%;
-    border-color: var(--bs-dark, rgba(77, 77, 77, 100%));
+    border-color: var(--border-color);
   }
 
   .footer .note .ui-linkFade {
     margin-right: auto;
     margin-left: calc(1em / 0.6);
-  }
-}
-
-@media (min-width: 160em) {
-  .footer .menu {
-    font-size: calc(2.32rem + 0.5vw);
   }
 }
 

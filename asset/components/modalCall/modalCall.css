@@ -1,0 +1,218 @@
+/* --- style component modalCall --- */
+.modalCall {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.modalCall > .box {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+.modalCall .heading {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-accent);
+  font-size: var(--fs-headline-1);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.modalCall .message {
+  max-width: 24.25em;
+  margin-top: 0.75em;
+  font-size: var(--fs-body);
+}
+
+.modalCall .ui-btn {
+  justify-content: center;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  color: var(--bs-primary, rgba(46, 46, 46, 100%));
+}
+
+.modalCall .ui-btn:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.modalCall .contacts {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  margin-top: auto;
+}
+
+.modalCall .contacts .contact:not(:last-of-type) {
+  margin-right: 0.8em;
+}
+
+.modalCall .response {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--border-size) * -2);
+  left: calc(var(--border-size) * -2);
+  display: flex;
+  width: calc(100% + var(--border-size) * 4);
+  height: calc(100% + var(--border-size) * 4);
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  content: "";
+  opacity: 0;
+  text-align: center;
+  transform: translateY(20px);
+  transition-delay: var(--dur-second), var(--dur-second), var(--dur-second);
+  transition-duration: var(--dur-second), var(--dur-second), 0s;
+  transition-property: transform, opacity, visibility;
+  transition-timing-function: var(--easing-second), var(--easing-second), var(--easing-second);
+  visibility: hidden;
+}
+
+.success-handler .modalCall .response {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s, 0s, 0s;
+  visibility: visible;
+}
+
+.modalCall .response::after,
+.modalCall .response::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  content: "";
+  opacity: 0;
+}
+
+.modalCall .response::before {
+  opacity: 0;
+  transition-delay: 0s;
+  transition-duration: var(--dur-second);
+  transition-property: opacity;
+  transition-timing-function: var(--easing-second);
+}
+
+.modalCall .response::after {
+  transform: translateY(100%);
+  transition-delay: 0s;
+  transition-duration: var(--dur-second);
+  transition-property: transform;
+  transition-timing-function: var(--easing-second);
+}
+
+.success-handler .modalCall .response::before {
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.success-handler .modalCall .response::after {
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.modalCall .response .token {
+  position: relative;
+  width: 6em;
+  height: 6em;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background-color: rgba(var(--bs-corporate-rgb), 0.16);
+  border-radius: 50%;
+}
+
+/* border for .token */
+.modalCall .response .token::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: var(--border-dark);
+  border-radius: inherit;
+  content: "";
+}
+
+.modalCall .response .token svg {
+  width: 100%;
+  height: 100%;
+}
+
+.modalCall .response .message {
+  max-width: 14em;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modalCall .response .ui-btnForward {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: calc(1em / -2.25);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  color: var(--bsprimary, rgba(46, 46, 46, 100%));
+}
+
+.modalCall .response .ui-btnForward:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+@media (min-width: 80em) {
+  .modalCall {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .modalCall .message {
+    margin-top: 0.8em;
+    font-size: var(--fs-text-lead);
+  }
+
+  .modalCall .form,
+  .modalCall .contacts {
+    width: 50%;
+    margin-top: auto;
+  }
+
+  .modalCall .contacts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modalCall .contacts .contact:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 0.8em;
+  }
+
+  .modalCall .form {
+    order: 1;
+  }
+
+  .modalCall .response {
+    justify-content: center;
+  }
+
+  .modalCall .response .token {
+    width: 9.25em;
+    height: 9.25em;
+    padding: 2.125em;
+    margin-bottom: 2.5em;
+  }
+
+  .modalCall .response .message {
+    max-width: none;
+  }
+
+  .modalCall .response .ui-btnForward {
+    width: auto;
+    margin-top: calc(1em / 0.45);
+    margin-bottom: 0;
+  }
+}
+
+/* --- end style component modalCall --- */

@@ -1,0 +1,25 @@
+/* --- style ui-linkSocial --- */
+.ui-linkSocial {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  color: inherit;
+  font-size: var(--fs-body);
+}
+
+.ui-linkSocial .icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* --color-bg: var(--bs-dark, rgba(77, 77, 77, 100%)); */
+  --color: currentcolor;
+
+  pointer-events: none;
+}
+
+.ui-linkSocial:hover {
+  color: inherit;
+}
+
+/* --- end style ui-linkSocial --- */

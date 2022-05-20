@@ -1,0 +1,348 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block scripts 
+  script(src='https://api-maps.yandex.ru/2.1/?apikey=5c1d5f41-62c8-4a9a-a9a0-9808a4d2f383&lang=ru_RU' type='text/javascript')
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+    div(class='block-content')
+      div(class='build-nav')
+        a(class='ui-link' href='./commerce.html' alt='список новостей')
+          svg(class='icon')
+            use(href='#icon-16-back')
+          span(class='text') к списку помещений
+      div(class='block-gallery')
+        div(class='gallery js-gallery')
+          div(class='own-carousel__container js-own-carousel__container' aria-roledescription='carousel')
+            div(class='own-carousel__outer' id='own-carousel__outer')
+              div(class='own-carousel')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/1.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/2.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/3.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/4.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/5.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/6.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/7.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/8.jpg'))
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    img(src=require('Images/build/1/slides/9.jpg'))
+            div(class='own-carousel__picker')
+            div(class='controls')
+              button(class='ui-btnClose' data-gallery='close')
+                span(aria-hidden='true')
+                span(aria-hidden='true')
+              div(class='own-carousel__tabs')
+                div(class='own-carousel__tabs-inner')
+                  button(class='ui-thumb' data-gallery='open')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/9.jpg'))
+                    span(class='text') +9
+                  div(class='ui-thumb active' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/1.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/2.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/3.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/4.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/5.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/6.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/7.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/8.jpg'))
+              div(class='own-carousel__control')
+                button(class='ui-btnArrow control__prev' aria-controls='own-carousel__outer')
+                  span(class='icon')
+                    svg(focusable='false' aria-hidden='true')
+                      use(href='#icon-16-up')
+                  span(class='visually-hidden') назад
+                button(class='ui-btnArrow control__next' aria-controls='own-carousel__outer')
+                  span(class='icon')
+                    svg(focusable='false' aria-hidden='true')
+                      use(href='#icon-16-down')
+                  span(class='visually-hidden') вперед
+      section(class='block-object')
+        div(class='top')
+          h1(class='name') Ям Голден Лайн
+          p(class='address') МО, Домодедовский район, «Голден лайн», с. 1
+          p(class='price') 450 млн рублей
+        ul(class='list')
+          li(class='item')
+            span(class='name') Площадь
+            span(class='value') 14 758 м²
+          li(class='item')
+            span(class='name') Тип площади
+            span(class='value') Склады
+          li(class='item')
+            span(class='name') Класс здания
+            span(class='value') Класс A
+          li(class='item')
+            span(class='name') ГАП
+            span(class='value') 12,8 млн руб.
+        div(class='btn-group')
+          button(class='ui-btnForward' type='button' data-btn='modal-call')
+            span(class='text') посмотреть объект
+            span(class='icon')
+              svg(focusable='false' aria-hidden='true')
+                use(href='#icon-16-go')
+          a(class='ui-btnDownloadIcon' href='javascript:void(0);' target='_blank')
+            span(class='visually-hidden') сакчать pdf
+            svg(class='icon' focusable='false' aria-hidden='true')
+              use(href='#icon-32-pdf')
+      section(class='block-feature js-list-feature')
+        h2 Характеристики
+        div(class='list-feature')
+          ul(class='list' data-show-list='list')
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-1')
+              span(class='value') Площадь 14 758 м²
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-2')
+              span(class='value') Площадь земельного участка 3 Га
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-electricity')
+              span(class='value-sm') Электроснабжение 250 кВт
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-floor')
+              span(class='value-sm') Бетонный пол (нагрузка 8т на 1 м²)
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-columns')
+              span(class='value') Шаг колонн 12×24 м
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-water')
+              span(class='value') Водоснабжение, водоотведение
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-rating')
+              span(class='value') Класс комплекса B
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-ceiling')
+              span(class='value') Высота потолков 12 м
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-security')
+              span(class='value') Охрана 24/7
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-temp')
+              span(class='value') Среднетемпературный режим
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-heating')
+              span(class='value') Централизированное отопление
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-stillage')
+              span(class='value') Стелажи (h стойки 8,4 м, 5-6 ярусное хранение)
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-parking')
+              span(class='value') Парковка для грузовых и легковых а/м
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-gates')
+              span(class='value') 5 автоматических ворот для разгрузки
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-ventilation')
+              span(class='value') Приточно-вытяжная вентиляция
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-occupancy')
+              span(class='value') Заполняемость — 100%
+            li(class='item')
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-24-ramp')
+              span(class='value') Пандус
+        div(class='controls')
+          button(class='ui-btn' type='button' data-show-list='open') 
+            span(class='text') список всех преимуществ: 17
+          button(class='ui-btn' type='button' data-show-list='close') 
+            span(class='text') скрыть
+      section(class='block-lots')
+        h2 Лоты
+        div(class='tableLots')
+          div(class='lot')
+            span(class='name') корпус 1
+            span(class='type')
+              span производственно складское
+            span(class='list-size')
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-1')
+                span(class='text') 10 546 м²
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-2')
+                span(class='text') 9 249 м²
+          div(class='lot-price')
+            button(class='ui-btnForward' type='button' data-btn='modal-call')
+              span(class='text') узнать стоимость
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+          div(class='lot')
+            span(class='name') корпус 4-5
+            span(class='type')
+              span производственно складское
+              span котельная
+            span(class='list-size')
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-1')
+                span(class='text') 10 566 м²
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-2')
+                span(class='text') 34 549 м²
+          div(class='lot-price')
+            button(class='ui-btnForward' type='button' data-btn='modal-call')
+              span(class='text') узнать стоимость
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+          div(class='lot')
+            span(class='name') корпус 13
+            span(class='type')
+              span производственно складское
+              span административный блок
+            span(class='list-size')
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-1')
+                span(class='text') 36 452 м²
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-2')
+                span(class='text') 29 900 м²
+          div(class='lot-price')
+            button(class='ui-btnForward' type='button' data-btn='modal-call')
+              span(class='text') узнать стоимость
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+          div(class='lot')
+            span(class='name') продажа комплекса целиком
+            span(class='type')
+              span 4 производственно-складских здания
+              span административное здание
+              span общежитие
+            span(class='list-size')
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-1')
+                span(class='text') 59 591 м²
+              span(class='item')
+                svg(class='icon' focusable='false' aria-hidden='true')
+                  use(href='#icon-24-square-2')
+                span(class='text') 100 000 м²
+          div(class='lot-price')
+            button(class='ui-btnForward' type='button' data-btn='modal-call')
+              span(class='text') узнать стоимость
+              span(class='icon')
+                svg(focusable='false' aria-hidden='true')
+                  use(href='#icon-16-go')
+            //- цена вместо кнопки
+            //- span(class='value') 30 000 000
+            //- span(class='visually-hidden') рублей
+      div(class='block-map')
+        include ../components/map/map.pug
+        div(class='info')
+          p(class='address') МО,  Домодедовский район, «Голден лайн», с. 1
+          div(class='meta')
+            span 12 км от МКАД 
+            span 4 км до г. Домодедово
+  // component footer
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

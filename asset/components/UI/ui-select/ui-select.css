@@ -1,14 +1,26 @@
 /* --- style ui-select --- */
 .ui-select {
+  position: relative;
+  z-index: 1;
   display: block;
-  min-width: 25.6rem;
+  min-width: 16em;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  box-shadow:
+    0 0.4rem 0.8rem 0 rgba(187, 187, 187, 0%),
+    0 0.8rem 3.2rem 0 rgba(187, 187, 187, 0%);
   cursor: pointer;
+  transition-duration: var(--dur-quick);
+  transition-property: box-shadow;
+  transition-timing-function: var(--easing-quick);
 }
 
 .ui-select.open {
+  z-index: 2;
   box-shadow:
     0 0.4rem 0.8rem 0 rgba(187, 187, 187, 16%),
     0 0.8rem 3.2rem 0 rgba(187, 187, 187, 32%);
+  transition-duration: var(--dur-main);
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-select .input {
@@ -16,59 +28,100 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 1.6rem;
-  padding-right: 4.8rem;
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  padding: 1em;
+  padding-right: 3em;
+  border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
 .ui-select .input .label {
   width: 100%;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1em;
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
-  font-size: 1.2rem;
+  font-size: var(--fs-text-caption);
   line-height: 1;
+  pointer-events: none;
 }
 
 .ui-select .input .value {
   color: var(--bs-primary, rgba(46, 46, 46, 100%));
-  font-size: 1.6rem;
+  font-size: var(--fs-body);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .ui-select .input .icon {
   position: absolute;
-  right: 1.6rem;
+  right: 1em;
   display: flex;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.5em;
+  height: 1.5em;
   align-items: center;
   justify-content: center;
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
   border-radius: 50%;
+  pointer-events: none;
+  transition-duration: var(--dur-quick);
+  transition-property: transform;
+  transition-timing-function: var(--easing-quick);
+}
+
+.ui-select.open .input .icon {
+  transform: rotateZ(-540deg);
+  transition-duration: var(--dur-main);
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-select .input .icon svg {
   --color: var(--color-primary, rgba(44, 44, 44, 100%));
 
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1em;
+  height: 1em;
   fill: var(--color, currentColor);
-  transition-duration: 0.15;
-  transition-property: transform;
-  transition-timing-function: ease-out;
-}
-
-.ui-select.open .input .icon svg {
-  transform: scaleY(-1);
 }
 
 .ui-select .options {
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
-  border-top: none;
+  position: absolute;
+  z-index: -1;
+
+  /* left: calc(var(--border-size, 1px) * -1); */
+  left: 0;
+
+  /* overflow: hidden; */
+
+  /* width: calc(100% + var(--border-size, 1px) * 2); */
+  width: 100%;
+  max-height: 18.75em;
+  border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translateY(-5px);
+  transition-delay: var(--dur-quick), 0s, var(--dur-quick);
+  transition-duration: var(--dur-quick), var(--dur-quick), 0s;
+  transition-property: transform, opacity, visibility;
+  transition-timing-function: var(--easing-quick), var(--easing-quick), var(--easing-quick);
   visibility: hidden;
 }
 
+/* .ui-select .options::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  content: "";
+  pointer-events: none;
+} */
+
 .ui-select.open .options {
-  padding-bottom: 1rem;
+  padding-bottom: 1em;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s, 0s, 0s;
   visibility: visible;
 }
 
@@ -78,35 +131,42 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  padding: 1.4rem 1.6rem;
+  padding: 0.875em 1em;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   color: var(--bs-primary, rgba(46, 46, 46, 100%));
-  font-size: 1.6rem;
+  font-size: 1em;
   line-height: 1;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-select .reset {
-  border-bottom: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
-  margin-bottom: 1rem;
+  border-bottom: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  margin-bottom: 1em;
+}
+
+.ui-select .option .text,
+.ui-select .reset .text {
+  pointer-events: none;
 }
 
 .ui-select .option .icon,
 .ui-select .reset .icon {
   --color: currentcolor;
 
-  width: 1.6rem;
-  height: 1.6rem;
-  margin-right: 0.8rem;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
   fill: var(--color, currentColor);
+  pointer-events: none;
 }
 
 .ui-select .option .icon {
   transform: scale(0);
-  transition-duration: 0.15;
+  transition-duration: var(--dur-main);
   transition-property: transform;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-select .option.selected .icon {
@@ -125,9 +185,9 @@
   content: "";
   transform: scaleY(0);
   transform-origin: center bottom;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: transform;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-select .option:hover,
@@ -138,6 +198,13 @@
 .ui-select .option:hover::after,
 .ui-select .reset:hover::after {
   transform: scaleY(1);
+}
+
+@media (min-width: 80em) {
+  .ui-select .options {
+    left: calc(var(--border-size, 1px) * -1);
+    width: calc(100% + var(--border-size, 1px) * 2);
+  }
 }
 
 /* --- end style ui-select --- */

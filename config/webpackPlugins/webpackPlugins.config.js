@@ -35,8 +35,8 @@ const copyWebpackPlugin = (isDev) => {
   let patterns = [];
   if(isDev) {
     patterns = [
-      {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
-      // {from: './asset/lib/accordion/', to: `${pathToCopy}/accordion/`},
+      // {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
+      {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
       // {from: 'node_modules/owl.carousel/dist/', to: `${pathToCopy}/owl.carousel/`},
       // {from: 'node_modules/jquery/dist/', to: `${pathToCopy}/jquery/`},
       // {from: 'node_modules/imask/dist/', to: `${pathToCopy}/imask/`},
@@ -45,6 +45,7 @@ const copyWebpackPlugin = (isDev) => {
       // {from: './asset/fonts/iconmoon-32.woff', to: 'asset/fonts/'},
       // {from: './asset/fonts/iconmoon-72.woff', to: 'asset/fonts/'},
       // {from: './asset/fonts/iconmoon-btn.woff', to: 'asset/fonts/'},
+      {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
   } else {
     patterns = [
@@ -54,6 +55,8 @@ const copyWebpackPlugin = (isDev) => {
       // {from: 'node_modules/jquery/dist/jquery.min.js', to: `${pathToCopy}/jquery/jquery.min.js`},
       // {from: 'node_modules/imask/dist/imask.min.js', to: `${pathToCopy}/imask/imask.min.js`},
       // {from: './asset/fonts/icon-font.woff', to: 'asset/fonts/'}
+      {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
+      {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
   }
   return new CopyWebpackPlugin({
@@ -77,14 +80,14 @@ const htmlWebpackTagsPlugin = (isDev) => {
     //   append: false
     // }),
     new HtmlWebpackTagsPlugin({
-      links: [
-        `${pathToCopy}/bootstrap/css/bootstrap.min.css`, 
-      ],
-      // scripts: [
-        // `${pathToCopy}/accordion/accordion.min.js`,
-        // `${pathToCopy}/owl.carousel/owl.carousel.min.js`,
-        // `${pathToCopy}/imask/imask.min.js`,
+      // files: ['_html/index.html', '_html/build.html'],
+      // files: ['_html/index.html'],
+      // links: [
+      //   `${pathToCopy}/ownCarousel/ownCarousel.css`, 
       // ],
+      scripts: [
+        `${pathToCopy}/ownCarousel/ownCarousel.js`
+      ],
       append: false
     })
   ]
@@ -92,21 +95,35 @@ const htmlWebpackTagsPlugin = (isDev) => {
 
 const ignoreEmitPlugin = () => {
   return new IgnoreEmitPlugin([
-    /(uikit)\.style\.js$/, /(uikit)\.js$/
+    /(uikit)\.style\.js$/, /(uikit|management|service|emergency|audit|_404|privacy)\.js$/
   ]);
 };
 
 const htmlWebpackSkipAssetsPlugin = () => {
   return new HtmlWebpackSkipAssetsPlugin({
     excludeAssets: [
-      /(uikit)\.style\.js$/, /(uikit)\.js$/
+      /(uikit)\.style\.js$/, /(uikit|management|service|emergency|audit|_404|privacy)\.js$/
     ]
   });
 };
 
 const htmlWebpackPlagin = (isDev) => {
   const pages = [
-    {name: 'index', title: 'рекафм', chunks: ['common']},
+    {name: 'index', title: 'рекафм', chunks: ['common', 'index']},
+    {name: 'fire_safety', title: 'рекафм | пожарная безопасность', chunks: ['common']},
+    {name: 'audit', title: 'рекафм | технический аудит недвижимости', chunks: ['common', 'audit']},
+    {name: 'service', title: 'рекафм | эксплуатация и техническое обслуживание недвижимости', chunks: ['common', 'service']},
+    {name: 'management', title: 'рекафм | управление недвижимостью', chunks: ['common', 'management']},
+    {name: 'femida', title: 'рекафм | юридическое сопровождение', chunks: ['common']},
+    {name: 'emergency', title: 'рекафм | аварийно-диспетчерская служба', chunks: ['common', 'emergency']},
+    {name: 'accaunting_and_hr', title: 'рекафм | клининг', chunks: ['common']},
+    {name: 'cleaning', title: 'рекафм | клининг', chunks: ['common']},
+    {name: '_404', title: 'рекафм | 404', chunks: ['common', '_404']},
+    {name: 'privacy', title: 'рекафм | политика конфиденциальности', chunks: ['common', 'privacy']},
+    {name: 'news_list', title: 'рекафм | новости', chunks: ['common', 'news_list']},
+    {name: 'news', title: 'рекафм | новости', chunks: ['common', 'news']},
+    {name: 'commerce', title: 'рекафм | продажа и аренда', chunks: ['common', 'commerce']},
+    {name: 'build', title: 'рекафм | помещение', chunks: ['common', 'build']},
     {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
   ];
 
@@ -116,7 +133,7 @@ const htmlWebpackPlagin = (isDev) => {
       filename: isDev ? `_html/${page.name}.html` : `${page.name}.html`,
       template: `./asset/template/${page.name}.pug`,
       // inject: 'body',
-      inject: true,
+      inject: false,
       chunks: page.chunks,
       minify: {
         collapseWhitespace: !isDev,

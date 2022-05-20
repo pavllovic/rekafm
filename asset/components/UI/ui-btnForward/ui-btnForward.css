@@ -1,0 +1,106 @@
+/* --- style ui-btnForward --- */
+.ui-btnForward {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: calc(1em / 0.75) calc(1em / 0.75);
+  border: none;
+  background-color: rgba(255, 255, 255, 0%);
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--fs-btn);
+  font-weight: 500;
+  line-height: calc(16 / 18);
+  text-decoration: none;
+  text-transform: lowercase;
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+/*
+:after .ui-btnForward:hover background,
+:before .ui-btnForward border
+*/
+.ui-btnForward::before,
+.ui-btnForward::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+/* +10px for subpixel */
+.ui-btnForward::after {
+  z-index: 1;
+  top: calc(100%);
+  left: 0;
+  height: calc(100% + 10px);
+  padding: inherit;
+  background-color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnForward::before {
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  border: var(--border-size) solid var(--bs-light, rgba(228, 228, 228, 100%));
+  font-size: var(--fs-body);
+}
+
+.ui-btnForward:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+/* +5px for subpixel */
+.ui-btnForward:hover::after {
+  transform: translateY(calc(-100% + 5px));
+}
+
+.ui-btnForward .text,
+.ui-btnForward .icon {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.ui-btnForward .icon {
+  position: relative;
+  width: calc(1em / 1.125);
+  height: calc(1em / 1.125);
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnForward .icon + *,
+.ui-btnForward * + .icon {
+  margin-left: calc(1em / 4.5);
+}
+
+.ui-btnForward .icon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  --color: currentcolor;
+
+  fill: var(--color, currentcolor);
+}
+
+.ui-btnForward:hover .icon {
+  transform: rotateZ(45deg);
+}
+
+@media (min-width: 80em) {
+  .ui-btnForward {
+    padding: calc(1em / 0.75) calc(1em / 0.45);
+  }
+}

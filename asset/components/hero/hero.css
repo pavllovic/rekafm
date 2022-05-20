@@ -3,68 +3,200 @@
   z-index: 0;
   display: flex;
   width: 100%;
-
-  /* height: 1500px; */
-  height: 24.7em;
+  min-height: calc(100vh - 3em);
   flex-direction: column;
-  padding: 0 var(--bs-gutter-x);
-  font-size: var(--fs-headline-1);
+  padding: 1em;
+  background-color: var(--bs-primary);
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
-.hero .heading {
-  position: sticky;
-  z-index: 3;
-  top: 2.5em;
+.hero::after {
+  position: absolute;
+  z-index: -1;
+  top: 1em;
+  left: 1em;
+  width: calc(100% - 2em);
+  height: calc(100% - 2em);
+  border: calc(var(--border-size) * 3) solid var(--bs-contrast, rgba(255, 255, 255, 100%));
+  content: "";
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 6.9em;
-  margin-right: auto;
-  margin-left: auto;
-  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-  font-size: var(--fs-headline-1);
+  height: 100%;
+  background-color: rgba(var(--bs-primary-rgb), 0.6);
+  content: "";
+}
+
+.hero .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 2.5em 1.5em;
   text-align: center;
 }
 
-.hero .title {
-  width: 100%;
-  max-width: 30.5em;
-  margin: 0 auto;
-  margin-top: 1em;
-  font-size: var(--fs-body);
+.hero .body .heading,
+.hero .body .heading-sm {
+  letter-spacing: 0.03em;
 }
 
-.hero img {
+.hero .body .heading > .text,
+.hero .body .heading-sm > .text {
+  max-width: 27em;
+  margin-top: 1em;
+  letter-spacing: -0.02em;
+}
+
+.hero .feature-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5em;
+}
+
+.hero .feature-list .item {
+  display: flex;
+  max-width: 18.5em;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero .feature-list .item:not(:first-child) {
+  margin-top: 1.5em;
+}
+
+.hero .feature-list .icon {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  padding: 0.75em;
+  margin-bottom: 0.5em;
+  backdrop-filter: blur(8px);
+  background-color: rgba(var(--bs-contrast-rgb), 0.16);
+  border-radius: 50%;
+}
+
+.hero .feature-list .icon::after {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: var(--border-size) solid rgba(var(--bs-light-rgb), 0.4);
+  border-radius: inherit;
+  content: "";
+}
+
+.hero .feature-list .icon svg {
+  --color: currentcolor;
+
+  width: 100%;
+  height: 100%;
+  fill: var(--color, currentColor);
+}
+
+.hero .feature-list .text {
+  letter-spacing: -0.02em;
+}
+
+.hero img {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: bottom center;
+  object-position: top center;
+}
+
+.hero .ui-btnDownload {
+  margin-top: auto;
 }
 
 @media (min-width: 80em) {
   .hero {
-    height: 16em;
+    min-height: calc(100vh - 4em);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 2.5em;
   }
 
-  .hero .heading {
-    top: 1.66em;
-    max-width: 10.375em;
+  .hero::after {
+    top: 2.5em;
+    left: 2.5em;
+    width: calc(100% - 5em);
+    height: calc(100% - 5em);
+    border: calc(var(--border-size) * 6) solid var(--bs-contrast, rgba(255, 255, 255, 100%));
   }
 
-  .hero .title {
+  .hero .body {
     width: 100%;
-    max-width: 24.4em;
-    margin: 0 auto;
-    margin-top: 1.6em;
+    max-width: 55em;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 1.875em;
+    margin-bottom: 2.5em;
+    margin-left: 2.75em;
+    text-align: left;
+  }
+
+  .hero .body .heading,
+  .hero .body .heading-sm {
+    letter-spacing: 0.01em;
+  }
+
+  .hero .body .heading {
+    max-width: 100%;
+  }
+
+  .hero .body .heading-sm {
+    max-width: 33.75em;
+  }
+
+  .hero .body .heading > .text,
+  .hero .body .heading-sm > .text {
+    margin-top: 0.8em;
     font-size: var(--fs-text-lead);
   }
-}
 
-.hero .top {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  height: 62%;
-  margin-top: auto;
+  .hero .feature-list {
+    display: grid;
+    width: 100%;
+    align-items: flex-start;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-gap: 1.5em;
+  }
+
+  .hero .feature-list .item {
+    max-width: 26.75em;
+    align-items: flex-start;
+  }
+
+  .hero .feature-list .item:not(:first-child) {
+    margin-top: 0;
+  }
+
+  .hero .feature-list .icon {
+    margin-bottom: 1em;
+  }
+
+  .hero .ui-btnDownload {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .hero img {
+    width: auto;
+    height: 100%;
+    object-fit: none;
+    object-position: center;
+  }
 }

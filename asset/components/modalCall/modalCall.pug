@@ -1,0 +1,49 @@
+div(class='modal js-modal-call' aria-hidden='true' role='dialog' data-modal='modal-call')
+  div(class='header')
+    include ../logo/logo.pug
+    button(class='ui-btnClose' type='button' data-btn='modal-call')
+      span
+      span
+  div(class='content')
+    // component modalCall
+    div(class='modalCall')
+      div(class='box')
+        h2(class='heading') связаться с нами
+        p(class='message') Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.
+      form(class='form js-order-call' name='order-call' action='https://echo.htmlacademy.ru' method='POST')
+        label
+          span(class='visually-hidden' for='order-call-name') ваше имя
+          input(class='ui-input' type='text' name='name' placeholder='ваше имя' id='order-call-name' required)
+        label
+          span(class='visually-hidden' for='order-call-phone') телефон
+          input(class='ui-input' type='text' inputmode='numeric' name='phone' placeholder='телефон' id='order-call-phone' required)
+        button(class='ui-btnForward' type='submit')
+          span(class='text') заказать обратный звонок
+          span(class='icon')
+            svg(focusable='false' aria-hidden='true')
+              use(href='#icon-16-go')
+        p(class='note') Нажимая на кнопку «Заказать обратный звонок», вы даете согласие на обработку персональных данных и соглашаетесь с 
+          a(class='ui-linkFade' href="#") политикой конфиденциальности
+      div(class='contacts')
+        div(class='contact')
+          p(class='label') пишите
+          a(class='ui-link'  href='mailto:info@reka.fm') 
+            span(class='text' data-text='info@reka.fm') info@reka.fm
+        div(class='contact')
+          p(class='label') звоните
+          a(class='ui-link' href='tel:+78002006316') 
+            span(class='text' data-text='8 (800) 200-63-16') 8 (800) 200-63-16
+      // UI for success handler modalCall
+      div(class='response')
+        div(class='token' aria-hidden='true')
+          svg(focusable='false')
+            use(href="#icon-24-phone")
+        div(class='box')
+          p(class='heading') Звонок успешно заказан!
+          p(class='message') В ближайшее время наш менеджер свяжется с вами.
+        button(class='ui-btnForward' type='button' data-btn='modal-call')
+          span(class='text') вернуться на главную
+          span(class='icon')
+            svg(focusable='false' aria-hidden='true')
+              use(href='#icon-16-go')
+    

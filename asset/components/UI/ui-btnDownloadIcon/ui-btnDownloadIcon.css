@@ -2,18 +2,18 @@
 .ui-btnDownloadIcon {
   position: relative;
   display: flex;
-  width: 6.4rem;
-  height: 6.4rem;
+  width: 4em;
+  height: 4em;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  border: 0.1rem solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  padding: 1.25em;
+  border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
   background-color: rgba(255, 255, 255, 0%);
   color: inherit;
   cursor: pointer;
-  transition-duration: 0.15s;
+  transition-duration: var(--dur-main);
   transition-property: color;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--easing-main);
 }
 
 .ui-btnDownloadIcon::before {

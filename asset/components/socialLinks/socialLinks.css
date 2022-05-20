@@ -3,25 +3,13 @@
   display: flex;
 }
 
-.link {
-  width: 1.6em;
-  height: 1.6em;
-  border-radius: 50%;
+.socialLinks .ui-linkSocial:not(:first-child) {
+  margin-left: calc(1em * 0.6);
 }
 
-.link:not(:last-child) {
-  margin-right: calc(1em * 0.6);
-}
-
-.icon {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.icon svg {
-  width: 100%;
-  height: 100%;
+.socialLinks .ui-linkSocial .icon {
+  --color-bg: var(--bs-dark, rgba(77, 77, 77, 100%));
+  --color: currentcolor;
 }
 
 /* --- end style component socialLinks --- */
