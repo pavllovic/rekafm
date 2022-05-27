@@ -13,14 +13,16 @@ export function setListeners() {
 
 export function openSubmenu(item) {
   if(this.openItem) this.closeSubmenu();
-  const menu = item.nextElementSibling;
+  // const menu = item.nextElementSibling;
+  const menu = item.querySelector('[data-dropdown="panel"]');
   item.classList.add('is-open');
   this.setHeightDropdownMenu(menu);
   this.openItem = item;
 }
 
 export function closeSubmenu() {
-  const menu = this.openItem.nextElementSibling;
+  // const menu = this.openItem.nextElementSibling;
+  const menu = this.openItem.querySelector('[data-dropdown="panel"]');
   this.openItem.classList.remove('is-open');
   this.removeHeightDropdownMenu(menu);
   this.openItem = false;
@@ -50,7 +52,6 @@ export function handleEvent(e) {
   switch(e.type) {
     case 'click':
       const isBtn = e.target.closest('[data-dropdown="btn"]');
-      console.log(isBtn);
       if(isBtn) return this.toogleSubmenu(isBtn);
       break;
     default:

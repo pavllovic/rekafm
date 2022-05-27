@@ -5,12 +5,10 @@ const initCarouselNews = () => {
   const carouselNewsElem = document.querySelector('.js-carousel');
   const carouselNews = new Carousel(carouselNewsElem);
   carouselNews.init();
-  return carouselNews;
+  window.carouselNews = carouselNews;
 };
 
 initCarouselNews();
-
-window.initCarouselNews = initCarouselNews;
 
 if (module.hot) {
   module.hot.accept();

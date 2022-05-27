@@ -32,25 +32,6 @@ Map.prototype = {
         },
       });
     });
-
-    // window.ymaps.ready(() => {
-    //   const testOdjectData = {
-    //     id: 1,
-    //     coords: [44.898317, 37.354456],
-    //     name: 'Ям Голден Лайн',
-    //     address: 'МО, Домодедовский район, «Голден лайн», с. 1',
-    //     meta: {
-    //       price: 470,
-    //       type: 'Склады',
-    //       size: '14 758',
-    //     },
-    //     badges: ['продается целиком'],
-    //   };
-    //   this.createIconLayout();
-    //   this.createBalloonLayout();
-    //   this.createObjectCollection();
-    //   this.addObjectInObjectCollection(testOdjectData);
-    // });
   },
 
   createIconLayout: function() {
@@ -158,6 +139,12 @@ Map.prototype = {
     });
   },
 
+  addObjectsInObjectCollection: function(objects) {
+    objects.forEach((object) => {
+      this.addObjectInObjectCollection(object);
+    });
+  },
+
   addStaticPointOnMap: function(objectData) {
     window.ymaps.ready(() => {
       const point = new window.ymaps.Placemark(
@@ -169,6 +156,12 @@ Map.prototype = {
         },
       );
       this.map.geoObjects.add(point);
+    });
+  },
+
+  updateCenterMap: function(coords, zoom) {
+    window.ymaps.ready(() => {
+      this.map.setCenter(coords, zoom, 'yandex#map');
     });
   },
 };

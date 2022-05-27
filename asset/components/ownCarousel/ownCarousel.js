@@ -18,7 +18,7 @@ OwnCarousel.prototype = {
   createPickers: lib.createPickers,
   activateSlide: lib.activateSlide,
   createTabsMap: lib.createTabsMap,
-  setTabObserver: lib.setTabObserver,
+  // setTabObserver: lib.setTabObserver,
 };
 
 export default OwnCarousel;

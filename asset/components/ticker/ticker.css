@@ -2,8 +2,9 @@
 .ticker {
   position: relative;
   width: 100%;
-  padding-top: 5.25em;
-  padding-bottom: 5.25em;
+
+  /* padding-top: 5.25em;
+  padding-bottom: 5.25em; */
 }
 
 .ticker-content {
@@ -13,10 +14,12 @@
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  padding-top: 5.25em;
+  padding-bottom: 5.25em;
+  border: none;
+  background-color: inherit;
+  color: inherit;
   cursor: none;
-
-  /* padding-top: 5.25em;
-  padding-bottom: 5.25em; */
 }
 
 .line {

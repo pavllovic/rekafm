@@ -1,4 +1,4 @@
-div(class='filter')
+div(class='filter js-filter')
   div(class='filter-top')
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
@@ -14,35 +14,35 @@ div(class='filter')
           svg(focusable='false' aria-hidden='true')
             use(href='#icon-16-dropdown-open')
       div(class='options js-options' role='listbox' id='listbox')
-        div(class='reset' role='option' id='option-city-1' aria-selected='true' data-combobox='reset')
+        div(class='reset' role='option' id='option-city-0' aria-selected='true' data-combobox='reset')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') все
-        div(class='option' role='option' id='option-city-2' aria-selected='false')
+        div(class='option' role='option' id='option-city-1' aria-selected='false')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Москва
-        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+        div(class='option' role='option' id='option-city-2' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Санкт-Петербург
-        div(class='option' role='option' id='option-city-4' aria-selected='false') 
+        div(class='option' role='option' id='option-city-3' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Самара
-        div(class='option' role='option' id='option-city-5' aria-selected='false') 
+        div(class='option' role='option' id='option-city-4' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Саратов
-        div(class='option' role='option' id='option-city-6' aria-selected='false') 
+        div(class='option' role='option' id='option-city-5' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Нижний Новгород
-        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+        div(class='option' role='option' id='option-city-6' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Казань
-        div(class='option' role='option' id='option-city-3' aria-selected='false') 
+        div(class='option' role='option' id='option-city-7' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Сочи
@@ -60,27 +60,27 @@ div(class='filter')
           svg(focusable='false' aria-hidden='true')
             use(href='#icon-16-dropdown-open')
       div(class='options js-options' role='listbox' id='listbox')
-        div(class='reset js-reset' role='option' id='option-type-1' aria-selected='true' data-combobox='reset')
+        div(class='reset js-reset' role='option' id='option-type-0' aria-selected='true' data-combobox='reset')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') любое
-        div(class='option js-option' role='option' id='option-type-2' aria-selected='false')
+        div(class='option' role='option' id='option-type-1' aria-selected='false')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') офисы
-        div(class='option js-option' role='option' id='option-type-3' aria-selected='false') 
+        div(class='option' role='option' id='option-type-2' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') адм. здания
-        div(class='option js-option' role='option' id='option-type-4' aria-selected='false') 
+        div(class='option' role='option' id='option-type-3' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') склады
-        div(class='option js-option' role='option' id='option-type-5' aria-selected='false') 
+        div(class='option' role='option' id='option-type-4' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') производство
-        div(class='option js-option' role='option' id='option-type-6' aria-selected='false') 
+        div(class='option' role='option' id='option-type-5' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') общежития
@@ -88,10 +88,10 @@ div(class='filter')
       div(class='heading') цена, млн руб
       div(class='label' for='input-from')
         span от
-        span(class='value' data-range='input-from') 0
+        span(class='value' data-range='input-from') 0,0
       div(class='label' for='input-to')
         span до
-        span(class='value' data-range='input-to') 1000
+        span(class='value' data-range='input-to') 1000,0
       div(class='ui-slider')
         div(class='track' data-range='track')
           label(class='label' for='price-to')
@@ -105,7 +105,7 @@ div(class='filter')
         span(class='value' data-range='input-from') 0
       div(class='label' for='input-to')
         span до
-        span(class='value' data-range='input-to') 100000
+        span(class='value' data-range='input-to') 100 000
       div(class='ui-slider')
         div(class='track' data-range='track')
           label(class='label' for='size-to')

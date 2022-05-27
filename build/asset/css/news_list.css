@@ -7,6 +7,8 @@
 
 .block-newsList {
   padding: 0;
+  background-color: rgba(255, 255, 255, 100%);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
 .block-newsList .heading {
@@ -53,47 +55,17 @@
   fill: var(--color);
 }
 
+.block-newsList .ui-btn .dots {
+  transform: scale(0.8);
+  transform-origin: center;
+  transition-duration: var(--dur-main), var(--dur-main), var(--dur-main);
+  transition-property: opacity, transform, color;
+  transition-timing-function: var(--easing-main), var(--dur-main), var(--dur-main);
+}
+
 /* end style icon-go */
 
 /* style icon-dots */
-
-.block-newsList .icon-dots {
-  position: relative;
-  display: flex;
-  width: calc(1em / 9);
-  height: calc(1em / 9);
-  background-color: currentcolor;
-  border-radius: 50%;
-  transition-delay: 0s, 0s;
-  transition-duration: var(--dur-main), var(--dur-main);
-  transition-property: opacity, transform;
-  transition-timing-function: var(--easing-main), var(--easing-main);
-}
-
-.block-newsList .icon-dots::after,
-.block-newsList .icon-dots::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: currentcolor;
-  border-radius: inherit;
-  content: "";
-
-  /* transition-delay: var(--dur-main); */
-  transition-duration: var(--dur-main);
-  transition-property: transform;
-  transition-timing-function: var(--easing-main);
-}
-
-.block-newsList .icon-dots::after {
-  transform: translateX(150%);
-}
-
-.block-newsList .icon-dots::before {
-  transform: translateX(-150%);
-}
 
 /* end style icon-dots */
 
@@ -102,20 +74,11 @@
   transform: scale(1);
 }
 
-.block-newsList .ui-btn:hover .icon-dots::after {
-  transform: translateX(125%);
-  transition-delay: var(--dur-main);
-}
-
-.block-newsList .ui-btn:hover .icon-dots::before {
-  transform: translateX(-125%);
-  transition-delay: var(--dur-main);
-}
-
-.block-newsList .ui-btn:hover .icon-dots {
+.block-newsList .ui-btn:hover .dots {
+  color: #000;
   opacity: 0;
-  transform: scale(2);
-  transition-delay: 0s, var(--dur-main);
+  transform: scale(1.1);
+  transition-delay: 0s, var(--dur-main), var(--dur-main);
 }
 
 /* end style icon */

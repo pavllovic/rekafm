@@ -38,23 +38,32 @@ block content
   div(class='wrapper commerce')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='hero')
       picture
-        source
-        source
-        img(src=require('Images/hero/commerce.jpg') alt='')
+        source(srcset=`${require(`Images/hero/commerce-portrait.webp`)} 375w, ${require(`Images/hero/commerce-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/commerce.webp`)} 1280w, 
+          ${require(`Images/hero/commerce-2x.webp`)} 2560w, 
+          ${require(`Images/hero/commerce-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/commerce-portrait.webp`)} 375w, ${require(`Images/hero/commerce-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/commerce.jpg`)} 1280w, 
+          ${require(`Images/hero/commerce-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/commerce-4x.jpg`)} 4096w`
+          type='image/jpg')
+        img(src=require('Images/hero/commerce.jpg') alt='складское здание' width='1280' height='552')
       div(class='body')
         div(class='heading-sm')
           h1 Продажа и аренда
           p(class='text') Бизнесу и госкомпаниям помогаем найти помещение для офиса или склада, а инвесторам — недвижимость, которую можно будет сдавать в аренду.
-    div(class='commerceFilter js-commerceFilter')
+    div(class='filterMenu js-commerceFilter')
       div(class='top')
         h2 фильтры
         button(class='ui-btnClose' type='button' data-filter='close')
           span 
           span
       div(class='bottom')
-        div(class='tablist js-tablist tablistCommerce' id='tablist-commerce' role='tablist' aria-label='тип сделки с недвижимостью')
+        div(class='tablist js-tablist tablistCommerce' role='tablist' aria-label='тип сделки с недвижимостью')
           button(class='ui-tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-buying panel-filter-buying' id='tab-buying') Покупка
           button(class='ui-tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-rent panel-filter-rent' id='tab-rent') Аренда
         div(class='panellist panellistFilter')
@@ -62,27 +71,15 @@ block content
             include ../components/filter/filterBuy.pug
           div(class='panel' id='panel-filter-rent' tabindex='-1' role='tabpanel' aria-labelledby='tab-rent')
             include ../components/filter/filterRent.pug
-    div(class='commerceControls')
-      button(class='ui-btnFilter' type='button' data-filter='open')
-        span(class='text') фильтры
-        svg(class='icon' focusable='false' aria-hidden='true')
-          use(href='#icon-32-filter')
-    div(class='commerceResult')
-      div(class='commerceControls')
-        div(class='tablist tablistView js-tablistView' id='tablist-view' role='tablist' aria-label='вариант отображения резельтатов фильтрации')
-          div(class='ui-tabToggle')
-            button(class='tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-card' id='tab-card')
-              svg(class='icon' focusable='false' aria-hidden='true')
-                use(href='#icon-16-card')
-              span(class='text') карточками
-            button(class='tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-map' id='tab-map')
-              svg(class='icon' focusable='false' aria-hidden='true')
-                use(href='#icon-16-map')
-              span(class='text') на карте
+      //- div(class='commerceControls')
         button(class='ui-btnFilter' type='button' data-filter='open')
           span(class='text') фильтры
           svg(class='icon' focusable='false' aria-hidden='true')
             use(href='#icon-32-filter')
+    div(class='tablist js-tablist tablistCommerce' role='tablist' aria-label='тип сделки с недвижимостью')
+      button(class='ui-tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-buying panel-filter-buying' id='tab-buying') Покупка
+      button(class='ui-tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-rent panel-filter-rent' id='tab-rent') Аренда
+    div(class='commerceResult')
       div(class='panelView' id='panel-card' tabindex='0' role='tabpanel' aria-labelledby='tab-card')
         div(class='panellist panellistCommerce')
           div(class='panel active' id='panel-buying' tabindex='0' role='tabpanel' aria-labelledby='tab-buying')
@@ -104,10 +101,13 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
                   article(class='cardBuild')
@@ -124,10 +124,13 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
                 li(class='item')
@@ -145,10 +148,13 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.            
           div(class='panel' id='panel-rent' tabindex='-1' role='tabpanel' aria-labelledby='tab-rent')
@@ -170,10 +176,13 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
                   article(class='cardBuild' data-build='rent')
@@ -190,10 +199,13 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
                 li(class='item')
@@ -211,15 +223,33 @@ block content
                         span(data-build-size) <span class='prefix-rent'>от&nbsp;</span> <span>14 758</span> &nbsp;м²
                       div(class='badge-list')
                         span(class='badge') продается целиком
-                    picture 
-                      source
-                      source
-                      img(class='image' src=require(`Images/build/${1}/card/hero.jpg`))
+                    div(class='image')
+                      picture 
+                        source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                          type='image/jpg')
+                        img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
       div(class='panelView' id='panel-map' tabindex='-1' role='tabpanel' aria-labelledby='tab-map')
         div(class='commerceMap')
           include ../components/map/map.pug
+      div(class='commerceControls')
+        div(class='tablist tablistView js-tablistView' id='tablist-view' role='tablist' aria-label='вариант отображения резельтатов фильтрации')
+          div(class='ui-tabToggle')
+            button(class='tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-card' id='tab-card')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-card')
+              span(class='text') карточками
+            button(class='tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-map' id='tab-map')
+              svg(class='icon' focusable='false' aria-hidden='true')
+                use(href='#icon-16-map')
+              span(class='text') на карте
+        button(class='ui-btnFilter' type='button' data-filter='open')
+          span(class='text') фильтры
+          svg(class='icon' focusable='false' aria-hidden='true')
+            use(href='#icon-32-filter')
     section
       h2(class='visually-hidden') Работы в рамках покупки и аренды недвижимости.
       ul(class='card-list')
@@ -239,7 +269,7 @@ block content
                   use(href='#icon-72-grade')
               h3(class='heading-sm') Проводим независимую оценку
               p Проверяем надёжность конструкций, исправность внутридомовых систем и экологичность материалов. Подсчитываем, сколько ещё нужно вложить в здание.
-    include ../components/footer/footer.pug
+  include ../components/footer/footer.pug
   include ../components/modalCall/modalCall.pug
   include ../images/icons/icon-16/sprite-icon-16.svg
   include ../images/icons/icon-24/sprite-icon-24.svg

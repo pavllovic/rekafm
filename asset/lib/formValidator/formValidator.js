@@ -37,13 +37,13 @@ FormValidator.prototype = {
     return input.nextElementSibling;
   },
 
-  showErrorTooltip: function(input) {
+  showErrorTooltip: function(input, errorText) {
     const tooltip = this.getErrorTooltip(input);
     const errorMessage = tooltip.querySelector('.msg');
     const delay = getComputedStyle(errorMessage).transitionDuration.slice(0, -1) * 1000;
     this.hideErrorMessage(errorMessage);
     setTimeout(() => {
-      errorMessage.innerText = input.validationMessage;
+      errorMessage.innerText = errorText || input.validationMessage;
       this.showErrorMessage(errorMessage);
       tooltip.style = `height: ${errorMessage.offsetHeight}px; opacity: 1`;
     }, delay);

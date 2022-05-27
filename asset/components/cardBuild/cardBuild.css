@@ -13,8 +13,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 80%), rgba(10, 10, 10, 0%));
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 80%) 15%, rgba(10, 10, 10, 0%) 50%);
   content: "";
+}
+
+.cardBuild::before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("Images/filter/noise.gif");
+  content: "";
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.03;
 }
 
 .cardBuild > .body {
@@ -161,11 +175,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
   transition-duration: var(--dur-main);
   transition-property: transform;
   transition-timing-function: var(--easing-main);
+}
+
+.cardBuild .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .cardBuild:hover .image {

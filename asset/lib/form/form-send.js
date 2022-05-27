@@ -52,7 +52,7 @@ export async function sendFormJSON(form, data) {
 
   try {
     const response = await fetch(url, options);
-    if(!response.ok) throw new Error('server error');
+    if(!response.ok) throw new Error('error');
     return response;
   } catch(err) {
     throw new Error(err.message);

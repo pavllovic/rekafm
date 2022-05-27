@@ -6,6 +6,10 @@ h2 {
   margin-left: 0.4em;
 }
 
+.block-card {
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
 @media (min-width: 80em) {
   h2 {
     margin-top: calc(140 / 1em);

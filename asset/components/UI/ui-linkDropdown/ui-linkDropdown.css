@@ -53,19 +53,27 @@
 }
 
 .ui-linkDropdown:hover,
-.ui-linkDropdown.is-open {
+.ui-linkDropdown.is-open,
+[data-dropdown="btn"]:hover .ui-linkDropdown,
+[data-dropdown="btn"].is-open .ui-linkDropdown {
   color: inherit;
 }
 
 .ui-linkDropdown:hover .text,
-.ui-linkDropdown.is-open .text {
+.ui-linkDropdown.is-open .text,
+[data-dropdown="btn"]:hover .ui-linkDropdown .text,
+[data-dropdown="btn"].is-open .ui-linkDropdown .text {
   color: var(--bs-corporate, rgba(138, 140, 206, 100%));
 }
 
 .ui-linkDropdown:hover .icon,
 .ui-linkDropdown.is-open .icon,
 .ui-linkDropdown:hover .icon::after,
-.ui-linkDropdown.is-open .icon::after {
+.ui-linkDropdown.is-open .icon::after,
+[data-dropdown="btn"]:hover .ui-linkDropdown .icon,
+[data-dropdown="btn"].is-open .ui-linkDropdownn .icon,
+[data-dropdown="btn"]:hover .ui-linkDropdown .icon::after,
+[data-dropdown="btn"].is-open .ui-linkDropdown .icon::after {
   transform: rotateZ(-90deg);
 }
 

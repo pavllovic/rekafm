@@ -40,6 +40,9 @@
       <header class="header">
         <div class="navigation">
           <span class="logo">
+            <a href="./index.html">
+              <span class="visually-hidden">главная страница</span>
+            </a>
             <svg width="70" height="23" viewBox="0 0 70 23" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M2.87434 4.68307V12.3066C4.31175 13.2297 5.64103 13.5033 7.18609 13.5033C10.6354 13.5033 12.791 11.1442 12.791 7.89662C12.791 4.78565 10.8868 2.56365 7.54528 2.56365C5.64103 2.56365 3.88052 3.48652 2.87434 4.68307ZM0 0.341356H2.87434V2.1532C3.98833 0.922609 6.14413 -0.000408173 8.37163 -0.000408173C12.9707 -0.000408173 15.845 3.24718 15.845 7.79404C15.845 12.4775 12.5037 16.067 7.43763 16.067C5.7129 16.067 4.02411 15.7253 2.87434 15.0074V22.5625H0V0.341356Z" />
@@ -78,13 +81,16 @@
                 </button>
               </div>
               <ul class="menu js-menu">
-                <li class="item">
-                  <a class="ui-linkDropdown" href="javascript:void(0);" data-dropdown="btn" aria-expanded="false">
+                <li class="item" data-dropdown="btn" aria-expanded="false">
+                  <a class="ui-linkDropdown" href="./management.html">
                     <span class="text">управление недвижимостью</span>
                     <span class="icon" aria-hidden="true"></span>
                   </a>
                   <div data-dropdown="panel">
                     <ul class="submenu" data-dropdown="content">
+                      <li class="item">
+                        <a class="ui-link" href="./management.html">перейти в раздел</a>
+                      </li>
                       <li class="item">
                         <a class="ui-link" href="./audit.html">технический аудит недвижимости</a>
                       </li>
@@ -112,8 +118,8 @@
                     <span class="text">продажа и аренда</span>
                   </a>
                 </li>
-                <li class="item">
-                  <a class="ui-linkDropdown" href="javascript:void(0);" data-dropdown="btn" aria-expanded="false">
+                <li class="item" data-dropdown="btn" aria-expanded="false">
+                  <a class="ui-linkDropdown" href="javascript:void(0);">
                     <span class="text">консалтинг</span>
                     <span class="icon" aria-hidden="true"></span>
                   </a>
@@ -190,14 +196,16 @@
             <h2 class="heading">связаться с нами</h2>
             <p class="message">Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.</p>
           </div>
-          <form class="form js-order-call" name="order-call" action="https://echo.htmlacademy.ru" method="POST">
+          <form class="form js-order-call" name="order-call" action="/" method="POST">
             <label>
               <span class="visually-hidden" for="order-call-name">ваше имя</span>
-              <input class="ui-input" type="text" name="name" placeholder="ваше имя" id="order-call-name" required>
+              <input class="ui-input" type="text" name="name" pattern="[A-Za-zА-Яа-яЁё]+$" placeholder="ваше имя"
+                id="order-call-name" required>
             </label>
             <label>
               <span class="visually-hidden" for="order-call-phone">телефон</span>
-              <input class="ui-input" type="text" inputmode="numeric" name="phone" placeholder="телефон"
+              <input class="ui-input js-inputPhone" type="text" inputmode="numeric" name="phone"
+                pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="телефон"
                 id="order-call-phone" required>
             </label>
             <button class="ui-btnForward" type="submit">

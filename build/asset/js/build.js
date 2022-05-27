@@ -14,6 +14,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
 
 
 var Map = function Map(id, zoom, center) {
@@ -154,16 +163,30 @@ Map.prototype = {
       }));
     });
   },
-  addStaticPointOnMap: function addStaticPointOnMap(objectData) {
+  addObjectsInObjectCollection: function addObjectsInObjectCollection(objects) {
     var _this8 = this;
+
+    objects.forEach(function (object) {
+      _this8.addObjectInObjectCollection(object);
+    });
+  },
+  addStaticPointOnMap: function addStaticPointOnMap(objectData) {
+    var _this9 = this;
 
     window.ymaps.ready(function () {
       var point = new window.ymaps.Placemark(objectData.coords, {}, {
         hideIconOnBalloonOpen: false,
-        iconLayout: _this8.StaticPointLayout
+        iconLayout: _this9.StaticPointLayout
       });
 
-      _this8.map.geoObjects.add(point);
+      _this9.map.geoObjects.add(point);
+    });
+  },
+  updateCenterMap: function updateCenterMap(coords, zoom) {
+    var _this10 = this;
+
+    window.ymaps.ready(function () {
+      _this10.map.setCenter(coords, zoom, 'yandex#map');
     });
   }
 };
@@ -200,8 +223,8 @@ OwnCarousel.prototype = {
   updateActivePicker: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.updateActivePicker,
   createPickers: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createPickers,
   activateSlide: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.activateSlide,
-  createTabsMap: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createTabsMap,
-  setTabObserver: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.setTabObserver
+  createTabsMap: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createTabsMap // setTabObserver: lib.setTabObserver,
+
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OwnCarousel);
 
@@ -256,7 +279,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "openGallery": () => (/* binding */ openGallery),
 /* harmony export */   "resetSlide": () => (/* binding */ resetSlide),
 /* harmony export */   "setListeners": () => (/* binding */ setListeners),
-/* harmony export */   "setTabObserver": () => (/* binding */ setTabObserver),
 /* harmony export */   "translateSlide": () => (/* binding */ translateSlide),
 /* harmony export */   "updateActivePicker": () => (/* binding */ updateActivePicker),
 /* harmony export */   "updateSize": () => (/* binding */ updateSize)
@@ -365,38 +387,32 @@ var init = function init() {
 
   if (this.tabs) {
     this.createTabsMap();
-    this.activeThumb = this.tabs.querySelector('[data-gallery="tab"]');
-    this.setTabObserver();
+    this.activeThumb = this.tabs.querySelector('[data-gallery="tab"]'); // this.setTabObserver();
   }
-};
-var setTabObserver = function setTabObserver() {
-  var options = {
-    root: this.tabs,
-    rootMargin: '0px',
-    threshold: 1.0
-  };
+}; // export const setTabObserver = function() {
+//   const options = {
+//     root: this.tabs,
+//     rootMargin: '0px',
+//     threshold: 1.0,
+//   };
+//   const callback = function(entries) {
+//     const entry = entries[0];
+//     const target = entry.target;
+//     const parentRect = target.parentElement.getBoundingClientRect();
+//     const topDiff = entry.intersectionRect.top - entry.rootBounds.top;
+//     const bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
+//     if(target.nextElementSibling && (bottomDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${-48}px)`;
+//     }
+//     if(target.previousElementSibling && (topDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${48}px)`;
+//     }
+//   };
+//   this.tabObserver = new IntersectionObserver(callback, options);
+//   const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
+//   targets.forEach((target) => this.tabObserver.observe(target));
+// };
 
-  var callback = function callback(entries) {
-    var entry = entries[0];
-    var target = entry.target; // const parentRect = target.parentElement.getBoundingClientRect();
-
-    var topDiff = entry.intersectionRect.top - entry.rootBounds.top;
-    var bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
-
-    if (target.nextElementSibling && bottomDiff < 48) {// target.parentElement.style.transform = `translateY(${-48}px)`;
-    }
-
-    if (target.previousElementSibling && topDiff < 48) {// target.parentElement.style.transform = `translateY(${48}px)`;
-    } // console.log(entries);
-    // console.log(observer);
-    // console.log(parentRect);
-    // console.log(bottomDiff);
-
-  };
-
-  this.tabObserver = new IntersectionObserver(callback, options); // const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
-  // targets.forEach((target) => this.tabObserver.observe(target));
-};
 var createTabsMap = function createTabsMap() {
   var _this = this;
 
@@ -639,28 +655,28 @@ var setListeners = function setListeners() {
   }
 };
 var openGallery = function openGallery() {
-  var _this3 = this;
-
   this.gallery.style.setProperty('--g-width', window.screen.width);
   document.body.classList.add('open-gallery');
-  this.step = window.screen.width;
-  setTimeout(function () {
-    _this3.moveSlide(0);
-  }, 600);
+  this.step = window.screen.width; // setTimeout(() => {
+  //   this.moveSlide(0);
+  // }, 0);
+
+  this.moveSlide(0);
 };
 var closeGallery = function closeGallery() {
-  var _this4 = this;
+  var _this3 = this;
 
   this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
   this.gallery.classList.add('close');
   document.body.classList.remove('open-gallery');
   setTimeout(function () {
-    _this4.gallery.classList.remove('close');
+    _this3.gallery.classList.remove('close'); // this.step = this.imgSize + (this.gapSize / this.itemSize)
+    //   * this.imgSize;
+    // this.moveSlide(0);
 
-    _this4.step = _this4.imgSize + _this4.gapSize / _this4.itemSize * _this4.imgSize;
-
-    _this4.moveSlide(0);
   }, 600);
+  this.step = this.imgSize + this.gapSize / this.itemSize * this.imgSize;
+  this.moveSlide(0);
   window.scrollTo({
     top: 0,
     behavior: 'instant'
@@ -683,17 +699,17 @@ var updateActivePicker = function updateActivePicker() {
   this.activePickerItem = this.pickerItems[num];
 };
 var activateSlide = function activateSlide(target) {
-  var num = this.tabsMap.get(target);
-  this.tabObserver.observe(target);
-  this.activeThumb.classList.remove('active');
-  this.tabObserver.unobserve(this.activeThumb);
+  var num = this.tabsMap.get(target); // this.tabObserver.observe(target);
+
+  this.activeThumb.classList.remove('active'); // this.tabObserver.unobserve(this.activeThumb);
+
   target.classList.add('active');
   this.activeThumb = target;
   this.index = num + 1;
   this.translateSlide();
 };
 var resetSlide = function resetSlide(step) {
-  var _this5 = this;
+  var _this4 = this;
 
   // reset slide, to make it loop
   if (this.index + step < 1) this.index = this.numberOfItem + 1;
@@ -708,10 +724,10 @@ var resetSlide = function resetSlide(step) {
   // it will not work properly
 
   setTimeout(function () {
-    _this5.carousel.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
-    _this5.index += step;
+    _this4.carousel.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+    _this4.index += step;
 
-    _this5.translateSlide();
+    _this4.translateSlide();
   }, 20);
 };
 var moveSlide = function moveSlide(step) {
@@ -5589,10 +5605,13 @@ var __webpack_exports__ = {};
   !*** ./asset/build.js ***!
   \************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var Styles_build_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Styles/build.css */ "./asset/styles/build.css");
-/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
-/* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
-/* harmony import */ var _components_ownCarousel_ownCarousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ownCarousel/ownCarousel */ "./asset/components/ownCarousel/ownCarousel.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var Styles_build_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Styles/build.css */ "./asset/styles/build.css");
+/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
+/* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
+/* harmony import */ var _components_ownCarousel_ownCarousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ownCarousel/ownCarousel */ "./asset/components/ownCarousel/ownCarousel.js");
+
 
 
 
@@ -5600,27 +5619,37 @@ __webpack_require__.r(__webpack_exports__);
 
 var initOwnCarousel = function initOwnCarousel() {
   var ownCarouselElem = document.querySelector('.js-own-carousel__container');
-  var ownCarousel = new _components_ownCarousel_ownCarousel__WEBPACK_IMPORTED_MODULE_3__["default"](ownCarouselElem, {
+  var ownCarousel = new _components_ownCarousel_ownCarousel__WEBPACK_IMPORTED_MODULE_4__["default"](ownCarouselElem, {
     itemPerRow: 1,
     itemSize: 100,
-    // responsive: {
-    //   1000: [1, 100],
-    // },
     autoplay: 10000,
     nav: true,
     draggable: true
   }, 'X');
   ownCarousel.init();
+  window.ownCarousel = ownCarousel;
 };
 
 initOwnCarousel();
-var showListElem = document.querySelector('.js-list-feature');
-var showList = new _components_showList_showList__WEBPACK_IMPORTED_MODULE_2__["default"](showListElem);
-showList.init();
-var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_1__["default"]('ymap', 17, [44.898317, 37.354456]);
-map.init();
-map.createStaticPointLayout();
-map.addStaticPointOnMap({
+
+var initFeatureList = function initFeatureList() {
+  var featureListElem = document.querySelector('.js-list-feature');
+  var featureList = new _components_showList_showList__WEBPACK_IMPORTED_MODULE_3__["default"](featureListElem);
+  featureList.init();
+  window.featureList = featureList;
+};
+
+initFeatureList();
+
+var initMap = function initMap() {
+  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_2__["default"]('ymap', 17, [44.898317, 37.354456]);
+  map.init();
+  map.createStaticPointLayout();
+  window.map = map;
+};
+
+initMap();
+window.map.addStaticPointOnMap({
   coords: [44.898317, 37.354456]
 });
 

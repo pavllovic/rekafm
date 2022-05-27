@@ -8,6 +8,10 @@ h2 {
   margin-bottom: 0.6em;
   margin-left: 0.4em;
 }
+.block-card {
+  background-color: rgba(255, 255, 255, 100%);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
 @media (min-width: 80em) {
   h2 {
     margin-top: calc(140 / 1em);

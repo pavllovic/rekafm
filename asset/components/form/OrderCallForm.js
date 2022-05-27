@@ -6,11 +6,9 @@ const OrderCallForm = lib.form;
 
 OrderCallForm.prototype = {
   constructor: OrderCallForm,
-  // init: lib.init,
   init: function() {
     lib.init.call(this);
     this.wrap = document.querySelector('.js-modal-call');
-    console.log(this);
   },
   setListeners: lib.setListeners,
   destroy: lib.destroy,
@@ -23,14 +21,11 @@ OrderCallForm.prototype = {
   hideFormResposne: lib.hideFormResposne,
   handleEvent: lib.handleEvent,
   sendFormHandler: handlers.sendFormHandler,
-  // onSuccessHandler: handlers.onSuccessHandler,
   onSuccessHandler: function() {
     this.wrap.classList.add('success-handler');
   },
-  // onErrorHandler: handlers.onErrorHandler,
   onErrorHandler: function() {
-    // this.wrap.classList.add('error-handler');
-    this.wrap.classList.add('success-handler');
+    this.wrap.classList.add('error-handler');
   },
 };
 

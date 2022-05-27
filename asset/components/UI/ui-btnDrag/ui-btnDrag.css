@@ -1,8 +1,72 @@
 /* --- style ui-btnDrag --- */
 .ui-btnDrag {
-  width: 5.6rem;
-  height: 5.6rem;
+  --x: 0;
+  --y: 0;
+
+  position: fixed;
+  top: calc(var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+  display: flex;
+  width: 3.5em;
+  height: 3.5em;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--bs-corporate-rgb), 0);
+  cursor: none;
+  opacity: 0.5;
+  pointer-events: none;
+  transform: scale(0) translateX(-50%) translateY(-50%);
+  transform-origin: center;
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: transform, opacity;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+}
+
+.ui-btnDrag.show {
+  opacity: 1;
+  transform: scale(1) translateX(-50%) translateY(-50%);
+}
+
+.ui-btnDrag::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--bs-corporate-rgb), 0.64);
   border-radius: 50%;
+  box-shadow: 0 8px 24px 0 rgba(23, 23, 23, 32%);
+  content: "";
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnDrag.active::before {
+  transform: scale(0.875);
+}
+
+.ui-btnDrag .icon {
+  width: 1em;
+  height: 1em;
+  transform: rotateZ(-90deg);
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.ui-btnDrag .icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.ui-btnDrag.active .icon:first-child {
+  transform: translateX(-0.25em) rotateZ(-90deg);
+}
+
+.ui-btnDrag.active .icon:last-child {
+  transform: translateX(0.25em) rotateZ(-90deg);
 }
 
 /* --- end style ui-btnDrag --- */

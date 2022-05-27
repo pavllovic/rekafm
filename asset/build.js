@@ -8,26 +8,35 @@ const initOwnCarousel = function() {
   const ownCarousel = new OwnCarousel(ownCarouselElem, {
     itemPerRow: 1,
     itemSize: 100,
-    // responsive: {
-    //   1000: [1, 100],
-    // },
     autoplay: 10000,
     nav: true,
     draggable: true,
   }, 'X');
   ownCarousel.init();
+  window.ownCarousel = ownCarousel;
 };
 
 initOwnCarousel();
 
-const showListElem = document.querySelector('.js-list-feature');
-const showList = new ShowList(showListElem);
-showList.init();
+const initFeatureList = function() {
+  const featureListElem = document.querySelector('.js-list-feature');
+  const featureList = new ShowList(featureListElem);
+  featureList.init();
+  window.featureList = featureList;
+};
 
-const map = new Map('ymap', 17, [44.898317, 37.354456]);
-map.init();
-map.createStaticPointLayout();
-map.addStaticPointOnMap({ coords: [44.898317, 37.354456] });
+initFeatureList();
+
+const initMap = function() {
+  const map = new Map('ymap', 17, [44.898317, 37.354456]);
+  map.init();
+  map.createStaticPointLayout();
+  window.map = map;
+};
+
+initMap();
+
+window.map.addStaticPointOnMap({ coords: [44.898317, 37.354456] });
 
 if (module.hot) {
   module.hot.accept();

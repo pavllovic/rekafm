@@ -10,7 +10,9 @@ const initCardTariff = () => {
   });
 };
 
-initCardTariff();
+window.addEventListener('load', () => {
+  initCardTariff();
+});
 
 const carouselTariffElem = document.querySelector('.js-carousel');
 

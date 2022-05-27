@@ -2217,11 +2217,10 @@ var initCarouselNews = function initCarouselNews() {
   var carouselNewsElem = document.querySelector('.js-carousel');
   var carouselNews = new _components_carousel_carousel_js__WEBPACK_IMPORTED_MODULE_1__["default"](carouselNewsElem);
   carouselNews.init();
-  return carouselNews;
+  window.carouselNews = carouselNews;
 };
 
 initCarouselNews();
-window.initCarouselNews = initCarouselNews;
 
 if (false) {}
 })();

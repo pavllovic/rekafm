@@ -33,7 +33,7 @@
   left: 0;
   width: 1.25em;
   height: 1.25em;
-  border-width: 2px;
+  border-width: calc(var(--border-size) * 2);
   border-style: solid;
   border-color: rgba(255, 255, 255, 0%);
   background-clip: padding-box;
@@ -52,13 +52,9 @@
 .ui-toggle label {
   margin-left: 0.5em;
   cursor: pointer;
+  font-size: var(--fs-body);
+  line-height: 1;
   text-transform: lowercase;
-}
-
-@media (min-width: 160em) {
-  .ui-toggle span {
-    border-width: 4px;
-  }
 }
 
 /* --- end style ui-link --- */

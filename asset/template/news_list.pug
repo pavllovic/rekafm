@@ -35,16 +35,19 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     section(class='block-newsList')
       header(class='top')
         h1(class='heading') наши новости
       div(class='news-list')
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${2}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/2/card/1.webp`)} 400w, ${require(`Images/news/2/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/2/card/1.jpg`)} 400w, ${require(`Images/news/2/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/2/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -52,11 +55,13 @@ block content
           a(class='link' href='./news.html')
             span(class='visually-hidden') перейти на страницу новости
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${1}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/1/card/1.webp`)} 400w, ${require(`Images/news/1/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/1/card/1.jpg`)} 400w, ${require(`Images/news/1/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/1/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -64,11 +69,13 @@ block content
           a(class='link' href='./news.html')
             span(class='visually-hidden') перейти на страницу новости
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${3}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/3/card/1.webp`)} 400w, ${require(`Images/news/3/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/3/card/1.jpg`)} 400w, ${require(`Images/news/3/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/3/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -76,11 +83,13 @@ block content
           a(class='link' href='./news.html')
             span(class='visually-hidden') перейти на страницу новости
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${4}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/4/card/1.webp`)} 400w, ${require(`Images/news/4/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/4/card/1.jpg`)} 400w, ${require(`Images/news/4/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/4/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -88,11 +97,13 @@ block content
           a(class='link' href='./news.html')
             span(class='visually-hidden') перейти на страницу новости
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${5}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/5/card/1.webp`)} 400w, ${require(`Images/news/5/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/5/card/1.jpg`)} 400w, ${require(`Images/news/5/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/5/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -100,11 +111,13 @@ block content
           a(class='link' href='./news.html')
             span(class='visually-hidden') перейти на страницу новости
         article(class='cardNews')
-          // add webp and sizes
-          picture(class='image')
-            source
-            source
-            img(src=require(`Images/news/${6}/card/1.jpg`))
+          div(class='image')
+            picture
+              source(srcset=`${require(`Images/news/6/card/1.webp`)} 400w, ${require(`Images/news/6/card/1-2x.webp`)} 800w`
+                type='image/webp')
+              source(srcset=`${require(`Images/news/6/card/1.jpg`)} 400w, ${require(`Images/news/6/card/1-2x.jpg`)} 800w`
+                type='image/jpg')
+              img(src=require('Images/news/6/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
           div(class='body')
             div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
             h3(class='title') Заголовок новости
@@ -115,7 +128,8 @@ block content
         button(class='ui-btn')
           span(class='text') показать еще
           span(class='icon')
-            span(class='icon-dots' aria-hidden='true')
+            span(class='dots') &#183;&#183;&#183;
+            //- span(class='icon-dots' aria-hidden='true')
             span(class='icon-go')
               svg(focusable='false' aria-hidden='true')
                 use(href='#icon-16-go-hover')

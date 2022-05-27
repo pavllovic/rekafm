@@ -38,13 +38,10 @@
 
 .cardNews .image + .body {
   position: absolute;
+  z-index: 2;
   bottom: 0;
   left: 0;
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-}
-
-.cardNews .image + .body::after {
-  background: linear-gradient(to top, rgba(0, 0, 0, 72%), rgba(0, 0, 0, 0%));
 }
 
 .cardNews .body:only-child::after {
@@ -76,20 +73,44 @@
 }
 
 .cardNews .title {
+  max-width: 11em;
   margin-bottom: 0.375em;
   font-size: var(--fs-card-title);
   line-height: 1;
 }
 
 .cardNews .text {
-  max-width: 28.6em;
+  max-width: 25.14em;
   font-size: var(--fs-text-secondary);
   line-height: 1.4;
 }
 
 .cardNews .image {
+  position: relative;
   width: 100%;
   height: 33.75em;
+}
+
+.cardNews .image::after,
+.cardNews .image::before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.cardNews .image::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 72%) 16%, rgba(0, 0, 0, 0%) 50%);
+}
+
+.cardNews .image::before {
+  background-image: url("Images/filter/noise.gif");
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.03;
 }
 
 .cardNews .image img {
@@ -97,7 +118,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   transform-style: preserve-3d;
   transition-duration: 0.7s;
   transition-property: transform;
@@ -110,6 +131,7 @@
 
 .cardNews .link {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;

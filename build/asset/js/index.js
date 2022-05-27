@@ -56,7 +56,6 @@ OrderCallForm.prototype = {
   init: function init() {
     Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.init.call(this);
     this.wrap = document.querySelector('.js-modal-call');
-    console.log(this);
   },
   setListeners: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.setListeners,
   destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.destroy,
@@ -69,14 +68,11 @@ OrderCallForm.prototype = {
   hideFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.hideFormResposne,
   handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.handleEvent,
   sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_1__.sendFormHandler,
-  // onSuccessHandler: handlers.onSuccessHandler,
   onSuccessHandler: function onSuccessHandler() {
     this.wrap.classList.add('success-handler');
   },
-  // onErrorHandler: handlers.onErrorHandler,
   onErrorHandler: function onErrorHandler() {
-    // this.wrap.classList.add('error-handler');
-    this.wrap.classList.add('success-handler');
+    this.wrap.classList.add('error-handler');
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrderCallForm);
@@ -112,8 +108,8 @@ OwnCarousel.prototype = {
   updateActivePicker: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.updateActivePicker,
   createPickers: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createPickers,
   activateSlide: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.activateSlide,
-  createTabsMap: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createTabsMap,
-  setTabObserver: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.setTabObserver
+  createTabsMap: Lib_ownCarousel_customOwnCarousel__WEBPACK_IMPORTED_MODULE_0__.createTabsMap // setTabObserver: lib.setTabObserver,
+
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OwnCarousel);
 
@@ -296,7 +292,7 @@ FormValidator.prototype = {
   getErrorTooltip: function getErrorTooltip(input) {
     return input.nextElementSibling;
   },
-  showErrorTooltip: function showErrorTooltip(input) {
+  showErrorTooltip: function showErrorTooltip(input, errorText) {
     var _this2 = this;
 
     var tooltip = this.getErrorTooltip(input);
@@ -304,7 +300,7 @@ FormValidator.prototype = {
     var delay = getComputedStyle(errorMessage).transitionDuration.slice(0, -1) * 1000;
     this.hideErrorMessage(errorMessage);
     setTimeout(function () {
-      errorMessage.innerText = input.validationMessage;
+      errorMessage.innerText = errorText || input.validationMessage;
 
       _this2.showErrorMessage(errorMessage);
 
@@ -730,7 +726,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "openGallery": () => (/* binding */ openGallery),
 /* harmony export */   "resetSlide": () => (/* binding */ resetSlide),
 /* harmony export */   "setListeners": () => (/* binding */ setListeners),
-/* harmony export */   "setTabObserver": () => (/* binding */ setTabObserver),
 /* harmony export */   "translateSlide": () => (/* binding */ translateSlide),
 /* harmony export */   "updateActivePicker": () => (/* binding */ updateActivePicker),
 /* harmony export */   "updateSize": () => (/* binding */ updateSize)
@@ -839,38 +834,32 @@ var init = function init() {
 
   if (this.tabs) {
     this.createTabsMap();
-    this.activeThumb = this.tabs.querySelector('[data-gallery="tab"]');
-    this.setTabObserver();
+    this.activeThumb = this.tabs.querySelector('[data-gallery="tab"]'); // this.setTabObserver();
   }
-};
-var setTabObserver = function setTabObserver() {
-  var options = {
-    root: this.tabs,
-    rootMargin: '0px',
-    threshold: 1.0
-  };
+}; // export const setTabObserver = function() {
+//   const options = {
+//     root: this.tabs,
+//     rootMargin: '0px',
+//     threshold: 1.0,
+//   };
+//   const callback = function(entries) {
+//     const entry = entries[0];
+//     const target = entry.target;
+//     const parentRect = target.parentElement.getBoundingClientRect();
+//     const topDiff = entry.intersectionRect.top - entry.rootBounds.top;
+//     const bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
+//     if(target.nextElementSibling && (bottomDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${-48}px)`;
+//     }
+//     if(target.previousElementSibling && (topDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${48}px)`;
+//     }
+//   };
+//   this.tabObserver = new IntersectionObserver(callback, options);
+//   const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
+//   targets.forEach((target) => this.tabObserver.observe(target));
+// };
 
-  var callback = function callback(entries) {
-    var entry = entries[0];
-    var target = entry.target; // const parentRect = target.parentElement.getBoundingClientRect();
-
-    var topDiff = entry.intersectionRect.top - entry.rootBounds.top;
-    var bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
-
-    if (target.nextElementSibling && bottomDiff < 48) {// target.parentElement.style.transform = `translateY(${-48}px)`;
-    }
-
-    if (target.previousElementSibling && topDiff < 48) {// target.parentElement.style.transform = `translateY(${48}px)`;
-    } // console.log(entries);
-    // console.log(observer);
-    // console.log(parentRect);
-    // console.log(bottomDiff);
-
-  };
-
-  this.tabObserver = new IntersectionObserver(callback, options); // const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
-  // targets.forEach((target) => this.tabObserver.observe(target));
-};
 var createTabsMap = function createTabsMap() {
   var _this = this;
 
@@ -1113,28 +1102,28 @@ var setListeners = function setListeners() {
   }
 };
 var openGallery = function openGallery() {
-  var _this3 = this;
-
   this.gallery.style.setProperty('--g-width', window.screen.width);
   document.body.classList.add('open-gallery');
-  this.step = window.screen.width;
-  setTimeout(function () {
-    _this3.moveSlide(0);
-  }, 600);
+  this.step = window.screen.width; // setTimeout(() => {
+  //   this.moveSlide(0);
+  // }, 0);
+
+  this.moveSlide(0);
 };
 var closeGallery = function closeGallery() {
-  var _this4 = this;
+  var _this3 = this;
 
   this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
   this.gallery.classList.add('close');
   document.body.classList.remove('open-gallery');
   setTimeout(function () {
-    _this4.gallery.classList.remove('close');
+    _this3.gallery.classList.remove('close'); // this.step = this.imgSize + (this.gapSize / this.itemSize)
+    //   * this.imgSize;
+    // this.moveSlide(0);
 
-    _this4.step = _this4.imgSize + _this4.gapSize / _this4.itemSize * _this4.imgSize;
-
-    _this4.moveSlide(0);
   }, 600);
+  this.step = this.imgSize + this.gapSize / this.itemSize * this.imgSize;
+  this.moveSlide(0);
   window.scrollTo({
     top: 0,
     behavior: 'instant'
@@ -1157,17 +1146,17 @@ var updateActivePicker = function updateActivePicker() {
   this.activePickerItem = this.pickerItems[num];
 };
 var activateSlide = function activateSlide(target) {
-  var num = this.tabsMap.get(target);
-  this.tabObserver.observe(target);
-  this.activeThumb.classList.remove('active');
-  this.tabObserver.unobserve(this.activeThumb);
+  var num = this.tabsMap.get(target); // this.tabObserver.observe(target);
+
+  this.activeThumb.classList.remove('active'); // this.tabObserver.unobserve(this.activeThumb);
+
   target.classList.add('active');
   this.activeThumb = target;
   this.index = num + 1;
   this.translateSlide();
 };
 var resetSlide = function resetSlide(step) {
-  var _this5 = this;
+  var _this4 = this;
 
   // reset slide, to make it loop
   if (this.index + step < 1) this.index = this.numberOfItem + 1;
@@ -1182,10 +1171,10 @@ var resetSlide = function resetSlide(step) {
   // it will not work properly
 
   setTimeout(function () {
-    _this5.carousel.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
-    _this5.index += step;
+    _this4.carousel.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+    _this4.index += step;
 
-    _this5.translateSlide();
+    _this4.translateSlide();
   }, 20);
 };
 var moveSlide = function moveSlide(step) {
@@ -7710,7 +7699,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import CustomCursor from './components/customCursor/customCursor.js';
+// const initCarouselCustomCursor = () => {
+//   const cursorParent = document.querySelector('.js-own-carousel__container');
+//   const area = cursorParent;
+//   const carouselCustomCursor = new CustomCursor(cursorParent, area);
+//   carouselCustomCursor.init();
+//   window.carouselCustomCursor = carouselCustomCursor;
+// };
+// initCarouselCustomCursor();
 
 var initFormOrderCall = function initFormOrderCall() {
   var formElem = document.querySelector('.js-order-call');
@@ -7718,10 +7715,8 @@ var initFormOrderCall = function initFormOrderCall() {
   var form = new _components_form_OrderCallForm_js__WEBPACK_IMPORTED_MODULE_4__["default"](formElem);
   formValidator.init();
   form.init();
-  return {
-    form: form,
-    formValidator: formValidator
-  };
+  window.orderCallForm = form;
+  window.orderCallForm.validator = formValidator;
 };
 
 var initOwnCarousel = function initOwnCarousel() {
@@ -7730,30 +7725,27 @@ var initOwnCarousel = function initOwnCarousel() {
     itemPerRow: 2,
     itemSize: 50,
     responsive: {
-      1000: [1, 100] // 800: [1, 100],
-
+      600: [2, 50],
+      300: [1, 100]
     },
     autoplay: 10000,
     nav: true,
     draggable: true
   }, 'X');
   ownCarousel.init();
-  return ownCarousel;
+  window.ownCarousel = ownCarousel;
 };
 
 var initCarouselNews = function initCarouselNews() {
   var carouselNewsElem = document.querySelector('.js-carousel');
   var carouselNews = new _components_carousel_carousel_js__WEBPACK_IMPORTED_MODULE_1__["default"](carouselNewsElem);
   carouselNews.init();
-  return carouselNews;
+  window.carouselNews = carouselNews;
 };
 
 initFormOrderCall();
 initOwnCarousel();
 initCarouselNews();
-window.initCarouselNews = initCarouselNews;
-window.initOwnCarousel = initOwnCarousel;
-window.initFormOrderCall = initFormOrderCall;
 
 if (false) {}
 })();

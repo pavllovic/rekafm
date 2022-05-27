@@ -51,7 +51,8 @@ RangeBarInt.prototype = {
     this.inputFrom.value = this.valueFrom;
     this.inputFrom.innerText = this.output === 'float'
       ? this.setFloatValue(this.valueFrom)
-      : this.valueFrom;
+      // : this.valueFrom;
+      : new Intl.NumberFormat('ru-RU').format(this.valueFrom);
   },
 
   updateElementsTo: function() {
@@ -59,7 +60,8 @@ RangeBarInt.prototype = {
     this.inputTo.value = this.valueTo;
     this.inputTo.innerText = this.output === 'float'
       ? this.setFloatValue(this.valueTo)
-      : this.valueTo;
+      // : this.valueTo;
+      : new Intl.NumberFormat('ru-RU').format(this.valueTo);
   },
 
   setFloatValue: function(value) {

@@ -12,6 +12,7 @@
 @import "../components/UI/ui-btnSecondary/ui-btnSecondary.css";
 @import "../components/UI/ui-btnArrow/ui-btnArrow.css";
 @import "../components/UI/ui-btnClose/ui-btnClose.css";
+@import "../components/UI/ui-btnDrag/ui-btnDrag.css";
 @import "../components/UI/ui-btnOpenMenu/ui-btnOpenMenu.css";
 @import "../components/UI/ui-btnCloseMenu/ui-btnCloseMenu.css";
 @import "../components/UI/ui-btnDownload/ui-btnDownload.css";
@@ -73,6 +74,7 @@ html {
 }
 
 body {
+  position: relative;
   min-width: 320px;
   height: 100%;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
@@ -96,16 +98,21 @@ h2 {
   min-height: 100%;
   flex-direction: column;
   align-items: stretch;
-  background-color: #fff;
 }
 
-.footer {
-  margin-top: auto;
+@media (min-width: 80em) {
+  body > .footer {
+    position: sticky;
+    z-index: -1;
+    bottom: 0;
+    margin-top: auto;
+  }
 }
 
 .block {
   padding-right: 1em;
   padding-left: 1em;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
 @media (min-width: 80em) {

@@ -150,7 +150,8 @@
 }
 
 .own-carousel__tabs {
-	padding: 0.75em;
+	/* padding: 0.75em; */
+	width: 4em;
 	height: 100%;
 	overflow: hidden;
 	position: relative;
@@ -177,6 +178,27 @@
 .own-carousel__tabs-inner {
 	display: flex;
 	flex-direction: column;
+	overflow: auto;
+	padding: 0.75em;
+	scrollbar-color: rgba(255,255,255,0) rgba(255,255,255,0);
+  scrollbar-width: thin;
+}
+
+.open-gallery .own-carousel__tabs-inner {
+	height: 100%;
+}
+
+.own-carousel__tabs-inner::-webkit-scrollbar {
+  width: 0;
+  appearance: none;
+}
+
+.own-carousel__tabs-inner::-webkit-scrollbar-track {
+  background-color: rgba(255, 255%, 255%, 0%);
+}
+
+.own-carousel__tabs-inner::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255%, 255%, 0%);
 }
 
 .own-carousel__tabs .own-carousel {
@@ -199,7 +221,6 @@
 	border: none;
 	background-color: rgba(255,255,255,0);
 	z-index:1;
-	
 }
 
 .own-carousel__tabs :not(button).ui-thumb:not(:last-child) {
@@ -220,6 +241,10 @@
 	opacity: 0;
 	transform: scale(0.5);
 	pointer-events: none;
+}
+
+.own-carousel__container  .ui-btnDrag {
+	z-index: 10;
 }
 
 @media(min-width: 80em) {

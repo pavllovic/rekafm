@@ -38,6 +38,7 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='block-content')
       div(class='build-nav')
         a(class='ui-link' href='./commerce.html' alt='список новостей')
@@ -51,31 +52,132 @@ block content
               div(class='own-carousel')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/1.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/1.webp`)} 1280w, ${require(`Images/build/1/slides/1-2x.webp`)} 2560w, ${require(`Images/build/1/slides/1-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/1.jpg`)} 1280w, ${require(`Images/build/1/slides/1-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/1-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/1.jpg') width='832' height='656' alt='складское здание')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/2.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/2.webp`)} 1280w, ${require(`Images/build/1/slides/2-2x.webp`)} 2560w, ${require(`Images/build/1/slides/2-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/2.jpg`)} 1280w, ${require(`Images/build/1/slides/2-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/2-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/2.jpg') width='832' height='656' alt='территория возле склада')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/3.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/3.webp`)} 1280w, ${require(`Images/build/1/slides/3-2x.webp`)} 2560w, ${require(`Images/build/1/slides/3-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/3.jpg`)} 1280w, ${require(`Images/build/1/slides/3-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/3-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/3.jpg') width='832' height='656' alt='территория возле склада')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/4.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/4.webp`)} 1280w, ${require(`Images/build/1/slides/4-2x.webp`)} 2560w, ${require(`Images/build/1/slides/4-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/4.jpg`)} 1280w, ${require(`Images/build/1/slides/4-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/4-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/4.jpg') width='832' height='656' alt='территория возле склада')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/5.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/5.webp`)} 1280w, ${require(`Images/build/1/slides/5-2x.webp`)} 2560w, ${require(`Images/build/1/slides/5-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/5.jpg`)} 1280w, ${require(`Images/build/1/slides/5-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/5-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/5.jpg') width='832' height='656' alt='территория возле склада')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/6.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/6.webp`)} 1280w, ${require(`Images/build/1/slides/6-2x.webp`)} 2560w, ${require(`Images/build/1/slides/6-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/6.jpg`)} 1280w, ${require(`Images/build/1/slides/6-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/6-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/6.jpg') width='832' height='656' alt='складское здание')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/7.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/7.webp`)} 1280w, ${require(`Images/build/1/slides/7-2x.webp`)} 2560w, ${require(`Images/build/1/slides/7-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/7.jpg`)} 1280w, ${require(`Images/build/1/slides/7-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/7-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/7.jpg') width='832' height='656' alt='офисноое помещение')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/8.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/8.webp`)} 1280w, ${require(`Images/build/1/slides/8-2x.webp`)} 2560w, ${require(`Images/build/1/slides/8-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/8.jpg`)} 1280w, ${require(`Images/build/1/slides/8-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/8-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/8.jpg') width='832' height='656' alt='офисноое помещение')
                 div(class='own-carousel__item' aria-roledescription='slide')
                   div(class='image')
-                    img(src=require('Images/build/1/slides/9.jpg'))
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/9.webp`)} 1280w, ${require(`Images/build/1/slides/9-2x.webp`)} 2560w, ${require(`Images/build/1/slides/9-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/9.jpg`)} 1280w, ${require(`Images/build/1/slides/9-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/9-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/9.jpg') width='832' height='656' alt='складское помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/6.webp`)} 1280w, ${require(`Images/build/1/slides/6-2x.webp`)} 2560w, ${require(`Images/build/1/slides/6-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/6.jpg`)} 1280w, ${require(`Images/build/1/slides/6-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/6-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/6.jpg') width='832' height='656' alt='складское здание')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/7.webp`)} 1280w, ${require(`Images/build/1/slides/7-2x.webp`)} 2560w, ${require(`Images/build/1/slides/7-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/7.jpg`)} 1280w, ${require(`Images/build/1/slides/7-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/7-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/7.jpg') width='832' height='656' alt='офисноое помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/8.webp`)} 1280w, ${require(`Images/build/1/slides/8-2x.webp`)} 2560w, ${require(`Images/build/1/slides/8-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/8.jpg`)} 1280w, ${require(`Images/build/1/slides/8-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/8-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/8.jpg') width='832' height='656' alt='офисноое помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/9.webp`)} 1280w, ${require(`Images/build/1/slides/9-2x.webp`)} 2560w, ${require(`Images/build/1/slides/9-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/9.jpg`)} 1280w, ${require(`Images/build/1/slides/9-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/9-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/9.jpg') width='832' height='656' alt='складское помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/7.webp`)} 1280w, ${require(`Images/build/1/slides/7-2x.webp`)} 2560w, ${require(`Images/build/1/slides/7-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/7.jpg`)} 1280w, ${require(`Images/build/1/slides/7-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/7-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/7.jpg') width='832' height='656' alt='офисноое помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/8.webp`)} 1280w, ${require(`Images/build/1/slides/8-2x.webp`)} 2560w, ${require(`Images/build/1/slides/8-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/8.jpg`)} 1280w, ${require(`Images/build/1/slides/8-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/8-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/8.jpg') width='832' height='656' alt='офисноое помещение')
+                div(class='own-carousel__item' aria-roledescription='slide')
+                  div(class='image')
+                    picture 
+                      source(srcset=`${require(`Images/build/1/slides/9.webp`)} 1280w, ${require(`Images/build/1/slides/9-2x.webp`)} 2560w, ${require(`Images/build/1/slides/9-4x.webp`)} 4096w`
+                        type='image/webp')
+                      source(srcset=`${require(`Images/build/1/slides/9.jpg`)} 1280w, ${require(`Images/build/1/slides/9-2x.jpg`)} 2560w, ${require(`Images/build/1/slides/9-4x.jpg`)} 4096w`
+                        type='image/jpg')
+                      img(src=require('Images/build/1/slides/9.jpg') width='832' height='656' alt='складское помещение')
             div(class='own-carousel__picker')
             div(class='controls')
               button(class='ui-btnClose' data-gallery='close')
@@ -102,6 +204,27 @@ block content
                   div(class='ui-thumb' data-gallery='tab')
                     span(class='image')
                       img(src=require('Images/build/1/thumb/5.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/6.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/7.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/8.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/5.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/6.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/7.jpg'))
+                  div(class='ui-thumb' data-gallery='tab')
+                    span(class='image')
+                      img(src=require('Images/build/1/thumb/8.jpg'))
                   div(class='ui-thumb' data-gallery='tab')
                     span(class='image')
                       img(src=require('Images/build/1/thumb/6.jpg'))
@@ -322,14 +445,14 @@ block content
                   use(href='#icon-24-square-2')
                 span(class='text') 100 000 м²
           div(class='lot-price')
-            button(class='ui-btnForward' type='button' data-btn='modal-call')
-              span(class='text') узнать стоимость
-              span(class='icon')
-                svg(focusable='false' aria-hidden='true')
-                  use(href='#icon-16-go')
+            //- button(class='ui-btnForward' type='button' data-btn='modal-call')
+            //-   span(class='text') узнать стоимость
+            //-   span(class='icon')
+            //-     svg(focusable='false' aria-hidden='true')
+            //-       use(href='#icon-16-go')
             //- цена вместо кнопки
-            //- span(class='value') 30 000 000
-            //- span(class='visually-hidden') рублей
+            span(class='value') 30 000 000
+            span(class='visually-hidden') рублей
       div(class='block-map')
         include ../components/map/map.pug
         div(class='info')

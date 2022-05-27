@@ -95,14 +95,14 @@ const htmlWebpackTagsPlugin = (isDev) => {
 
 const ignoreEmitPlugin = () => {
   return new IgnoreEmitPlugin([
-    /(uikit)\.style\.js$/, /(uikit|management|service|emergency|audit|_404|privacy)\.js$/
+    /(uikit)\.style\.js$/, /(uikit|management|service|_404|privacy)\.js$/
   ]);
 };
 
 const htmlWebpackSkipAssetsPlugin = () => {
   return new HtmlWebpackSkipAssetsPlugin({
     excludeAssets: [
-      /(uikit)\.style\.js$/, /(uikit|management|service|emergency|audit|_404|privacy)\.js$/
+      /(uikit)\.style\.js$/, /(uikit|management|service|_404|privacy)\.js$/
     ]
   });
 };

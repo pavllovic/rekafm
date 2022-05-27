@@ -36,24 +36,28 @@ block content
     // component header 
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation(false)
     // component index hero
     div(class='block block-hero')
       div(class='heading')
         h1 Управляющая компания и брокер с базой недвижимости</br> в 7 городах России
         p(class='title') Снимаем с владельцев зданий все задачи по администрированию и подбираем недвижимость для инвестиций, покупки и аренды.
-      // change name, add webp and sizes
-      picture
-        source
-        source
-        img(src=require('Images/hero/2.jpg'))
-      // change name, add webp and sizes
-      picture(class='top')
-        source
-        source
-        img(src=require('Images/hero/bottom.png'))
-    // block promo
-    section(class='block block-promo')
-      // block map
+      div(class='image')
+        picture
+          source(srcset=`${require(`Images/hero/index.webp`)} 1280w, ${require(`Images/hero/index-2x.webp`)} 2560w, ${require(`Images/hero/index-4x.webp`)} 4096w`
+            type='image/webp')
+          source(srcset=`${require(`Images/hero/index.jpg`)} 1280w, ${require(`Images/hero/index-2x.jpg`)} 2560w, ${require(`Images/hero/index-4x.jpg`)} 4096w`
+            type='image/jpg')
+          img(src=require('Images/hero/index.jpg') width='1280' height='1536' alt='здания в городе')
+      div(class='image-mask' aria-hidden='true')
+        picture
+          source(srcset=`${require(`Images/hero/index-mask.webp`)} 1280w, ${require(`Images/hero/index-mask-2x.webp`)} 2560w, ${require(`Images/hero/index-mask-4x.webp`)} 4096w`
+            type='image/webp')
+          source(srcset=`${require(`Images/hero/index-mask.png`)} 1280w, ${require(`Images/hero/index-mask-2x.png`)} 2560w, ${require(`Images/hero/index-mask-4x.png`)} 4096w`
+            type='image/jpg')
+          img(src=require('Images/hero/index-mask.png')  width='1280' height='958'  alt='здания в городе')
+    // block map
+    div(class='block block-map')
       div(class='map')
         h2(class='heading') под нашим управлением
         div(class='info')
@@ -63,6 +67,17 @@ block content
           div
             p(class='title') 2 000 000 м²
             p жилой и коммерческой<br/> недвижимости
+    // block promo
+    section(class='block block-promo')
+      //- div(class='map')
+      //-   h2(class='heading') под нашим управлением
+      //-   div(class='info')
+      //-     div
+      //-       p(class='title') 377 га
+      //-       p земли
+      //-     div
+      //-       p(class='title') 2 000 000 м²
+      //-       p жилой и коммерческой<br/> недвижимости
       // block cards
       div(class='cards')
         h2 С кем мы сотрудничаем
@@ -112,11 +127,11 @@ block content
           h3(class='title') Клиенты «Реки ФМ» следят<br/>за расходами онлайн
           p Для этого у нас есть программа Oddin. Там мы публикуем отчёты о проделанной работе, например если заменили лампочку или устранили аварию. Всё с фото, датами и чеками.
         div(class='content')
-          // add webp and sizes
           picture 
-            source(srcset=`${require(`Images/benefits/${1}.jpg`)}, ${require(`Images/benefits/${1}-2x.jpg`)} 2x, ${require(`Images/benefits/${1}-4x.jpg`)} 4x`
+            source(srcset=`${require(`Images/benefits/1.webp`)} 840w, ${require(`Images/benefits/1-2x.webp`)} 1680w, ${require(`Images/benefits/1-4x.webp`)} 4096w`
+              type='image/webp')
+            source(srcset=`${require(`Images/benefits/1.jpg`)} 840w, ${require(`Images/benefits/1-2x.jpg`)} 1680w, ${require(`Images/benefits/1-4x.jpg`)} 4096w`
               type='image/jpg')
-            source
             img(src=require('Images/benefits/1.jpg') width='840' height='656' alt='женщина смотрит в монитор' loading='lazy')
       section(class='benefit')
         span(class='number') 02
@@ -124,11 +139,11 @@ block content
           h3(class='title') Налаживаем<br/>управление зданием с нуля
           p Оснащаем техникой, например системой дымоудаления или сигнализацией. Нанимаем персонал в охрану, клининг и администрацию.
         div(class='content')
-          // add webp and sizes
           picture 
-            source(srcset=`${require(`Images/benefits/${2}.jpg`)}, ${require(`Images/benefits/${2}-2x.jpg`)} 2x, ${require(`Images/benefits/${2}-4x.jpg`)} 4x`
+            source(srcset=`${require(`Images/benefits/2.webp`)} 840w, ${require(`Images/benefits/2-2x.webp`)} 1680w, ${require(`Images/benefits/2-4x.webp`)} 4096w`
+              type='image/webp')
+            source(srcset=`${require(`Images/benefits/2.jpg`)} 840w, ${require(`Images/benefits/2-2x.jpg`)} 1680w, ${require(`Images/benefits/2-4x.jpg`)} 4096w`
               type='image/jpg')
-            source
             img(src=require('Images/benefits/2.jpg') width='840' height='656' alt='пост охраны' loading='lazy')
       section(class='benefit')
         span(class='number') 03
@@ -137,6 +152,7 @@ block content
           p Они знают, как организовать процессы, чтобы доход клиента был максимальным, а участие в администрировании — минимальным.
         div(class='content')
           div(class='own-carousel__container js-own-carousel__container' aria-roledescription='carousel' loading='lazy')
+            include ../components/UI/ui-btnDrag/ui-btnDrag.pug
             div(class='own-carousel__picker')
             div(class='own-carousel__control')
               button(class='ui-btnArrow control__prev' aria-controls='own-carousel__outer')
@@ -155,9 +171,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -173,9 +190,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -191,9 +209,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -209,9 +228,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -227,9 +247,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -245,9 +266,10 @@ block content
                   article(class='cardPerson')
                     div(class='image')
                       picture 
-                        source(srcset=`${require(`Images/team/${1}.jpg`)}, ${require(`Images/team/${1}-2x.jpg`)} 2x, ${require(`Images/team/${1}-4x.jpg`)} 4x`
+                        source(srcset=`${require(`Images/team/1.webp`)} 420w, ${require(`Images/team/1-2x.webp`)} 840w, ${require(`Images/team/1-4x.webp`)} 1816w`
+                          type='image/webp')
+                        source(srcset=`${require(`Images/team/1.jpg`)} 420w, ${require(`Images/team/1-2x.jpg`)} 840w, ${require(`Images/team/1-4x.jpg`)} 1816w`
                           type='image/jpg')
-                        source
                         img(src=require('Images/team/1.jpg') width='420' height='656' alt='Будкевич Василий Викторович' loading='lazy')
                     div(class='body')
                       h4(class='name') Будкевич Василий<br/>Викторович 
@@ -279,12 +301,13 @@ block content
             div(class='carousel-slide-inner')
               // component cardNews
               article(class='cardNews')
-                // add webp and sizes
-                picture(class='image')
-                  source(srcset=`${require(`Images/news/${1}/card/1.jpg`)}, ${require(`Images/news/${1}/card/1-2x.jpg`)} 2x`
+                div(class='image')
+                  picture
+                    source(srcset=`${require(`Images/news/1/card/1.webp`)} 400w, ${require(`Images/news/1/card/1-2x.webp`)} 800w`
+                      type='image/webp')
+                    source(srcset=`${require(`Images/news/1/card/1.jpg`)} 400w, ${require(`Images/news/1/card/1-2x.jpg`)} 800w`
                       type='image/jpg')
-                  source
-                  img(src=require('Images/news/1/card/1.jpg') width='400' height='540' alt='фото новости' loading='lazy')
+                    img(src=require('Images/news/1/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
                 div(class='body')
                   div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
                   h3(class='title') Заголовок новости
@@ -295,12 +318,13 @@ block content
             div(class='carousel-slide-inner')
               // component cardNews
               article(class='cardNews')
-                // add webp and sizes
-                picture(class='image')
-                  source(srcset=`${require(`Images/news/${2}/card/1.jpg`)}, ${require(`Images/news/${2}/card/1-2x.jpg`)} 2x`
+                div(class='image')
+                  picture
+                    source(srcset=`${require(`Images/news/2/card/1.webp`)} 400w, ${require(`Images/news/2/card/1-2x.webp`)} 800w`
+                      type='image/webp')
+                    source(srcset=`${require(`Images/news/2/card/1.jpg`)} 400w, ${require(`Images/news/2/card/1-2x.jpg`)} 800w`
                       type='image/jpg')
-                  source
-                  img(src=require('Images/news/2/card/1.jpg') width='400' height='540' alt='фото новости' loading='lazy')
+                    img(src=require('Images/news/2/card/1.jpg') width='400' height='540' alt='зание склада' loading='lazy')
                 div(class='body')
                   div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
                   h3(class='title') Заголовок новости
@@ -333,7 +357,6 @@ block content
             use(href='#icon-16-go')
   // component footer
   include ../components/footer/footer.pug
-  // component modalCall (UI for error handler?)
   include ../components/modalCall/modalCall.pug
   include ../images/icons/icon-16/sprite-icon-16.svg
   include ../images/icons/icon-24/sprite-icon-24.svg

@@ -46,42 +46,39 @@ export const init = function() {
   if(this.tabs) {
     this.createTabsMap();
     this.activeThumb = this.tabs.querySelector('[data-gallery="tab"]');
-    this.setTabObserver();
+    // this.setTabObserver();
   }
 };
 
-export const setTabObserver = function() {
-  const options = {
-    root: this.tabs,
-    rootMargin: '0px',
-    threshold: 1.0,
-  };
+// export const setTabObserver = function() {
+//   const options = {
+//     root: this.tabs,
+//     rootMargin: '0px',
+//     threshold: 1.0,
+//   };
 
-  const callback = function(entries) {
-    const entry = entries[0];
-    const target = entry.target;
-    // const parentRect = target.parentElement.getBoundingClientRect();
-    const topDiff = entry.intersectionRect.top - entry.rootBounds.top;
-    const bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
-    if(target.nextElementSibling && (bottomDiff < 48)) {
-      // target.parentElement.style.transform = `translateY(${-48}px)`;
-    }
+//   const callback = function(entries) {
+//     const entry = entries[0];
+//     const target = entry.target;
+//     const parentRect = target.parentElement.getBoundingClientRect();
+//     const topDiff = entry.intersectionRect.top - entry.rootBounds.top;
+//     const bottomDiff = entry.rootBounds.bottom - entry.intersectionRect.bottom;
+//     if(target.nextElementSibling && (bottomDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${-48}px)`;
+//     }
 
-    if(target.previousElementSibling && (topDiff < 48)) {
-      // target.parentElement.style.transform = `translateY(${48}px)`;
-    }
-    // console.log(entries);
-    // console.log(observer);
-    // console.log(parentRect);
-    // console.log(bottomDiff);
-  };
+//     if(target.previousElementSibling && (topDiff < 48)) {
+//       target.parentElement.style.transform = `translateY(${48}px)`;
+//     }
 
-  this.tabObserver = new IntersectionObserver(callback, options);
+//   };
 
-  // const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
+//   this.tabObserver = new IntersectionObserver(callback, options);
 
-  // targets.forEach((target) => this.tabObserver.observe(target));
-};
+//   const targets = this.tabs.querySelectorAll('.active[data-gallery="tab"]');
+
+//   targets.forEach((target) => this.tabObserver.observe(target));
+// };
 
 export const createTabsMap = function() {
   this.tabsMap = new Map();
@@ -314,9 +311,10 @@ export const openGallery = function() {
   this.gallery.style.setProperty('--g-width', window.screen.width);
   document.body.classList.add('open-gallery');
   this.step = window.screen.width;
-  setTimeout(() => {
-    this.moveSlide(0);
-  }, 600);
+  // setTimeout(() => {
+  //   this.moveSlide(0);
+  // }, 0);
+  this.moveSlide(0);
 };
 
 export const closeGallery = function() {
@@ -325,10 +323,13 @@ export const closeGallery = function() {
   document.body.classList.remove('open-gallery');
   setTimeout(() => {
     this.gallery.classList.remove('close');
-    this.step = this.imgSize + (this.gapSize / this.itemSize)
-      * this.imgSize;
-    this.moveSlide(0);
+    // this.step = this.imgSize + (this.gapSize / this.itemSize)
+    //   * this.imgSize;
+    // this.moveSlide(0);
   }, 600);
+  this.step = this.imgSize + (this.gapSize / this.itemSize)
+    * this.imgSize;
+  this.moveSlide(0);
   window.scrollTo({ top: 0, behavior: 'instant' });
 };
 
@@ -354,9 +355,9 @@ export const updateActivePicker = function() {
 
 export const activateSlide = function(target) {
   const num = this.tabsMap.get(target);
-  this.tabObserver.observe(target);
+  // this.tabObserver.observe(target);
   this.activeThumb.classList.remove('active');
-  this.tabObserver.unobserve(this.activeThumb);
+  // this.tabObserver.unobserve(this.activeThumb);
   target.classList.add('active');
   this.activeThumb = target;
   this.index = num + 1;

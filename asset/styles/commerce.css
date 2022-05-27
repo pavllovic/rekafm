@@ -45,7 +45,9 @@
 
 .panel::after {
   position: absolute;
-  z-index: 1;
+
+  /* z-index: 1; */
+  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
@@ -92,6 +94,8 @@
 
 /* tablistCommerce */
 .tablistCommerce {
+  position: relative;
+  z-index: 10;
   display: grid;
   padding: var(--border-size, 1px);
   background-color: var(--bs-light, rgba(228, 228, 228, 100%));
@@ -104,6 +108,12 @@
   border: none;
 }
 
+@media (min-width: 80em) {
+  .tablistCommerce {
+    display: none;
+  }
+}
+
 /* end tablistCommerce */
 
 /* tablistView */
@@ -113,17 +123,67 @@
 
 /* end tablistView */
 
+/* commerceResult */
+.commerceResult {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.commerceResult .commerceControls {
+  position: sticky;
+  z-index: 9;
+  bottom: 0;
+  order: 1;
+
+  /* margin-top: 4.625em; */
+
+  /* transform: translateY(0);
+  transition-delay: 0s, var(--dur-main);
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: transform, visibility;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+  visibility: visible; */
+}
+
+/* .commerceResult .commerceControls.is-show {
+  transform: translateY(0);
+  transition-delay: 0s, 0s;
+  visibility: visible;
+} */
+
+/* end commerceResult */
+
 /* --- style commerceControls --- */
 .commerceControls {
+  display: flex;
   width: 100%;
+  height: 5em;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition-delay: calc(var(--dur-main) * 2);
+  transition-duration: calc(var(--dur-main) * 2);
+  transition-property: z-index;
+  transition-timing-function: linear;
 }
 
 .commerceControls .ui-btnFilter {
   width: 100%;
+  border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
+  border-bottom: none;
 }
 
 .commerceControls .tablistView {
   padding: 1em;
+}
+
+/* for map panellist */
+.panelView.active + .commerceControls {
+  position: fixed;
+  z-index: 15;
+  transition-delay: 0s;
+  transition-duration: 0s;
 }
 
 @media (min-width: 80em) {
@@ -133,34 +193,6 @@
 }
 
 /* --- end style commerceControls --- */
-
-/* commerceResult */
-.commerceResult {
-  display: flex;
-  height: auto;
-  flex-direction: column;
-}
-
-.commerceResult .commerceControls {
-  position: sticky;
-  z-index: 12;
-  bottom: 0;
-  order: 1;
-  transform: translateY(100%);
-  transition-delay: 0s, var(--dur-main);
-  transition-duration: var(--dur-main), var(--dur-main);
-  transition-property: transform, visibility;
-  transition-timing-function: var(--easing-main), var(--easing-main);
-  visibility: hidden;
-}
-
-.commerceResult .commerceControls.is-show {
-  transform: translateY(0);
-  transition-delay: 0s, 0s;
-  visibility: visible;
-}
-
-/* end commerceResult */
 
 /* commerceMap */
 .commerceMap {
@@ -217,11 +249,11 @@
 
 @media (min-width: 80em) {
   .commerceMap .ymap {
-    height: calc(100vh - 156px);
+    height: calc(100vh - 9.625em);
   }
 
   .filter-bottom {
-    top: -3rem;
+    top: -1.625em;
     transition-duration: var(--dur-second);
     transition-property: top;
     transition-timing-function: var(--easing-second);
@@ -229,33 +261,46 @@
 
   .filter-bottom.hide {
     position: fixed;
-    top: -3rem;
+    top: -1.625em;
   }
 
   .filter-bottom.fixed {
     position: fixed;
     z-index: 12;
-    top: calc(1em + ((var(--fs-menu-link) / 0.75) * 2));
+    top: 4em;
     width: 100%;
   }
 }
 
 /* end commerceMap */
 
-.commerceFilter {
+/* style filterMenu */
+.filterMenu {
+  position: fixed;
+  z-index: 50;
   overflow: hidden;
-  height: 7.4rem;
-  transition-delay: 0s, var(--dur-second), var(--dur-second);
-  transition-duration: 0s, 0s, 0s, 0s;
-  transition-property: order, padding-top, height;
-  transition-timing-function: linear, linear, linear;
+  width: 100%;
+  height: 100vh;
+  overscroll-behavior: contain;
+  transform: translateY(-100%);
+  transition-delay: calc(var(--dur-second) * 2), calc(var(--dur-second) * 2);
+  transition-duration: 0s, 0s;
+  transition-property: visibility, transform;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+  visibility: hidden;
 }
 
-.commerceFilter::before,
-.commerceFilter::after {
+.filterMenu.open {
+  transform: translateY(0);
+  transition-delay: 0s, 0s;
+  visibility: visible;
+}
+
+.filterMenu::before,
+.filterMenu::after {
   position: fixed;
   top: 0;
-  bottom: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
@@ -264,19 +309,20 @@
   visibility: hidden;
 }
 
-.commerceFilter::before {
-  z-index: 10;
+.filterMenu::before {
+  z-index: -1;
   opacity: 0;
-  transition-delay: var(--dur-second), 0s;
+  transition-delay: var(--dur-second), var(--dur-second);
   transition-duration: 0s, var(--dur-second);
   transition-property: visibility, opacity;
   transition-timing-function: var(--easing-second), var(--easing-second);
+  visibility: hidden;
 }
 
-.commerceFilter::after {
-  z-index: 12;
+.filterMenu::after {
+  z-index: 2;
   opacity: 1;
-  transform: translateY(-100%);
+  transform: translateY(100%);
   transition-delay: calc(var(--dur-second) * 2), 0s, var(--dur-second);
   transition-duration: 0s, var(--dur-second), var(--dur-second);
   transition-property: visibility, opacity, transform;
@@ -284,42 +330,15 @@
   visibility: hidden;
 }
 
-.commerceFilter.open {
-  position: sticky;
-  z-index: 60;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  order: -1;
-  padding-top: 8rem;
-  overflow-y: scroll;
-  overscroll-behavior: contain;
-  scrollbar-color: rgba(255, 255%, 255%, 0%);
-  scrollbar-width: thin;
-  transition-delay: var(--dur-second), var(--dur-second), var(--dur-second);
-}
-
-.commerceFilter.open::-webkit-scrollbar {
-  width: 0;
-  appearance: none;
-}
-
-.commerceFilter.open::-webkit-scrollbar-track {
-  background-color: rgba(255, 255%, 255%, 0%);
-}
-
-.commerceFilter.open::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255%, 255%, 0%);
-}
-
-.commerceFilter.open::before {
+.filterMenu.open::before {
   opacity: 1;
   transition-delay: 0s, 0s;
   transition-duration: 0s, var(--dur-second);
+  transition-property: visibility, opacity;
   visibility: visible;
 }
 
-.commerceFilter.open::after {
+.filterMenu.open::after {
   opacity: 0;
   transform: translateY(0);
   transition-delay: 0s, var(--dur-second), 0s;
@@ -327,30 +346,41 @@
   visibility: visible;
 }
 
-.commerceFilter.close {
-  position: sticky;
-  z-index: 60;
-  top: 0;
-  order: -1;
-}
-
-.commerceFilter .top {
-  position: absolute;
-  z-index: 11;
+.filterMenu .top {
+  position: relative;
+  z-index: 3;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
   padding-left: 1em;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-  transition-delay: var(--dur-second);
+  transform: translateY(-100%);
   transition-duration: var(--dur-second);
-  transition-property: visibility;
+  transition-property: transform;
   transition-timing-function: var(--easing-second);
-  visibility: hidden;
 }
 
-.commerceFilter .top::after {
+.filterMenu.open .top {
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.filterMenu .bottom {
+  position: relative;
+  height: calc(100% - 5em);
+  opacity: 0;
+  transition-delay: var(--dur-second);
+  transition-duration: 0s;
+  transition-property: opacity;
+  transition-timing-function: var(--easing-second);
+}
+
+.filterMenu.open .bottom {
+  opacity: 1;
+}
+
+.filterMenu .top::after {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -358,57 +388,64 @@
   width: 100%;
   height: 100%;
   border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
-  border-bottom: none;
   content: "";
   pointer-events: none;
 }
 
-.commerceFilter h2 {
+.filterMenu h2 {
   margin-bottom: 0;
   font-family: var(--font-accent);
   font-size: var(--fs-text-accent);
 }
 
-.commerceFilter .ui-btnClose {
+.filterMenu .ui-btnClose {
   width: 5em;
   height: 5em;
-  border: var(--border-size, 1px) solid var(--bs-ligth, rgba(228, 228, 228, 100%));
   border-bottom: none;
 }
 
-.commerceFilter .panellistFilter {
-  overflow: hidden;
-  height: 0;
+.filterMenu .panellistFilter {
+  overflow: auto;
+  height: calc(100% - 4.5em - var(--border-size));
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  scrollbar-color: rgba(255, 255, 255, 0%) rgba(255, 255, 255, 0%);
+  scrollbar-width: thin;
   transition-delay: var(--dur-second);
   transition-duration: 0s;
   transition-property: height;
   transition-timing-function: var(--easing-second);
 }
 
-.commerceFilter.open .top,
-.commerceFilter.close .top {
-  z-index: 11;
-  top: 0;
-  transition-delay: var(--dur-second);
-  visibility: visible;
+.filterMenu .panellistFilter::-webkit-scrollbar {
+  width: 0;
+  appearance: none;
 }
 
-.commerceFilter .bottom {
-  position: relative;
-  z-index: 11;
+.filterMenu .panellistFilter::-webkit-scrollbar-track {
+  background-color: rgba(255, 255%, 255%, 0%);
 }
 
-.commerceFilter.open .panellistFilter {
-  height: calc(var(--height-panellist) * 1px);
+.filterMenu .panellistFilter::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255%, 255%, 0%);
+}
+
+.filterMenu .tablistCommerce {
+  z-index: 0;
+  display: grid;
+  padding-top: 0;
 }
 
 @media (min-width: 80em) {
-  .commerceFilter {
+  .filterMenu {
+    position: static;
+    z-index: initial;
     overflow: visible;
     height: auto;
+    transform: none;
+    visibility: visible;
   }
 
-  .commerceFilter .panellistFilter {
+  .filterMenu .panellistFilter {
     /* overflow: hidden; */
     overflow: visible;
     height: auto;
@@ -418,10 +455,17 @@
     transition-timing-function: var(--easing-second);
   }
 
-  .commerceFilter .bottom {
+  .filterMenu .top {
+    display: none;
+  }
+
+  .filterMenu .bottom {
     position: static;
+    opacity: 1;
   }
 }
+
+/* end style filterMenu */
 
 /* --- style block build-list --- */
 .build-list {

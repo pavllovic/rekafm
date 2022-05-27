@@ -1,8 +1,13 @@
 /* --- style component filter --- */
 .filter {
   display: flex;
+  overflow: hidden;
+  height: 100%;
   flex-direction: column;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  transition-duration: var(--dur-main);
+  transition-property: height;
+  transition-timing-function: var(--easing-main);
 }
 
 .filter-top {
@@ -25,9 +30,18 @@
 }
 
 .filter-button {
+  --height-wrap: auto;
+
+  position: relative;
   display: flex;
+  overflow: hidden;
+  height: calc(var(--height-wrap) * 1px);
   flex-direction: column;
   align-items: stretch;
+  margin-top: auto;
+  transition-duration: var(--dur-main);
+  transition-property: height;
+  transition-timing-function: var(--easing-main);
 }
 
 .filter-button .ui-btn,
@@ -59,6 +73,10 @@
 }
 
 @media (min-width: 80em) {
+  .filter {
+    overflow: visible;
+  }
+
   .filter-top {
     position: relative;
     display: grid;
@@ -74,12 +92,18 @@
     border: none;
   }
 
-  .filter .ui-select:first-child .input {
+  .filter .ui-select:first-child .input,
+  .filter .ui-select:first-child .option,
+  .filter .ui-select:first-child .reset {
     padding-left: 2.5em;
   }
 
   .filter .ui-rangeBar:last-child {
     padding-right: 2.5em;
+  }
+
+  .filter .ui-rangeBar:last-child .ui-slider {
+    width: calc(100% - 2.5em);
   }
 
   .filter-bottom {

@@ -35,11 +35,19 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='hero')
       picture
-        source(srcset=`${require(`Images/hero/audit.jpg`)}, ${require(`Images/hero/audit-2x.jpg`)} 2x, ${require(`Images/hero/audit-4x.jpg`)} 4x`
-            type='image/jpg')
-        source
+        source(srcset=`${require(`Images/hero/audit-portrait.webp`)} 375w, ${require(`Images/hero/audit-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/audit.webp`)} 1280w, 
+          ${require(`Images/hero/audit-2x.webp`)} 2560w, 
+          ${require(`Images/hero/audit-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/audit-portrait.jpg`)} 375w, ${require(`Images/hero/audit-portrait-2x.jpg`)} 750w, 
+          ${require(`Images/hero/audit.jpg`)} 1280w, 
+          ${require(`Images/hero/audit-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/audit-4x.jpg`)} 4096w`
+          type='image/jpg')
         img(src=require('Images/hero/audit.jpg') width='1280' height='656' alt='помещение')
       div(class='body')
         div(class='heading-sm')

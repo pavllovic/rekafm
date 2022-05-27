@@ -35,11 +35,19 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='hero')
       picture
-        source(srcset=`${require(`Images/hero/service.jpg`)}, ${require(`Images/hero/service-2x.jpg`)} 2x, ${require(`Images/hero/service-4x.jpg`)} 4x`
+        source(srcset=`${require(`Images/hero/service-portrait.webp`)} 375w, ${require(`Images/hero/service-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/service.webp`)} 1280w, 
+          ${require(`Images/hero/service-2x.webp`)} 2560w, 
+          ${require(`Images/hero/service-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/service-portrait.webp`)} 375w, ${require(`Images/hero/service-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/service.jpg`)} 1280w, 
+          ${require(`Images/hero/service-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/service-4x.jpg`)} 4096w`
           type='image/jpg')
-        source
         img(src=require('Images/hero/service.jpg') width='1280' height='656' alt='техническое помещение')
       div(class='body')
         div(class='heading')
@@ -55,12 +63,12 @@ block content
               svg(focusable='false')
                 use(href='#icon-24-service-2')
             p(class='text') Чиним лифты, заделываем трещины в стенах, обслуживаем автоматические ворота и шлагбаумы.
-      a(class='ui-btnDownload' download='cleaning.pdf' href='#')
+      a(class='ui-btnDownload' download='service.pdf' href='#')
         span(class='text') скачать презентацию
         span(class='icon')
           svg(class='icon-go' focusable='false' aria-hidden='true')
             use(href='#icon-btn-top-right')
-    section
+    section(class='block-card')
       h2 Какие системы мы обслуживаем
       ul(class='card-list')
         li(class='item')

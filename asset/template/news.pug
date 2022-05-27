@@ -35,6 +35,7 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='news-nav')
       a(class='ui-link' href='./news_list.html' alt='список новостей')
         svg(class='icon')
@@ -44,10 +45,13 @@ block content
       div(class='news-heading')
         h1 Очень длинный заголовок в две или больше строк
         div(class='badge') <span>13</span> ⁄ <span>02</span> ⁄ <span>22</span>
-      picture(class='news-image')
-        source
-        source
-        img(src=require('Images/news/1/1.jpg'))
+      div(class='news-image')
+        picture
+          source(srcset=`${require(`Images/news/1/1.webp`)} 1024w, ${require(`Images/news/1/1-2x.webp`)} 2048w, ${require(`Images/news/1/1-4x.webp`)} 4096w`
+            type='image/webp')
+          source(srcset=`${require(`Images/news/1/1.jpg`)} 1024w, ${require(`Images/news/1/1-2x.jpg`)} 2048w, ${require(`Images/news/1/1-4x.jpg`)} 4096w`
+            type='image/jpg')
+          img(src=require('Images/news/1/1.jpg') width='1280' height='600' alt='склад' loading='lazy')
       div(class='news-body')
         div(class='text-block')
           p(class='accent') Акцентный текстовый блок. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента. Не слишком большой — буквально один абзац, чтобы погрузить в суть. Текст блока направленный на то, чтобы закрыть основные потенциальные боли клиента.
@@ -109,11 +113,13 @@ block content
             div(class='carousel-slide-inner')
               // component cardNews
               article(class='cardNews')
-                // add webp and sizes
-                picture(class='image')
-                  source
-                  source
-                  img(src=require(`Images/news/${7}/card/1.jpg`))
+                div(class='image')
+                  picture
+                    source(srcset=`${require(`Images/news/7/card/1.webp`)} 400w, ${require(`Images/news/7/card/1-2x.webp`)} 800w`
+                      type='image/webp')
+                    source(srcset=`${require(`Images/news/7/card/1.jpg`)} 400w, ${require(`Images/news/7/card/1-2x.jpg`)} 800w`
+                      type='image/jpg')
+                    img(src=require('Images/news/7/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
                 div(class='body')
                   div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
                   h3(class='title') Заголовок новости
@@ -124,11 +130,13 @@ block content
             div(class='carousel-slide-inner')
               // component cardNews
               article(class='cardNews')
-                // add webp and sizes
-                picture(class='image')
-                  source
-                  source
-                  img(src=require(`Images/news/${5}/card/1.jpg`))
+                div(class='image')
+                  picture
+                    source(srcset=`${require(`Images/news/5/card/1.webp`)} 400w, ${require(`Images/news/5/card/1-2x.webp`)} 800w`
+                      type='image/webp')
+                    source(srcset=`${require(`Images/news/5/card/1.jpg`)} 400w, ${require(`Images/news/5/card/1-2x.jpg`)} 800w`
+                      type='image/jpg')
+                    img(src=require('Images/news/5/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
                 div(class='body')
                   div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
                   h3(class='title') Заголовок новости
@@ -139,11 +147,13 @@ block content
             div(class='carousel-slide-inner')
               // component cardNews
               article(class='cardNews')
-                // add webp and sizes
-                picture(class='image')
-                  source
-                  source
-                  img(src=require(`Images/news/${6}/card/1.jpg`))
+                div(class='image')
+                  picture
+                    source(srcset=`${require(`Images/news/6/card/1.webp`)} 400w, ${require(`Images/news/6/card/1-2x.webp`)} 800w`
+                      type='image/webp')
+                    source(srcset=`${require(`Images/news/6/card/1.jpg`)} 400w, ${require(`Images/news/6/card/1-2x.jpg`)} 800w`
+                      type='image/jpg')
+                    img(src=require('Images/news/6/card/1.jpg') width='400' height='540' alt='склад' loading='lazy')
                 div(class='body')
                   div(class='badge') <span>22</span> ⁄ <span>02</span> ⁄ <span>22</span>
                   h3(class='title') Заголовок новости

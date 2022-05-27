@@ -35,11 +35,19 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='hero')
       picture
-        source(srcset=`${require(`Images/hero/management.jpg`)}, ${require(`Images/hero/management-2x.jpg`)} 2x, ${require(`Images/hero/management-4x.jpg`)} 4x`
+        source(srcset=`${require(`Images/hero/management-portrait.webp`)} 375w, ${require(`Images/hero/management-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/management.webp`)} 1280w, 
+          ${require(`Images/hero/management-2x.webp`)} 2560w, 
+          ${require(`Images/hero/management-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/management-portrait.webp`)} 375w, ${require(`Images/hero/management-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/management.jpg`)} 1280w, 
+          ${require(`Images/hero/management-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/management-4x.jpg`)} 4096w`
           type='image/jpg')
-        source
         img(src=require('Images/hero/management.jpg') width='1280' height='656' alt='жилой многоэтажный дом')
       div(class='body')
         div(class='heading-sm')
@@ -171,16 +179,16 @@ block content
       div(class='body')
         h2(class='heading') Закажите технический<br/> аудит объекта
         p(class='text') Мы предложим выгодное коммерческое предложение исходя из ваших требований и желаний.
-      form(class='form js-order-audit' name='order-audit' id='order-audit')
+      form(class='form js-order-audit' name='order-audit' id='order-audit' action='./management.html' method='POST')
         label
           span(class='visually-hidden' for='order-audit-name') ваше имя
-          input(class='ui-input' type='text' name='name' placeholder='ваше имя' id='order-audit-name')
+          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder='ваше имя' id='order-audit-name' required)
         label
           span(class='visually-hidden' for='order-audit-phone') телефон
-          input(class='ui-input' type='text' inputmode='numeric' name='phone' placeholder='телефон' id='order-audit-phone')
+          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder='телефон' id='order-audit-phone' required)
         label
           span(class='visually-hidden' for='order-audit-square') площадь помещения
-          input(class='ui-input' type='text' inputmode='numeric' name='square' placeholder='площадь помещения' id='order-audit-square')
+          input(class='ui-input' type='text' inputmode='numeric' name='square' pattern='[0-9]+$' placeholder='площадь помещения' id='order-audit-square' required)
         div(class='form-value')
           | Стоимость: <span data-audit='value'>23 000</span> рублей
         button(class='ui-btnForward' type='submit')

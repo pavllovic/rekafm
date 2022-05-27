@@ -3,6 +3,17 @@ import Carousel from './components/carousel/carousel.js';
 import OwnCarousel from './components/ownCarousel/ownCarousel';
 import FormValidator from './lib/formValidator/formValidator.js';
 import OrderCallForm from './components/form/OrderCallForm.js';
+// import CustomCursor from './components/customCursor/customCursor.js';
+
+// const initCarouselCustomCursor = () => {
+//   const cursorParent = document.querySelector('.js-own-carousel__container');
+//   const area = cursorParent;
+//   const carouselCustomCursor = new CustomCursor(cursorParent, area);
+//   carouselCustomCursor.init();
+//   window.carouselCustomCursor = carouselCustomCursor;
+// };
+
+// initCarouselCustomCursor();
 
 const initFormOrderCall = function() {
   const formElem = document.querySelector('.js-order-call');
@@ -10,7 +21,8 @@ const initFormOrderCall = function() {
   const form = new OrderCallForm(formElem);
   formValidator.init();
   form.init();
-  return { form, formValidator };
+  window.orderCallForm = form;
+  window.orderCallForm.validator = formValidator;
 };
 
 const initOwnCarousel = function() {
@@ -19,31 +31,27 @@ const initOwnCarousel = function() {
     itemPerRow: 2,
     itemSize: 50,
     responsive: {
-      1000: [1, 100],
-      // 800: [1, 100],
+      600: [2, 50],
+      300: [1, 100],
     },
     autoplay: 10000,
     nav: true,
     draggable: true,
   }, 'X');
   ownCarousel.init();
-  return ownCarousel;
+  window.ownCarousel = ownCarousel;
 };
 
 const initCarouselNews = () => {
   const carouselNewsElem = document.querySelector('.js-carousel');
   const carouselNews = new Carousel(carouselNewsElem);
   carouselNews.init();
-  return carouselNews;
+  window.carouselNews = carouselNews;
 };
 
 initFormOrderCall();
 initOwnCarousel();
 initCarouselNews();
-
-window.initCarouselNews = initCarouselNews;
-window.initOwnCarousel = initOwnCarousel;
-window.initFormOrderCall = initFormOrderCall;
 
 if (module.hot) {
   module.hot.accept();

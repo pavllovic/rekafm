@@ -4,27 +4,28 @@ import Carousel from './components/carousel/carousel.js';
 import ShowList from './components/showList/showList';
 
 const initCardTariff = () => {
-  const cardsTariff = document.querySelectorAll('.js-cardTariff');
-  cardsTariff.forEach((item) => {
+  const cardTariffElements = document.querySelectorAll('.js-cardTariff');
+  const cardsTariff = Array.from(cardTariffElements).map((item) => {
     const card = new ShowList(item);
     card.init();
+    return card;
   });
+  window.cardsTariff = cardsTariff;
 };
 
-initCardTariff();
+window.addEventListener('load', () => {
+  initCardTariff();
+});
 
 const carouselTariffElem = document.querySelector('.js-carousel');
 
 const initCarouselTariff = () => {
   const carouselTariff = new Carousel(carouselTariffElem);
   carouselTariff.init();
-  return carouselTariff;
+  window.carouselTariff = carouselTariff;
 };
 
 initCarouselTariff();
-
-window.initCarouselTariff = initCarouselTariff;
-window.initCardTariff = initCardTariff;
 
 if (module.hot) {
   module.hot.accept();

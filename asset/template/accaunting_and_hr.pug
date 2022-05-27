@@ -35,11 +35,19 @@ block content
   div(class='wrapper')
     header(class='header')
       include ../components/navigation/navigation.pug
+      +navigation()
     div(class='hero')
       picture
-        source(srcset=`${require(`Images/hero/accaunting_and_hr.jpg`)}, ${require(`Images/hero/accaunting_and_hr-2x.jpg`)} 2x, ${require(`Images/hero/accaunting_and_hr-4x.jpg`)} 4x`
+        source(srcset=`${require(`Images/hero/accaunting_and_hr-portrait.webp`)} 375w, ${require(`Images/hero/accaunting_and_hr-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/accaunting_and_hr.webp`)} 1280w, 
+          ${require(`Images/hero/accaunting_and_hr-2x.webp`)} 2560w, 
+          ${require(`Images/hero/accaunting_and_hr-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/accaunting_and_hr-portrait.webp`)} 375w, ${require(`Images/hero/accaunting_and_hr-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/accaunting_and_hr.jpg`)} 1280w, 
+          ${require(`Images/hero/accaunting_and_hr-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/accaunting_and_hr-4x.jpg`)} 4096w`
           type='image/jpg')
-        source
         img(src=require('Images/hero/accaunting_and_hr.jpg') width='1280' height='656' alt='группа людей')
       div(class='body')
         div(class='heading-sm')

@@ -136,6 +136,10 @@
   padding: calc(1em / 1.5) 0;
 }
 
+.footer .made-in .ui-linkFade {
+  text-decoration: none;
+}
+
 @media (min-width: 80em) {
   .footer .box {
     display: grid;
@@ -223,6 +227,10 @@
   .footer .note .ui-linkFade {
     margin-right: auto;
     margin-left: calc(1em / 0.6);
+  }
+
+  .footer .made-in .ui-linkFade {
+    margin-left: 0;
   }
 }
 

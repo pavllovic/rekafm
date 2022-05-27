@@ -1,4 +1,8 @@
-div(class='navigation')
-  include ../logo/logo.pug
-  include ../nav/nav.pug
+mixin navigation(logoLink = true)
+  div(class='navigation')
+    if logoLink
+      include ../logo/logo-link.pug
+    else
+      include ../logo/logo.pug
+    include ../nav/nav.pug
   
