@@ -1,8 +1,8 @@
 import 'Styles/index.css';
 import Carousel from './components/carousel/carousel.js';
 import OwnCarousel from './components/ownCarousel/ownCarousel';
-import FormValidator from './lib/formValidator/formValidator.js';
-import OrderCallForm from './components/form/OrderCallForm.js';
+// import FormValidator from './lib/formValidator/formValidator.js';
+// import OrderCallForm from './components/form/OrderCallForm.js';
 // import CustomCursor from './components/customCursor/customCursor.js';
 
 // const initCarouselCustomCursor = () => {
@@ -15,15 +15,15 @@ import OrderCallForm from './components/form/OrderCallForm.js';
 
 // initCarouselCustomCursor();
 
-const initFormOrderCall = function() {
-  const formElem = document.querySelector('.js-order-call');
-  const formValidator = new FormValidator(formElem);
-  const form = new OrderCallForm(formElem);
-  formValidator.init();
-  form.init();
-  window.orderCallForm = form;
-  window.orderCallForm.validator = formValidator;
-};
+// const initFormOrderCall = function() {
+//   const formElem = document.querySelector('.js-order-call');
+//   const formValidator = new FormValidator(formElem);
+//   const form = new OrderCallForm(formElem);
+//   formValidator.init();
+//   form.init();
+//   window.orderCallForm = form;
+//   window.orderCallForm.validator = formValidator;
+// };
 
 const initOwnCarousel = function() {
   const ownCarouselElem = document.querySelector('.js-own-carousel__container');
@@ -49,7 +49,7 @@ const initCarouselNews = () => {
   window.carouselNews = carouselNews;
 };
 
-initFormOrderCall();
+// initFormOrderCall();
 initOwnCarousel();
 initCarouselNews();
 

@@ -117,6 +117,7 @@ const testOdjectData = {
     size: '14 758',
   },
   badges: ['продается целиком'],
+  link: './build.html'
 };
 
 window.map.createObjectCollection();

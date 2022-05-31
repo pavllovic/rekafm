@@ -48,7 +48,6 @@ __webpack_require__.r(__webpack_exports__);
 var OrderCallForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.form;
 OrderCallForm.prototype = {
   constructor: OrderCallForm,
-  // init: lib.init,
   init: function init() {
     Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.init.call(this);
     this.wrap = document.querySelector('.js-modal-call');
@@ -770,13 +769,13 @@ function sendForm(_x, _x2) {
 
 function _sendForm() {
   _sendForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(form, data) {
-    var url, method, enctype, options, response;
+    var method, enctype, options, response;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             // const url = form.getAttribute('action');
-            url = 'https://echo.htmlacademy.ru';
+            // const url = 'https://echo.htmlacademy.ru';
             method = form.getAttribute('method');
             enctype = form.getAttribute('enctype');
             options = {
@@ -794,34 +793,34 @@ function _sendForm() {
               options.signal = this.controller.signal;
             }
 
-            _context.prev = 5;
-            _context.next = 8;
+            _context.prev = 4;
+            _context.next = 7;
             return fetch(url, options);
 
-          case 8:
+          case 7:
             response = _context.sent;
 
             if (response.ok) {
-              _context.next = 11;
+              _context.next = 10;
               break;
             }
 
             throw new Error('server error');
 
-          case 11:
+          case 10:
             return _context.abrupt("return", response);
 
-          case 14:
-            _context.prev = 14;
-            _context.t0 = _context["catch"](5);
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](4);
             throw new Error(_context.t0.message);
 
-          case 17:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[5, 14]]);
+    }, _callee, this, [[4, 13]]);
   }));
   return _sendForm.apply(this, arguments);
 }
@@ -870,7 +869,7 @@ function _sendFormJSON() {
               break;
             }
 
-            throw new Error('server error');
+            throw new Error('error');
 
           case 12:
             return _context2.abrupt("return", response);

@@ -133,7 +133,7 @@ Map.prototype = {
             coordinates: [25, 25],
             radius: 25,
           },
-          href: './index.html',
+          href: objectData.link,
         },
       ));
     });

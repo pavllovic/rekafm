@@ -1,6 +1,6 @@
 export async function sendForm(form, data) {
   // const url = form.getAttribute('action');
-  const url = 'https://echo.htmlacademy.ru';
+  // const url = 'https://echo.htmlacademy.ru';
   const method = form.getAttribute('method');
   const enctype = form.getAttribute('enctype');
 
