@@ -37,6 +37,8 @@
 	display: flex;
 	padding: 1em;
 	top: 0;
+	width: auto;
+	height: auto;
 }
   
 .own-carousel__picker .item {
@@ -150,7 +152,6 @@
 }
 
 .own-carousel__tabs {
-	/* padding: 0.75em; */
 	width: 4em;
 	height: 100%;
 	overflow: hidden;

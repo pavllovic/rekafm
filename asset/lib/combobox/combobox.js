@@ -44,9 +44,12 @@ export function closeOptions() {
 export function resetCombobox() {
   this.combobox.setAttribute('aria-activedescendant', '');
   this.combobox.textContent = this.arrayOptions[0].textContent;
+  this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  console.log(this.input);
   this.input.setAttribute('value', this.arrayOptions[0].textContent);
   this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
   this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
+  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').removeAttribute('checked');
   this.optionSelectedIndex = 0;
   this.optionFocusedIndex = 0;
 }
@@ -56,11 +59,15 @@ export function onOptionChecked(e) {
   const prevOption = this.arrayOptions[this.optionSelectedIndex];
   const option = (role === 'option') ? e.target : this.arrayOptions[this.optionFocusedIndex];
 
-  if(prevOption) prevOption.setAttribute('aria-selected', 'false');
+  if(prevOption) {
+    prevOption.setAttribute('aria-selected', 'false');
+    prevOption.querySelector('[type="checkbox"]').removeAttribute('checked');
+  }
   if(option) {
     option.setAttribute('aria-selected', 'true');
     const value = option.querySelector('.text').textContent;
     this.output.innerText = value;
+    option.querySelector('[type="checkbox"]').setAttribute('checked', true);
   }
 
   const index = this.arrayOptions.findIndex((item) => item === option);

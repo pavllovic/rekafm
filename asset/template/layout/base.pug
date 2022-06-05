@@ -7,10 +7,10 @@ html(lang='ru')
     meta(name='description' content='')
     title #{htmlWebpackPlugin.options.title}
     block preload
-    //- link(rel='icon' href=require('Images/favicon/favicon.ico')  sizes='any')
-    //- link(rel='icon' href=require('Images/favicon/icon.svg') type='image/svg+xml')
-    //- link(rel='apple-touch-icon' href=require('Images/favicon/apple-touch-icon.png'))
-    //- <meta name="theme-color" content="#ffffff">
+    link(rel='icon' href=require('Images/favicon/favicon.ico')  sizes='any')
+    link(rel='icon' href=require('Images/favicon/favicon.svg') type='image/svg+xml')
+    link(rel='apple-touch-icon' href=require('Images/favicon/apple-touch-icon.png'))
+    <meta name="theme-color" content="#ffffff">
     block scripts
     block styles
     each file in htmlWebpackPlugin.files.css

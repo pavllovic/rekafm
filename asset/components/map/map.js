@@ -1,7 +1,7 @@
-const Map = function(id, zoom, center) {
-  this.center = center;
+const Map = function(id, options) {
+  this.center = options.center;
   this.id = id;
-  this.zoom = zoom;
+  this.zoom = options.zoom;
 };
 
 Map.prototype = {
@@ -140,8 +140,16 @@ Map.prototype = {
   },
 
   addObjectsInObjectCollection: function(objects) {
-    objects.forEach((object) => {
+    objects.forEach((object, index) => {
       this.addObjectInObjectCollection(object);
+      if(index === objects.length - 1) {
+        window.ymaps.ready(() => {
+          this.map.setBounds(this.map.geoObjects.getBounds(), {
+            checkZoomRange: true,
+            zoomMargin: 70,
+          });
+        });
+      }
     });
   },
 
@@ -156,6 +164,7 @@ Map.prototype = {
         },
       );
       this.map.geoObjects.add(point);
+      this.map.setCenter(objectData.coords, 17);
     });
   },
 
@@ -164,6 +173,10 @@ Map.prototype = {
       this.map.setCenter(coords, zoom, 'yandex#map');
     });
   },
+
+  // setMapCenter: function() {
+  //   this.map.setBounds(this.map.geoObjects.getBounds());
+  // },
 };
 
 export default Map;

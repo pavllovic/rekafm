@@ -28,7 +28,10 @@ const initFeatureList = function() {
 initFeatureList();
 
 const initMap = function() {
-  const map = new Map('ymap', 17, [44.898317, 37.354456]);
+  const map = new Map('ymap', {
+    zoom: 17,
+    center: [0, 0],
+  });
   map.init();
   map.createStaticPointLayout();
   window.map = map;

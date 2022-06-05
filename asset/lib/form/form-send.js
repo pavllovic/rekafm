@@ -1,17 +1,12 @@
 export async function sendForm(form, data) {
-  // const url = form.getAttribute('action');
-  // const url = 'https://echo.htmlacademy.ru';
+  const url = form.getAttribute('action');
   const method = form.getAttribute('method');
-  const enctype = form.getAttribute('enctype');
 
   const options = {
     method: method || 'POST',
     credentials: 'same-origin',
     // body: new URLSearchParams(data),
     body: data, // send FormData
-    headers: {
-      'Content-Type': enctype,
-    },
   };
 
   if(this.controller) {
@@ -30,20 +25,12 @@ export async function sendForm(form, data) {
 export async function sendFormJSON(form, data) {
   const objData = Object.fromEntries(data);
   const url = form.getAttribute('action');
-  // const url = 'https://echo.htmlacademy.ru';
   const method = form.getAttribute('method');
-  const enctype = form.getAttribute('enctype');
 
   const options = {
     method: method || 'POST',
     credentials: 'same-origin',
     body: JSON.stringify(objData),
-    headers: {
-      'Content-Type': enctype,
-      // 'Content-Type': 'text/plain',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-      // 'Content-Type': 'application/json',
-    },
   };
 
   if(this.controller) {

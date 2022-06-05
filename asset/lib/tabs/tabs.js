@@ -57,6 +57,7 @@ export function setHeightPanellist(panel) {
   const height = panel.offsetHeight;
   const panellist = panel.parentElement;
   panellist.style.setProperty('--height-panellist', height);
+  console.log(panel);
 }
 
 export function focusTab(tab) {

@@ -71,11 +71,6 @@ block content
             include ../components/filter/filterBuy.pug
           div(class='panel' id='panel-filter-rent' tabindex='-1' role='tabpanel' aria-labelledby='tab-rent')
             include ../components/filter/filterRent.pug
-      //- div(class='commerceControls')
-        button(class='ui-btnFilter' type='button' data-filter='open')
-          span(class='text') фильтры
-          svg(class='icon' focusable='false' aria-hidden='true')
-            use(href='#icon-32-filter')
     div(class='tablist js-tablist tablistCommerce' role='tablist' aria-label='тип сделки с недвижимостью')
       button(class='ui-tab active' type='button' role='tab' tabindex='0' aria-selected='true' aria-controls='panel-buying panel-filter-buying' id='tab-buying') Покупка
       button(class='ui-tab' type='button' role='tab' tabindex='-1' aria-selected='false' aria-controls='panel-rent panel-filter-rent' id='tab-rent') Аренда
@@ -133,7 +128,7 @@ block content
                         img(src=require('Images/build/1/slides/1.jpg') width='1200' height='540' alt='складское здание')
                     a(class='link' href='./build.html')
                       span(class='visually-hidden') перейти на страницу объекта.
-                li(class='item')
+                //- li(class='item')
                   article(class='cardBuild')
                     div(class='body')
                       h3(class='title') «Ям Голден Лайн»

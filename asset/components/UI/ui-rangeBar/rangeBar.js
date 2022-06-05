@@ -2,9 +2,10 @@ const RangeBarInt = function(parent, output) {
   this.wrapper = parent;
   this.inputFrom = parent.querySelector('[data-range="input-from"]');
   this.inputTo = parent.querySelector('[data-range="input-to"]');
+  this.viewFrom = parent.querySelector('[data-range="view-from"]');
+  this.viewTo = parent.querySelector('[data-range="view-to"]');
   this.sliderFrom = parent.querySelector('[data-range="slider-from"]');
   this.sliderTo = parent.querySelector('[data-range="slider-to"]');
-  // this.minGap = 10;
   this.minGap = 0;
   this.output = output;
 };
@@ -49,7 +50,8 @@ RangeBarInt.prototype = {
   updateElementsFrom: function() {
     this.sliderFrom.value = this.valueFrom;
     this.inputFrom.value = this.valueFrom;
-    this.inputFrom.innerText = this.output === 'float'
+    this.inputFrom.innerText = this.valueFrom;
+    this.viewFrom.innerText = this.output === 'float'
       ? this.setFloatValue(this.valueFrom)
       // : this.valueFrom;
       : new Intl.NumberFormat('ru-RU').format(this.valueFrom);
@@ -58,7 +60,8 @@ RangeBarInt.prototype = {
   updateElementsTo: function() {
     this.sliderTo.value = this.valueTo;
     this.inputTo.value = this.valueTo;
-    this.inputTo.innerText = this.output === 'float'
+    this.inputTo.innerText = this.valueTo;
+    this.viewTo.innerText = this.output === 'float'
       ? this.setFloatValue(this.valueTo)
       // : this.valueTo;
       : new Intl.NumberFormat('ru-RU').format(this.valueTo);

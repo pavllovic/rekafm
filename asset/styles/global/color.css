@@ -1,6 +1,6 @@
 /* --- style color --- */
 :root {
-  --bs-primary: rgba(46, 46, 46, 100%);
+  --bs-primary: rgb(46, 46, 46, 100%);
   --bs-primary-rgb: 46, 46, 46;
   --bs-secondary: rgba(173, 173, 173, 100%);
   --bs-secondary-rgb: 173, 173, 173;

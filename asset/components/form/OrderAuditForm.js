@@ -1,27 +1,42 @@
 import * as lib from 'Lib/form/form';
 import * as handlers from 'Lib/form/form-handlers.js';
-import { sendFormJSON } from 'Lib/form/form-send.js';
+import { sendForm } from 'Lib/form/form-send.js';
 
-const OrderCallForm = lib.form;
+const OrderAuditForm = lib.form;
 
-OrderCallForm.prototype = {
-  constructor: OrderCallForm,
-  // init: lib.init,
+OrderAuditForm.prototype = {
+  constructor: OrderAuditForm,
   init: function() {
     lib.init.call(this);
+    this.price = this.form.querySelector('[data-audit="value"]');
     // this.wrap = document.querySelector('.js-modal-call');
   },
-  setListeners: lib.setListeners,
+  setListeners: function() {
+    lib.setListeners.call(this);
+    this.form.querySelector('input[name="square"]').addEventListener('input', (e) => {
+      this.updatePrice(e.target);
+    });
+  },
   destroy: lib.destroy,
   getFormData: lib.getFormData,
   submitForm: lib.submitForm,
-  sendForm: sendFormJSON,
+  sendForm: sendForm,
   resetForm: lib.resetForm,
   showSubmitting: lib.showSubmitting,
   showFormResposne: lib.showFormResposne,
   hideFormResposne: lib.hideFormResposne,
   handleEvent: lib.handleEvent,
   sendFormHandler: handlers.sendFormHandler,
+  updatePrice: function(input) {
+    let price = 0;
+    if (input.value <= 50) price = '16 800,00 руб';
+    if ((input.value > 50) && (input.value <= 100)) price = '24 000,00 руб';
+    if ((input.value > 100) && (input.value <= 250)) price = '36 000,00 руб';
+    if ((input.value > 250) && (input.value <= 500)) price = '72 000,00 руб';
+    if ((input.value > 500) && (input.value <= 1000)) price = '120 000,00 руб';
+    if (input.value > 1000) price = `${Math.round(input.value * 67.2, 2)} руб`;
+    this.price.innerText = price;
+  },
   onSuccessHandler: function() {
     this.wrap.classList.add('success-handler');
   },
@@ -30,4 +45,4 @@ OrderCallForm.prototype = {
   },
 };
 
-export default OrderCallForm;
+export default OrderAuditForm;

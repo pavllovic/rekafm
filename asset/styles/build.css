@@ -366,17 +366,14 @@ h2 {
   --outer-height: 24em;
 
   overflow: hidden;
-  height: var(--outer-height);
+  max-height: var(--outer-height);
   margin: 1.5em 0;
   transition-duration: var(--dur-main);
-  transition-property: height;
+  transition-property: max-height;
   transition-timing-function: var(--easing-main);
 }
 
 .list-feature .list {
-  /* --inner-height: 24em; */
-
-  /* height: var(--inner-height); */
   transition-duration: var(--dur-main);
   transition-property: height;
   transition-timing-function: var(--easing-main);

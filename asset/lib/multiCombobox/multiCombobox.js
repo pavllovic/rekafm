@@ -48,9 +48,10 @@ export function closeOptions() {
 export function resetCombobox() {
   this.combobox.setAttribute('aria-activedescendant', '');
   this.output.textContent = this.arrayOptions[0].textContent;
-  this.mapSelected.forEach((vale, key) => {
+  this.mapSelected.forEach((value, key) => {
     key.setAttribute('aria-selected', 'false');
     key.classList.remove('selected');
+    value.checkbox.removeAttribute('checked');
   });
   this.mapSelected.clear();
   this.combobox.removeAttribute('data-value');
@@ -65,12 +66,15 @@ export function selectOption(option) {
   option.setAttribute('aria-selected', 'true');
   option.classList.add('selected');
   const value = option.querySelector('.text').textContent;
-  this.mapSelected.set(option, value);
+  const checkbox = option.querySelector('[type="checkbox"]');
+  checkbox.setAttribute('checked', true);
+  this.mapSelected.set(option, { value: value, checkbox: checkbox });
 }
 
 export function unselectOption(option) {
   option.setAttribute('aria-selected', 'false');
   option.classList.remove('selected');
+  this.mapSelected.get(option).checkbox.removeAttribute('checked');
   this.mapSelected.delete(option);
 }
 
@@ -78,10 +82,11 @@ export function updateOutput() {
   if(this.mapSelected.size === 0) return this.resetCombobox();
   let output = '';
   if(this.mapSelected.size === 1) {
-    output = Array.from(this.mapSelected)[0][1];
+    console.log(Array.from(this.mapSelected));
+    output = Array.from(this.mapSelected)[0][1].value;
   }
   if(this.mapSelected.size > 1) {
-    output = `${Array.from(this.mapSelected)[0][1]},..(${this.mapSelected.size})`;
+    output = `${Array.from(this.mapSelected)[0][1].value},..(${this.mapSelected.size})`;
   }
   this.output.innerText = output;
   return this.updateValue();
@@ -90,7 +95,7 @@ export function updateOutput() {
 export function updateValue() {
   const values = [];
   this.mapSelected.forEach((value) => {
-    values.push(value);
+    values.push(value.value);
   });
   this.combobox.setAttribute('data-value', values);
 }

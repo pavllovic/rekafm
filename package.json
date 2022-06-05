@@ -54,6 +54,7 @@
     "core-js": "^3.21.1",
     "imask": "^6.4.2",
     "jquery": "^3.6.0",
-    "owl.carousel": "^2.3.4"
+    "owl.carousel": "^2.3.4",
+    "swiper": "^8.2.2"
   }
 }

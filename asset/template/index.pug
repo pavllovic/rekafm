@@ -69,15 +69,6 @@ block content
             p жилой и коммерческой<br/> недвижимости
     // block promo
     section(class='block block-promo')
-      //- div(class='map')
-      //-   h2(class='heading') под нашим управлением
-      //-   div(class='info')
-      //-     div
-      //-       p(class='title') 377 га
-      //-       p земли
-      //-     div
-      //-       p(class='title') 2 000 000 м²
-      //-       p жилой и коммерческой<br/> недвижимости
       // block cards
       div(class='cards')
         h2 С кем мы сотрудничаем
@@ -151,10 +142,9 @@ block content
           h3(class='title') Наша команда — эксперты<br/>в управлении недвижимостью
           p Они знают, как организовать процессы, чтобы доход клиента был максимальным, а участие в администрировании — минимальным.
         div(class='content')
-          div(class='own-carousel__container js-own-carousel__container' aria-roledescription='carousel' loading='lazy')
+          div(class='carousel-team')
             include ../components/UI/ui-btnDrag/ui-btnDrag.pug
-            div(class='own-carousel__picker')
-            div(class='own-carousel__control')
+            div(class='swiper-control')
               button(class='ui-btnArrow control__prev' aria-controls='own-carousel__outer')
                 span(class='icon')
                   svg(focusable='false' aria-hidden='true')
@@ -165,9 +155,9 @@ block content
                   svg(focusable='false' aria-hidden='true')
                     use(href='#icon-16-down')
                 span(class='visually-hidden') вперед
-            div(class='own-carousel__outer' id='own-carousel__outer')
-              div(class='own-carousel')
-                div(class='own-carousel__item' aria-roledescription='slide')
+            div(class='swiper js-swiper-team')
+              div(class='swiper-wrapper')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -186,7 +176,7 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
-                div(class='own-carousel__item' aria-roledescription='slide')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -205,7 +195,7 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
-                div(class='own-carousel__item' aria-roledescription='slide')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -224,7 +214,7 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
-                div(class='own-carousel__item' aria-roledescription='slide')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -243,7 +233,7 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
-                div(class='own-carousel__item' aria-roledescription='slide')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -262,7 +252,7 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
-                div(class='own-carousel__item' aria-roledescription='slide')
+                div(class='swiper-slide' aria-roledescription='slide')
                   article(class='cardPerson')
                     div(class='image')
                       picture 
@@ -281,6 +271,18 @@ block content
                           span(class='text' data-text='+7 (927) 263-16-96') +7 (927) 263-16-96
                         a(class='ui-link' href='mailto:v.budkevich@reka.fm') 
                           span(class='text' data-text='v.budkevich@reka.fm') v.budkevich@reka.fm
+              <div class="swiper-pagination"></div>
+              //- div(class='swiper-control')
+              //-   button(class='ui-btnArrow control__prev' aria-controls='own-carousel__outer')
+              //-     span(class='icon')
+              //-       svg(focusable='false' aria-hidden='true')
+              //-         use(href='#icon-16-up')
+              //-     span(class='visually-hidden') назад
+              //-   button(class='ui-btnArrow control__next' aria-controls='own-carousel__outer')
+              //-     span(class='icon')
+              //-       svg(focusable='false' aria-hidden='true')
+              //-         use(href='#icon-16-down')
+              //-     span(class='visually-hidden') вперед
     section(class='block block-news')
       h2 Наши новости
       // component carousel

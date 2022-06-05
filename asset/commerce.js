@@ -96,7 +96,10 @@ const initTablist = function() {
 initTablist();
 
 const initMap = function() {
-  const map = new Map('ymap', 17, [44.898317, 37.354456]);
+  const map = new Map('ymap', {
+    zoom: 17,
+    center: [44.898317, 37.354456],
+  });
   map.init();
   map.createIconLayout();
   map.createBalloonLayout();
@@ -106,7 +109,21 @@ const initMap = function() {
 initMap();
 
 /* testOdjectData - пример объекта */
-const testOdjectData = {
+// const testOdjectData = {
+//   id: 1,
+//   coords: [44.898317, 37.354456],
+//   name: 'Ям Голден Лайн',
+//   address: 'МО, Домодедовский район, «Голден лайн», с. 1',
+//   meta: {
+//     price: 470,
+//     type: 'Склады',
+//     size: '14 758',
+//   },
+//   badges: ['продается целиком'],
+//   link: './build.html',
+// };
+
+const b = {
   id: 1,
   coords: [44.898317, 37.354456],
   name: 'Ям Голден Лайн',
@@ -117,11 +134,25 @@ const testOdjectData = {
     size: '14 758',
   },
   badges: ['продается целиком'],
-  link: './build.html'
+  link: './build.html',
+};
+
+const a = {
+  id: 1,
+  coords: [56.244481, 43.466803],
+  name: 'Ям Голден Лайн',
+  address: 'МО, Домодедовский район, «Голден лайн», с. 1',
+  meta: {
+    price: 470,
+    type: 'Склады',
+    size: '14 758',
+  },
+  badges: ['продается целиком'],
+  link: './build.html',
 };
 
 window.map.createObjectCollection();
-window.map.addObjectInObjectCollection(testOdjectData);
+window.map.addObjectsInObjectCollection([a, b]);
 
 if (module.hot) {
   module.hot.accept();

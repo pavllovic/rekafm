@@ -84,6 +84,10 @@
   grid-template-rows: 1fr;
 }
 
+.panellistCommerce {
+  align-items: flex-start;
+}
+
 .panellistFilter .panel,
 .panellistCommerce .panel {
   grid-column: 1;
