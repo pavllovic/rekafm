@@ -1,0 +1,116 @@
+/* *** styles page audit *** */
+
+/* --- style block-tariff --- */
+.block-tariff {
+  display: none;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: var(--bs-primary, rgba(47, 47, 47, 100%));
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.block-tariff + .block-tariff {
+  display: block;
+}
+
+@media (min-width: 80em) {
+  .block-tariff {
+    display: block;
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+
+  .block-tariff + .block-tariff {
+    display: none;
+  }
+}
+
+/* --- end style block-tariff --- */
+
+/* --- style block-order --- */
+.block-order {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.block-order .body .heading {
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
+}
+
+.block-order .body .text {
+  max-width: 27.5em;
+  margin-top: 0.75em;
+  letter-spacing: -0.02em;
+}
+
+.block-order .form {
+  width: 100%;
+  margin-top: 1.5em;
+}
+
+.block-order .form-value {
+  margin-top: 1em;
+}
+
+@media (min-width: 80em) {
+  .block-order {
+    align-items: flex-end;
+    padding-top: 6em;
+    padding-bottom: 6em;
+    background-image: url("Images/bg/management/order_audit.svg");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: auto calc(100% - 8em);
+  }
+
+  .block-order .body,
+  .block-order .form {
+    width: 50%;
+  }
+
+  .block-order .body .text {
+    margin-top: 1em;
+  }
+
+  .block-order .form {
+    margin-top: 5em;
+  }
+
+  .block-order .form-value {
+    margin-top: 1.6em;
+    font-size: var(--fs-text-lead);
+  }
+}
+
+/* --- end style block-order --- */
+
+/* style footer */
+.footer {
+  --footer-color: var(--bs-primary, rgba(46, 46, 46, 100%));
+  --footer-bg: var(--bs-contrast, rgba(255, 255, 255, 100%));
+  --border-color: var(--bs-ligth, rgba(228, 228, 228, 100%));
+}
+
+.footer .contact .label,
+.footer .ui-linkFade,
+.footer .note {
+  color: var(--bs-secondary, rgba(173, 173, 173, 100%));
+}
+
+.socialLinks .ui-linkSocial .icon {
+  --color-bg: rgba(239, 239, 239, 100%);
+}
+
+.footer .ui-linkFade:hover {
+  color: var(--bs-primary, rgba(46, 46, 46, 100%));
+}
+
+/* end style footer */
+
+/* *** end styles page audit *** */

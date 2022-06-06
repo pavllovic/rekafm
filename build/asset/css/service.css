@@ -1,0 +1,24 @@
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/media-query-plugin/src/loader.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./asset/styles/service.css ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/* --- styles page service --- */
+h2 {
+  margin-top: 1.6em;
+  margin-right: 0.4em;
+  margin-bottom: 0.6em;
+  margin-left: 0.4em;
+}
+.block-card {
+  background-color: rgba(255, 255, 255, 100%);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+@media (min-width: 80em) {
+  h2 {
+    margin-top: calc(140 / 1em);
+    margin-right: calc(1em / 1.8);
+    margin-bottom: calc(1em / 1.8);
+    margin-left: calc(1em / 1.8);
+  }
+}
+/* --- styles page service --- */
+

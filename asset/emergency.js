@@ -1,4 +1,4 @@
-import 'Styles/emergency.css';
+import 'Styles/audit.emergency.mamagement.css';
 
 import Carousel from './components/carousel/carousel.js';
 import ShowList from './components/showList/showList';
