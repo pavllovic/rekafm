@@ -15,7 +15,7 @@ const entry = {
   // accaunting_and_hr: './asset/accaunting_and_hr.js',
   // femida: './asset/femida.js',
   // management: './asset/management.js',
-  service: './asset/service.js',
+  // service: './asset/service.js',
   // emergency: './asset/emergency.js',
   _404: './asset/_404.js',
   privacy: './asset/privacy.js',

@@ -4,77 +4,77 @@ form(class='filter js-filter')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
         aria-activedescendant=''
         aria-autocomplete='none'
-        aria-owns='listbox'
+        aria-owns='rent-city-listbox'
         aria-expanded='false'
-        aria-haspopup='listbox'
+        aria-haspopup='rent-city-listbox'
         aria-labelledby='combobox-label')
         div(class='label') город
         div(class='value') все
         span(class='icon')
           svg(focusable='false' aria-hidden='true')
             use(href='#icon-16-dropdown-open')
-      div(class='options js-options' role='listbox' id='listbox')
-        label(class='reset' role='option' id='option-city-0' aria-selected='true' data-combobox='reset')
+      div(class='options js-options' role='listbox' id='rent-city-listbox')
+        label(class='reset' role='option' id='option-rent-city-0' aria-selected='true' data-combobox='reset')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') все
           input(class='visually-hidden' type='checkbox' checked name='все')
-        label(class='option' role='option' id='option-city-1' aria-selected='false')
+        label(class='option' role='option' id='option-rent-city-1' aria-selected='false')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Москва
           input(class='visually-hidden' type='checkbox' name='Москва')
-        label(class='option' role='option' id='option-city-2' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-2' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Санкт-Петербург
           input(class='visually-hidden' type='checkbox' name='Санкт-Петербург')
-        label(class='option' role='option' id='option-city-3' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-3' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Самара
           input(class='visually-hidden' type='checkbox' name='Самара')
-        label(class='option' role='option' id='option-city-4' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-4' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Саратов
           input(class='visually-hidden' type='checkbox' name='Саратов')
-        label(class='option' role='option' id='option-city-5' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-5' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Нижний Новгород
           input(class='visually-hidden' type='checkbox' name='Нижний Новгород')
-        label(class='option' role='option' id='option-city-6' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-6' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Казань
           input(class='visually-hidden' type='checkbox' name='Казань')
-        label(class='option' role='option' id='option-city-7' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-city-7' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Сочи
           input(class='visually-hidden' type='checkbox' name='Сочи')
-        //- div(class='reset js-reset' role='option' id='option-city-0'  aria-selected='false')
+        //- div(class='reset js-reset' role='option' id='option-rent-city-0'  aria-selected='false')
         //-   svg(class='icon')
         //-     use(href='#icon-16-close')
         //-   span(class='text') все
-        //- div(class='option' role='option' id='option-city-1'  aria-selected='false')
+        //- div(class='option' role='option' id='option-rent-city-1'  aria-selected='false')
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') Москва
-        //- div(class='option' role='option' id='option-city-2'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-city-2'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') Санкт-Петербург
-        //- div(class='option' role='option' id='option-city-3'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-city-3'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') Самара
-        //- div(class='option' role='option' id='option-city-4'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-city-4'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') Саратов
-        //- div(class='option' role='option' id='option-city-5'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-city-5'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') Нижний Новгород
@@ -82,67 +82,67 @@ form(class='filter js-filter')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
         aria-activedescendant=''
         aria-autocomplete='none'
-        aria-owns='listbox'
+        aria-owns='rent-type-listbox'
         aria-expanded='false'
-        aria-haspopup='listbox'
+        aria-haspopup='rent-type-listbox'
         aria-labelledby='combobox-label')
         div(class='label') тип площади
         div(class='value') любое
         span(class='icon')
           svg(focusable='false' aria-hidden='true')
             use(href='#icon-16-dropdown-open')
-      div(class='options js-options' role='listbox' id='listbox')
-        label(class='reset js-reset' role='option' id='option-type-0' aria-selected='true' data-combobox='reset')
+      div(class='options js-options' role='listbox' id='rent-type-listbox')
+        label(class='reset js-reset' role='option' id='option-rent-type-0' aria-selected='true' data-combobox='reset')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') любое
           input(class='visually-hidden' type='checkbox' name='любое')
-        label(class='option' role='option' id='option-type-1' aria-selected='false')
+        label(class='option' role='option' id='option-rent-type-1' aria-selected='false')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') офисы
           input(class='visually-hidden' type='checkbox' name='офисы')
-        label(class='option' role='option' id='option-type-2' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-type-2' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') адм. здания
           input(class='visually-hidden' type='checkbox' name='адм. здания')
-        label(class='option' role='option' id='option-type-3' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-type-3' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') склады
           input(class='visually-hidden' type='checkbox' name='склады')
-        label(class='option' role='option' id='option-type-4' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-type-4' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') производство
           input(class='visually-hidden' type='checkbox' name='производство')
-        label(class='option' role='option' id='option-type-5' aria-selected='false') 
+        label(class='option' role='option' id='option-rent-type-5' aria-selected='false') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') общежития
           input(class='visually-hidden' type='checkbox' name='общежития')
-        //- div(class='reset js-reset' role='option' id='option-type-0'  aria-selected='false')
+        //- div(class='reset js-reset' role='option' id='option-rent-type-0'  aria-selected='false')
         //-   svg(class='icon')
         //-     use(href='#icon-16-close')
         //-   span(class='text') любое
-        //- div(class='option' role='option' id='option-type-1'  aria-selected='false')
+        //- div(class='option' role='option' id='option-rent-type-1'  aria-selected='false')
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') офисы
-        //- div(class='option' role='option' id='option-type-2'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-type-2'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') адм. здания
-        //- div(class='option' role='option' id='option-type-3'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-type-3'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') склады
-        //- div(class='option' role='option' id='option-type-4'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-type-4'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') производство
-        //- div(class='option' role='option' id='option-type-5'  aria-selected='false') 
+        //- div(class='option' role='option' id='option-rent-type-5'  aria-selected='false') 
         //-   svg(class='icon')
         //-       use(href='#icon-16-ok')
         //-   span(class='text') общежития

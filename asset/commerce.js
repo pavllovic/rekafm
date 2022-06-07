@@ -154,6 +154,28 @@ const a = {
 window.map.createObjectCollection();
 window.map.addObjectsInObjectCollection([a, b]);
 
+const initCommerceControls = function() {
+  initFilterActions();
+  initFilterSelects();
+  initFilterMultiSelects();
+  initRangeBar();
+  initTablistView();
+  initFilterMenu();
+  initTablist();
+  initMap();
+}
+
+window.initFilterMenu = initFilterMenu;
+window.initFilterActions = initFilterActions;
+window.initFilterSelects =  initFilterSelects;
+window.initFilterMultiSelects = initFilterMultiSelects;
+window.initRangeBar = initRangeBar;
+window.initTablistView = initTablistView;
+window.initTablist = initTablist;
+window.initMap = initMap;
+
+window.initCommerceControls = initCommerceControls;
+
 if (module.hot) {
   module.hot.accept();
 }

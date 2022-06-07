@@ -10,7 +10,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MediaQueryPlugin = require('media-query-plugin');
+// const MediaQueryPlugin = require('media-query-plugin');
 
 const miniCssExtractPlugin = (isDev) => {
   return new MiniCssExtractPlugin({
@@ -19,42 +19,27 @@ const miniCssExtractPlugin = (isDev) => {
   });
 };
 
-const mediaQueryPlugin = () => {
-  return new MediaQueryPlugin({
-    include: [
-      'common'
-    ],
-    queries: {
-      '(min-width: 992px)': 'resize',
-    }
-  });
-};
+// const mediaQueryPlugin = () => {
+//   return new MediaQueryPlugin({
+//     include: [
+//       'common'
+//     ],
+//     queries: {
+//       '(min-width: 992px)': 'resize',
+//     }
+//   });
+// };
 
 const copyWebpackPlugin = (isDev) => {
   const pathToCopy = 'asset/lib';
   let patterns = [];
   if(isDev) {
     patterns = [
-      // {from: 'node_modules/bootstrap/dist/', to: `${pathToCopy}/bootstrap/`},
       {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
-      // {from: 'node_modules/owl.carousel/dist/', to: `${pathToCopy}/owl.carousel/`},
-      // {from: 'node_modules/jquery/dist/', to: `${pathToCopy}/jquery/`},
-      // {from: 'node_modules/imask/dist/', to: `${pathToCopy}/imask/`},
-      // {from: './asset/fonts/iconmoon-16.woff', to: 'asset/fonts/'},
-      // {from: './asset/fonts/iconmoon-24.woff', to: 'asset/fonts/'},
-      // {from: './asset/fonts/iconmoon-32.woff', to: 'asset/fonts/'},
-      // {from: './asset/fonts/iconmoon-72.woff', to: 'asset/fonts/'},
-      // {from: './asset/fonts/iconmoon-btn.woff', to: 'asset/fonts/'},
       {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
   } else {
     patterns = [
-      // {from: 'node_modules/bootstrap/dist/css/bootstrap.min.css', to: `${pathToCopy}/bootstrap/css/bootstrap.min.css`},
-      // {from: 'node_modules/owl.carousel/dist/owl.carousel.min.js', to: `${pathToCopy}/owl.carousel/owl.carousel.min.js`},
-      // {from: 'node_modules/owl.carousel/dist/assets/owl.carousel.min.css', to: `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`},
-      // {from: 'node_modules/jquery/dist/jquery.min.js', to: `${pathToCopy}/jquery/jquery.min.js`},
-      // {from: 'node_modules/imask/dist/imask.min.js', to: `${pathToCopy}/imask/imask.min.js`},
-      // {from: './asset/fonts/icon-font.woff', to: 'asset/fonts/'}
       {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
       {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
@@ -67,24 +52,8 @@ const copyWebpackPlugin = (isDev) => {
 const htmlWebpackTagsPlugin = (isDev) => {
   const pathToCopy = 'asset/lib';
   return [
-    // new HtmlWebpackTagsPlugin({
-    //   links: [
-    //     `${pathToCopy}/owl.carousel/assets/owl.carousel.min.css`
-    //   ],
-    //   scripts: [
-    //     `${pathToCopy}/jquery/jquery.min.js`,
-    //     `${pathToCopy}/owl.carousel/owl.carousel.min.js`,
-    //     `${pathToCopy}/imask/imask.min.js`,
-    //   ],
-    //   files: isDev ? ['_html/profile.html'] : ['profile.html'],
-    //   append: false
-    // }),
     new HtmlWebpackTagsPlugin({
-      // files: ['_html/index.html', '_html/build.html'],
-      // files: ['_html/index.html'],
-      // links: [
-      //   `${pathToCopy}/ownCarousel/ownCarousel.css`, 
-      // ],
+      files: isDev ? ['_html/build.html'] : ['build.html'],
       scripts: [
         `${pathToCopy}/ownCarousel/ownCarousel.js`
       ],
