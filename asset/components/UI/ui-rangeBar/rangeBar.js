@@ -40,7 +40,6 @@ RangeBarInt.prototype = {
 
   passValueFrom: function() {
     const value = ((this.valueFrom - this.valueMin) / this.valueMax) * 100;
-    // const value = (this.valueFrom / this.valueMax) * 100;
     this.wrapper.style.setProperty('--value-from', `${value}%`);
   },
 

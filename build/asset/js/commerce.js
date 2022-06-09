@@ -52,8 +52,7 @@ RangeBarInt.prototype = {
     value - this.minGap >= this.valueFrom ? this.valueTo = value : this.valueTo = this.valueFrom;
   },
   passValueFrom: function passValueFrom() {
-    var value = (this.valueFrom - this.valueMin) / this.valueMax * 100; // const value = (this.valueFrom / this.valueMax) * 100;
-
+    var value = (this.valueFrom - this.valueMin) / this.valueMax * 100;
     this.wrapper.style.setProperty('--value-from', "".concat(value, "%"));
   },
   passValueTo: function passValueTo() {
