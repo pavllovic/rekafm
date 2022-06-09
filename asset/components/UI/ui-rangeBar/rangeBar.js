@@ -40,11 +40,13 @@ RangeBarInt.prototype = {
 
   passValueFrom: function() {
     const value = ((this.valueFrom - this.valueMin) / this.valueMax) * 100;
+    // const value = (this.valueFrom / this.valueMax) * 100;
     this.wrapper.style.setProperty('--value-from', `${value}%`);
   },
 
   passValueTo: function() {
-    const value = ((this.valueTo - this.valueMin) / this.valueMax) * 100;
+    // const value = ((this.valueTo - this.valueMin) / this.valueMax) * 100;
+    const value = (this.valueTo / this.valueMax) * 100;
     this.wrapper.style.setProperty('--value-to', `${value}%`);
   },
 
@@ -75,6 +77,13 @@ RangeBarInt.prototype = {
 
   changeRate: function(rate) {
     this.rate = rate;
+  },
+
+  resetInputValues: function() {
+    this.inputTo.value = this.valueMax;
+    this.inputTo.innerText = this.valueMax;
+    this.inputFrom.value = this.valueMin;
+    this.inputFrom.innerText = this.valueMin;
   },
 
   setFloatValue: function(value) {

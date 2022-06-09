@@ -19,7 +19,7 @@
 }
 
 .ui-rangeBar--box {
-  display: flex;
+  display: none;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -30,6 +30,7 @@
 }
 
 .ui-rangeBar--box.active {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }

@@ -2107,7 +2107,7 @@ ui-btnArrow::before - border for normal/disabled
   grid-template-rows: 1fr;
 }
 .ui-rangeBar--box {
-  display: flex;
+  display: none;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -2117,6 +2117,7 @@ ui-btnArrow::before - border for normal/disabled
   pointer-events: none;
 }
 .ui-rangeBar--box.active {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }

@@ -19,6 +19,7 @@ RangeBarSelect.prototype = {
     if(this.activeRangeBar !== type) {
       console.log(this.rangeBarMap);
       this.activeRangeBar.wrapper.classList.remove('active');
+      this.activeRangeBar.resetInputValues();
       this.rangeBarMap.get(type).wrapper.classList.add('active');
       this.rangeBarMap.get(type).changeRate(rate);
       this.rangeBarMap.get(type).updateViewValues();
@@ -33,7 +34,6 @@ RangeBarSelect.prototype = {
   handleEvent: function(e) {
     switch(e.type) {
       case 'click':
-        console.log('ddddddddddd');
         const option = e.target.closest('[role="option"]');
         if(option) {
           return this.toggleRangeBar(option);

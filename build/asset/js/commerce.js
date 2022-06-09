@@ -52,11 +52,13 @@ RangeBarInt.prototype = {
     value - this.minGap >= this.valueFrom ? this.valueTo = value : this.valueTo = this.valueFrom;
   },
   passValueFrom: function passValueFrom() {
-    var value = (this.valueFrom - this.valueMin) / this.valueMax * 100;
+    var value = (this.valueFrom - this.valueMin) / this.valueMax * 100; // const value = (this.valueFrom / this.valueMax) * 100;
+
     this.wrapper.style.setProperty('--value-from', "".concat(value, "%"));
   },
   passValueTo: function passValueTo() {
-    var value = (this.valueTo - this.valueMin) / this.valueMax * 100;
+    // const value = ((this.valueTo - this.valueMin) / this.valueMax) * 100;
+    var value = this.valueTo / this.valueMax * 100;
     this.wrapper.style.setProperty('--value-to', "".concat(value, "%"));
   },
   updateElementsFrom: function updateElementsFrom() {
@@ -79,6 +81,12 @@ RangeBarInt.prototype = {
   },
   changeRate: function changeRate(rate) {
     this.rate = rate;
+  },
+  resetInputValues: function resetInputValues() {
+    this.inputTo.value = this.valueMax;
+    this.inputTo.innerText = this.valueMax;
+    this.inputFrom.value = this.valueMin;
+    this.inputFrom.innerText = this.valueMin;
   },
   setFloatValue: function setFloatValue(value) {
     return (value / 1000000).toFixed(1);
@@ -151,6 +159,7 @@ RangeBarSelect.prototype = {
     if (this.activeRangeBar !== type) {
       console.log(this.rangeBarMap);
       this.activeRangeBar.wrapper.classList.remove('active');
+      this.activeRangeBar.resetInputValues();
       this.rangeBarMap.get(type).wrapper.classList.add('active');
       this.rangeBarMap.get(type).changeRate(rate);
       this.rangeBarMap.get(type).updateViewValues();
@@ -163,7 +172,6 @@ RangeBarSelect.prototype = {
   handleEvent: function handleEvent(e) {
     switch (e.type) {
       case 'click':
-        console.log('ddddddddddd');
         var option = e.target.closest('[role="option"]');
 
         if (option) {
@@ -592,6 +600,7 @@ TablistView.prototype = {
   handleEvent: function handleEvent(e) {
     switch (e.type) {
       case 'click':
+        // for backend
         dispatchEvent(new Event('mapTabOpened'));
         break;
 
