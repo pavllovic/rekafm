@@ -152,6 +152,7 @@ const b = {
     size: '14 758',
   },
   badges: ['продается целиком'],
+  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html',
 };
 
@@ -166,6 +167,7 @@ const a = {
     size: '14 758',
   },
   badges: ['продается целиком'],
+  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html',
 };
 

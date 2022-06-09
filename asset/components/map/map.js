@@ -37,7 +37,8 @@ YMap.prototype = {
   createIconLayout: function() {
     window.ymaps.ready(() => {
       const IconLayout = window.ymaps.templateLayoutFactory.createClass( // eslint-disable-line
-        '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>',
+        // '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>',
+        '<div class="placemark"><img src="{{ properties.objectData.thumbUrl }}"></div>',
         {
           build: function () {
             IconLayout.superclass.build.call(this);

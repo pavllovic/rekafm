@@ -7,10 +7,24 @@ const TablistView = function (elem) {
 TablistView.prototype = {
   constructor: TablistView,
   init: lib.init,
-  setListeners: lib.setListeners,
+  setListeners: function() {
+    lib.setListeners.call(this);
+    // for backend
+    document.addEventListener('mapTabOpened', () => {});
+  },
   deactivateTab: lib.deactivateTab,
   focusTab: lib.focusTab,
-  handleEvent: lib.handleEvent,
+  handleEvent: function(e) {
+    switch(e.type) {
+      case 'click':
+        // for backend
+        dispatchEvent(new Event('mapTabOpened'));
+        break;
+      default:
+        break;
+    }
+    lib.handleEvent.call(this, e);
+  },
   onkeydown: lib.onkeydown,
   activateTab: function(tab) {
     if(this.activeTab) this.deactivateTab(this.activeTab);

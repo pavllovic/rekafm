@@ -434,7 +434,8 @@ YMap.prototype = {
 
     window.ymaps.ready(function () {
       var IconLayout = window.ymaps.templateLayoutFactory.createClass( // eslint-disable-line
-      '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>', {
+      // '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>',
+      '<div class="placemark"><img src="{{ properties.objectData.thumbUrl }}"></div>', {
         build: function build() {
           var _this3 = this;
 
@@ -581,10 +582,25 @@ var TablistView = function TablistView(elem) {
 TablistView.prototype = {
   constructor: TablistView,
   init: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.init,
-  setListeners: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.setListeners,
+  setListeners: function setListeners() {
+    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.setListeners.call(this); // for backend
+
+    document.addEventListener('mapTabOpened', function () {});
+  },
   deactivateTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.deactivateTab,
   focusTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.focusTab,
-  handleEvent: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.handleEvent,
+  handleEvent: function handleEvent(e) {
+    switch (e.type) {
+      case 'click':
+        dispatchEvent(new Event('mapTabOpened'));
+        break;
+
+      default:
+        break;
+    }
+
+    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.handleEvent.call(this, e);
+  },
   onkeydown: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.onkeydown,
   activateTab: function activateTab(tab) {
     if (this.activeTab) this.deactivateTab(this.activeTab);
@@ -7374,6 +7390,7 @@ var b = {
     size: '14 758'
   },
   badges: ['продается целиком'],
+  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html'
 };
 var a = {
@@ -7387,6 +7404,7 @@ var a = {
     size: '14 758'
   },
   badges: ['продается целиком'],
+  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html'
 };
 window.map.createObjectCollection();

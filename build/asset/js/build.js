@@ -71,7 +71,8 @@ YMap.prototype = {
 
     window.ymaps.ready(function () {
       var IconLayout = window.ymaps.templateLayoutFactory.createClass( // eslint-disable-line
-      '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>', {
+      // '<div class="placemark"><img src="../asset/images/build/{{ properties.objectData.id }}/thumb/1.jpg"></div>',
+      '<div class="placemark"><img src="{{ properties.objectData.thumbUrl }}"></div>', {
         build: function build() {
           var _this3 = this;
 
