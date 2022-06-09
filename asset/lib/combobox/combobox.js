@@ -44,12 +44,12 @@ export function closeOptions() {
 export function resetCombobox() {
   this.combobox.setAttribute('aria-activedescendant', '');
   this.combobox.textContent = this.arrayOptions[0].textContent;
-  this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
   console.log(this.input);
   this.input.setAttribute('value', this.arrayOptions[0].textContent);
   this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
   this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
-  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').removeAttribute('checked');
+  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').checked = false;
   this.optionSelectedIndex = 0;
   this.optionFocusedIndex = 0;
 }
@@ -61,13 +61,13 @@ export function onOptionChecked(e) {
 
   if(prevOption) {
     prevOption.setAttribute('aria-selected', 'false');
-    prevOption.querySelector('[type="checkbox"]').removeAttribute('checked');
+    prevOption.querySelector('[type="checkbox"]').checked = false;
   }
   if(option) {
     option.setAttribute('aria-selected', 'true');
     const value = option.querySelector('.text').textContent;
     this.output.innerText = value;
-    option.querySelector('[type="checkbox"]').setAttribute('checked', true);
+    // option.querySelector('[type="checkbox"]').setAttribute('checked', true);
   }
 
   const index = this.arrayOptions.findIndex((item) => item === option);
@@ -143,8 +143,8 @@ export function destroy() {
 export function handleEvent(e) {
   switch(e.type) {
     case 'click':
-      e.preventDefault();
-      e.stopPropagation();
+      // e.preventDefault();
+      // e.stopPropagation();
       const role = e.target.getAttribute('role');
       if(role === 'combobox') {
         return this.toogleOptions(e);

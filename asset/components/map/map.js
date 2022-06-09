@@ -1,10 +1,10 @@
-const Map = function(id, options) {
+const YMap = function(id, options) {
   this.center = options.center;
   this.id = id;
   this.zoom = options.zoom;
 };
 
-Map.prototype = {
+YMap.prototype = {
   init: function() {
     window.ymaps.ready(() => {
       this.map = new window.ymaps.Map(this.id, {
@@ -179,4 +179,4 @@ Map.prototype = {
   // },
 };
 
-export default Map;
+export default YMap;

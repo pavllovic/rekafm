@@ -176,3 +176,26 @@ h2 {
 }
 
 /* --- end common style for all pages --- */
+
+/* --- styles page service --- */
+.block-card h2 {
+  margin-top: 1.6em;
+  margin-right: 0.4em;
+  margin-bottom: 0.6em;
+  margin-left: 0.4em;
+}
+
+.block-card {
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+@media (min-width: 80em) {
+  .block-card h2 {
+    margin-top: calc(140 / 1em);
+    margin-right: calc(1em / 1.8);
+    margin-bottom: calc(1em / 1.8);
+    margin-left: calc(1em / 1.8);
+  }
+}
+
+/* --- styles page service --- */

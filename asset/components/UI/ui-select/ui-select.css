@@ -170,6 +170,10 @@
   transform: scale(1);
 }
 
+.ui-select .option [type="checkbox"] {
+  appearance: none;
+}
+
 .ui-select .option::after,
 .ui-select .reset::after {
   position: absolute;

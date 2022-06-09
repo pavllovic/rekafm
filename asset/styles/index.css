@@ -500,6 +500,10 @@
   .swiper-control::after {
     display: none;
   }
+
+  .swiper-pagination {
+    visibility: hidden;
+  }
 }
 
 /* end style own-carousel */

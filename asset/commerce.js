@@ -1,9 +1,10 @@
 import 'Styles/commerce.css';
-import Map from './components/map/map';
+import YMap from './components/map/map';
 import Tabs from './components/tabs/tabs';
 import CommerceFilter from './components/commerceFilter/commerceFilter';
 import TablistView from './components/tablistView/tablistView';
 import RangeBar from './components/UI/ui-rangeBar/rangeBar';
+import RangeBarSelect from './components/UI/ui-rangeBar/rangeBarSelect';
 import MultiCombobox from './components/UI/ui-select/multiCombobox';
 import Combobox from './components/UI/ui-select/combobox';
 import FilterActions from './components/filter/FilterActions';
@@ -40,6 +41,23 @@ const initFilterMultiSelects = function() {
 };
 
 initFilterMultiSelects();
+
+const initRangeBarSelect = function() {
+  const rangeBarSelectElement = document.querySelector('.js-rangeBarSelect');
+  const mapRangeBar = new Map();
+
+  rangeBarSelectElement.querySelectorAll('.js-range').forEach((item) => {
+    const name = item.getAttribute('data-price');
+    const rangeBar = new RangeBar(item);
+    rangeBar.init();
+    mapRangeBar.set(name, rangeBar);
+  });
+  const rangeBarSelect = new RangeBarSelect(rangeBarSelectElement, mapRangeBar);
+  rangeBarSelect.init();
+  window.rangeBarSelect = rangeBarSelect;
+};
+
+initRangeBarSelect();
 
 const initRangeBar = function() {
   const rangeBarIntElements = document.querySelectorAll('.js-rangeBarInt');
@@ -96,7 +114,7 @@ const initTablist = function() {
 initTablist();
 
 const initMap = function() {
-  const map = new Map('ymap', {
+  const map = new YMap('ymap', {
     zoom: 17,
     center: [44.898317, 37.354456],
   });
@@ -159,17 +177,19 @@ const initCommerceControls = function() {
   initFilterSelects();
   initFilterMultiSelects();
   initRangeBar();
+  initRangeBarSelect();
   initTablistView();
   initFilterMenu();
   initTablist();
   initMap();
-}
+};
 
 window.initFilterMenu = initFilterMenu;
 window.initFilterActions = initFilterActions;
-window.initFilterSelects =  initFilterSelects;
+window.initFilterSelects = initFilterSelects;
 window.initFilterMultiSelects = initFilterMultiSelects;
 window.initRangeBar = initRangeBar;
+window.initRangeBarSelect = initRangeBarSelect;
 window.initTablistView = initTablistView;
 window.initTablist = initTablist;
 window.initMap = initMap;

@@ -88,8 +88,13 @@ input,
 button,
 textarea,
 select {
+  margin: 0;
   font: inherit;
   letter-spacing: inherit;
+}
+:focus,
+:active {
+  outline: 0;
 }
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
@@ -2095,6 +2100,26 @@ ui-btnArrow::before - border for normal/disabled
   color: rgba(173, 173, 173, 100%);
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
 }
+.ui-rangeBar--block {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.ui-rangeBar--box {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-column: 1/1;
+  grid-row: 1/1;
+  opacity: 0;
+  pointer-events: none;
+}
+.ui-rangeBar--box.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 .ui-rangeBarSelect {
   margin-top: 2.25em;
 }
@@ -2645,6 +2670,11 @@ ui-btnArrow::before - border for normal/disabled
 }
 .ui-select .option.selected .icon {
   transform: scale(1);
+}
+.ui-select .option [type="checkbox"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .ui-select .option::after,
 .ui-select .reset::after {
@@ -3275,7 +3305,7 @@ class .is-active add from nav.js
   /* скрывает выподающий submenu при начальном состоянии */
   .menu::after {
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
@@ -3296,10 +3326,14 @@ class .is-active add from nav.js
   }
 
   .menu .ui-link {
+    position: relative;
+    z-index: 2;
     padding: calc(1em / 0.75) calc(1em / 0.9);
   }
 
   .menu .ui-linkDropdown {
+    position: relative;
+    z-index: 2;
     pointer-events: initial;
   }
 
@@ -3320,7 +3354,9 @@ class .is-active add from nav.js
   /* style submenu */
   .submenu {
     position: absolute;
-    z-index: -2;
+    z-index: 0;
+
+    /* z-index: -2; */
     bottom: 0;
     left: 0;
     width: calc(100% + 0.03125em); /* stylelint-disable number-max-precision */
@@ -3351,9 +3387,12 @@ class .is-active add from nav.js
   }
 
   .menu .item:hover .submenu {
-    z-index: -1;
+    /* z-index: -2; */
+    z-index: 0;
     transform: translateY(calc(100% - 1px));
     transform: translateY(calc(100% - var(--border-size)));
+
+    /* transform: translate3d(0, calc(100% - var(--border-size)), 0); */
     transition-delay: 0s, 0s;
     visibility: visible;
   }
@@ -3385,6 +3424,7 @@ class .is-active add from nav.js
   border: calc(1px * 3) solid rgba(255, 255, 255, 100%);
   border: calc(var(--border-size) * 3) solid var(--bs-contrast, rgba(255, 255, 255, 100%));
   content: "";
+  pointer-events: none;
 }
 .hero .body {
   position: relative;
@@ -3464,6 +3504,7 @@ class .is-active add from nav.js
   background-image: url(../../asset/images/filter/noise.gif);
   content: "";
   opacity: 0.08;
+  pointer-events: none;
 }
 .hero picture::after {
   position: absolute;
@@ -3474,6 +3515,7 @@ class .is-active add from nav.js
   height: 100%;
   background: linear-gradient(to bottom, rgba(10, 10, 10, 24%), rgba(10, 10, 10, 0%));
   content: "";
+  pointer-events: none;
 }
 .hero img {
   position: absolute;
@@ -5687,4 +5729,24 @@ h2 {
   }
 }
 /* --- end common style for all pages --- */
+/* --- styles page service --- */
+.block-card h2 {
+  margin-top: 1.6em;
+  margin-right: 0.4em;
+  margin-bottom: 0.6em;
+  margin-left: 0.4em;
+}
+.block-card {
+  background-color: rgba(255, 255, 255, 100%);
+  background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+@media (min-width: 80em) {
+  .block-card h2 {
+    margin-top: calc(140 / 1em);
+    margin-right: calc(1em / 1.8);
+    margin-bottom: calc(1em / 1.8);
+    margin-left: calc(1em / 1.8);
+  }
+}
+/* --- styles page service --- */
 

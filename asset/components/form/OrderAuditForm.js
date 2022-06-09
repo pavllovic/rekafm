@@ -29,12 +29,14 @@ OrderAuditForm.prototype = {
   sendFormHandler: handlers.sendFormHandler,
   updatePrice: function(input) {
     let price = 0;
-    if (input.value <= 50) price = '16 800,00 руб';
-    if ((input.value > 50) && (input.value <= 100)) price = '24 000,00 руб';
-    if ((input.value > 100) && (input.value <= 250)) price = '36 000,00 руб';
-    if ((input.value > 250) && (input.value <= 500)) price = '72 000,00 руб';
-    if ((input.value > 500) && (input.value <= 1000)) price = '120 000,00 руб';
-    if (input.value > 1000) price = `${Math.round(input.value * 67.2, 2)} руб`;
+    if (input.value <= 50) price = '16 800';
+    if ((input.value > 50) && (input.value <= 100)) price = '24 000';
+    if ((input.value > 100) && (input.value <= 250)) price = '36 000';
+    if ((input.value > 250) && (input.value <= 500)) price = '72 000';
+    if ((input.value > 500) && (input.value <= 1000)) price = '120 000';
+    if (input.value > 1000) {
+      price = new Intl.NumberFormat('ru-RU').format(Math.round(input.value * 67.2, 2));
+    }
     this.price.innerText = price;
   },
   onSuccessHandler: function() {

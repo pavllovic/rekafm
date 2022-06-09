@@ -11,6 +11,29 @@
   color: var(--bs-secondary, rgba(173, 173, 173, 100%));
 }
 
+.ui-rangeBar--block {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.ui-rangeBar--box {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-column: 1/1;
+  grid-row: 1/1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ui-rangeBar--box.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .ui-rangeBarSelect {
   margin-top: 2.25em;
 }

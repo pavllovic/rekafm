@@ -1,4 +1,4 @@
-import 'Styles/service.css';
+// import 'Styles/service.css';
 
 if (module.hot) {
   module.hot.accept();

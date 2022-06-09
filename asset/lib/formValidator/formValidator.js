@@ -2,6 +2,20 @@ const FormValidator = function(form) {
   this.form = form;
   this.fields = this.form.querySelectorAll('input');
   this.mapError = new Map();
+  this.errorMessage = {
+    name: {
+      patternMismatch: 'имя должно состоять только из букв А-Я, A-Z',
+      valueMissing: 'имя должно состоять только из букв А-Я, A-Z',
+    },
+    phone: {
+      patternMismatch: 'введите номер в формате +7 (9__) ___-__-__',
+      valueMissing: 'введите номер в формате +7 (9__) ___-__-__',
+    },
+    square: {
+      patternMismatch: 'только цифры',
+      valueMissing: 'только цифры',
+    },
+  };
 };
 
 FormValidator.prototype = {
@@ -65,8 +79,15 @@ FormValidator.prototype = {
   },
 
   getInputError: function(input) {
-    const nameError = Object.keys(input.validity).filter((key) => input.validity[key]);
+    let nameError;
+    for(const key in input.validity) { // eslint-disable-line
+      if(input.validity[key]) {
+        nameError = key;
+        break;
+      }
+    }
     this.mapError.set(input.name, nameError);
+    return nameError;
   },
 
   validInputHandler: function(input) {
@@ -77,10 +98,12 @@ FormValidator.prototype = {
   },
 
   invalidInputHandler: function(input) {
+    const name = input.name;
     const typeError = this.mapError.get(input.name);
     if(!input.validity[typeError]) {
-      this.getInputError(input);
-      this.showErrorTooltip(input);
+      const nameError = this.getInputError(input);
+      const msg = this.errorMessage[name]?.[nameError];
+      this.showErrorTooltip(input, msg);
       input.classList.remove('valid');
       input.classList.add('invalid');
     }

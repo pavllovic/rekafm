@@ -615,6 +615,7 @@ h2 {
     position: sticky;
     z-index: 0;
     top: 7.5em;
+    height: calc(100vh - 7.5em);
   }
 
   .block-object::after {
@@ -838,6 +839,7 @@ h2 {
 
   .list-feature {
     height: auto;
+    max-height: none;
     margin-top: 2.5em;
     margin-bottom: 0;
   }

@@ -19,6 +19,7 @@
   height: calc(100% - 2em);
   border: calc(var(--border-size) * 3) solid var(--bs-contrast, rgba(255, 255, 255, 100%));
   content: "";
+  pointer-events: none;
 }
 
 .hero .body {
@@ -105,6 +106,7 @@
   background-image: url("Images/filter/noise.gif");
   content: "";
   opacity: 0.08;
+  pointer-events: none;
 }
 
 .hero picture::after {
@@ -116,6 +118,7 @@
   height: 100%;
   background: linear-gradient(to bottom, rgba(10, 10, 10, 24%), rgba(10, 10, 10, 0%));
   content: "";
+  pointer-events: none;
 }
 
 .hero img {

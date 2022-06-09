@@ -81,7 +81,7 @@ const htmlWebpackPlagin = (isDev) => {
     {name: 'index', title: 'рекафм', chunks: ['common', 'index']},
     {name: 'fire_safety', title: 'рекафм | пожарная безопасность', chunks: ['common']},
     {name: 'audit', title: 'рекафм | технический аудит недвижимости', chunks: ['common', 'audit_emergency_mamagement']},
-    {name: 'service', title: 'рекафм | эксплуатация и техническое обслуживание недвижимости', chunks: ['common', 'service']},
+    {name: 'service', title: 'рекафм | эксплуатация и техническое обслуживание недвижимости', chunks: ['common']},
     {name: 'management', title: 'рекафм | управление недвижимостью', chunks: ['common', 'audit_emergency_mamagement']},
     {name: 'femida', title: 'рекафм | юридическое сопровождение', chunks: ['common']},
     {name: 'emergency', title: 'рекафм | аварийно-диспетчерская служба', chunks: ['common', 'audit_emergency_mamagement']},

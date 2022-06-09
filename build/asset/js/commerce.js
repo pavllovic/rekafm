@@ -29,6 +29,7 @@ var RangeBarInt = function RangeBarInt(parent, output) {
   this.sliderTo = parent.querySelector('[data-range="slider-to"]');
   this.minGap = 0;
   this.output = output;
+  this.rate = 1;
 };
 
 RangeBarInt.prototype = {
@@ -63,14 +64,21 @@ RangeBarInt.prototype = {
     this.inputFrom.value = this.valueFrom;
     this.inputFrom.innerText = this.valueFrom;
     this.viewFrom.innerText = this.output === 'float' ? this.setFloatValue(this.valueFrom) // : this.valueFrom;
-    : new Intl.NumberFormat('ru-RU').format(this.valueFrom);
+    : new Intl.NumberFormat('ru-RU').format(this.valueFrom * this.rate);
   },
   updateElementsTo: function updateElementsTo() {
     this.sliderTo.value = this.valueTo;
     this.inputTo.value = this.valueTo;
     this.inputTo.innerText = this.valueTo;
     this.viewTo.innerText = this.output === 'float' ? this.setFloatValue(this.valueTo) // : this.valueTo;
-    : new Intl.NumberFormat('ru-RU').format(this.valueTo);
+    : new Intl.NumberFormat('ru-RU').format(this.valueTo * this.rate);
+  },
+  updateViewValues: function updateViewValues() {
+    this.updateElementsFrom();
+    this.updateElementsTo();
+  },
+  changeRate: function changeRate(rate) {
+    this.rate = rate;
   },
   setFloatValue: function setFloatValue(value) {
     return (value / 1000000).toFixed(1);
@@ -109,6 +117,69 @@ RangeBarInt.prototype = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RangeBarInt);
+
+/***/ }),
+
+/***/ "./asset/components/UI/ui-rangeBar/rangeBarSelect.js":
+/*!***********************************************************!*\
+  !*** ./asset/components/UI/ui-rangeBar/rangeBarSelect.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var RangeBarSelect = function RangeBarSelect(parent, map) {
+  this.wrapper = parent;
+  this.rangeBarMap = map;
+  this.activeRangeBar = this.rangeBarMap.get('all');
+};
+
+RangeBarSelect.prototype = {
+  init: function init() {
+    this.setListeners();
+  },
+  setListeners: function setListeners() {
+    this.wrapper.addEventListener('click', this);
+  },
+  toggleRangeBar: function toggleRangeBar(option) {
+    var rate = option.getAttribute('data-price-rate');
+    var type = option.getAttribute('data-price');
+
+    if (this.activeRangeBar !== type) {
+      console.log(this.rangeBarMap);
+      this.activeRangeBar.wrapper.classList.remove('active');
+      this.rangeBarMap.get(type).wrapper.classList.add('active');
+      this.rangeBarMap.get(type).changeRate(rate);
+      this.rangeBarMap.get(type).updateViewValues();
+      this.activeRangeBar = this.rangeBarMap.get(type);
+    }
+  },
+  destroy: function destroy() {
+    this.wrapper.removeEventListener('input', this);
+  },
+  handleEvent: function handleEvent(e) {
+    switch (e.type) {
+      case 'click':
+        console.log('ddddddddddd');
+        var option = e.target.closest('[role="option"]');
+
+        if (option) {
+          return this.toggleRangeBar(option);
+        }
+
+        break;
+
+      default:
+        break;
+    }
+
+    return undefined;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RangeBarSelect);
 
 /***/ }),
 
@@ -320,13 +391,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Map = function Map(id, options) {
+var YMap = function YMap(id, options) {
   this.center = options.center;
   this.id = id;
   this.zoom = options.zoom;
 };
 
-Map.prototype = {
+YMap.prototype = {
   init: function init() {
     var _this = this;
 
@@ -482,7 +553,7 @@ Map.prototype = {
   // },
 
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Map);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (YMap);
 
 /***/ }),
 
@@ -666,13 +737,13 @@ function closeOptions() {
 }
 function resetCombobox() {
   this.combobox.setAttribute('aria-activedescendant', '');
-  this.combobox.textContent = this.arrayOptions[0].textContent;
-  this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  this.combobox.textContent = this.arrayOptions[0].textContent; // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+
   console.log(this.input);
   this.input.setAttribute('value', this.arrayOptions[0].textContent);
   this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
   this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
-  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').removeAttribute('checked');
+  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').checked = false;
   this.optionSelectedIndex = 0;
   this.optionFocusedIndex = 0;
 }
@@ -683,14 +754,13 @@ function onOptionChecked(e) {
 
   if (prevOption) {
     prevOption.setAttribute('aria-selected', 'false');
-    prevOption.querySelector('[type="checkbox"]').removeAttribute('checked');
+    prevOption.querySelector('[type="checkbox"]').checked = false;
   }
 
   if (option) {
     option.setAttribute('aria-selected', 'true');
     var value = option.querySelector('.text').textContent;
-    this.output.innerText = value;
-    option.querySelector('[type="checkbox"]').setAttribute('checked', true);
+    this.output.innerText = value; // option.querySelector('[type="checkbox"]').setAttribute('checked', true);
   }
 
   var index = this.arrayOptions.findIndex(function (item) {
@@ -766,8 +836,8 @@ function destroy() {
 function handleEvent(e) {
   switch (e.type) {
     case 'click':
-      e.preventDefault();
-      e.stopPropagation();
+      // e.preventDefault();
+      // e.stopPropagation();
       var role = e.target.getAttribute('role');
 
       if (role === 'combobox') {
@@ -1010,7 +1080,7 @@ function resetCombobox() {
   this.mapSelected.forEach(function (value, key) {
     key.setAttribute('aria-selected', 'false');
     key.classList.remove('selected');
-    value.checkbox.removeAttribute('checked');
+    value.checkbox.checked = false; // eslint-disable-line
   });
   this.mapSelected.clear();
   this.combobox.removeAttribute('data-value');
@@ -1023,8 +1093,8 @@ function selectOption(option) {
   option.setAttribute('aria-selected', 'true');
   option.classList.add('selected');
   var value = option.querySelector('.text').textContent;
-  var checkbox = option.querySelector('[type="checkbox"]');
-  checkbox.setAttribute('checked', true);
+  var checkbox = option.querySelector('[type="checkbox"]'); // checkbox.setAttribute('checked', true);
+
   this.mapSelected.set(option, {
     value: value,
     checkbox: checkbox
@@ -1032,8 +1102,8 @@ function selectOption(option) {
 }
 function unselectOption(option) {
   option.setAttribute('aria-selected', 'false');
-  option.classList.remove('selected');
-  this.mapSelected.get(option).checkbox.removeAttribute('checked');
+  option.classList.remove('selected'); // this.mapSelected.get(option).checkbox.removeAttribute('checked');
+
   this.mapSelected["delete"](option);
 }
 function updateOutput() {
@@ -7090,35 +7160,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
-/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
-/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var Styles_commerce_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! Styles/commerce.css */ "./asset/styles/commerce.css");
-/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
-/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/tabs/tabs */ "./asset/components/tabs/tabs.js");
-/* harmony import */ var _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/commerceFilter/commerceFilter */ "./asset/components/commerceFilter/commerceFilter.js");
-/* harmony import */ var _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/tablistView/tablistView */ "./asset/components/tablistView/tablistView.js");
-/* harmony import */ var _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBar */ "./asset/components/UI/ui-rangeBar/rangeBar.js");
-/* harmony import */ var _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/UI/ui-select/multiCombobox */ "./asset/components/UI/ui-select/multiCombobox.js");
-/* harmony import */ var _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/UI/ui-select/combobox */ "./asset/components/UI/ui-select/combobox.js");
-/* harmony import */ var _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/filter/FilterActions */ "./asset/components/filter/FilterActions.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_map_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.map.js */ "./node_modules/core-js/modules/es.map.js");
+/* harmony import */ var core_js_modules_es_map_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_map_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.array.is-array.js */ "./node_modules/core-js/modules/es.array.is-array.js");
+/* harmony import */ var core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_is_array_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var Styles_commerce_css__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! Styles/commerce.css */ "./asset/styles/commerce.css");
+/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
+/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/tabs/tabs */ "./asset/components/tabs/tabs.js");
+/* harmony import */ var _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/commerceFilter/commerceFilter */ "./asset/components/commerceFilter/commerceFilter.js");
+/* harmony import */ var _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/tablistView/tablistView */ "./asset/components/tablistView/tablistView.js");
+/* harmony import */ var _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBar */ "./asset/components/UI/ui-rangeBar/rangeBar.js");
+/* harmony import */ var _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBarSelect */ "./asset/components/UI/ui-rangeBar/rangeBarSelect.js");
+/* harmony import */ var _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/UI/ui-select/multiCombobox */ "./asset/components/UI/ui-select/multiCombobox.js");
+/* harmony import */ var _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/UI/ui-select/combobox */ "./asset/components/UI/ui-select/combobox.js");
+/* harmony import */ var _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/filter/FilterActions */ "./asset/components/filter/FilterActions.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7157,10 +7230,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+
 var initFilterActions = function initFilterActions() {
   var filterElements = document.querySelectorAll('.js-filter');
   var filters = Array.from(filterElements).map(function (filter) {
-    return new _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_24__["default"](filter);
+    return new _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_26__["default"](filter);
   });
   filters.forEach(function (filter) {
     return filter.init();
@@ -7173,7 +7248,7 @@ initFilterActions();
 var initFilterSelects = function initFilterSelects() {
   var selectElements = document.querySelectorAll('.js-select');
   var selects = Array.from(selectElements).map(function (item) {
-    var select = new _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_23__["default"](item);
+    var select = new _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_25__["default"](item);
     select.init();
     return select;
   });
@@ -7185,7 +7260,7 @@ initFilterSelects();
 var initFilterMultiSelects = function initFilterMultiSelects() {
   var multiSelectElements = document.querySelectorAll('.js-multiSelect');
   var multiSelects = Array.from(multiSelectElements).map(function (item) {
-    var multiSelect = new _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_22__["default"](item);
+    var multiSelect = new _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_24__["default"](item);
     multiSelect.init();
     return multiSelect;
   });
@@ -7194,16 +7269,32 @@ var initFilterMultiSelects = function initFilterMultiSelects() {
 
 initFilterMultiSelects();
 
+var initRangeBarSelect = function initRangeBarSelect() {
+  var rangeBarSelectElement = document.querySelector('.js-rangeBarSelect');
+  var mapRangeBar = new Map();
+  rangeBarSelectElement.querySelectorAll('.js-range').forEach(function (item) {
+    var name = item.getAttribute('data-price');
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_22__["default"](item);
+    rangeBar.init();
+    mapRangeBar.set(name, rangeBar);
+  });
+  var rangeBarSelect = new _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_23__["default"](rangeBarSelectElement, mapRangeBar);
+  rangeBarSelect.init();
+  window.rangeBarSelect = rangeBarSelect;
+};
+
+initRangeBarSelect();
+
 var initRangeBar = function initRangeBar() {
   var rangeBarIntElements = document.querySelectorAll('.js-rangeBarInt');
   var rangeBarFloatElements = document.querySelectorAll('.js-rangeBarFloat');
   var arrRangeBarInt = Array.from(rangeBarIntElements).map(function (item) {
-    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_21__["default"](item);
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_22__["default"](item);
     rangeBar.init();
     return rangeBar;
   });
   var arrRangeBarFloat = Array.from(rangeBarFloatElements).map(function (item) {
-    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_21__["default"](item, 'float');
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_22__["default"](item, 'float');
     rangeBar.init();
     return rangeBar;
   });
@@ -7215,7 +7306,7 @@ initRangeBar();
 var initTablistView = function initTablistView() {
   var tablistViewElements = document.querySelectorAll('.js-tablistView');
   var arrTablistView = Array.from(tablistViewElements).map(function (item) {
-    var tablistView = new _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_20__["default"](item);
+    var tablistView = new _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_21__["default"](item);
     tablistView.init();
     return tablistView;
   });
@@ -7226,7 +7317,7 @@ initTablistView();
 
 var initFilterMenu = function initFilterMenu() {
   var filterMenuElement = document.querySelector('.js-commerceFilter');
-  var filterMenu = new _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_19__["default"](filterMenuElement);
+  var filterMenu = new _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_20__["default"](filterMenuElement);
   filterMenu.init();
   window.filterMenu = filterMenu;
 };
@@ -7236,7 +7327,7 @@ initFilterMenu();
 var initTablist = function initTablist() {
   var tablistElements = document.querySelectorAll('.js-tablist');
   var arrTablist = Array.from(tablistElements).map(function (item) {
-    var tablist = new _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_18__["default"](item);
+    var tablist = new _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_19__["default"](item);
     tablist.init();
     return tablist;
   });
@@ -7246,7 +7337,7 @@ var initTablist = function initTablist() {
 initTablist();
 
 var initMap = function initMap() {
-  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_17__["default"]('ymap', {
+  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_18__["default"]('ymap', {
     zoom: 17,
     center: [44.898317, 37.354456]
   });
@@ -7306,6 +7397,7 @@ var initCommerceControls = function initCommerceControls() {
   initFilterSelects();
   initFilterMultiSelects();
   initRangeBar();
+  initRangeBarSelect();
   initTablistView();
   initFilterMenu();
   initTablist();
@@ -7317,6 +7409,7 @@ window.initFilterActions = initFilterActions;
 window.initFilterSelects = initFilterSelects;
 window.initFilterMultiSelects = initFilterMultiSelects;
 window.initRangeBar = initRangeBar;
+window.initRangeBarSelect = initRangeBarSelect;
 window.initTablistView = initTablistView;
 window.initTablist = initTablist;
 window.initMap = initMap;

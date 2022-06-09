@@ -51,7 +51,7 @@ export function resetCombobox() {
   this.mapSelected.forEach((value, key) => {
     key.setAttribute('aria-selected', 'false');
     key.classList.remove('selected');
-    value.checkbox.removeAttribute('checked');
+    value.checkbox.checked = false; // eslint-disable-line
   });
   this.mapSelected.clear();
   this.combobox.removeAttribute('data-value');
@@ -67,14 +67,14 @@ export function selectOption(option) {
   option.classList.add('selected');
   const value = option.querySelector('.text').textContent;
   const checkbox = option.querySelector('[type="checkbox"]');
-  checkbox.setAttribute('checked', true);
+  // checkbox.setAttribute('checked', true);
   this.mapSelected.set(option, { value: value, checkbox: checkbox });
 }
 
 export function unselectOption(option) {
   option.setAttribute('aria-selected', 'false');
   option.classList.remove('selected');
-  this.mapSelected.get(option).checkbox.removeAttribute('checked');
+  // this.mapSelected.get(option).checkbox.removeAttribute('checked');
   this.mapSelected.delete(option);
 }
 

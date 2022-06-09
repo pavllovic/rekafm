@@ -163,7 +163,7 @@
   /* скрывает выподающий submenu при начальном состоянии */
   .menu::after {
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
@@ -183,10 +183,14 @@
   }
 
   .menu .ui-link {
+    position: relative;
+    z-index: 2;
     padding: calc(1em / 0.75) calc(1em / 0.9);
   }
 
   .menu .ui-linkDropdown {
+    position: relative;
+    z-index: 2;
     pointer-events: initial;
   }
 
@@ -207,7 +211,9 @@
   /* style submenu */
   .submenu {
     position: absolute;
-    z-index: -2;
+    z-index: 0;
+
+    /* z-index: -2; */
     bottom: 0;
     left: 0;
     width: calc(100% + 0.03125em); /* stylelint-disable number-max-precision */
@@ -234,8 +240,11 @@
   }
 
   .menu .item:hover .submenu {
-    z-index: -1;
+    /* z-index: -2; */
+    z-index: 0;
     transform: translateY(calc(100% - var(--border-size)));
+
+    /* transform: translate3d(0, calc(100% - var(--border-size)), 0); */
     transition-delay: 0s, 0s;
     visibility: visible;
   }

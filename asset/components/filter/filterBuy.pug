@@ -18,74 +18,42 @@ form(class='filter js-filter')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') все
-          input(class='visually-hidden' type='checkbox' checked name='все')
-        label(class='option' role='option' id='option-buy-city-1' aria-selected='false')
+          //- input(type='checkbox' checked name='все')
+        label(class='option' role='option' id='option-buy-city-1' aria-selected='false' for='buy-city-1')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Москва
-          input(class='visually-hidden' type='checkbox' name='Москва')
-        label(class='option' role='option' id='option-buy-city-2' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Москва' id='buy-city-1')
+        label(class='option' role='option' id='option-buy-city-2' aria-selected='false' for='buy-city-2') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Санкт-Петербург
-          input(class='visually-hidden' type='checkbox' name='Санкт-Петербург')
-        label(class='option' role='option' id='option-buy-city-3' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Санкт-Петербург' id='buy-city-2')
+        label(class='option' role='option' id='option-buy-city-3' aria-selected='false' for='buy-city-3') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Самара
-          input(class='visually-hidden' type='checkbox' name='Самара')
-        label(class='option' role='option' id='option-buy-city-4' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Самара' id='buy-city-3')
+        label(class='option' role='option' id='option-buy-city-4' aria-selected='false' for='buy-city-4') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Саратов
-          input(class='visually-hidden' type='checkbox' name='Саратов')
-        label(class='option' role='option' id='option-buy-city-5' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Саратов' id='buy-city-4')
+        label(class='option' role='option' id='option-buy-city-5' aria-selected='false' for='buy-city-5') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Нижний Новгород
-          input(class='visually-hidden' type='checkbox' name='Нижний Новгород')
-        label(class='option' role='option' id='option-buy-city-6' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Нижний Новгород' id='buy-city-5')
+        label(class='option' role='option' id='option-buy-city-6' aria-selected='false' for='buy-city-6') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Казань
-          input(class='visually-hidden' type='checkbox' name='Казань')
-        label(class='option' role='option' id='option-buy-city-7' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='Казань' id='buy-city-6')
+        label(class='option' role='option' id='option-buy-city-7' aria-selected='false' for='buy-city-7') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') Сочи
-          input(class='visually-hidden' type='checkbox' name='Сочи')
-        //- div(class='reset' role='option' id='option-city-0' aria-selected='true' data-combobox='reset')
-        //-   svg(class='icon')
-        //-     use(href='#icon-16-close')
-        //-   span(class='text') все
-        //- div(class='option' role='option' id='option-city-1' aria-selected='false')
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Москва
-        //- div(class='option' role='option' id='option-city-2' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Санкт-Петербург
-        //- div(class='option' role='option' id='option-city-3' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Самара
-        //- div(class='option' role='option' id='option-city-4' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Саратов
-        //- div(class='option' role='option' id='option-city-5' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Нижний Новгород
-        //- div(class='option' role='option' id='option-city-6' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Казань
-        //- div(class='option' role='option' id='option-city-7' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Сочи
+          input(class='visually-hidden' type='checkbox' name='Сочи' id='buy-city-7')
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
         aria-activedescendant=''
@@ -104,56 +72,32 @@ form(class='filter js-filter')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') любое
-          input(class='visually-hidden' type='checkbox' name='любое')
-        label(class='option' role='option' id='option-buy-type-1' aria-selected='false')
+          //- input(type='checkbox' name='любое')
+        label(class='option' role='option' id='option-buy-type-1' aria-selected='false' for='buy-type-1')
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') офисы
-          input(class='visually-hidden' type='checkbox' name='офисы')
-        label(class='option' role='option' id='option-buy-type-2' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='офисы' id='buy-type-1')
+        label(class='option' role='option' id='option-buy-type-2' aria-selected='false' for='buy-type-2') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') адм. здания
-          input(class='visually-hidden' type='checkbox' name='адм. здания')
-        label(class='option' role='option' id='option-buy-type-3' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='адм. здания' id='buy-type-2')
+        label(class='option' role='option' id='option-buy-type-3' aria-selected='false' for='buy-type-3') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') склады
-          input(class='visually-hidden' type='checkbox' name='склады')
-        label(class='option' role='option' id='option-buy-type-4' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='склады' id='buy-type-3')
+        label(class='option' role='option' id='option-buy-type-4' aria-selected='false' for='buy-type-4') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') производство
-          input(class='visually-hidden' type='checkbox' name='производство')
-        label(class='option' role='option' id='option-buy-type-5' aria-selected='false') 
+          input(class='visually-hidden' type='checkbox' name='производство' id='buy-type-4')
+        label(class='option' role='option' id='option-buy-type-5' aria-selected='false' for='buy-type-5') 
           svg(class='icon')
               use(href='#icon-16-ok')
           span(class='text') общежития
-          input(class='visually-hidden' type='checkbox' name='общежития')
-        //- div(class='reset js-reset' role='option' id='option-buy-type-0' aria-selected='true' data-combobox='reset')
-        //-   svg(class='icon')
-        //-     use(href='#icon-16-close')
-        //-   span(class='text') любое
-        //- div(class='option' role='option' id='option-buy-type-1' aria-selected='false')
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') офисы
-        //- div(class='option' role='option' id='option-buy-type-2' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') адм. здания
-        //- div(class='option' role='option' id='option-buy-type-3' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') склады
-        //- div(class='option' role='option' id='option-buy-type-4' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') производство
-        //- div(class='option' role='option' id='option-buy-type-5' aria-selected='false') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') общежития
+          input(class='visually-hidden' type='checkbox' name='общежития' id='buy-type-5')
     div(class='ui-rangeBar js-rangeBarFloat')
       div(class='heading') цена, млн руб
       div(class='label' for='input-from')

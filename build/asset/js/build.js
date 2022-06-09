@@ -28,13 +28,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Map = function Map(id, options) {
+var YMap = function YMap(id, options) {
   this.center = options.center;
   this.id = id;
   this.zoom = options.zoom;
 };
 
-Map.prototype = {
+YMap.prototype = {
   init: function init() {
     var _this = this;
 
@@ -190,7 +190,7 @@ Map.prototype = {
   // },
 
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Map);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (YMap);
 
 /***/ }),
 
