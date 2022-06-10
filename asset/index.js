@@ -12,7 +12,7 @@ const initSwiperTeam = function() {
     autoplay: {
       delay: 3000,
     },
-    // slidesPerView: 'auto',
+    slidesPerView: 1,
     loop: true,
     pagination: {
       el: '.swiper-pagination',

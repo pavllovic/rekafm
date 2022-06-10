@@ -8,7 +8,7 @@ const HtmlBeautifierPlugin = require('html-beautifier-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+// const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const MediaQueryPlugin = require('media-query-plugin');
 
@@ -35,12 +35,12 @@ const copyWebpackPlugin = (isDev) => {
   let patterns = [];
   if(isDev) {
     patterns = [
-      {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
+      // {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
       {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
   } else {
     patterns = [
-      {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
+      // {from: './asset/lib/ownCarousel/', to: `asset/lib/ownCarousel/`},
       {from: './asset/images/build/1/thumb/1.jpg', to: 'asset/images/build/1/thumb/1.jpg'},
     ]
   }
@@ -49,18 +49,18 @@ const copyWebpackPlugin = (isDev) => {
   });
 };
 
-const htmlWebpackTagsPlugin = (isDev) => {
-  const pathToCopy = 'asset/lib';
-  return [
-    new HtmlWebpackTagsPlugin({
-      files: isDev ? ['_html/build.html'] : ['build.html'],
-      scripts: [
-        `${pathToCopy}/ownCarousel/ownCarousel.js`
-      ],
-      append: false
-    })
-  ]
-};
+// const htmlWebpackTagsPlugin = (isDev) => {
+//   const pathToCopy = 'asset/lib';
+//   return [
+//     new HtmlWebpackTagsPlugin({
+//       files: isDev ? ['_html/build.html'] : ['build.html'],
+//       scripts: [
+//         `${pathToCopy}/ownCarousel/ownCarousel.js`
+//       ],
+//       append: false
+//     })
+//   ]
+// };
 
 const ignoreEmitPlugin = () => {
   return new IgnoreEmitPlugin([
@@ -155,7 +155,7 @@ module.exports = (isDev, env) => {
     // mediaQueryPlugin(),
     copyWebpackPlugin(isDev),
     ...htmlWebpackPlagin(isDev),
-    ...htmlWebpackTagsPlugin(isDev),
+    // ...htmlWebpackTagsPlugin(isDev),
     stylelintPlugin(),
     eslintPlugin(),
     cleanWebpackPlugin(),

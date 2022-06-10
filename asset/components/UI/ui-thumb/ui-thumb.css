@@ -1,5 +1,6 @@
 /* --- style ui-thumb --- */
-.ui-thumb {
+.ui-thumb,
+.swiper-thumbs .swiper-slide.ui-thumb {
   position: relative;
   display: flex;
   overflow: hidden;
@@ -12,7 +13,8 @@
   cursor: pointer;
 }
 
-.ui-thumb .image {
+.ui-thumb .image,
+.swiper-thumbs .swiper-slide.ui-thumb .image {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -22,7 +24,8 @@
 }
 
 /* overlay */
-.ui-thumb .image:only-child::after {
+.ui-thumb .image:only-child::after,
+.swiper-thumbs .swiper-slide.ui-thumb .image:only-child::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,12 +35,14 @@
   border-radius: inherit;
   content: "";
   opacity: 0.48;
+  pointer-events: none;
   transition-duration: var(--dur-main);
   transition-property: opacity;
   transition-timing-function: var(--easing-main);
 }
 
-.ui-thumb .image img {
+.ui-thumb .image img,
+.swiper-thumbs .swiper-slide.ui-thumb .image img {
   position: relative;
   display: block;
   width: 100%;
@@ -50,7 +55,8 @@
 }
 
 /* backround if image didn't load */
-.ui-thumb .image img::before {
+.ui-thumb .image img::before,
+.swiper-thumbs .swiper-slide.ui-thumb .image img::before {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -60,7 +66,8 @@
   pointer-events: none;
 }
 
-.ui-thumb .text {
+.ui-thumb .text,
+.swiper-thumbs .swiper-slide.ui-thumb .text {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -80,7 +87,8 @@
 }
 
 /* background for text */
-.ui-thumb .text::before {
+.ui-thumb .text::before,
+.swiper-thumbs .swiper-slide.ui-thumb .text::before {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -95,7 +103,10 @@
 
 .ui-thumb:hover .image::after,
 .ui-thumb:active .image::after,
-.ui-thumb.active .image::after {
+.ui-thumb.active .image::after,
+.swiper-thumbs .swiper-slide.ui-thumb:hover .image::after,
+.swiper-thumbs .swiper-slide.ui-thumb:active .image::after,
+.swiper-thumbs .swiper-slide.ui-thumb.active .image::after {
   opacity: 0;
 }
 
