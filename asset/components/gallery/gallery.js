@@ -19,6 +19,7 @@ Gallery.prototype = {
 
   openGallery: function() {
     this.gallery.style.setProperty('--g-width', window.screen.width);
+    // this.gallery.style.setProperty('--g-width', '100%');
     document.body.classList.add('open-gallery');
   },
   closeGallery: function() {

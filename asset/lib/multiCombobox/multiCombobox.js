@@ -161,7 +161,7 @@ export function destroy() {
 export function handleEvent(e) {
   switch(e.type) {
     case 'click':
-      e.preventDefault();
+      // e.preventDefault();
       e.stopPropagation();
       const role = e.target.getAttribute('role');
       if(role === 'combobox') {
