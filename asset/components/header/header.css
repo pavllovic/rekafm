@@ -8,7 +8,12 @@
   z-index: 50;
   top: 0;
   width: 100%;
-  background-color: var(--bg-color);
+
+  /* animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-name: load;
+  animation-timing-function: ease-in-out;
+  background-color: var(--bg-color); */
 }
 
 .header .menu {
@@ -50,3 +55,15 @@
 } */
 
 /* --- end style component header --- */
+
+/* @keyframes load {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */

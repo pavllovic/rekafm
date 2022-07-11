@@ -26,4 +26,16 @@
   transform: translateX(1em);
 }
 
+.shareLinks .ui-linkSocial .icon {
+  --color: currentcolor;
+
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.shareLinks .ui-linkSocial:hover .icon {
+  color: var(--bs-corporate);
+}
+
 /* --- end style component shareLinks --- */

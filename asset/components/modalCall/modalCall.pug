@@ -1,22 +1,24 @@
-div(class='modal js-modal-call' aria-hidden='true' role='dialog' data-modal='modal-call')
-  div(class='header')
+div(class='modal js-modal-call no-transition' aria-hidden='true' role='dialog' data-modal='modal-call')
+  div(class='header no-transition')
     include ../logo/logo.pug
     button(class='ui-btnClose' type='button' data-btn='modal-call')
       span
       span
-  div(class='content')
+  div(class='content no-transition')
     // component modalCall
     div(class='modalCall')
       div(class='box')
         h2(class='heading') связаться с нами
         p(class='message') Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.
       form(class='form js-order-call' name='order-call' action='/' method='POST')
-        label
-          span(class='visually-hidden' for='order-call-name') ваше имя
-          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder='ваше имя' id='order-call-name' required)
-        label
-          span(class='visually-hidden' for='order-call-phone') телефон
-          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder='телефон' id='order-call-phone' required)
+        label(for='order-call-name')
+          //- span(class='visually-hidden' for='order-call-name') ваше имя
+          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder=' ' id='order-call-name' required)
+          span(class='ui-input-placeholder') ваше имя
+        label(for='order-call-phone')
+          //- span(class='visually-hidden') телефон
+          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder=' ' id='order-call-phone' required)
+          span(class='ui-input-placeholder') телефон
         button(class='ui-btnForward' type='submit')
           span(class='text') заказать обратный звонок
           span(class='icon')
@@ -34,7 +36,7 @@ div(class='modal js-modal-call' aria-hidden='true' role='dialog' data-modal='mod
           a(class='ui-link' href='tel:+78002006316') 
             span(class='text' data-text='8 (800) 200-63-16') 8 (800) 200-63-16
       // UI for success handler modalCall
-      div(class='response')
+      div(class='response no-transition')
         div(class='token' aria-hidden='true')
           svg(focusable='false')
             use(href="#icon-24-phone")
@@ -46,5 +48,5 @@ div(class='modal js-modal-call' aria-hidden='true' role='dialog' data-modal='mod
           span(class='icon')
             svg(focusable='false' aria-hidden='true')
               use(href='#icon-16-go')
-      div(class='error') Что-то пошло не так... Попробуйте перегрузить страницу и попробуйте снова
+      div(class='error no-transition') Что-то пошло не так... Попробуйте перегрузить страницу и попробуйте снова
     

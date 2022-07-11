@@ -8,8 +8,8 @@ const Gallery = function(elem) {
 Gallery.prototype = {
   init: function() {
     this.setListeners();
-    this.initialWidthGallery = this.gallery.offsetWidth;
-    this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
+    // this.initialWidthGallery = this.gallery.offsetWidth;
+    // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
   },
 
   setListeners: function() {
@@ -18,12 +18,12 @@ Gallery.prototype = {
   },
 
   openGallery: function() {
-    this.gallery.style.setProperty('--g-width', window.screen.width);
+    // this.gallery.style.setProperty('--g-width', window.screen.width);
     // this.gallery.style.setProperty('--g-width', '100%');
     document.body.classList.add('open-gallery');
   },
   closeGallery: function() {
-    this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
+    // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
     this.gallery.classList.add('close');
     document.body.classList.remove('open-gallery');
     window.scrollTo({ top: 0, behavior: 'instant' });

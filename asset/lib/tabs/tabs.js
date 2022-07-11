@@ -98,11 +98,17 @@ export function onkeydown(e) {
 export function handleEvent(e) {
   switch(e.type) {
     case 'click':
-      if(e.target.getAttribute('role') === 'tab') return this.activateTab(e.target);
+      if(e.target.getAttribute('role') === 'tab') {
+        e.target.scrollIntoView(true);
+        return this.activateTab(e.target);
+      }
       break;
     case 'keydown':
       e.stopPropagation();
-      if(e.target.getAttribute('role') === 'tab') return this.onkeydown(e);
+      if(e.target.getAttribute('role') === 'tab') {
+        e.target.scrollIntoView(true);
+        return this.onkeydown(e);
+      }
       break;
     default:
       break;

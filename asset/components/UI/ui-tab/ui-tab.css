@@ -11,6 +11,7 @@
   font-size: var(--fs-headline-3);
   font-weight: 700;
   line-height: 1;
+  scroll-margin-top: 4.8rem;
   text-transform: lowercase;
   transition-duration: var(--dur-main);
   transition-property: color;
@@ -48,6 +49,7 @@
 @media (min-width: 80em) {
   .ui-tab {
     padding: calc(1em / 0.6);
+    scroll-margin-top: calc(1em * (64 / 24 ));
   }
 }
 

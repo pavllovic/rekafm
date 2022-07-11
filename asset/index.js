@@ -37,23 +37,6 @@ const initSwiperTeam = function() {
 
 initSwiperTeam();
 
-// const initOwnCarousel = function() {
-//   const ownCarouselElem = document.querySelector('.js-own-carousel__container');
-//   const ownCarousel = new OwnCarousel(ownCarouselElem, {
-//     itemPerRow: 2,
-//     itemSize: 50,
-//     responsive: {
-//       600: [2, 50],
-//       300: [1, 100],
-//     },
-//     autoplay: 10000,
-//     nav: true,
-//     draggable: true,
-//   }, 'X');
-//   ownCarousel.init();
-//   window.ownCarousel = ownCarousel;
-// };
-
 const initCarouselNews = () => {
   const carouselNewsElem = document.querySelector('.js-carousel');
   const carouselNews = new Carousel(carouselNewsElem);

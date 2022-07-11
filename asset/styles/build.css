@@ -21,6 +21,38 @@ h2 {
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
 
+.block-content::before {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  animation-delay: var(--dur-second);
+  animation-duration: var(--dur-second);
+  animation-fill-mode: both;
+  animation-name: content-load;
+  animation-timing-function: var(--easing-second);
+  background-color: #fff;
+  content: "";
+  pointer-events: none;
+}
+
+@keyframes content-load {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* убираем черную полосу при разворачивании слайдера */
 .block-content::after {
   position: absolute;
@@ -73,11 +105,17 @@ h2 {
     grid-column: 2;
   }
 
+  .build-nav {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
   .block-object {
     grid-row: 2/3;
   }
 
   .block-gallery {
+    grid-column: 1/3;
     grid-row: 1/3;
   }
 
@@ -102,6 +140,7 @@ h2 {
 /* style block build-nav */
 .build-nav {
   position: relative;
+  z-index: 6;
   padding: 0.5em 1em;
 }
 
@@ -231,6 +270,7 @@ h2 {
   .block-object {
     position: sticky;
     z-index: 0;
+    z-index: 6;
     top: 7.5em;
     height: calc(100vh - 7.5em);
   }
@@ -313,6 +353,10 @@ h2 {
 .swiper-build {
   width: 100%;
   height: 100%;
+}
+
+.swiper-build .swiper-wrapper {
+  flex-direction: column;
 }
 
 .swiper-build .controls {
@@ -410,10 +454,15 @@ h2 {
 
 /* style gallery */
 .gallery {
-  --g-width: auto;
+  width: 100%;
 
-  width: calc(var(--g-width) * 1px);
+  /* --g-width: auto; */
+
+  /* width: calc(var(--g-width) * 1px); */
+
+  /* 34.375% 65.625% */
   height: 100%;
+  margin-left: auto;
 
   /* transition-delay: var(--dur-main), var(--dur-main), 0s; */
   transition-duration: var(--dur-main), var(--dur-main), var(--dur-main);
@@ -421,24 +470,36 @@ h2 {
   transition-timing-function: var(--easing-main), var(--easing-main), var(--easing-main);
 }
 
-.open-gallery .gallery {
-  position: fixed;
-  z-index: 10;
-  right: 0;
-  width: calc(var(--g-width) * 1px);
-  height: 100vh;
-  transform: translateY(-4em);
-}
+@media (min-width: 80em) {
+  .gallery {
+    width: 65.625%;
+    height: 100%;
+    margin-left: auto;
+  }
 
-.gallery.close {
-  position: fixed;
-  z-index: 10;
-  right: 0;
-  height: calc(100vh - 4em);
+  .open-gallery .gallery {
+    position: fixed;
 
-  /* transform: translateY(0); */
+    /* position: sticky; */
+    z-index: 10;
+    right: 0;
 
-  /* transform: translateY(-4em); */
+    /* width: calc(var(--g-width) * 1px); */
+    width: 100%;
+    height: 100vh;
+    transform: translateY(-4em);
+  }
+
+  .gallery.close {
+    /* position: fixed; */
+    z-index: 10;
+    right: 0;
+    height: calc(100vh - 4em);
+
+    /* transform: translateY(0); */
+
+    /* transform: translateY(-4em); */
+  }
 }
 
 /* end style gallery */

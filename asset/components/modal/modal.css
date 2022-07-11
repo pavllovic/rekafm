@@ -102,8 +102,17 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 1.5em 1em;
-  opacity: 0;
-  transform: translateY(25px);
+
+  /*
+    for designer disabled opacity transition;
+
+  */
+
+  /* opacity: 0; */
+
+  /* transform: translateY(25px); */
+  opacity: 1;
+  transform: translateY(100%);
 
   /* transition-delay: calc(var(--dur-second) / 2), 0s; */
   transition-delay: 0s, 0s;

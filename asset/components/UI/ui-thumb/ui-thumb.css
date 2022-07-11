@@ -106,7 +106,8 @@
 .ui-thumb.active .image::after,
 .swiper-thumbs .swiper-slide.ui-thumb:hover .image::after,
 .swiper-thumbs .swiper-slide.ui-thumb:active .image::after,
-.swiper-thumbs .swiper-slide.ui-thumb.active .image::after {
+.swiper-thumbs .swiper-slide.ui-thumb.active .image::after,
+.swiper-thumbs .swiper-slide.ui-thumb.swiper-slide-thumb-active .image:only-child::after {
   opacity: 0;
 }
 

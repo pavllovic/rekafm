@@ -28,11 +28,11 @@
   transition-timing-function: var(--easing-main), var(--easing-main);
 }
 
-.ui-input::placeholder {
+/* .ui-input::placeholder {
   transition-duration: var(--dur-main);
   transition-property: color;
   transition-timing-function: var(--easing-main);
-}
+} */
 
 .ui-input:hover,
 .ui-input:active {

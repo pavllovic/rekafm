@@ -19,9 +19,9 @@
 
 /* style placemark */
 .placemark {
-  width: 4em;
-  height: 4em;
-  border-width: 2px;
+  width: 2em;
+  height: 2em;
+  border-width: 1px;
   border-style: solid;
   border-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
@@ -29,14 +29,15 @@
   box-shadow:
     0 2px 4px 0 rgba(46, 46, 46, 12%),
     0 4px 8px 0 rgba(46, 46, 46, 24%);
-  transform: scale(0.5);
+
+  /* transform: scale(0.5); */
   transition-duration: var(--dur-main);
   transition-property: transform;
   transition-timing-function: var(--easing-main);
 }
 
 .placemark.is-hover {
-  transform: scale(1);
+  transform: scale(2);
 }
 
 .placemark img {
@@ -49,9 +50,7 @@
 
 @media (min-width: 160em) {
   .placemark {
-    width: 8em;
-    height: 8em;
-    border-width: 4px;
+    border-width: 2px;
   }
 }
 
@@ -102,7 +101,7 @@
     0 8px 16px 0 rgba(46, 46, 46, 8%),
     0 16px 32px 0 rgba(46, 46, 46, 32%);
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-  transform: translateY(calc(-100% - 1.5em));
+  transform: translateY(calc(-100% - 2.5em)) translateX(-1em);
 }
 
 .balloon::after {

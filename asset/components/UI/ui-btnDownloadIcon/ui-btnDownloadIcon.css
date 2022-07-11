@@ -16,7 +16,7 @@
   transition-timing-function: var(--easing-main);
 }
 
-.ui-btnDownloadIcon::before {
+/* .ui-btnDownloadIcon::before {
   position: absolute;
   top: 0.275rem;
   right: 0.275rem;
@@ -28,7 +28,7 @@
   background-repeat: no-repeat;
   background-size: 0.75rem 0.75rem;
   content: "";
-}
+} */
 
 .ui-btnDownloadIcon:hover {
   color: var(--bs-corporate, rgba(138, 140, 206, 100%));

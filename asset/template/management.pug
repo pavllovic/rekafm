@@ -63,7 +63,7 @@ block content
               svg(focusable='false')
                 use(href='#icon-24-management-2')
             p(class='text') Снимаем с арендодателей все задачи по администрированию и эксплуатации.
-      a(class='ui-btnDownload' href='#order-audit')
+      a(class='ui-btnDownload' href='#calculate-audit')
         span(class='text') рассчитать стоимость
         span(class='icon')
           svg(class='icon-go' focusable='false' aria-hidden='true')
@@ -175,20 +175,23 @@ block content
               span(class='icon')
                 svg(class='icon-go' focusable='false' aria-hidden='true')
                   use(href='#icon-16-go')
-    section(class='block block-order')
+    section(class='block block-order' id='calculate-audit')
       div(class='body')
         h2(class='heading') Закажите технический<br/> аудит объекта
         p(class='text') Мы предложим выгодное коммерческое предложение исходя из ваших требований и желаний.
       form(class='form js-order-audit' name='order-audit' id='order-audit' action='./management.html' method='POST')
-        label
-          span(class='visually-hidden' for='order-audit-name') ваше имя
-          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder='ваше имя' id='order-audit-name' required)
-        label
-          span(class='visually-hidden' for='order-audit-phone') телефон
-          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder='телефон' id='order-audit-phone' required)
-        label
-          span(class='visually-hidden' for='order-audit-square') площадь помещения
-          input(class='ui-input' type='text' inputmode='numeric' name='square' pattern='[0-9]+$' placeholder='площадь помещения' id='order-audit-square' required)
+        label(for='order-audit-name')
+          //- span(class='visually-hidden') ваше имя
+          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder=' ' id='order-audit-name' required)
+          span(class='ui-input-placeholder') ваше имя
+        label(for='order-audit-phone')
+          //- span(class='visually-hidden') телефон
+          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{3}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder=' ' id='order-audit-phone' required)
+          span(class='ui-input-placeholder') телефон
+        label(for='order-audit-square')
+          //- span(class='visually-hidden') площадь помещения
+          input(class='ui-input js-inputSquare' type='text' inputmode='numeric' name='square' pattern='[0-9]+$' placeholder=' ' id='order-audit-square' required)
+          span(class='ui-input-placeholder') площадь помещения, м2
         div(class='form-value')
           | Стоимость: <span data-audit='value'>0</span> рублей
         button(class='ui-btnForward' type='submit')

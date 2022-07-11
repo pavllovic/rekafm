@@ -8,6 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  animation-duration: var(--dur-second);
+  animation-fill-mode: both;
+  animation-name: load;
+  animation-timing-function: var(--easing-second);
+  background-color: var(--bg-color);
 }
 
 .navigation .logo {
@@ -77,3 +82,15 @@
 }
 
 /* --- end style component navigation --- */
+
+@keyframes load {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

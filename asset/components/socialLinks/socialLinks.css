@@ -10,6 +10,14 @@
 .socialLinks .ui-linkSocial .icon {
   --color-bg: var(--bs-dark, rgba(77, 77, 77, 100%));
   --color: currentcolor;
+
+  transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main);
+}
+
+.socialLinks .ui-linkSocial:hover .icon {
+  color: var(--bs-corporate);
 }
 
 /* --- end style component socialLinks --- */

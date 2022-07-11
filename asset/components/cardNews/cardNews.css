@@ -46,9 +46,12 @@
 
 .cardNews .body:only-child::after {
   background: var(--bs-corparate, rgba(138, 140, 206, 100%));
-  opacity: 0;
+
+  /* opacity: 0; */
+  transform: scaleY(0);
+  transform-origin: center bottom;
   transition-duration: var(--dur-main);
-  transition-property: opacity;
+  transition-property: transform;
   transition-timing-function: var(--easing-main);
 }
 
@@ -61,7 +64,8 @@
 }
 
 .cardNews:hover .body:only-child::after {
-  opacity: 1;
+  /* opacity: 1; */
+  transform: scaleY(1);
 }
 
 .cardNews .badge {

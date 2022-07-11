@@ -12,6 +12,10 @@
   white-space: nowrap;
 }
 
+.no-transition {
+  transition: none !important;
+}
+
 /* .h-dividing-line,
 .v-dividing-line {
   background-color: currentcolor;

@@ -12,6 +12,38 @@
   padding: 0 1em;
 }
 
+.block-hero::after {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  animation-delay: var(--dur-second);
+  animation-duration: var(--dur-second);
+  animation-fill-mode: both;
+  animation-name: hero-index-load;
+  animation-timing-function: var(--easing-second);
+  background-color: #fff;
+  content: "";
+  pointer-events: none;
+}
+
+@keyframes hero-index-load {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* .block-hero::after,
 .block-hero::before {
   position: absolute;
@@ -97,7 +129,7 @@
 .block-hero .image-mask::before {
   background-image: url("Images/filter/noise.gif");
   content: "";
-  opacity: 0.08;
+  opacity: 0.03;
 }
 
 .block-hero .image-mask::before {
@@ -371,7 +403,7 @@
   content: "";
   object-fit: cover;
   object-position: center;
-  opacity: 0.06;
+  opacity: 0.03;
 }
 
 .benefit img {

@@ -5,6 +5,10 @@
   align-items: stretch;
 }
 
+.form label {
+  position: relative;
+}
+
 .form label:not(:first-child) {
   margin-top: 1em;
 }

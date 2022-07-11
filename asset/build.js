@@ -28,6 +28,8 @@ const initSwiperBuild = function() {
     centeredSlides: false,
   });
   const swiperBuild = new Swiper(swiperBuildElement, {
+    direction: 'vertical',
+    // cssMode: true,
     autoplay: {
       delay: 7000,
     },
