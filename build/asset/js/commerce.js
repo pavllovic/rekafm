@@ -554,6 +554,7 @@ YMap.prototype = {
 
       _this6.objectCollection.events.add('mouseenter', function (e) {
         e.get('target').balloon.open();
+        e.get('target').balloon.autoPan();
       });
 
       _this6.objectCollection.events.add('mouseleave', function (e) {
@@ -1201,7 +1202,6 @@ function updateOutput() {
   var output = '';
 
   if (this.mapSelected.size === 1) {
-    console.log(Array.from(this.mapSelected));
     output = Array.from(this.mapSelected)[0][1].value;
   }
 
@@ -1259,12 +1259,16 @@ function onKeydown(e) {
 }
 function onComboboxBlur(e) {
   if (this.ignoreBlur) {
+    console.log('not-blur');
     this.ignoreBlur = false;
     this.combobox.focus();
     return;
   }
 
-  if (this.open) this.toogleOptions(e);
+  if (this.open) {
+    console.log('blur');
+    this.toogleOptions(e);
+  }
 }
 function onListboxMouseDown() {
   this.ignoreBlur = true;
@@ -1285,6 +1289,8 @@ function handleEvent(e) {
     case 'click':
       // e.preventDefault();
       e.stopPropagation();
+      console.log('click'); // console.log(e.target);
+
       var role = e.target.getAttribute('role');
 
       if (role === 'combobox') {
@@ -1311,6 +1317,7 @@ function handleEvent(e) {
       return this.onKeydown(e);
 
     case 'mousedown':
+      console.log('mousedown');
       return this.onListboxMouseDown();
 
     default:
@@ -1434,7 +1441,6 @@ function setHeightPanellist(panel) {
   var height = panel.offsetHeight;
   var panellist = panel.parentElement;
   panellist.style.setProperty('--height-panellist', height);
-  console.log(panel);
 }
 function focusTab(tab) {
   tab.focus();

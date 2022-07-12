@@ -159,19 +159,19 @@
   pointer-events: none;
 }
 
-.ui-select .option .icon {
+.ui-select .option [type="checkbox"] {
+  appearance: none;
+}
+
+.ui-select .option [type="checkbox"] ~ .icon {
   transform: scale(0);
   transition-duration: var(--dur-main);
   transition-property: transform;
   transition-timing-function: var(--easing-main);
 }
 
-.ui-select .option.selected .icon {
+.ui-select .option [type="checkbox"]:checked ~ .icon {
   transform: scale(1);
-}
-
-.ui-select .option [type="checkbox"] {
-  appearance: none;
 }
 
 .ui-select .option::after,

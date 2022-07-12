@@ -249,6 +249,7 @@ YMap.prototype = {
 
       _this6.objectCollection.events.add('mouseenter', function (e) {
         e.get('target').balloon.open();
+        e.get('target').balloon.autoPan();
       });
 
       _this6.objectCollection.events.add('mouseleave', function (e) {

@@ -19,41 +19,23 @@ form(class='filter js-filter')
             use(href='#icon-16-close')
           span(class='text') все
           //- input(type='checkbox' checked name='все')
-        label(class='option' role='option' id='option-buy-city-1' aria-selected='false' for='buy-city-1')
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Москва
-          input(class='visually-hidden' type='checkbox' name='Москва' id='buy-city-1')
-        label(class='option' role='option' id='option-buy-city-2' aria-selected='false' for='buy-city-2') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Санкт-Петербург
-          input(class='visually-hidden' type='checkbox' name='Санкт-Петербург' id='buy-city-2')
-        label(class='option' role='option' id='option-buy-city-3' aria-selected='false' for='buy-city-3') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Самара
-          input(class='visually-hidden' type='checkbox' name='Самара' id='buy-city-3')
-        label(class='option' role='option' id='option-buy-city-4' aria-selected='false' for='buy-city-4') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Саратов
-          input(class='visually-hidden' type='checkbox' name='Саратов' id='buy-city-4')
-        label(class='option' role='option' id='option-buy-city-5' aria-selected='false' for='buy-city-5') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Нижний Новгород
-          input(class='visually-hidden' type='checkbox' name='Нижний Новгород' id='buy-city-5')
-        label(class='option' role='option' id='option-buy-city-6' aria-selected='false' for='buy-city-6') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Казань
-          input(class='visually-hidden' type='checkbox' name='Казань' id='buy-city-6')
-        label(class='option' role='option' id='option-buy-city-7' aria-selected='false' for='buy-city-7') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') Сочи
-          input(class='visually-hidden' type='checkbox' name='Сочи' id='buy-city-7')
+        - 
+          const cities = [
+            {name: 'Москва', id: '1'},
+            {name: 'Санкт-Петербург', id: '2'},
+            {name: 'Самара', id: '3'},
+            {name: 'Саратов', id: '4'},
+            {name: 'Нижний Новгород', id: '5'},
+            {name: 'Казань', id: '6'},
+            {name: 'Сочи', id: '7'},
+          ]
+
+        each city in cities
+          label(class='option' role='option' id=`option-buy-city-${city.id}` aria-selected='false' for=`buy-city-${city.id}`)
+            input(class='visually-hidden' type='checkbox' name=`${city.name}` id=`buy-city-${city.id}`)
+            svg(class='icon')
+                use(href='#icon-16-ok')
+            span(class='text') #{city.name}
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
         aria-activedescendant=''
@@ -73,31 +55,21 @@ form(class='filter js-filter')
             use(href='#icon-16-close')
           span(class='text') любое
           //- input(type='checkbox' name='любое')
-        label(class='option' role='option' id='option-buy-type-1' aria-selected='false' for='buy-type-1')
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') офисы
-          input(class='visually-hidden' type='checkbox' name='офисы' id='buy-type-1')
-        label(class='option' role='option' id='option-buy-type-2' aria-selected='false' for='buy-type-2') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') адм. здания
-          input(class='visually-hidden' type='checkbox' name='адм. здания' id='buy-type-2')
-        label(class='option' role='option' id='option-buy-type-3' aria-selected='false' for='buy-type-3') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') склады
-          input(class='visually-hidden' type='checkbox' name='склады' id='buy-type-3')
-        label(class='option' role='option' id='option-buy-type-4' aria-selected='false' for='buy-type-4') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') производство
-          input(class='visually-hidden' type='checkbox' name='производство' id='buy-type-4')
-        label(class='option' role='option' id='option-buy-type-5' aria-selected='false' for='buy-type-5') 
-          svg(class='icon')
-              use(href='#icon-16-ok')
-          span(class='text') общежития
-          input(class='visually-hidden' type='checkbox' name='общежития' id='buy-type-5')
+        - 
+          const types = [
+            {name: 'офисы', id: '1'},
+            {name: 'адм. здания', id: '2'},
+            {name: 'склады', id: '3'},
+            {name: 'производство', id: '4'},
+            {name: 'общежития', id: '5'}
+          ]
+        
+        each item in types
+          label(class='option' role='option' id=`option-buy-type-${item.id}` aria-selected='false' for=`buy-type-${item.id}`)
+            input(class='visually-hidden' type='checkbox' name=`${item.name}` id=`buy-type-${item.id}`)
+            svg(class='icon')
+                use(href='#icon-16-ok')
+            span(class='text') #{item.name}
     div(class='ui-rangeBar js-rangeBarFloat')
       div(class='heading') цена, млн руб
       div(class='label' for='input-from')

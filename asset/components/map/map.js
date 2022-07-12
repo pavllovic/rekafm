@@ -176,6 +176,7 @@ YMap.prototype = {
       });
       this.objectCollection.events.add('mouseenter', (e) => {
         e.get('target').balloon.open();
+        e.get('target').balloon.autoPan();
       });
 
       this.objectCollection.events.add('mouseleave', (e) => {

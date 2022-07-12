@@ -35,9 +35,12 @@
 }
 
 .ui-tab:hover,
-.ui-tab:active,
-.ui-tab.active {
+.ui-tab:active {
   color: inherit;
+}
+
+.ui-tab.active {
+  color: var(--bs-corporate);
 }
 
 .ui-tab:hover::after,

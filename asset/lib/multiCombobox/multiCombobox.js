@@ -82,7 +82,6 @@ export function updateOutput() {
   if(this.mapSelected.size === 0) return this.resetCombobox();
   let output = '';
   if(this.mapSelected.size === 1) {
-    console.log(Array.from(this.mapSelected));
     output = Array.from(this.mapSelected)[0][1].value;
   }
   if(this.mapSelected.size > 1) {
@@ -134,11 +133,15 @@ export function onKeydown(e) {
 
 export function onComboboxBlur(e) {
   if(this.ignoreBlur) {
+    console.log('not-blur');
     this.ignoreBlur = false;
     this.combobox.focus();
     return;
   }
-  if(this.open) this.toogleOptions(e);
+  if(this.open) {
+    console.log('blur');
+    this.toogleOptions(e);
+  }
 }
 
 export function onListboxMouseDown() {
@@ -163,6 +166,8 @@ export function handleEvent(e) {
     case 'click':
       // e.preventDefault();
       e.stopPropagation();
+      console.log('click');
+      // console.log(e.target);
       const role = e.target.getAttribute('role');
       if(role === 'combobox') {
         return this.toogleOptions(e);
@@ -182,6 +187,7 @@ export function handleEvent(e) {
     case 'keydown':
       return this.onKeydown(e);
     case 'mousedown':
+      console.log('mousedown');
       return this.onListboxMouseDown();
     default:
       break;
