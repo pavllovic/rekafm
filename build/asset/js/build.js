@@ -2876,6 +2876,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/swiper/swiper.min.css":
+/*!********************************************!*\
+  !*** ./node_modules/swiper/swiper.min.css ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./node_modules/dom7/dom7.esm.js":
 /*!***************************************!*\
   !*** ./node_modules/dom7/dom7.esm.js ***!
@@ -16048,9 +16061,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var Styles_build_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Styles/build.css */ "./asset/styles/build.css");
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
-/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
-/* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
-/* harmony import */ var _components_gallery_gallery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/gallery/gallery */ "./asset/components/gallery/gallery.js");
+/* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.min.css");
+/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
+/* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
+/* harmony import */ var _components_gallery_gallery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/gallery/gallery */ "./asset/components/gallery/gallery.js");
+
 
 
 
@@ -16061,7 +16076,7 @@ swiper__WEBPACK_IMPORTED_MODULE_2__["default"].use([swiper__WEBPACK_IMPORTED_MOD
 
 var initGallery = function initGallery() {
   var galleryElement = document.querySelector('.js-gallery');
-  var gallery = new _components_gallery_gallery__WEBPACK_IMPORTED_MODULE_5__["default"](galleryElement);
+  var gallery = new _components_gallery_gallery__WEBPACK_IMPORTED_MODULE_6__["default"](galleryElement);
   gallery.init();
   window.gallery = gallery;
 };
@@ -16071,16 +16086,19 @@ initGallery();
 var initSwiperBuild = function initSwiperBuild() {
   var thumbElement = document.querySelector('.js-swiper-thumb');
   var swiperBuildElement = document.querySelector('.js-swiper-build');
+  var countSlides = swiperBuildElement.querySelectorAll('.swiper-slide').length;
   var swiperThumb = new swiper__WEBPACK_IMPORTED_MODULE_2__["default"](thumbElement, {
     direction: 'vertical',
-    freeMode: true,
+    // freeMode: true,
     slidesPerView: '2.5em',
     slideToClickedSlide: true,
     centeredSlides: false
   });
   var swiperBuild = new swiper__WEBPACK_IMPORTED_MODULE_2__["default"](swiperBuildElement, {
     direction: 'vertical',
-    // cssMode: true,
+    maxBackfaceHiddenSlides: countSlides,
+    slidesPerView: 1,
+    spaceBetween: 0,
     autoplay: {
       delay: 7000
     },
@@ -16096,9 +16114,8 @@ var initSwiperBuild = function initSwiperBuild() {
     },
     thumbs: {
       swiper: swiperThumb
-    },
-    // updateOnWindowResize: true,
-    resizeObserver: true
+    } // resizeObserver: true,
+
   });
   window.swiperBuild = swiperBuild;
 };
@@ -16120,7 +16137,7 @@ window.initSwiperBuild = initSwiperBuild; // const initOwnCarousel = function() 
 
 var initFeatureList = function initFeatureList() {
   var featureListElem = document.querySelector('.js-list-feature');
-  var featureList = new _components_showList_showList__WEBPACK_IMPORTED_MODULE_4__["default"](featureListElem);
+  var featureList = new _components_showList_showList__WEBPACK_IMPORTED_MODULE_5__["default"](featureListElem);
   featureList.init();
   window.featureList = featureList;
 };
@@ -16128,7 +16145,7 @@ var initFeatureList = function initFeatureList() {
 initFeatureList();
 
 var initMap = function initMap() {
-  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_3__["default"]('ymap', {
+  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_4__["default"]('ymap', {
     zoom: 17,
     center: [0, 0]
   });

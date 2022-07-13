@@ -15,6 +15,11 @@ export function multiCombobox(elem) {
 }
 
 export function init() {
+  this.setListeners();
+  this.updateMapSelected();
+}
+
+export function setListeners() {
   this.combobox.addEventListener('blur', this);
   this.combobox.addEventListener('click', this);
   this.combobox.addEventListener('keydown', this);
@@ -78,6 +83,16 @@ export function unselectOption(option) {
   this.mapSelected.delete(option);
 }
 
+export function updateMapSelected() {
+  this.arrayOptions.forEach((option) => {
+    if(option.classList.contains('selected')) {
+      const value = option.querySelector('.text').textContent;
+      const checkbox = option.querySelector('[type="checkbox"]');
+      this.mapSelected.set(option, { value: value, checkbox: checkbox });
+    }
+  });
+}
+
 export function updateOutput() {
   if(this.mapSelected.size === 0) return this.resetCombobox();
   let output = '';
@@ -133,13 +148,11 @@ export function onKeydown(e) {
 
 export function onComboboxBlur(e) {
   if(this.ignoreBlur) {
-    console.log('not-blur');
     this.ignoreBlur = false;
     this.combobox.focus();
     return;
   }
   if(this.open) {
-    console.log('blur');
     this.toogleOptions(e);
   }
 }
@@ -164,10 +177,7 @@ export function destroy() {
 export function handleEvent(e) {
   switch(e.type) {
     case 'click':
-      // e.preventDefault();
       e.stopPropagation();
-      console.log('click');
-      // console.log(e.target);
       const role = e.target.getAttribute('role');
       if(role === 'combobox') {
         return this.toogleOptions(e);
@@ -176,6 +186,7 @@ export function handleEvent(e) {
         return this.resetCombobox();
       }
       if(role === 'option') {
+        this.ignoreBlur = true;
         return this.onOptionChecked(e.target);
       }
       // if(role === 'listbox') {
@@ -187,7 +198,6 @@ export function handleEvent(e) {
     case 'keydown':
       return this.onKeydown(e);
     case 'mousedown':
-      console.log('mousedown');
       return this.onListboxMouseDown();
     default:
       break;

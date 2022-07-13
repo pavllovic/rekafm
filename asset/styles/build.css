@@ -356,7 +356,7 @@ h2 {
 }
 
 .swiper-build .swiper-wrapper {
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .swiper-build .controls {

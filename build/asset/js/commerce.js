@@ -240,6 +240,8 @@ var MultiCombobox = Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_
 MultiCombobox.prototype = {
   constructor: MultiCombobox,
   init: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.init,
+  setListeners: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.setListeners,
+  updateMapSelected: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.updateMapSelected,
   toogleOptions: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.toogleOptions,
   openOptions: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.openOptions,
   closeOptions: Lib_multiCombobox_multiCombobox_js__WEBPACK_IMPORTED_MODULE_0__.closeOptions,
@@ -1088,8 +1090,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "openOptions": () => (/* binding */ openOptions),
 /* harmony export */   "resetCombobox": () => (/* binding */ resetCombobox),
 /* harmony export */   "selectOption": () => (/* binding */ selectOption),
+/* harmony export */   "setListeners": () => (/* binding */ setListeners),
 /* harmony export */   "toogleOptions": () => (/* binding */ toogleOptions),
 /* harmony export */   "unselectOption": () => (/* binding */ unselectOption),
+/* harmony export */   "updateMapSelected": () => (/* binding */ updateMapSelected),
 /* harmony export */   "updateOutput": () => (/* binding */ updateOutput),
 /* harmony export */   "updateValue": () => (/* binding */ updateValue)
 /* harmony export */ });
@@ -1139,6 +1143,10 @@ function multiCombobox(elem) {
   this.optionFocusedIndex = 0;
 }
 function init() {
+  this.setListeners();
+  this.updateMapSelected();
+}
+function setListeners() {
   this.combobox.addEventListener('blur', this);
   this.combobox.addEventListener('click', this);
   this.combobox.addEventListener('keydown', this);
@@ -1196,6 +1204,21 @@ function unselectOption(option) {
   option.classList.remove('selected'); // this.mapSelected.get(option).checkbox.removeAttribute('checked');
 
   this.mapSelected["delete"](option);
+}
+function updateMapSelected() {
+  var _this = this;
+
+  this.arrayOptions.forEach(function (option) {
+    if (option.classList.contains('selected')) {
+      var value = option.querySelector('.text').textContent;
+      var checkbox = option.querySelector('[type="checkbox"]');
+
+      _this.mapSelected.set(option, {
+        value: value,
+        checkbox: checkbox
+      });
+    }
+  });
 }
 function updateOutput() {
   if (this.mapSelected.size === 0) return this.resetCombobox();
@@ -1259,14 +1282,12 @@ function onKeydown(e) {
 }
 function onComboboxBlur(e) {
   if (this.ignoreBlur) {
-    console.log('not-blur');
     this.ignoreBlur = false;
     this.combobox.focus();
     return;
   }
 
   if (this.open) {
-    console.log('blur');
     this.toogleOptions(e);
   }
 }
@@ -1287,10 +1308,7 @@ function destroy() {
 function handleEvent(e) {
   switch (e.type) {
     case 'click':
-      // e.preventDefault();
       e.stopPropagation();
-      console.log('click'); // console.log(e.target);
-
       var role = e.target.getAttribute('role');
 
       if (role === 'combobox') {
@@ -1302,6 +1320,7 @@ function handleEvent(e) {
       }
 
       if (role === 'option') {
+        this.ignoreBlur = true;
         return this.onOptionChecked(e.target);
       } // if(role === 'listbox') {
       //   return this.combobox.focus();
@@ -1317,7 +1336,6 @@ function handleEvent(e) {
       return this.onKeydown(e);
 
     case 'mousedown':
-      console.log('mousedown');
       return this.onListboxMouseDown();
 
     default:

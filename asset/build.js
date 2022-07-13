@@ -2,6 +2,7 @@ import 'Styles/build.css';
 import Swiper, {
   Autoplay, Navigation, Pagination, Thumbs,
 } from 'swiper';
+import 'swiper/css';
 import Map from './components/map/map';
 import ShowList from './components/showList/showList';
 import Gallery from './components/gallery/gallery';
@@ -20,16 +21,19 @@ initGallery();
 const initSwiperBuild = function() {
   const thumbElement = document.querySelector('.js-swiper-thumb');
   const swiperBuildElement = document.querySelector('.js-swiper-build');
+  const countSlides = swiperBuildElement.querySelectorAll('.swiper-slide').length;
   const swiperThumb = new Swiper(thumbElement, {
     direction: 'vertical',
-    freeMode: true,
+    // freeMode: true,
     slidesPerView: '2.5em',
     slideToClickedSlide: true,
     centeredSlides: false,
   });
   const swiperBuild = new Swiper(swiperBuildElement, {
     direction: 'vertical',
-    // cssMode: true,
+    maxBackfaceHiddenSlides: countSlides,
+    slidesPerView: 1,
+    spaceBetween: 0,
     autoplay: {
       delay: 7000,
     },
@@ -46,8 +50,7 @@ const initSwiperBuild = function() {
     thumbs: {
       swiper: swiperThumb,
     },
-    // updateOnWindowResize: true,
-    resizeObserver: true,
+    // resizeObserver: true,
   });
   window.swiperBuild = swiperBuild;
 };

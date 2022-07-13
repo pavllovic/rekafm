@@ -5,6 +5,8 @@ const MultiCombobox = lib.multiCombobox;
 MultiCombobox.prototype = {
   constructor: MultiCombobox,
   init: lib.init,
+  setListeners: lib.setListeners,
+  updateMapSelected: lib.updateMapSelected,
   toogleOptions: lib.toogleOptions,
   openOptions: lib.openOptions,
   closeOptions: lib.closeOptions,
