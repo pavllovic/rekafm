@@ -18,6 +18,8 @@ RangeBarInt.prototype = {
     this.valueTo = parseInt(this.sliderTo.value, 10);
     this.valueMin = parseInt(this.sliderFrom.min, 10);
     this.valueMax = parseInt(this.sliderFrom.max, 10);
+    this.passValueFrom();
+    this.passValueTo();
   },
 
   setListeners: function() {
@@ -39,13 +41,16 @@ RangeBarInt.prototype = {
   },
 
   passValueFrom: function() {
-    const value = ((this.valueFrom - this.valueMin) / this.valueMax) * 100;
+    const value = ((this.valueFrom - this.valueMin) / (this.valueMax - this.valueMin)) * 100;
+    // const value = ((this.valueFrom - this.valueMin) / (this.valueMax)) * 100;
+    // const value = ((this.valueFrom - this.valueMin)) * 100;
     this.wrapper.style.setProperty('--value-from', `${value}%`);
   },
 
   passValueTo: function() {
+    const value = ((this.valueTo - this.valueMin) / (this.valueMax - this.valueMin)) * 100;
     // const value = ((this.valueTo - this.valueMin) / this.valueMax) * 100;
-    const value = (this.valueTo / this.valueMax) * 100;
+    // const value = (this.valueTo / this.valueMax) * 100;
     this.wrapper.style.setProperty('--value-to', `${value}%`);
   },
 

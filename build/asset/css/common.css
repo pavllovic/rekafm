@@ -3244,6 +3244,7 @@ class .is-active add from nav.js
   flex-direction: column;
   align-items: center;
   color: inherit;
+  text-transform: lowercase;
 }
 .menu .item {
   display: flex;
