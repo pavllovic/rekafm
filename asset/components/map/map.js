@@ -115,9 +115,9 @@ YMap.prototype = {
           });
       });
 
-      // this.objectCollection.events.add('mouseleave', (e) => {
-      //   e.get('target').balloon.close();
-      // });
+      this.objectCollection.events.add('mouseleave', (e) => {
+        e.get('target').balloon.close();
+      });
       this.map.geoObjects.add(this.objectCollection);
     });
   },

@@ -126,21 +126,6 @@ const initMap = function() {
 
 initMap();
 
-/* testOdjectData - пример объекта */
-// const testOdjectData = {
-//   id: 1,
-//   coords: [44.898317, 37.354456],
-//   name: 'Ям Голден Лайн',
-//   address: 'МО, Домодедовский район, «Голден лайн», с. 1',
-//   meta: {
-//     price: 470,
-//     type: 'Склады',
-//     size: '14 758',
-//   },
-//   badges: ['продается целиком'],
-//   link: './build.html',
-// };
-
 const b = {
   id: 1,
   coords: [44.898317, 37.354456],

@@ -502,10 +502,11 @@ YMap.prototype = {
           if (balloonRect.top < mapRect.top) balloon.classList.add('balloon_bottom');
           if (balloonRect.right > mapRect.right) balloon.classList.add('balloon_left');
         });
-      }); // this.objectCollection.events.add('mouseleave', (e) => {
-      //   e.get('target').balloon.close();
-      // });
+      });
 
+      _this6.objectCollection.events.add('mouseleave', function (e) {
+        e.get('target').balloon.close();
+      });
 
       _this6.map.geoObjects.add(_this6.objectCollection);
     });
@@ -7417,21 +7418,6 @@ var initMap = function initMap() {
 };
 
 initMap();
-/* testOdjectData - пример объекта */
-// const testOdjectData = {
-//   id: 1,
-//   coords: [44.898317, 37.354456],
-//   name: 'Ям Голден Лайн',
-//   address: 'МО, Домодедовский район, «Голден лайн», с. 1',
-//   meta: {
-//     price: 470,
-//     type: 'Склады',
-//     size: '14 758',
-//   },
-//   badges: ['продается целиком'],
-//   link: './build.html',
-// };
-
 var b = {
   id: 1,
   coords: [44.898317, 37.354456],

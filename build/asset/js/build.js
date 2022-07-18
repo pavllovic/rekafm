@@ -190,10 +190,11 @@ YMap.prototype = {
           if (balloonRect.top < mapRect.top) balloon.classList.add('balloon_bottom');
           if (balloonRect.right > mapRect.right) balloon.classList.add('balloon_left');
         });
-      }); // this.objectCollection.events.add('mouseleave', (e) => {
-      //   e.get('target').balloon.close();
-      // });
+      });
 
+      _this6.objectCollection.events.add('mouseleave', function (e) {
+        e.get('target').balloon.close();
+      });
 
       _this6.map.geoObjects.add(_this6.objectCollection);
     });
