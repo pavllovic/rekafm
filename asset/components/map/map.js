@@ -14,6 +14,8 @@ YMap.prototype = {
         controls: [],
       }, {
         suppressMapOpenBlock: true,
+        // minZoom: 0,
+        // maxZoom: 17,
       });
     });
 
@@ -159,6 +161,8 @@ YMap.prototype = {
           this.map.setBounds(this.map.geoObjects.getBounds(), {
             checkZoomRange: true,
             zoomMargin: 70,
+          }).then(() => {
+            if(objects.length === 1) this.map.setZoom(17);
           });
         });
       }

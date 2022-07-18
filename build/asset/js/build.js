@@ -110,7 +110,9 @@ YMap.prototype = {
         zoom: _this.zoom,
         controls: []
       }, {
-        suppressMapOpenBlock: true
+        suppressMapOpenBlock: true // minZoom: 0,
+        // maxZoom: 17,
+
       });
     });
     window.ymaps.ready(function () {
@@ -235,6 +237,8 @@ YMap.prototype = {
           _this8.map.setBounds(_this8.map.geoObjects.getBounds(), {
             checkZoomRange: true,
             zoomMargin: 70
+          }).then(function () {
+            if (objects.length === 1) _this8.map.setZoom(17);
           });
         });
       }
