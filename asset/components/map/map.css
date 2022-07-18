@@ -91,7 +91,9 @@
 /* style balloon */
 .balloon {
   position: relative;
-  z-index: 2;
+
+  /* position: fixed; */
+  z-index: 1000;
   display: flex;
   width: 23.5em;
   flex-direction: column;
@@ -104,6 +106,18 @@
   transform: translateY(calc(-100% - 2.5em)) translateX(-1em);
 }
 
+.balloon.balloon_bottom {
+  transform: translateY(4.5em) translateX(-1em);
+}
+
+.balloon.balloon_left {
+  transform: translateY(calc(-100% - 2.5em)) translateX(calc(-100% + 3em));
+}
+
+.balloon.balloon_bottom.balloon_left {
+  transform: translateY(4.5em) translateX(calc(-100% + 3em));
+}
+
 .balloon::after {
   position: absolute;
   bottom: 0;
@@ -114,6 +128,25 @@
   content: "";
   transform: translateX(1.5em) rotateZ(45deg);
   transform-origin: left bottom;
+}
+
+.balloon.balloon_bottom::after {
+  top: 0;
+  bottom: initial;
+  transform: translateX(1.5em) rotateZ(-45deg);
+  transform-origin: left top;
+}
+
+.balloon.balloon_left::after {
+  right: 0;
+  left: initial;
+  transform: translateX(-1.5em) rotateZ(-45deg);
+  transform-origin: right bottom;
+}
+
+.balloon.balloon_bottom.balloon_left::after {
+  transform: translateX(-1.5em) rotateZ(45deg);
+  transform-origin: right top;
 }
 
 .balloon.title {

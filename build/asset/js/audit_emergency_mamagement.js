@@ -88,11 +88,9 @@ OrderAuditForm.prototype = {
 
     this.price.innerText = price;
   },
-  onSuccessHandler: function onSuccessHandler() {
-    this.wrap.classList.add('success-handler');
+  onSuccessHandler: function onSuccessHandler() {// this.wrap.classList.add('success-handler');
   },
-  onErrorHandler: function onErrorHandler() {
-    this.wrap.classList.add('error-handler');
+  onErrorHandler: function onErrorHandler() {// this.wrap.classList.add('error-handler');
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrderAuditForm);

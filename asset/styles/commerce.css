@@ -86,6 +86,7 @@
 
 .panellistCommerce {
   align-items: flex-start;
+  transition-duration: 0s;
 }
 
 .panellistFilter .panel,
@@ -202,11 +203,19 @@
 .commerceMap {
   position: fixed;
   z-index: 11;
+
+  /* z-index: 12; for outer balloon pane */
+
+  /* z-index: 12; */
   bottom: 0;
   left: 0;
   display: flex;
   width: 100%;
   height: 100vh;
+
+  /* height: calc(100vh - 154px); for outer balloon pane */
+
+  /* height: calc(100vh - 154px); */
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
   opacity: 0;
   transform: translateY(-100%);

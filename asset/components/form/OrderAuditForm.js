@@ -40,10 +40,10 @@ OrderAuditForm.prototype = {
     this.price.innerText = price;
   },
   onSuccessHandler: function() {
-    this.wrap.classList.add('success-handler');
+    // this.wrap.classList.add('success-handler');
   },
   onErrorHandler: function() {
-    this.wrap.classList.add('error-handler');
+    // this.wrap.classList.add('error-handler');
   },
 };
 

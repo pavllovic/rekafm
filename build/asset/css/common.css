@@ -13,6 +13,7 @@
   clip: rect(0 0 0 0);
   -webkit-clip-path: polygon(0 0, 0 0, 0 0);
           clip-path: polygon(0 0, 0 0, 0 0);
+  pointer-events: none;
   white-space: nowrap;
 }
 .no-transition {
@@ -2396,8 +2397,7 @@ ui-btnArrow::before - border for normal/disabled
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 /* backround if image didn't load */
 .ui-thumb .image img::before,
@@ -3494,7 +3494,9 @@ class .is-active add from nav.js
 /* --- end style component menu --- */
 .hero {
   position: relative;
-  z-index: 1;
+
+  /* z-index: 1; */
+  z-index: 2;
   display: flex;
   width: 100%;
   min-height: calc(100vh - 3em);

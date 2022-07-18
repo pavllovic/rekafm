@@ -50,8 +50,7 @@
   border-radius: inherit;
   object-fit: cover;
   object-position: center;
-
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 /* backround if image didn't load */

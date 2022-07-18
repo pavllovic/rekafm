@@ -21,19 +21,27 @@ initGallery();
 const initSwiperBuild = function() {
   const thumbElement = document.querySelector('.js-swiper-thumb');
   const swiperBuildElement = document.querySelector('.js-swiper-build');
-  const countSlides = swiperBuildElement.querySelectorAll('.swiper-slide').length;
+  const countSlides = swiperBuildElement
+    .querySelectorAll('.swiper-slide').length;
+  console.log(+countSlides + 6);
   const swiperThumb = new Swiper(thumbElement, {
     direction: 'vertical',
     // freeMode: true,
     slidesPerView: '2.5em',
+    speed: 600,
     slideToClickedSlide: true,
     centeredSlides: false,
+    threshold: 30,
   });
   const swiperBuild = new Swiper(swiperBuildElement, {
     direction: 'vertical',
     maxBackfaceHiddenSlides: countSlides,
     slidesPerView: 1,
     spaceBetween: 0,
+    speed: 600,
+    loopPreventsSlide: false,
+    loopAdditionalSlides: 4,
+    // threshold: 20,
     autoplay: {
       delay: 7000,
     },

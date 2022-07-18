@@ -154,6 +154,7 @@ const b = {
   badges: ['продается целиком'],
   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html',
+  booked: true,
 };
 
 const a = {
@@ -169,6 +170,7 @@ const a = {
   badges: ['продается целиком'],
   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
   link: './build.html',
+  booked: false,
 };
 
 window.map.createObjectCollection();

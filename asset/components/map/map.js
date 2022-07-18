@@ -2,76 +2,8 @@ const YMap = function(id, options) {
   this.center = options.center;
   this.id = id;
   this.zoom = options.zoom;
+  this.mapElement = document.querySelector(`#${id}`);
 };
-
-// function setBalloonPane (map, placemark, mapData) {
-//   const data = mapData || {
-//     globalPixelCenter: map.getGlobalPixelCenter(),
-//     zoom: map.getZoom(),
-//   };
-
-//   const mapSize = map.container.getSize();
-//   const mapBounds = [ // eslint-disable-line
-//       [
-//         data.globalPixelCenter[0] - mapSize[0] / 2,
-//         data.globalPixelCenter[1] - mapSize[1] / 2,
-//       ],
-//       [
-//         data.globalPixelCenter[0] + mapSize[0] / 2,
-//         data.globalPixelCenter[1] + mapSize[1] / 2,
-//       ],
-//     ],
-//     balloonPosition = placemark.balloon.getPosition(),
-//     zoomFactor = Math.pow(2, data.zoom - map.getZoom()), // eslint-disable-line
-//     pointInBounds = window.ymaps.util.pixelBounds.containsPoint(mapBounds, [
-//       balloonPosition[0] * zoomFactor,
-//       balloonPosition[1] * zoomFactor,
-//     ]),
-//     isInOutersPane = placemark.options.get('balloonPane') === 'outerBalloon';
-
-//   if (!pointInBounds && isInOutersPane) {
-//     placemark.options.set({
-//       balloonPane: 'balloon',
-//       balloonShadowPane: 'shadows',
-//     });
-//   } else if (pointInBounds && !isInOutersPane) {
-//     placemark.options.set({
-//       balloonPane: 'outerBalloon',
-//       balloonShadowPane: 'outerBalloon',
-//     });
-//   }
-// }
-
-// function observeEvents (map) {
-//   let mapEventsGroup = null;
-//   map.geoObjects.each((geoObject) => {
-//     geoObject.balloon.events
-//       // При открытии балуна начинаем слушать изменение центра карты.
-//       .add('open', (e1) => {
-//         const placemark = e1.get('target');
-//         // Вызываем функцию в двух случаях:
-//         mapEventsGroup = map.events.group()
-//           // 1) в начале движения (если балун во внешнем контейнере);
-//           .add('actiontick', (e2) => {
-//             if (placemark.options.get('balloonPane') === 'outerBalloon') {
-//               setBalloonPane(map, placemark, e2.get('tick'));
-//             }
-//           })
-//           // 2) в конце движения (если балун во внутреннем контейнере).
-//           .add('actiontickcomplete', (e2) => {
-//             if (placemark.options.get('balloonPane') !== 'outerBalloon') {
-//               setBalloonPane(map, placemark, e2.get('tick'));
-//             }
-//           });
-//         // Вызываем функцию сразу после открытия.
-//         setBalloonPane(map, placemark);
-//       })
-//       // При закрытии балуна удаляем слушатели.
-//       .add('close', () => {
-//         mapEventsGroup.removeAll();
-//       });
-//   });
-// }
 
 YMap.prototype = {
   init: function() {
@@ -101,10 +33,6 @@ YMap.prototype = {
         },
       });
     });
-
-    // window.ymaps.ready(() => {
-    //   observeEvents(this.map);
-    // });
   },
 
   createIconLayout: function() {
@@ -139,12 +67,13 @@ YMap.prototype = {
   createBalloonLayout: function() {
     window.ymaps.ready(() => {
       const BalloonLayout =  window.ymaps.templateLayoutFactory.createClass( // eslint-disable-line
-        `<div class="balloon">
+        `
+        <div class="balloon">
           <h3 class="title">«{{ properties.objectData.name }}»</h3>
           <p class="address">{{ properties.objectData.address }}</p>
           <div class="meta">
             <!-- hidden attribute controls visibility param (boolean, not string) -->
-            <span data-build-state="booked">
+            <span data-build-state="booked" {% if properties.objectData.booked !== true %} hidden {% endif %}>
               <span>Забронировно</span>
             </span>
             <span data-build-price>
@@ -162,7 +91,8 @@ YMap.prototype = {
               <span class="badge">{{ badge }}</span>
             {% endfor %}
           </div>
-        </div>`,
+        </div>
+        `,
       );
       this.balloonLayout = BalloonLayout;
     });
@@ -175,13 +105,19 @@ YMap.prototype = {
         location = e.get('target').options.get('href'); // eslint-disable-line
       });
       this.objectCollection.events.add('mouseenter', (e) => {
-        e.get('target').balloon.open();
-        e.get('target').balloon.autoPan();
+        const mapRect = this.mapElement.getBoundingClientRect();
+        e.get('target').balloon.open()
+          .then(() => {
+            const balloon = document.querySelector('.balloon');
+            const balloonRect = balloon.getBoundingClientRect();
+            if(balloonRect.top < mapRect.top) balloon.classList.add('balloon_bottom');
+            if(balloonRect.right > mapRect.right) balloon.classList.add('balloon_left');
+          });
       });
 
-      this.objectCollection.events.add('mouseleave', (e) => {
-        e.get('target').balloon.close();
-      });
+      // this.objectCollection.events.add('mouseleave', (e) => {
+      //   e.get('target').balloon.close();
+      // });
       this.map.geoObjects.add(this.objectCollection);
     });
   },
@@ -200,8 +136,10 @@ YMap.prototype = {
         {
           hideIconOnBalloonOpen: false,
           iconLayout: this.iconLayout,
+          ballonAutoPan: true,
           balloonLayout: this.balloonLayout,
-          // balloonOffset: [0, -200],
+          balloonPanelMaxMapArea: 0,
+          balloonOffset: [0, 0],
           iconShape: {
             type: 'Circle',
             coordinates: [35, 35],

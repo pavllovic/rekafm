@@ -86,7 +86,7 @@ form(class='filter js-filter')
             input(type='range' min='0' max='1000000000' value='1000000000' id='price-to' data-range='slider-to' data-filter='max-price')
           label(class='label' for='price-from')
             input(type='range' min='0' max='1000000000' value='0' id='price-from' data-range='slider-from' data-filter='min-price')
-    //- div(class='ui-rangeBar js-rangeBarInt')
+    div(class='ui-rangeBar js-rangeBarInt')
       div(class='heading') площадь, м²
       div(class='label' for='input-from')
         span от
@@ -102,22 +102,6 @@ form(class='filter js-filter')
             input(type='range' min='0' max='100000' value='100000' id='size-to' data-range='slider-to' data-filter='max-size')
           label(class='label' for='size-from')
             input(type='range' min='0' max='100000' value='0' id='size-from' data-range='slider-from' data-filter='min-size')
-    div(class='ui-rangeBar js-rangeBarInt')
-      div(class='heading') площадь, м²
-      div(class='label' for='input-from')
-        span от
-        span(class='value' data-range='view-from') 11 500
-        input(class='visually-hidden' type='text' data-range='input-from' value='11500') 
-      div(class='label' for='input-to')
-        span до
-        span(class='value' data-range='view-to') 150 00
-        input(class='visually-hidden' type='text' data-range='input-to' value='15000')
-      div(class='ui-slider')
-        div(class='track' data-range='track')
-          label(class='label' for='size-to')
-            input(type='range' min='10000' max='15000' value='15000' id='size-to' data-range='slider-to' data-filter='max-size')
-          label(class='label' for='size-from')
-            input(type='range' min='10000' max='15000' value='11500' id='size-from' data-range='slider-from' data-filter='min-size')
   div(class='filter-bottom')
     div(class='ui-toggle')
       input(type='checkbox' id='object-full' name='object-full')

@@ -409,72 +409,8 @@ var YMap = function YMap(id, options) {
   this.center = options.center;
   this.id = id;
   this.zoom = options.zoom;
-}; // function setBalloonPane (map, placemark, mapData) {
-//   const data = mapData || {
-//     globalPixelCenter: map.getGlobalPixelCenter(),
-//     zoom: map.getZoom(),
-//   };
-//   const mapSize = map.container.getSize();
-//   const mapBounds = [ // eslint-disable-line
-//       [
-//         data.globalPixelCenter[0] - mapSize[0] / 2,
-//         data.globalPixelCenter[1] - mapSize[1] / 2,
-//       ],
-//       [
-//         data.globalPixelCenter[0] + mapSize[0] / 2,
-//         data.globalPixelCenter[1] + mapSize[1] / 2,
-//       ],
-//     ],
-//     balloonPosition = placemark.balloon.getPosition(),
-//     zoomFactor = Math.pow(2, data.zoom - map.getZoom()), // eslint-disable-line
-//     pointInBounds = window.ymaps.util.pixelBounds.containsPoint(mapBounds, [
-//       balloonPosition[0] * zoomFactor,
-//       balloonPosition[1] * zoomFactor,
-//     ]),
-//     isInOutersPane = placemark.options.get('balloonPane') === 'outerBalloon';
-//   if (!pointInBounds && isInOutersPane) {
-//     placemark.options.set({
-//       balloonPane: 'balloon',
-//       balloonShadowPane: 'shadows',
-//     });
-//   } else if (pointInBounds && !isInOutersPane) {
-//     placemark.options.set({
-//       balloonPane: 'outerBalloon',
-//       balloonShadowPane: 'outerBalloon',
-//     });
-//   }
-// }
-// function observeEvents (map) {
-//   let mapEventsGroup = null;
-//   map.geoObjects.each((geoObject) => {
-//     geoObject.balloon.events
-//       // При открытии балуна начинаем слушать изменение центра карты.
-//       .add('open', (e1) => {
-//         const placemark = e1.get('target');
-//         // Вызываем функцию в двух случаях:
-//         mapEventsGroup = map.events.group()
-//           // 1) в начале движения (если балун во внешнем контейнере);
-//           .add('actiontick', (e2) => {
-//             if (placemark.options.get('balloonPane') === 'outerBalloon') {
-//               setBalloonPane(map, placemark, e2.get('tick'));
-//             }
-//           })
-//           // 2) в конце движения (если балун во внутреннем контейнере).
-//           .add('actiontickcomplete', (e2) => {
-//             if (placemark.options.get('balloonPane') !== 'outerBalloon') {
-//               setBalloonPane(map, placemark, e2.get('tick'));
-//             }
-//           });
-//         // Вызываем функцию сразу после открытия.
-//         setBalloonPane(map, placemark);
-//       })
-//       // При закрытии балуна удаляем слушатели.
-//       .add('close', () => {
-//         mapEventsGroup.removeAll();
-//       });
-//   });
-// }
-
+  this.mapElement = document.querySelector("#".concat(id));
+};
 
 YMap.prototype = {
   init: function init() {
@@ -506,9 +442,7 @@ YMap.prototype = {
           right: '1em'
         }
       });
-    }); // window.ymaps.ready(() => {
-    //   observeEvents(this.map);
-    // });
+    });
   },
   createIconLayout: function createIconLayout() {
     var _this2 = this;
@@ -545,7 +479,7 @@ YMap.prototype = {
 
     window.ymaps.ready(function () {
       var BalloonLayout = window.ymaps.templateLayoutFactory.createClass( // eslint-disable-line
-      "<div class=\"balloon\">\n          <h3 class=\"title\">\xAB{{ properties.objectData.name }}\xBB</h3>\n          <p class=\"address\">{{ properties.objectData.address }}</p>\n          <div class=\"meta\">\n            <!-- hidden attribute controls visibility param (boolean, not string) -->\n            <span data-build-state=\"booked\">\n              <span>\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u043D\u043E</span>\n            </span>\n            <span data-build-price>\n              <span>{{ properties.objectData.meta.price }}</span> &nbsp;\u043C\u043B\u043D \u0440\u0443\u0431\n            </span>\n            <span data-build-type>\n              <span>{{ properties.objectData.meta.type }}</span>\n            </span>\n            <span data-build-size>\n              <span class=\"prefix-rent\">\u043E\u0442&nbsp;</span> <span>{{ properties.objectData.meta.size }}</span> &nbsp;\u043C\xB2\n            </span>\n          </div>\n          <div class=\"badge-list\">\n            {% for badge in properties.objectData.badges %}\n              <span class=\"badge\">{{ badge }}</span>\n            {% endfor %}\n          </div>\n        </div>");
+      "\n        <div class=\"balloon\">\n          <h3 class=\"title\">\xAB{{ properties.objectData.name }}\xBB</h3>\n          <p class=\"address\">{{ properties.objectData.address }}</p>\n          <div class=\"meta\">\n            <!-- hidden attribute controls visibility param (boolean, not string) -->\n            <span data-build-state=\"booked\" {% if properties.objectData.booked !== true %} hidden {% endif %}>\n              <span>\u0417\u0430\u0431\u0440\u043E\u043D\u0438\u0440\u043E\u0432\u043D\u043E</span>\n            </span>\n            <span data-build-price>\n              <span>{{ properties.objectData.meta.price }}</span> &nbsp;\u043C\u043B\u043D \u0440\u0443\u0431\n            </span>\n            <span data-build-type>\n              <span>{{ properties.objectData.meta.type }}</span>\n            </span>\n            <span data-build-size>\n              <span class=\"prefix-rent\">\u043E\u0442&nbsp;</span> <span>{{ properties.objectData.meta.size }}</span> &nbsp;\u043C\xB2\n            </span>\n          </div>\n          <div class=\"badge-list\">\n            {% for badge in properties.objectData.badges %}\n              <span class=\"badge\">{{ badge }}</span>\n            {% endfor %}\n          </div>\n        </div>\n        ");
       _this5.balloonLayout = BalloonLayout;
     });
   },
@@ -560,13 +494,18 @@ YMap.prototype = {
       });
 
       _this6.objectCollection.events.add('mouseenter', function (e) {
-        e.get('target').balloon.open();
-        e.get('target').balloon.autoPan();
-      });
+        var mapRect = _this6.mapElement.getBoundingClientRect();
 
-      _this6.objectCollection.events.add('mouseleave', function (e) {
-        e.get('target').balloon.close();
-      });
+        e.get('target').balloon.open().then(function () {
+          var balloon = document.querySelector('.balloon');
+          var balloonRect = balloon.getBoundingClientRect();
+          if (balloonRect.top < mapRect.top) balloon.classList.add('balloon_bottom');
+          if (balloonRect.right > mapRect.right) balloon.classList.add('balloon_left');
+        });
+      }); // this.objectCollection.events.add('mouseleave', (e) => {
+      //   e.get('target').balloon.close();
+      // });
+
 
       _this6.map.geoObjects.add(_this6.objectCollection);
     });
@@ -583,8 +522,10 @@ YMap.prototype = {
       }, {
         hideIconOnBalloonOpen: false,
         iconLayout: _this7.iconLayout,
+        ballonAutoPan: true,
         balloonLayout: _this7.balloonLayout,
-        // balloonOffset: [0, -200],
+        balloonPanelMaxMapArea: 0,
+        balloonOffset: [0, 0],
         iconShape: {
           type: 'Circle',
           coordinates: [35, 35],
@@ -7503,7 +7444,8 @@ var b = {
   },
   badges: ['продается целиком'],
   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
-  link: './build.html'
+  link: './build.html',
+  booked: true
 };
 var a = {
   id: 1,
@@ -7517,7 +7459,8 @@ var a = {
   },
   badges: ['продается целиком'],
   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
-  link: './build.html'
+  link: './build.html',
+  booked: false
 };
 window.map.createObjectCollection();
 window.map.addObjectsInObjectCollection([a, b]);
