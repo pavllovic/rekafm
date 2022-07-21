@@ -13307,7 +13307,6 @@ initTickerCustomCursor();
 initFormOrderCall();
 initInputMask();
 window.addEventListener('load', function () {
-  document.body.classList.remove('no-js');
   var elements = document.querySelectorAll('.no-transition');
   elements.forEach(function (elem) {
     elem.classList.remove('no-transition');

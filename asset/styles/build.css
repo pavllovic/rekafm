@@ -379,11 +379,14 @@ h2 {
   max-height: var(--height);
   padding-top: 4em;
   padding-bottom: 7em;
+
+  /* backface-visibility: hidden; */
   transform: translateY(-50%) scaleX(1.524) scaleY(calc(1 / var(--scale-y)));
   transform-origin: center right;
   transition-duration: var(--dur-main), var(--dur-main);
   transition-property: max-height, transform;
   transition-timing-function: var(--easing-main), var(--easing-main);
+  will-change: max-height;
 }
 
 .no-js .swiper-build .controls {

@@ -23,6 +23,8 @@ html(lang='ru')
     //-       link(rel='stylesheet' href=`${file.file}` media=`${file.query}`)
   body(class='no-js')
     block content
+    script. 
+      document.body.classList.remove('no-js');
     each file in htmlWebpackPlugin.files.js
       script(defer="defer" src=`${file}`)
 

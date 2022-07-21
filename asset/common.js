@@ -78,8 +78,6 @@ initFormOrderCall();
 initInputMask();
 
 window.addEventListener('load', () => {
-  document.body.classList.remove('no-js');
-
   const elements = document.querySelectorAll('.no-transition');
   elements.forEach((elem) => {
     elem.classList.remove('no-transition');
