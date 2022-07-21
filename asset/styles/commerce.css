@@ -11,9 +11,12 @@
 }
 
 /* --- style block hero --- */
-.commerce .hero,
-.rent .hero {
+.commerce .hero {
   min-height: calc(100vh - 4.5em - (var(--fs-btn) / 0.375));
+}
+
+.rent .hero {
+  z-index: 10;
 }
 
 .commerce .hero picture::after {
@@ -21,8 +24,7 @@
 }
 
 @media (min-width: 80em) {
-  .commerce .hero,
-  .rent .hero {
+  .commerce .hero {
     min-height: calc(100vh - 6.5em - (var(--fs-btn) / 0.28125)); /* stylelint-disable number-max-precision */
   }
 }

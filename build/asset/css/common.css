@@ -3580,10 +3580,11 @@ class .is-active add from nav.js
 .hero .body {
   position: relative;
   display: flex;
+  max-width: 18.5em;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin: 2.5em 1.5em;
+  margin: 2.5em auto;
   text-align: center;
 }
 .hero .body .heading,
@@ -3594,6 +3595,8 @@ class .is-active add from nav.js
 .hero .body .heading-sm > .text {
   max-width: 27em;
   margin-top: 1em;
+  margin-right: auto;
+  margin-left: auto;
   letter-spacing: -0.02em;
 }
 .hero .feature-list {
@@ -3727,6 +3730,7 @@ class .is-active add from nav.js
   .hero .body .heading > .text,
   .hero .body .heading-sm > .text {
     margin-top: 0.8em;
+    margin-left: 0;
     font-size: 2rem;
     font-size: var(--fs-text-lead);
   }
