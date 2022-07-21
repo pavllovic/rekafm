@@ -10,6 +10,14 @@ Gallery.prototype = {
     this.setListeners();
     // this.initialWidthGallery = this.gallery.offsetWidth;
     // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
+    const viewportHeight = window.screen.height;
+    const headerHeight = document.querySelector('.header').offsetHeight;
+    // const galleryHeight = this.gallery.offsetHeight;
+    const scale = 1 - (headerHeight / (viewportHeight / 100)) / 100;
+    console.log(viewportHeight);
+    console.log(headerHeight);
+    console.log(scale);
+    this.gallery.style.setProperty('--scale-y', scale);
   },
 
   setListeners: function() {
@@ -27,7 +35,7 @@ Gallery.prototype = {
     this.gallery.classList.add('close');
     document.body.classList.remove('open-gallery');
     window.scrollTo({ top: 0, behavior: 'instant' });
-    this.thumbs.scrollTo({ top: 0, behavior: 'smooth' });
+    this.thumbs.scrollTo({ top: 0 });
     setTimeout(() => {
       this.gallery.classList.remove('close');
     }, 600);

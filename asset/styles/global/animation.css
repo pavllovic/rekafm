@@ -1,6 +1,7 @@
 /* --- style animation&transition --- */
 :root {
   --easing-main: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easing-main-inverse: cubic-bezier(0.56, 0, 0.835, 0.16);
   --easing-second: cubic-bezier(0.77, 0, 0.175, 1);
   --easing-quick: cubic-bezier(0.215, 0.61, 0.355, 1);
   --dur-main: 0.6s;

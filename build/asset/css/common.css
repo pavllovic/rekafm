@@ -414,6 +414,7 @@ h3 {
 /* --- style animation&transition --- */
 :root {
   --easing-main: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easing-main-inverse: cubic-bezier(0.56, 0, 0.835, 0.16);
   --easing-second: cubic-bezier(0.77, 0, 0.175, 1);
   --easing-quick: cubic-bezier(0.215, 0.61, 0.355, 1);
   --dur-main: 0.6s;
@@ -529,6 +530,7 @@ h3 {
   display: flex;
   overflow: hidden;
   align-items: center;
+  justify-content: center;
   padding: calc(1em / 0.75) calc(1em / 0.75);
   border: none;
   background-color: rgba(255, 255, 255, 0%);
@@ -1359,8 +1361,8 @@ ui-btnArrow::before - border for normal/disabled
   --color-bg: rgba(255, 255, 255, 100%);
   --color: currentcolor;
 
-  width: auto;
-  height: 100%;
+  width: 2em;
+  height: 2em;
   fill: currentcolor;
   fill: var(--color, currentcolor);
 }
@@ -2944,10 +2946,10 @@ ui-btnArrow::before - border for normal/disabled
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-duration: var(--dur-second);
-          animation-duration: var(--dur-second);
+  -webkit-animation-duration: calc(1s * 1.5);
+          animation-duration: calc(1s * 1.5);
+  -webkit-animation-duration: calc(var(--dur-second) * 1.5);
+          animation-duration: calc(var(--dur-second) * 1.5);
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   -webkit-animation-name: load;
@@ -3496,7 +3498,7 @@ class .is-active add from nav.js
   position: relative;
 
   /* z-index: 1; */
-  z-index: 2;
+  z-index: 3;
   display: flex;
   width: 100%;
   min-height: calc(100vh - 3em);
@@ -3662,7 +3664,7 @@ class .is-active add from nav.js
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 24%), rgba(10, 10, 10, 0%));
+  background: linear-gradient(to bottom, rgba(46, 46, 46, 60%), rgba(46, 46, 46, 60%));
   content: "";
   pointer-events: none;
 }

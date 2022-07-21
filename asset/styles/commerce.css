@@ -2,7 +2,8 @@
 @import "../components/filter/filter.css";
 @import "../components/map/map.css";
 
-.commerce {
+.commerce,
+.rent {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,12 +11,18 @@
 }
 
 /* --- style block hero --- */
-.commerce .hero {
+.commerce .hero,
+.rent .hero {
   min-height: calc(100vh - 4.5em - (var(--fs-btn) / 0.375));
 }
 
+.commerce .hero picture::after {
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 24%), rgba(10, 10, 10, 0%));
+}
+
 @media (min-width: 80em) {
-  .commerce .hero {
+  .commerce .hero,
+  .rent .hero {
     min-height: calc(100vh - 6.5em - (var(--fs-btn) / 0.28125)); /* stylelint-disable number-max-precision */
   }
 }
@@ -511,7 +518,8 @@
 /* --- style block card-list --- */
 
 @media (min-width: 80em) {
-  .commerce .card-list {
+  .commerce .card-list,
+  .rent .card-list {
     padding: 0;
   }
 }

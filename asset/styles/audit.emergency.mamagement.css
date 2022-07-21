@@ -1,3 +1,5 @@
+@import "../components/form-order/form-order.css";
+
 /* *** styles page audit *** */
 
 /* --- style block-tariff --- */
@@ -49,7 +51,7 @@
   letter-spacing: -0.02em;
 }
 
-.block-order .form {
+.block-order .form-order {
   width: 100%;
   margin-top: 1.5em;
 }
@@ -70,7 +72,7 @@
   }
 
   .block-order .body,
-  .block-order .form {
+  .block-order .form-order {
     width: 50%;
   }
 
@@ -78,7 +80,7 @@
     margin-top: 1em;
   }
 
-  .block-order .form {
+  .block-order .form-order {
     margin-top: 5em;
   }
 

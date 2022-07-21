@@ -92,6 +92,7 @@ const htmlWebpackPlagin = (isDev) => {
     {name: 'news_list', title: 'рекафм | новости', chunks: ['common', 'news_list']},
     {name: 'news', title: 'рекафм | новости', chunks: ['common', 'news']},
     {name: 'commerce', title: 'рекафм | продажа и аренда', chunks: ['common', 'commerce']},
+    {name: 'rent', title: 'рекафм | управление арендными отношениями', chunks: ['common', 'commerce']},
     {name: 'build', title: 'рекафм | помещение', chunks: ['common', 'build']},
     {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
   ];

@@ -2,7 +2,7 @@ import 'Styles/audit.emergency.mamagement.css';
 import Carousel from './components/carousel/carousel.js';
 import ShowList from './components/showList/showList';
 import FormValidator from './lib/formValidator/formValidator.js';
-import OrderAuditForm from './components/form/OrderAuditForm.js';
+import OrderAuditForm from './components/form-order/OrderAuditForm.js';
 
 const initCardTariff = () => {
   const cardsTariffElements = document.querySelectorAll('.js-cardTariff');

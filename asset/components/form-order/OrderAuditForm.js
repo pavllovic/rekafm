@@ -7,14 +7,17 @@ const OrderAuditForm = lib.form;
 OrderAuditForm.prototype = {
   constructor: OrderAuditForm,
   init: function() {
-    lib.init.call(this);
     this.price = this.form.querySelector('[data-audit="value"]');
-    // this.wrap = document.querySelector('.js-modal-call');
+    this.wrap = document.querySelector('.js-form-order');
+    lib.init.call(this);
   },
   setListeners: function() {
     lib.setListeners.call(this);
     this.form.querySelector('input[name="square"]').addEventListener('input', (e) => {
       this.updatePrice(e.target);
+    });
+    this.wrap.querySelectorAll('[data-btn="response-close"]').forEach((elem) => {
+      elem.addEventListener('click', () => this.hideFormResposne());
     });
   },
   destroy: lib.destroy,
@@ -24,7 +27,10 @@ OrderAuditForm.prototype = {
   resetForm: lib.resetForm,
   showSubmitting: lib.showSubmitting,
   showFormResposne: lib.showFormResposne,
-  hideFormResposne: lib.hideFormResposne,
+  // hideFormResposne: lib.hideFormResposne,
+  hideFormResposne: function() {
+    this.wrap.classList.remove('success-handler');
+  },
   handleEvent: lib.handleEvent,
   sendFormHandler: handlers.sendFormHandler,
   updatePrice: function(input) {
@@ -40,7 +46,7 @@ OrderAuditForm.prototype = {
     this.price.innerText = price;
   },
   onSuccessHandler: function() {
-    // this.wrap.classList.add('success-handler');
+    this.wrap.classList.add('success-handler');
   },
   onErrorHandler: function() {
     // this.wrap.classList.add('error-handler');

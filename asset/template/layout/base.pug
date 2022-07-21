@@ -21,7 +21,7 @@ html(lang='ru')
     //-   if file === 'asset/css/common.css'
     //-     each file in htmlWebpackPlugin.files.extracted.css
     //-       link(rel='stylesheet' href=`${file.file}` media=`${file.query}`)
-  body
+  body(class='no-js')
     block content
     each file in htmlWebpackPlugin.files.js
       script(defer="defer" src=`${file}`)

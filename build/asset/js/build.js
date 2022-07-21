@@ -27,6 +27,15 @@ Gallery.prototype = {
   init: function init() {
     this.setListeners(); // this.initialWidthGallery = this.gallery.offsetWidth;
     // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
+
+    var viewportHeight = window.screen.height;
+    var headerHeight = document.querySelector('.header').offsetHeight; // const galleryHeight = this.gallery.offsetHeight;
+
+    var scale = 1 - headerHeight / (viewportHeight / 100) / 100;
+    console.log(viewportHeight);
+    console.log(headerHeight);
+    console.log(scale);
+    this.gallery.style.setProperty('--scale-y', scale);
   },
   setListeners: function setListeners() {
     var _this = this;
@@ -54,8 +63,7 @@ Gallery.prototype = {
       behavior: 'instant'
     });
     this.thumbs.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+      top: 0
     });
     setTimeout(function () {
       _this2.gallery.classList.remove('close');

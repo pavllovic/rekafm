@@ -32,10 +32,10 @@ Carousel.prototype = {
 
 /***/ }),
 
-/***/ "./asset/components/form/OrderAuditForm.js":
-/*!*************************************************!*\
-  !*** ./asset/components/form/OrderAuditForm.js ***!
-  \*************************************************/
+/***/ "./asset/components/form-order/OrderAuditForm.js":
+/*!*******************************************************!*\
+  !*** ./asset/components/form-order/OrderAuditForm.js ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43,37 +43,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var Lib_form_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Lib/form/form */ "./asset/lib/form/form.js");
-/* harmony import */ var Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Lib/form/form-handlers.js */ "./asset/lib/form/form-handlers.js");
-/* harmony import */ var Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! Lib/form/form-send.js */ "./asset/lib/form/form-send.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var Lib_form_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Lib/form/form */ "./asset/lib/form/form.js");
+/* harmony import */ var Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Lib/form/form-handlers.js */ "./asset/lib/form/form-handlers.js");
+/* harmony import */ var Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Lib/form/form-send.js */ "./asset/lib/form/form-send.js");
 
 
 
-var OrderAuditForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.form;
+
+
+
+var OrderAuditForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.form;
 OrderAuditForm.prototype = {
   constructor: OrderAuditForm,
   init: function init() {
-    Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.init.call(this);
-    this.price = this.form.querySelector('[data-audit="value"]'); // this.wrap = document.querySelector('.js-modal-call');
+    this.price = this.form.querySelector('[data-audit="value"]');
+    this.wrap = document.querySelector('.js-form-order');
+    Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.init.call(this);
   },
   setListeners: function setListeners() {
     var _this = this;
 
-    Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.setListeners.call(this);
+    Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.setListeners.call(this);
     this.form.querySelector('input[name="square"]').addEventListener('input', function (e) {
       _this.updatePrice(e.target);
     });
+    this.wrap.querySelectorAll('[data-btn="response-close"]').forEach(function (elem) {
+      elem.addEventListener('click', function () {
+        return _this.hideFormResposne();
+      });
+    });
   },
-  destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.destroy,
-  getFormData: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.getFormData,
-  submitForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.submitForm,
-  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_2__.sendForm,
-  resetForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.resetForm,
-  showSubmitting: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.showSubmitting,
-  showFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.showFormResposne,
-  hideFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.hideFormResposne,
-  handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.handleEvent,
-  sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_1__.sendFormHandler,
+  destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.destroy,
+  getFormData: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.getFormData,
+  submitForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.submitForm,
+  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_5__.sendForm,
+  resetForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.resetForm,
+  showSubmitting: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.showSubmitting,
+  showFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.showFormResposne,
+  // hideFormResposne: lib.hideFormResposne,
+  hideFormResposne: function hideFormResposne() {
+    this.wrap.classList.remove('success-handler');
+  },
+  handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.handleEvent,
+  sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_4__.sendFormHandler,
   updatePrice: function updatePrice(input) {
     var price = 0;
     if (input.value <= 50) price = '16 800';
@@ -88,7 +106,8 @@ OrderAuditForm.prototype = {
 
     this.price.innerText = price;
   },
-  onSuccessHandler: function onSuccessHandler() {// this.wrap.classList.add('success-handler');
+  onSuccessHandler: function onSuccessHandler() {
+    this.wrap.classList.add('success-handler');
   },
   onErrorHandler: function onErrorHandler() {// this.wrap.classList.add('error-handler');
   }
@@ -6805,7 +6824,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_carousel_carousel_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/carousel/carousel.js */ "./asset/components/carousel/carousel.js");
 /* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
 /* harmony import */ var _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/formValidator/formValidator.js */ "./asset/lib/formValidator/formValidator.js");
-/* harmony import */ var _components_form_OrderAuditForm_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/form/OrderAuditForm.js */ "./asset/components/form/OrderAuditForm.js");
+/* harmony import */ var _components_form_order_OrderAuditForm_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/form-order/OrderAuditForm.js */ "./asset/components/form-order/OrderAuditForm.js");
 
 
 
@@ -6849,7 +6868,7 @@ var initFormOrderAudit = function initFormOrderAudit() {
 
   if (formElem) {
     var formValidator = new _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_6__["default"](formElem);
-    var form = new _components_form_OrderAuditForm_js__WEBPACK_IMPORTED_MODULE_7__["default"](formElem);
+    var form = new _components_form_order_OrderAuditForm_js__WEBPACK_IMPORTED_MODULE_7__["default"](formElem);
     formValidator.init();
     form.init();
     window.orderAuditForm = form;
