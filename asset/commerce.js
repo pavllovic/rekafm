@@ -11,33 +11,42 @@ import FilterActions from './components/filter/FilterActions';
 
 const initFilterActions = () => {
   const filterElements = document.querySelectorAll('.js-filter');
-  const filters = Array.from(filterElements).map((filter) => new FilterActions(filter));
-  filters.forEach((filter) => filter.init());
+  const filters = new Map();
   window.filters = filters;
+  filterElements.forEach((element) => {
+    const filterName = element.getAttribute('data-filter');
+    const filter = new FilterActions(element);
+    filters.set(filterName, { filter: filter, controls: [] });
+    filter.init();
+  });
 };
 
 initFilterActions();
 
 const initFilterSelects = function() {
   const selectElements = document.querySelectorAll('.js-select');
-  const selects = Array.from(selectElements).map((item) => {
-    const select = new Combobox(item);
+  selectElements.forEach((element) => {
+    const select = new Combobox(element);
     select.init();
-    return select;
+    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+    const filter = window.filters.get(filterName);
+    filter.controls.push(select);
+    window.filters.set(filterName, filter);
   });
-  window.selects = selects;
 };
 
 initFilterSelects();
 
 const initFilterMultiSelects = function() {
   const multiSelectElements = document.querySelectorAll('.js-multiSelect');
-  const multiSelects = Array.from(multiSelectElements).map((item) => {
-    const multiSelect = new MultiCombobox(item);
+  multiSelectElements.forEach((element) => {
+    const multiSelect = new MultiCombobox(element);
     multiSelect.init();
-    return multiSelect;
+    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+    const filter = window.filters.get(filterName);
+    filter.controls.push(multiSelect);
+    window.filters.set(filterName, filter);
   });
-  window.multiSelects = multiSelects;
 };
 
 initFilterMultiSelects();
@@ -54,7 +63,10 @@ const initRangeBarSelect = function() {
   });
   const rangeBarSelect = new RangeBarSelect(rangeBarSelectElement, mapRangeBar);
   rangeBarSelect.init();
-  window.rangeBarSelect = rangeBarSelect;
+  const filterName = rangeBarSelectElement.closest('[data-filter]').getAttribute('data-filter');
+  const filter = window.filters.get(filterName);
+  filter.controls.push(rangeBarSelect);
+  window.filters.set(filterName, filter);
 };
 
 initRangeBarSelect();
@@ -63,19 +75,23 @@ const initRangeBar = function() {
   const rangeBarIntElements = document.querySelectorAll('.js-rangeBarInt');
   const rangeBarFloatElements = document.querySelectorAll('.js-rangeBarFloat');
 
-  const arrRangeBarInt = Array.from(rangeBarIntElements).map((item) => {
-    const rangeBar = new RangeBar(item);
+  rangeBarIntElements.forEach((element) => {
+    const rangeBar = new RangeBar(element);
     rangeBar.init();
-    return rangeBar;
+    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+    const filter = window.filters.get(filterName);
+    filter.controls.push(rangeBar);
+    window.filters.set(filterName, filter);
   });
 
-  const arrRangeBarFloat = Array.from(rangeBarFloatElements).map((item) => {
-    const rangeBar = new RangeBar(item, 'float');
+  rangeBarFloatElements.forEach((element) => {
+    const rangeBar = new RangeBar(element);
     rangeBar.init();
-    return rangeBar;
+    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+    const filter = window.filters.get(filterName);
+    filter.controls.push(rangeBar);
+    window.filters.set(filterName, filter);
   });
-
-  window.arrRangeBar = [...arrRangeBarInt, ...arrRangeBarFloat];
 };
 
 initRangeBar();

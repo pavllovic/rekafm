@@ -12,8 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 var Gallery = function Gallery(elem) {
@@ -21,21 +24,19 @@ var Gallery = function Gallery(elem) {
   this.btnClose = this.gallery.querySelector('[data-gallery="close"]');
   this.btnOpen = this.gallery.querySelector('[data-gallery="open"]');
   this.thumbs = this.gallery.querySelector('.js-swiper-thumb .swiper-wrapper');
+  this.countSlides = this.gallery.querySelectorAll('.swiper-slide.ui-thumb').length;
+  this.controls = this.gallery.querySelector('.controls');
 };
 
 Gallery.prototype = {
   init: function init() {
-    this.setListeners(); // this.initialWidthGallery = this.gallery.offsetWidth;
-    // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
-
+    this.setListeners();
     var viewportHeight = window.screen.height;
-    var headerHeight = document.querySelector('.header').offsetHeight; // const galleryHeight = this.gallery.offsetHeight;
-
+    var headerHeight = document.querySelector('.header').offsetHeight;
     var scale = 1 - headerHeight / (viewportHeight / 100) / 100;
-    console.log(viewportHeight);
-    console.log(headerHeight);
-    console.log(scale);
     this.gallery.style.setProperty('--scale-y', scale);
+    this.showCountSlides();
+    this.setHeightControls();
   },
   setListeners: function setListeners() {
     var _this = this;
@@ -48,14 +49,26 @@ Gallery.prototype = {
     });
   },
   openGallery: function openGallery() {
-    // this.gallery.style.setProperty('--g-width', window.screen.width);
-    // this.gallery.style.setProperty('--g-width', '100%');
     document.body.classList.add('open-gallery');
+  },
+  showCountSlides: function showCountSlides() {
+    var btn = this.gallery.querySelector('[data-gallery="open"]');
+    var btnText = btn.querySelector('.text');
+    var count = this.countSlides - 5;
+    this.countSlides > 5 ? btnText.innerText = "+".concat(count) : btn.classList.add('is-hidden');
+  },
+  setHeightControls: function setHeightControls() {
+    if (this.countSlides < 5) {
+      var thumb = this.gallery.querySelector('.swiper-slide.ui-thumb');
+      var thumbHeight = thumb.offsetHeight;
+      var thumbMargin = +window.getComputedStyle(thumb).marginBottom.slice(0, -2);
+      var height = this.countSlides * thumbHeight + (this.countSlides - 1) * thumbMargin;
+      this.controls.style.setProperty('--height', "".concat(height, "px"));
+    }
   },
   closeGallery: function closeGallery() {
     var _this2 = this;
 
-    // this.gallery.style.setProperty('--g-width', this.initialWidthGallery);
     this.gallery.classList.add('close');
     document.body.classList.remove('open-gallery');
     window.scrollTo({

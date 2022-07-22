@@ -122,14 +122,17 @@
   margin-bottom: 0;
   background-color: rgba(255, 255, 255, 0%);
 }
+.swiper-thumbs button.ui-thumb.is-hidden {
+  display: none;
+}
 .swiper-thumbs :not(button).ui-thumb:not(:last-child) {
   margin-bottom: 0.5em;
 }
-.swiper-thumbs .ui-thumb:nth-child(n + 5) {
+.swiper-thumbs .ui-thumb:not(:last-child):nth-child(n + 5) {
   opacity: 0;
   transform: scale(0.5);
 }
-.open-gallery .swiper-thumbs .ui-thumb:nth-child(n + 5) {
+.open-gallery .swiper-thumbs .ui-thumb:not(:last-child):nth-child(n + 5) {
   opacity: 1;
   transform: scale(1);
 }

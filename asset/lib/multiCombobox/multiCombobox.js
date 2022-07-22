@@ -50,7 +50,7 @@ export function closeOptions() {
   this.combobox.setAttribute('aria-activedescendant', '');
 }
 
-export function resetCombobox() {
+export function reset() {
   this.combobox.setAttribute('aria-activedescendant', '');
   this.output.textContent = this.arrayOptions[0].textContent;
   this.mapSelected.forEach((value, key) => {
@@ -94,7 +94,7 @@ export function updateMapSelected() {
 }
 
 export function updateOutput() {
-  if(this.mapSelected.size === 0) return this.resetCombobox();
+  if(this.mapSelected.size === 0) return this.reset();
   let output = '';
   if(this.mapSelected.size === 1) {
     output = Array.from(this.mapSelected)[0][1].value;
@@ -183,7 +183,7 @@ export function handleEvent(e) {
         return this.toogleOptions(e);
       }
       if((role === 'option') && (e.target.getAttribute('data-combobox') === 'reset')) {
-        return this.resetCombobox();
+        return this.reset();
       }
       if(role === 'option') {
         this.ignoreBlur = true;

@@ -1,4 +1,4 @@
-form(class='filter js-filter')
+form(class='filter js-filter' data-filter='buy')
   div(class='filter-top')
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
@@ -54,7 +54,6 @@ form(class='filter js-filter')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') любое
-          //- input(type='checkbox' name='любое')
         - 
           const types = [
             {name: 'офисы', id: '1'},

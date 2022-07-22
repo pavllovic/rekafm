@@ -8,7 +8,7 @@ Combobox.prototype = {
   toogleOptions: lib.toogleOptions,
   openOptions: lib.openOptions,
   closeOptions: lib.closeOptions,
-  resetCombobox: lib.resetCombobox,
+  reset: lib.reset,
   onOptionChecked: lib.onOptionChecked,
   onKeydown: lib.onKeydown,
   onComboboxBlur: lib.onComboboxBlur,

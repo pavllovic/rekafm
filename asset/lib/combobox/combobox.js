@@ -41,7 +41,7 @@ export function closeOptions() {
   this.combobox.setAttribute('aria-activedescendant', '');
 }
 
-export function resetCombobox() {
+export function reset() {
   this.combobox.setAttribute('aria-activedescendant', '');
   this.combobox.textContent = this.arrayOptions[0].textContent;
   // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);

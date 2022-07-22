@@ -10,7 +10,7 @@ MultiCombobox.prototype = {
   toogleOptions: lib.toogleOptions,
   openOptions: lib.openOptions,
   closeOptions: lib.closeOptions,
-  resetCombobox: lib.resetCombobox,
+  reset: lib.reset,
   onOptionChecked: lib.onOptionChecked,
   selectOption: lib.selectOption,
   unselectOption: lib.unselectOption,

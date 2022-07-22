@@ -1,4 +1,4 @@
-form(class='filter js-filter')
+form(class='filter js-filter' data-filter='rent')
   div(class='filter-top')
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
@@ -18,7 +18,6 @@ form(class='filter js-filter')
           svg(class='icon')
             use(href='#icon-16-close')
           span(class='text') все
-          //- input(type='checkbox' checked name='все')
         - 
           const cities = [
             {name: 'Москва', id: '1'},
@@ -36,41 +35,6 @@ form(class='filter js-filter')
             svg(class='icon')
                 use(href='#icon-16-ok')
             span(class='text') #{city.name}
-        //- label(class='option' role='option' id='option-rent-city-1' aria-selected='false' for='rent-city-1')
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Москва
-        //-   input(class='visually-hidden' type='checkbox' name='Москва' id='rent-city-1')
-        //- label(class='option' role='option' id='option-rent-city-2' aria-selected='false' for='rent-city-2') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Санкт-Петербург
-        //-   input(class='visually-hidden' type='checkbox' name='Санкт-Петербург' id='rent-city-2')
-        //- label(class='option' role='option' id='option-rent-city-3' aria-selected='false' for='rent-city-3') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Самара
-        //-   input(class='visually-hidden' type='checkbox' name='Самара' id='rent-city-3')
-        //- label(class='option' role='option' id='option-rent-city-4' aria-selected='false' for='rent-city-4') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Саратов
-        //-   input(class='visually-hidden' type='checkbox' name='Саратов' id='rent-city-4')
-        //- label(class='option' role='option' id='option-rent-city-5' aria-selected='false' for='rent-city-5') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Нижний Новгород
-        //-   input(class='visually-hidden' type='checkbox' name='Нижний Новгород' id='rent-city-5')
-        //- label(class='option' role='option' id='option-rent-city-6' aria-selected='false' for='rent-city-6') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Казань
-        //-   input(class='visually-hidden' type='checkbox' name='Казань' id='rent-city-6')
-        //- label(class='option' role='option' id='option-rent-city-7' aria-selected='false' for='rent-city-7') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') Сочи
-        //-   input(class='visually-hidden' type='checkbox' name='Сочи' id='rent-city-7')
     div(class='ui-select js-multiSelect')
       div(class='input js-input' role='combobox' tabindex='0' id='combobox'
         aria-activedescendant=''
@@ -106,31 +70,6 @@ form(class='filter js-filter')
             svg(class='icon')
                 use(href='#icon-16-ok')
             span(class='text') #{item.name}
-        //- label(class='option' role='option' id='option-rent-type-1' aria-selected='false'  for='rent-type-1')
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') офисы
-        //-   input(class='visually-hidden' type='checkbox' name='офисы' id='rent-type-1')
-        //- label(class='option' role='option' id='option-rent-type-2' aria-selected='false' for='rent-type-2') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') адм. здания
-        //-   input(class='visually-hidden' type='checkbox' name='адм. здания' id='rent-type-2')
-        //- label(class='option' role='option' id='option-rent-type-3' aria-selected='false' for='rent-type-3') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') склады
-        //-   input(class='visually-hidden' type='checkbox' name='склады' id='rent-type-3')
-        //- label(class='option' role='option' id='option-rent-type-4' aria-selected='false' for='rent-type-4') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') производство
-        //-   input(class='visually-hidden' type='checkbox' name='производство' id='rent-type-4')
-        //- label(class='option' role='option' id='option-rent-type-5' aria-selected='false' for='rent-type-5') 
-        //-   svg(class='icon')
-        //-       use(href='#icon-16-ok')
-        //-   span(class='text') общежития
-        //-   input(class='visually-hidden' type='checkbox' name='общежития' id='rent-type-5')
     div(class='ui-rangeBar ui-rangeBarSelect js-rangeBarSelect')
       div(class='heading')
         span ставка, руб.:
@@ -190,20 +129,6 @@ form(class='filter js-filter')
                 input(type='range' min='0' max='999999999' value='999999999' id='price-to' data-range='slider-to' data-filter='max-price')
               label(class='label' for='price-from')
                 input(type='range' min='0' max='999999999' value='0' id='price-from' data-range='slider-from' data-filter='min-price') 
-      //- div(class='label' for='input-from')
-      //-   span от
-      //-   span(class='value' data-range='view-from') 0
-      //-   input(class='visually-hidden' type='text' data-range='input-from' value='0' aria-hidden='true')
-      //- div(class='label' for='input-to')
-      //-   span до
-      //-   span(class='value' data-range='view-to') 999 999 999
-      //-   input(class='visually-hidden' type='text' data-range='input-to' value='999999999' aria-hidden='true')
-      //- div(class='ui-slider')
-      //-   div(class='track' data-range='track')
-      //-     label(class='label' for='price-to')
-      //-       input(type='range' min='0' max='999999999' value='999999999' id='price-to' data-range='slider-to' data-filter='max-price')
-      //-     label(class='label' for='price-from')
-      //-       input(type='range' min='0' max='999999999' value='0' id='price-from' data-range='slider-from' data-filter='min-price')
     div(class='ui-rangeBar js-rangeBarInt')
       div(class='heading') площадь, м²
       div(class='label' for='input-from')
