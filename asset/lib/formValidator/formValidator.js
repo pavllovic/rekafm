@@ -1,6 +1,6 @@
 const FormValidator = function(form) {
   this.form = form;
-  this.fields = this.form.querySelectorAll('input');
+  this.fields = this.form.querySelectorAll('input:not([hidden])');
   this.mapError = new Map();
   this.errorMessage = {
     name: {
