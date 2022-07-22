@@ -280,7 +280,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var FormValidator = function FormValidator(form) {
   this.form = form;
-  this.fields = this.form.querySelectorAll('input');
+  this.fields = this.form.querySelectorAll('input:not([hidden])');
   this.mapError = new Map();
   this.errorMessage = {
     name: {
