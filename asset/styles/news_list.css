@@ -2,9 +2,42 @@
 
 /* --- style block-newsList --- */
 .block-newsList {
+  position: relative;
   padding: 0;
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 }
+
+.block-newsList::before {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  animation-delay: var(--dur-second);
+  animation-duration: var(--dur-second);
+  animation-fill-mode: both;
+  animation-name: hero-load;
+  animation-timing-function: var(--easing-second);
+  background-color: #fff;
+  content: "";
+  pointer-events: none;
+}
+
+/* @keyframes hero-load {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+} */
 
 .block-newsList .heading {
   margin-bottom: 0;

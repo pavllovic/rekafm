@@ -63,6 +63,23 @@
   grid-template-columns: 1fr;
 }
 
+.news::before {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  animation-delay: var(--dur-second);
+  animation-duration: var(--dur-second);
+  animation-fill-mode: both;
+  animation-name: hero-load;
+  animation-timing-function: var(--easing-second);
+  background-color: #fff;
+  content: "";
+  pointer-events: none;
+}
+
 /* borders */
 .news,
 .news .news-heading,

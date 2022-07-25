@@ -72,6 +72,28 @@
   grid-template-columns: 1fr;
 }
 
+.news::before {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-animation-delay: var(--dur-second);
+          animation-delay: var(--dur-second);
+  -webkit-animation-duration: var(--dur-second);
+          animation-duration: var(--dur-second);
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: hero-load;
+          animation-name: hero-load;
+  -webkit-animation-timing-function: var(--easing-second);
+          animation-timing-function: var(--easing-second);
+  background-color: #fff;
+  content: "";
+  pointer-events: none;
+}
+
 /* borders */
 
 .news,
