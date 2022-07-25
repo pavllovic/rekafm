@@ -13307,10 +13307,10 @@ initTickerCustomCursor();
 initFormOrderCall();
 initInputMask();
 window.addEventListener('load', function () {
-  var elements = document.querySelectorAll('.no-transition');
-  elements.forEach(function (elem) {
-    elem.classList.remove('no-transition');
-  });
+  // const elements = document.querySelectorAll('.no-transition');
+  // elements.forEach((elem) => {
+  //   elem.classList.remove('no-transition');
+  // });
   (0,_components_nav_updateHeightNav_js__WEBPACK_IMPORTED_MODULE_15__["default"])();
   initTicker();
 });

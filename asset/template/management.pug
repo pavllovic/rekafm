@@ -199,8 +199,8 @@ block content
                 use(href='#icon-16-go')
           p(class='note') Нажимая на кнопку «Заказать», вы даете согласие на обработку персональных данных и соглашаетесь с 
             a(class='ui-linkFade' href="#") политикой конфиденциальности
-        div(class='form-order--response')
-          div(class='form-order--response-content')
+        div(class='form-order--response no-transition')
+          div(class='form-order--response-content no-transition')
             button(class='ui-btnClose' type='button' data-btn='response-close')
               span
               span
@@ -215,7 +215,7 @@ block content
               span(class='icon')
                 svg(focusable='false' aria-hidden='true')
                   use(href='#icon-16-go')
-          div(class='form-order--response-overlay' data-btn='response-close')
+          div(class='form-order--response-overlay no-transition' data-btn='response-close')
   include ../components/footer/footer.pug
   include ../components/modalCall/modalCall.pug
   include ../images/icons/icon-16/sprite-icon-16.svg

@@ -78,10 +78,10 @@ initFormOrderCall();
 initInputMask();
 
 window.addEventListener('load', () => {
-  const elements = document.querySelectorAll('.no-transition');
-  elements.forEach((elem) => {
-    elem.classList.remove('no-transition');
-  });
+  // const elements = document.querySelectorAll('.no-transition');
+  // elements.forEach((elem) => {
+  //   elem.classList.remove('no-transition');
+  // });
 
   updateHeightNav();
   initTicker();
