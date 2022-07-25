@@ -3828,6 +3828,7 @@ class .is-active add from nav.js
   width: 100%;
   height: 100%;
   align-items: flex-end;
+  justify-content: flex-start;
   padding-left: max(calc(1em / 0.75), calc((100% - 19.5em) / 2));
   color: inherit;
   text-decoration: none;
@@ -4924,6 +4925,9 @@ class .is-active add from nav.js
   width: 100%;
   height: 100%;
   align-items: flex-end;
+  justify-content: flex-start;
+
+  /* align-items: flex-start; */
   padding: calc(1em / 0.45) calc(1em / 1.125);
   color: inherit;
   text-decoration: none;
