@@ -133,13 +133,14 @@
   display: none;
   flex-wrap: nowrap;
   align-items: center;
-  margin-left: calc(1em / 0.9);
+  margin-left: 0;
   font-size: var(--fs-menu-link);
 }
 
 .menu .link-news::before {
   position: absolute;
   left: 0;
+  display: none;
   width: var(--border-size, 1px);
   height: calc(1em / 1.125);
   background-color: var(--border-color);
@@ -248,6 +249,14 @@
     /* transform: translate3d(0, calc(100% - var(--border-size)), 0); */
     transition-delay: 0s, 0s;
     visibility: visible;
+  }
+
+  .menu .link-news {
+    margin-left: calc(1em / 0.9);
+  }
+
+  .menu .link-news::before {
+    display: block;
   }
 
   /* end style submenu */

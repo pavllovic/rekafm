@@ -2580,6 +2580,7 @@ ui-btnArrow::before - border for normal/disabled
   font-size: var(--fs-body);
   line-height: 1;
   pointer-events: none;
+  text-transform: lowercase;
 }
 .ui-select .input .icon {
   position: absolute;
@@ -3368,13 +3369,14 @@ class .is-active add from nav.js
   display: none;
   flex-wrap: nowrap;
   align-items: center;
-  margin-left: calc(1em / 0.9);
+  margin-left: 0;
   font-size: 1.8rem;
   font-size: var(--fs-menu-link);
 }
 .menu .link-news::before {
   position: absolute;
   left: 0;
+  display: none;
   width: 1px;
   width: var(--border-size, 1px);
   height: calc(1em / 1.125);
@@ -3489,6 +3491,14 @@ class .is-active add from nav.js
     /* transform: translate3d(0, calc(100% - var(--border-size)), 0); */
     transition-delay: 0s, 0s;
     visibility: visible;
+  }
+
+  .menu .link-news {
+    margin-left: calc(1em / 0.9);
+  }
+
+  .menu .link-news::before {
+    display: block;
   }
 
   /* end style submenu */
@@ -4101,6 +4111,9 @@ class .is-active add from nav.js
 .footer .made-in .ui-linkFade {
   text-decoration: none;
 }
+.footer .menu .link-news {
+  display: flex;
+}
 @media (min-width: 80em) {
   .footer .box {
     display: grid;
@@ -4117,10 +4130,6 @@ class .is-active add from nav.js
   .footer .contacts,
   .footer .note {
     flex-direction: row;
-  }
-
-  .footer .menu .link-news {
-    display: flex;
   }
 
   .footer .contacts {

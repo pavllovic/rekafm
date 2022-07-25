@@ -623,6 +623,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var TablistView = function TablistView(elem) {
   this.tablist = elem;
+  this.scrollY = 0;
 };
 
 TablistView.prototype = {
@@ -655,9 +656,13 @@ TablistView.prototype = {
     tab.setAttribute('aria-selected', true);
     tab.classList.add('active');
     var panelId = tab.getAttribute('aria-controls');
+    console.log(panelId);
     var panel = document.querySelector("#".concat(panelId));
     this.showPanel(panel);
     this.activeTab = tab;
+    panelId === 'panel-map' ? this.scrollY = window.scrollY : window.scrollTo({
+      top: this.scrollY
+    });
   },
   showPanel: function showPanel(panel) {
     if (this.activePanel) this.hidePanel();

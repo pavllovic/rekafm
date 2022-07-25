@@ -140,6 +140,10 @@
   text-decoration: none;
 }
 
+.footer .menu .link-news {
+  display: flex;
+}
+
 @media (min-width: 80em) {
   .footer .box {
     display: grid;
@@ -156,10 +160,6 @@
   .footer .contacts,
   .footer .note {
     flex-direction: row;
-  }
-
-  .footer .menu .link-news {
-    display: flex;
   }
 
   .footer .contacts {

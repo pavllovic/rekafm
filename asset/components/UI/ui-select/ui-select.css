@@ -48,6 +48,7 @@
   font-size: var(--fs-body);
   line-height: 1;
   pointer-events: none;
+  text-transform: lowercase;
 }
 
 .ui-select .input .icon {

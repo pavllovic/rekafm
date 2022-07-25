@@ -33,8 +33,13 @@
   --height-wrap: auto;
 
   position: relative;
+
+  /* position: fixed; */
+
+  /* bottom: 0; */
   display: flex;
   overflow: hidden;
+  width: 100%;
   height: calc(var(--height-wrap) * 1px);
   flex-direction: column;
   align-items: stretch;
@@ -47,6 +52,7 @@
 .filter-button .ui-btn,
 .filter-button .ui-btnInverse {
   justify-content: center;
+  background-color: var(--bs-contrast);
   text-align: center;
 }
 

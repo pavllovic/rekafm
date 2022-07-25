@@ -2,6 +2,7 @@ import * as lib from 'Lib/tabs/tabs.js';
 
 const TablistView = function (elem) {
   this.tablist = elem;
+  this.scrollY = 0;
 };
 
 TablistView.prototype = {
@@ -32,9 +33,13 @@ TablistView.prototype = {
     tab.setAttribute('aria-selected', true);
     tab.classList.add('active');
     const panelId = tab.getAttribute('aria-controls');
+    console.log(panelId);
     const panel = document.querySelector(`#${panelId}`);
     this.showPanel(panel);
     this.activeTab = tab;
+    panelId === 'panel-map'
+      ? this.scrollY = window.scrollY
+      : window.scrollTo({ top: this.scrollY });
   },
   showPanel: function(panel) {
     if(this.activePanel) this.hidePanel();
