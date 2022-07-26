@@ -143,6 +143,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
 var RangeBarSelect = function RangeBarSelect(parent, map) {
   this.wrapper = parent;
   this.rangeBarMap = map;
@@ -169,6 +179,11 @@ RangeBarSelect.prototype = {
       this.rangeBarMap.get(type).updateViewValues();
       this.activeRangeBar = this.rangeBarMap.get(type);
     }
+  },
+  reset: function reset() {
+    this.rangeBarMap.forEach(function (rangeBar) {
+      rangeBar.reset();
+    });
   },
   destroy: function destroy() {
     this.wrapper.removeEventListener('input', this);
@@ -380,8 +395,10 @@ FilterActions.prototype = {
   hideBtnReset: function hideBtnReset() {
     this.wrapBtns.style.setProperty('--height-wrap', this.btnApplyHeight);
     var controls = window.filters.get(this.filterName).controls;
+    console.log(controls);
     var toggles = this.filter.querySelectorAll('.ui-toggle [type="checkbox"]:checked');
     controls.forEach(function (control) {
+      console.log(control);
       control.reset();
     });
 
@@ -804,11 +821,11 @@ function closeOptions() {
   this.combobox.setAttribute('aria-activedescendant', '');
 }
 function reset() {
-  this.combobox.setAttribute('aria-activedescendant', '');
-  this.combobox.textContent = this.arrayOptions[0].textContent; // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  this.combobox.setAttribute('aria-activedescendant', ''); // this.combobox.textContent = this.arrayOptions[0].textContent;
+  // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  // this.input.setAttribute('value', this.arrayOptions[0].textContent);
 
-  console.log(this.input);
-  this.input.setAttribute('value', this.arrayOptions[0].textContent);
+  this.output.textContent = this.arrayOptions[0].textContent;
   this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
   this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
   this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').checked = false;

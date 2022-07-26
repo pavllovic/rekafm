@@ -54,6 +54,7 @@
   line-height: 1;
 }
 
+.ui-rangeBar--box > .label,
 .ui-rangeBar > .label {
   display: inline-flex;
   align-items: flex-end;

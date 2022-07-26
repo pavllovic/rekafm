@@ -26,8 +26,10 @@ FilterActions.prototype = {
   hideBtnReset() {
     this.wrapBtns.style.setProperty('--height-wrap', this.btnApplyHeight);
     const controls = window.filters.get(this.filterName).controls;
+    console.log(controls);
     const toggles = this.filter.querySelectorAll('.ui-toggle [type="checkbox"]:checked');
     controls.forEach((control) => {
+      console.log(control);
       control.reset();
     });
     if(toggles) {

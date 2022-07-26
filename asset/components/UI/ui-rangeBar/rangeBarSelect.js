@@ -27,6 +27,12 @@ RangeBarSelect.prototype = {
     }
   },
 
+  reset: function() {
+    this.rangeBarMap.forEach((rangeBar) => {
+      rangeBar.reset();
+    });
+  },
+
   destroy: function() {
     this.wrapper.removeEventListener('input', this);
   },

@@ -885,10 +885,11 @@ h2 {
   align-self: center;
   padding-top: 4em;
   padding-bottom: 7em;
-
-  /* backface-visibility: hidden; */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 
   /* transform: translateY(-50%) scaleX(1.524) scaleY(calc(1 / var(--scale-y))); */
+
   transform: scaleX(1.524) scaleY(calc(1 / var(--scale-y)));
   transform-origin: center right;
   transition-duration: var(--dur-main), var(--dur-main);
@@ -906,6 +907,7 @@ h2 {
   max-height: 100%;
 
   /* transform: translateY(-50%) scaleX(1) scaleY(1); */
+
   transform: scaleX(1) scaleY(1);
 }
 
@@ -1050,10 +1052,10 @@ h2 {
     transform: none;
   }
 
-  /* .gallery.close {
+  .gallery.close {
     z-index: 10;
     right: 0;
-  } */
+  }
 }
 
 /* end style gallery */

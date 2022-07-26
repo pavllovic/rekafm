@@ -43,10 +43,10 @@ export function closeOptions() {
 
 export function reset() {
   this.combobox.setAttribute('aria-activedescendant', '');
-  this.combobox.textContent = this.arrayOptions[0].textContent;
+  // this.combobox.textContent = this.arrayOptions[0].textContent;
   // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
-  console.log(this.input);
-  this.input.setAttribute('value', this.arrayOptions[0].textContent);
+  // this.input.setAttribute('value', this.arrayOptions[0].textContent);
+  this.output.textContent = this.arrayOptions[0].textContent;
   this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
   this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
   this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').checked = false;

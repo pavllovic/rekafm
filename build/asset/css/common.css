@@ -2165,6 +2165,7 @@ ui-btnArrow::before - border for normal/disabled
   font-size: var(--fs-text-caption);
   line-height: 1;
 }
+.ui-rangeBar--box > .label,
 .ui-rangeBar > .label {
   display: inline-flex;
   align-items: flex-end;
@@ -2571,6 +2572,7 @@ ui-btnArrow::before - border for normal/disabled
   font-size: var(--fs-text-caption);
   line-height: 1;
   pointer-events: none;
+  text-transform: lowercase;
 }
 .ui-select .input .value {
   color: rgba(46, 46, 46, 1);
