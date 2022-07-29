@@ -368,7 +368,7 @@
 .panellist {
   --height-panellist: auto;
 
-  /* overflow: hidden; */
+  overflow: hidden;
   height: calc(var(--height-panellist) * 1px);
   transition-duration: var(--dur-second);
   transition-property: height;
