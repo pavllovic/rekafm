@@ -316,6 +316,7 @@ ShowList.prototype = {
   closeList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.closeList,
   toggleList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.toggleList,
   getInitalHeightInnerList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.getInitalHeightInnerList,
+  hideButtonOpen: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.hideButtonOpen,
   handleEvent: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.handleEvent
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShowList);
@@ -334,6 +335,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "closeList": () => (/* binding */ closeList),
 /* harmony export */   "getInitalHeightInnerList": () => (/* binding */ getInitalHeightInnerList),
 /* harmony export */   "handleEvent": () => (/* binding */ handleEvent),
+/* harmony export */   "hideButtonOpen": () => (/* binding */ hideButtonOpen),
 /* harmony export */   "init": () => (/* binding */ init),
 /* harmony export */   "openList": () => (/* binding */ openList),
 /* harmony export */   "setListeners": () => (/* binding */ setListeners),
@@ -405,6 +407,10 @@ function getInitalHeightInnerList() {
       _this.initalHeightInnerList += step;
     }
   });
+}
+function hideButtonOpen() {
+  this.btnOpen.classList.add('is-hide');
+  this.btnClose.classList.add('is-hide');
 }
 function handleEvent(e) {
   switch (e.type) {
@@ -16054,10 +16060,9 @@ var initSwiperBuild = function initSwiperBuild() {
   var thumbElement = document.querySelector('.js-swiper-thumb');
   var swiperBuildElement = document.querySelector('.js-swiper-build');
   var countSlides = swiperBuildElement.querySelectorAll('.swiper-slide').length;
-  console.log(+countSlides + 6);
+  console.log(countSlides);
   var swiperThumb = new swiper__WEBPACK_IMPORTED_MODULE_2__["default"](thumbElement, {
     direction: 'vertical',
-    // freeMode: true,
     slidesPerView: '2.5em',
     speed: 600,
     slideToClickedSlide: true,
@@ -16076,7 +16081,7 @@ var initSwiperBuild = function initSwiperBuild() {
     autoplay: {
       delay: 7000
     },
-    loop: true,
+    loop: countSlides > 2,
     pagination: {
       el: '.swiper-pagination',
       bulletClass: 'item',
@@ -16095,24 +16100,14 @@ var initSwiperBuild = function initSwiperBuild() {
 };
 
 initSwiperBuild();
-window.initSwiperBuild = initSwiperBuild; // const initOwnCarousel = function() {
-//   const ownCarouselElem = document.querySelector('.js-own-carousel__container');
-//   const ownCarousel = new OwnCarousel(ownCarouselElem, {
-//     itemPerRow: 1,
-//     itemSize: 100,
-//     autoplay: 10000,
-//     nav: true,
-//     draggable: true,
-//   }, 'X');
-//   ownCarousel.init();
-//   window.ownCarousel = ownCarousel;
-// };
-// initOwnCarousel();
+window.initSwiperBuild = initSwiperBuild;
 
 var initFeatureList = function initFeatureList() {
   var featureListElem = document.querySelector('.js-list-feature');
+  var items = featureListElem.querySelectorAll('.item');
   var featureList = new _components_showList_showList__WEBPACK_IMPORTED_MODULE_5__["default"](featureListElem);
   featureList.init();
+  if (items.length <= 10) featureList.hideButtonOpen();
   window.featureList = featureList;
 };
 

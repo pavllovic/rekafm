@@ -457,7 +457,7 @@
     content: "";
   }
 }
-@media (min-width: 40em) {
+@media (min-width: 60em) {
   .map {
     background-image: url(../../asset/images/bg/index/map-desktop.svg);
   }
@@ -487,8 +487,7 @@
     left: 2.5em;
     width: calc(100% - 2.5em * 2);
     height: 38.75em;
-
-    /* background-image: url("Images/bg/index/map-desktop.svg"); */
+    background-image: url(../../asset/images/bg/index/map-desktop.svg);
     background-size: auto 100%;
     transform: translateY(calc(-100% + 28.125em));
   }

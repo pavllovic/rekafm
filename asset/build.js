@@ -23,10 +23,9 @@ const initSwiperBuild = function() {
   const swiperBuildElement = document.querySelector('.js-swiper-build');
   const countSlides = swiperBuildElement
     .querySelectorAll('.swiper-slide').length;
-  console.log(+countSlides + 6);
+  console.log(countSlides);
   const swiperThumb = new Swiper(thumbElement, {
     direction: 'vertical',
-    // freeMode: true,
     slidesPerView: '2.5em',
     speed: 600,
     slideToClickedSlide: true,
@@ -45,7 +44,7 @@ const initSwiperBuild = function() {
     autoplay: {
       delay: 7000,
     },
-    loop: true,
+    loop: (countSlides > 2),
     pagination: {
       el: '.swiper-pagination',
       bulletClass: 'item',
@@ -66,25 +65,12 @@ const initSwiperBuild = function() {
 initSwiperBuild();
 window.initSwiperBuild = initSwiperBuild;
 
-// const initOwnCarousel = function() {
-//   const ownCarouselElem = document.querySelector('.js-own-carousel__container');
-//   const ownCarousel = new OwnCarousel(ownCarouselElem, {
-//     itemPerRow: 1,
-//     itemSize: 100,
-//     autoplay: 10000,
-//     nav: true,
-//     draggable: true,
-//   }, 'X');
-//   ownCarousel.init();
-//   window.ownCarousel = ownCarousel;
-// };
-
-// initOwnCarousel();
-
 const initFeatureList = function() {
   const featureListElem = document.querySelector('.js-list-feature');
+  const items = featureListElem.querySelectorAll('.item');
   const featureList = new ShowList(featureListElem);
   featureList.init();
+  if(items.length <= 10) featureList.hideButtonOpen();
   window.featureList = featureList;
 };
 

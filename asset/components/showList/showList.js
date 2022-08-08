@@ -10,6 +10,7 @@ ShowList.prototype = {
   closeList: lib.closeList,
   toggleList: lib.toggleList,
   getInitalHeightInnerList: lib.getInitalHeightInnerList,
+  hideButtonOpen: lib.hideButtonOpen,
   handleEvent: lib.handleEvent,
 };
 

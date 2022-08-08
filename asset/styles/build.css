@@ -651,6 +651,11 @@ h2 {
   visibility: visible;
 }
 
+.block-feature [data-show-list="open"].is-hide,
+.block-feature [data-show-list="close"].is-hide {
+  display: none;
+}
+
 @media (min-width: 80em) {
   .block-feature {
     position: relative;

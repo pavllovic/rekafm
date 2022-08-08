@@ -138,6 +138,7 @@ ShowList.prototype = {
   closeList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.closeList,
   toggleList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.toggleList,
   getInitalHeightInnerList: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.getInitalHeightInnerList,
+  hideButtonOpen: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.hideButtonOpen,
   handleEvent: Lib_showList_showList_js__WEBPACK_IMPORTED_MODULE_0__.handleEvent
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ShowList);
@@ -753,6 +754,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "closeList": () => (/* binding */ closeList),
 /* harmony export */   "getInitalHeightInnerList": () => (/* binding */ getInitalHeightInnerList),
 /* harmony export */   "handleEvent": () => (/* binding */ handleEvent),
+/* harmony export */   "hideButtonOpen": () => (/* binding */ hideButtonOpen),
 /* harmony export */   "init": () => (/* binding */ init),
 /* harmony export */   "openList": () => (/* binding */ openList),
 /* harmony export */   "setListeners": () => (/* binding */ setListeners),
@@ -824,6 +826,10 @@ function getInitalHeightInnerList() {
       _this.initalHeightInnerList += step;
     }
   });
+}
+function hideButtonOpen() {
+  this.btnOpen.classList.add('is-hide');
+  this.btnClose.classList.add('is-hide');
 }
 function handleEvent(e) {
   switch (e.type) {

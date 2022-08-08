@@ -54,6 +54,11 @@ export function getInitalHeightInnerList() {
   });
 }
 
+export function hideButtonOpen() {
+  this.btnOpen.classList.add('is-hide');
+  this.btnClose.classList.add('is-hide');
+}
+
 export function handleEvent(e) {
   switch(e.type) {
     case 'click':
