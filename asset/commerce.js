@@ -98,12 +98,15 @@ initRangeBar();
 
 const initTablistView = function() {
   const tablistViewElements = document.querySelectorAll('.js-tablistView');
-  const arrTablistView = Array.from(tablistViewElements).map((item) => {
-    const tablistView = new TablistView(item);
-    tablistView.init();
-    return tablistView;
-  });
-  window.arrTablistView = arrTablistView;
+  // const arrTablistView = Array.from(tablistViewElements).map((item) => {
+  //   const tablistView = new TablistView(item);
+  //   tablistView.init();
+  //   return tablistView;
+  // });
+  // window.arrTablistView = arrTablistView;
+  const tablistView = new TablistView(tablistViewElements);
+  tablistView.init();
+  window.tablistView = tablistView;
 };
 
 initTablistView();
@@ -119,12 +122,15 @@ initFilterMenu();
 
 const initTablist = function() {
   const tablistElements = document.querySelectorAll('.js-tablist');
-  const arrTablist = Array.from(tablistElements).map((item) => {
-    const tablist = new Tabs(item);
-    tablist.init();
-    return tablist;
-  });
-  window.arrTablist = arrTablist;
+  // const arrTablist = Array.from(tablistElements).map((item) => {
+  //   const tablist = new Tabs(item);
+  //   tablist.init();
+  //   return tablist;
+  // });
+  // window.arrTablist = arrTablist;
+  const tablist = new Tabs(tablistElements);
+  tablist.init();
+  window.tablist = tablist;
 };
 
 initTablist();

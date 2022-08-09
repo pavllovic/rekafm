@@ -1,7 +1,7 @@
 import * as lib from 'Lib/tabs/tabs.js';
 
 const TablistView = function (elem) {
-  this.tablist = elem;
+  this.tablists = elem;
   this.scrollY = 0;
 };
 
@@ -28,15 +28,21 @@ TablistView.prototype = {
   },
   onkeydown: lib.onkeydown,
   activateTab: function(tab) {
-    if(this.activeTab) this.deactivateTab(this.activeTab);
-    tab.setAttribute('tabindex', '0');
-    tab.setAttribute('aria-selected', true);
-    tab.classList.add('active');
+    const tabId = tab.getAttribute('id');
+    const tabList = document.querySelectorAll(`#${tabId}`);
+    if(this.activeTabId) this.deactivateTab(this.activeTabId);
+    tabList.forEach((item) => {
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-selected', true);
+      item.classList.add('active');
+    });
+    // tab.setAttribute('tabindex', '0');
+    // tab.setAttribute('aria-selected', true);
+    // tab.classList.add('active');
     const panelId = tab.getAttribute('aria-controls');
-    console.log(panelId);
     const panel = document.querySelector(`#${panelId}`);
     this.showPanel(panel);
-    this.activeTab = tab;
+    this.activeTabId = tabId;
     panelId === 'panel-map'
       ? this.scrollY = window.scrollY
       : window.scrollTo({ top: this.scrollY });

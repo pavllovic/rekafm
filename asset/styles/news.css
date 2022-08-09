@@ -296,7 +296,9 @@
 
   .news .news-share {
     position: sticky;
-    top: 6.4rem;
+
+    /* top: 6.4rem; */
+    top: 4em;
     padding: 1.5em 2.5em;
     border: none;
     grid-column: 1/2;

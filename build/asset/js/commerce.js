@@ -632,27 +632,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Lib/tabs/tabs.js */ "./asset/lib/tabs/tabs.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Lib/tabs/tabs.js */ "./asset/lib/tabs/tabs.js");
+
+
+
 
 
 
 var TablistView = function TablistView(elem) {
-  this.tablist = elem;
+  this.tablists = elem;
   this.scrollY = 0;
 };
 
 TablistView.prototype = {
   constructor: TablistView,
-  init: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.init,
+  init: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.init,
   setListeners: function setListeners() {
-    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.setListeners.call(this); // for backend
+    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.setListeners.call(this); // for backend
 
     document.addEventListener('mapTabOpened', function () {});
   },
-  deactivateTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.deactivateTab,
-  focusTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.focusTab,
+  deactivateTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.deactivateTab,
+  focusTab: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.focusTab,
   handleEvent: function handleEvent(e) {
     switch (e.type) {
       case 'click':
@@ -664,19 +673,25 @@ TablistView.prototype = {
         break;
     }
 
-    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.handleEvent.call(this, e);
+    Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.handleEvent.call(this, e);
   },
-  onkeydown: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_1__.onkeydown,
+  onkeydown: Lib_tabs_tabs_js__WEBPACK_IMPORTED_MODULE_4__.onkeydown,
   activateTab: function activateTab(tab) {
-    if (this.activeTab) this.deactivateTab(this.activeTab);
-    tab.setAttribute('tabindex', '0');
-    tab.setAttribute('aria-selected', true);
-    tab.classList.add('active');
+    var tabId = tab.getAttribute('id');
+    var tabList = document.querySelectorAll("#".concat(tabId));
+    if (this.activeTabId) this.deactivateTab(this.activeTabId);
+    tabList.forEach(function (item) {
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-selected', true);
+      item.classList.add('active');
+    }); // tab.setAttribute('tabindex', '0');
+    // tab.setAttribute('aria-selected', true);
+    // tab.classList.add('active');
+
     var panelId = tab.getAttribute('aria-controls');
-    console.log(panelId);
     var panel = document.querySelector("#".concat(panelId));
     this.showPanel(panel);
-    this.activeTab = tab;
+    this.activeTabId = tabId;
     panelId === 'panel-map' ? this.scrollY = window.scrollY : window.scrollTo({
       top: this.scrollY
     });
@@ -1371,16 +1386,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -1391,60 +1406,87 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function tabs(elem) {
-  this.tablist = elem;
+// export function tabs(elem) {
+//   this.tablist = elem;
+//   this.activePanel = new Set();
+// }
+function tabs(elemList) {
+  this.tablists = elemList;
   this.activePanel = new Set();
-}
+} // export function init() {
+//   this.setListeners();
+//   this.activateTab(this.tablist.querySelector('[role="tab"]'));
+// }
+
 function init() {
+  var _this = this;
+
   this.setListeners();
-  this.activateTab(this.tablist.querySelector('[role="tab"]'));
-}
+  this.tablists.forEach(function (item) {
+    _this.activateTab(item.querySelector('[role="tab"]'));
+  });
+} // export function setListeners() {
+//   this.tablist.addEventListener('click', this);
+//   this.tablist.addEventListener('keydown', this);
+// }
+
 function setListeners() {
-  this.tablist.addEventListener('click', this);
-  this.tablist.addEventListener('keydown', this);
+  var _this2 = this;
+
+  this.tablists.forEach(function (item) {
+    item.addEventListener('click', _this2);
+    item.addEventListener('keydown', _this2);
+  });
 }
 function getPanelsId(tab) {
   var id = tab.getAttribute('aria-controls').split(' ');
   return id;
 }
-function deactivateTab(tab) {
-  tab.setAttribute('tabindex', '-1');
-  tab.setAttribute('aria-selected', false);
-  tab.classList.remove('active');
+function deactivateTab(id) {
+  var tabList = document.querySelectorAll("#".concat(id));
+  tabList.forEach(function (item) {
+    item.setAttribute('tabindex', '-1');
+    item.setAttribute('aria-selected', false);
+    item.classList.remove('active');
+  });
 }
 function activateTab(tab) {
-  if (this.activeTab) this.deactivateTab(this.activeTab);
-  tab.setAttribute('tabindex', '0');
-  tab.setAttribute('aria-selected', true);
-  tab.classList.add('active');
+  var tabId = tab.getAttribute('id');
+  var tabList = document.querySelectorAll("#".concat(tabId));
+  if (this.activeTabId) this.deactivateTab(this.activeTabId);
+  tabList.forEach(function (item) {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-selected', true);
+    item.classList.add('active');
+  });
   var panelsId = this.getPanelsId(tab);
   var panels = panelsId.map(function (id) {
     return document.querySelector("#".concat(id));
   });
   this.showPanel(panels);
-  this.activeTab = tab;
+  this.activeTabId = tabId;
 }
 function hidePanel() {
-  var _this = this;
+  var _this3 = this;
 
   this.activePanel.forEach(function (panel) {
     panel.setAttribute('tabindex', '-1');
     panel.classList.remove('active');
 
-    _this.activePanel["delete"](panel);
+    _this3.activePanel["delete"](panel);
   });
 }
 function showPanel(panels) {
-  var _this2 = this;
+  var _this4 = this;
 
   if (this.activePanel.size) this.hidePanel();
   panels.forEach(function (panel) {
     panel.setAttribute('tabindex', '0');
     panel.classList.add('active');
 
-    _this2.activePanel.add(panel);
+    _this4.activePanel.add(panel);
 
-    _this2.setHeightPanellist(panel);
+    _this4.setHeightPanellist(panel);
   });
 }
 function setHeightPanellist(panel) {
@@ -6697,19 +6739,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
-/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var Styles_commerce_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! Styles/commerce.css */ "./asset/styles/commerce.css");
-/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
-/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/tabs/tabs */ "./asset/components/tabs/tabs.js");
-/* harmony import */ var _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/commerceFilter/commerceFilter */ "./asset/components/commerceFilter/commerceFilter.js");
-/* harmony import */ var _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/tablistView/tablistView */ "./asset/components/tablistView/tablistView.js");
-/* harmony import */ var _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBar */ "./asset/components/UI/ui-rangeBar/rangeBar.js");
-/* harmony import */ var _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBarSelect */ "./asset/components/UI/ui-rangeBar/rangeBarSelect.js");
-/* harmony import */ var _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/UI/ui-select/multiCombobox */ "./asset/components/UI/ui-select/multiCombobox.js");
-/* harmony import */ var _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/UI/ui-select/combobox */ "./asset/components/UI/ui-select/combobox.js");
-/* harmony import */ var _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/filter/FilterActions */ "./asset/components/filter/FilterActions.js");
-
+/* harmony import */ var Styles_commerce_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! Styles/commerce.css */ "./asset/styles/commerce.css");
+/* harmony import */ var _components_map_map__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/map/map */ "./asset/components/map/map.js");
+/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/tabs/tabs */ "./asset/components/tabs/tabs.js");
+/* harmony import */ var _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/commerceFilter/commerceFilter */ "./asset/components/commerceFilter/commerceFilter.js");
+/* harmony import */ var _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/tablistView/tablistView */ "./asset/components/tablistView/tablistView.js");
+/* harmony import */ var _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBar */ "./asset/components/UI/ui-rangeBar/rangeBar.js");
+/* harmony import */ var _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/UI/ui-rangeBar/rangeBarSelect */ "./asset/components/UI/ui-rangeBar/rangeBarSelect.js");
+/* harmony import */ var _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/UI/ui-select/multiCombobox */ "./asset/components/UI/ui-select/multiCombobox.js");
+/* harmony import */ var _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/UI/ui-select/combobox */ "./asset/components/UI/ui-select/combobox.js");
+/* harmony import */ var _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/filter/FilterActions */ "./asset/components/filter/FilterActions.js");
 
 
 
@@ -6735,7 +6774,7 @@ var initFilterActions = function initFilterActions() {
   window.filters = filters;
   filterElements.forEach(function (element) {
     var filterName = element.getAttribute('data-filter');
-    var filter = new _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_18__["default"](element);
+    var filter = new _components_filter_FilterActions__WEBPACK_IMPORTED_MODULE_17__["default"](element);
     filters.set(filterName, {
       filter: filter,
       controls: []
@@ -6749,7 +6788,7 @@ initFilterActions();
 var initFilterSelects = function initFilterSelects() {
   var selectElements = document.querySelectorAll('.js-select');
   selectElements.forEach(function (element) {
-    var select = new _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_17__["default"](element);
+    var select = new _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_16__["default"](element);
     select.init();
     var filterName = element.closest('[data-filter]').getAttribute('data-filter');
     var filter = window.filters.get(filterName);
@@ -6763,7 +6802,7 @@ initFilterSelects();
 var initFilterMultiSelects = function initFilterMultiSelects() {
   var multiSelectElements = document.querySelectorAll('.js-multiSelect');
   multiSelectElements.forEach(function (element) {
-    var multiSelect = new _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_16__["default"](element);
+    var multiSelect = new _components_UI_ui_select_multiCombobox__WEBPACK_IMPORTED_MODULE_15__["default"](element);
     multiSelect.init();
     var filterName = element.closest('[data-filter]').getAttribute('data-filter');
     var filter = window.filters.get(filterName);
@@ -6779,11 +6818,11 @@ var initRangeBarSelect = function initRangeBarSelect() {
   var mapRangeBar = new Map();
   rangeBarSelectElement.querySelectorAll('.js-range').forEach(function (item) {
     var name = item.getAttribute('data-price');
-    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_14__["default"](item);
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_13__["default"](item);
     rangeBar.init();
     mapRangeBar.set(name, rangeBar);
   });
-  var rangeBarSelect = new _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_15__["default"](rangeBarSelectElement, mapRangeBar);
+  var rangeBarSelect = new _components_UI_ui_rangeBar_rangeBarSelect__WEBPACK_IMPORTED_MODULE_14__["default"](rangeBarSelectElement, mapRangeBar);
   rangeBarSelect.init();
   var filterName = rangeBarSelectElement.closest('[data-filter]').getAttribute('data-filter');
   var filter = window.filters.get(filterName);
@@ -6797,7 +6836,7 @@ var initRangeBar = function initRangeBar() {
   var rangeBarIntElements = document.querySelectorAll('.js-rangeBarInt');
   var rangeBarFloatElements = document.querySelectorAll('.js-rangeBarFloat');
   rangeBarIntElements.forEach(function (element) {
-    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_14__["default"](element);
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_13__["default"](element);
     rangeBar.init();
     var filterName = element.closest('[data-filter]').getAttribute('data-filter');
     var filter = window.filters.get(filterName);
@@ -6805,7 +6844,7 @@ var initRangeBar = function initRangeBar() {
     window.filters.set(filterName, filter);
   });
   rangeBarFloatElements.forEach(function (element) {
-    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_14__["default"](element);
+    var rangeBar = new _components_UI_ui_rangeBar_rangeBar__WEBPACK_IMPORTED_MODULE_13__["default"](element);
     rangeBar.init();
     var filterName = element.closest('[data-filter]').getAttribute('data-filter');
     var filter = window.filters.get(filterName);
@@ -6817,20 +6856,23 @@ var initRangeBar = function initRangeBar() {
 initRangeBar();
 
 var initTablistView = function initTablistView() {
-  var tablistViewElements = document.querySelectorAll('.js-tablistView');
-  var arrTablistView = Array.from(tablistViewElements).map(function (item) {
-    var tablistView = new _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_13__["default"](item);
-    tablistView.init();
-    return tablistView;
-  });
-  window.arrTablistView = arrTablistView;
+  var tablistViewElements = document.querySelectorAll('.js-tablistView'); // const arrTablistView = Array.from(tablistViewElements).map((item) => {
+  //   const tablistView = new TablistView(item);
+  //   tablistView.init();
+  //   return tablistView;
+  // });
+  // window.arrTablistView = arrTablistView;
+
+  var tablistView = new _components_tablistView_tablistView__WEBPACK_IMPORTED_MODULE_12__["default"](tablistViewElements);
+  tablistView.init();
+  window.tablistView = tablistView;
 };
 
 initTablistView();
 
 var initFilterMenu = function initFilterMenu() {
   var filterMenuElement = document.querySelector('.js-commerceFilter');
-  var filterMenu = new _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_12__["default"](filterMenuElement);
+  var filterMenu = new _components_commerceFilter_commerceFilter__WEBPACK_IMPORTED_MODULE_11__["default"](filterMenuElement);
   filterMenu.init();
   window.filterMenu = filterMenu;
 };
@@ -6838,19 +6880,22 @@ var initFilterMenu = function initFilterMenu() {
 initFilterMenu();
 
 var initTablist = function initTablist() {
-  var tablistElements = document.querySelectorAll('.js-tablist');
-  var arrTablist = Array.from(tablistElements).map(function (item) {
-    var tablist = new _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_11__["default"](item);
-    tablist.init();
-    return tablist;
-  });
-  window.arrTablist = arrTablist;
+  var tablistElements = document.querySelectorAll('.js-tablist'); // const arrTablist = Array.from(tablistElements).map((item) => {
+  //   const tablist = new Tabs(item);
+  //   tablist.init();
+  //   return tablist;
+  // });
+  // window.arrTablist = arrTablist;
+
+  var tablist = new _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_10__["default"](tablistElements);
+  tablist.init();
+  window.tablist = tablist;
 };
 
 initTablist();
 
 var initMap = function initMap() {
-  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_10__["default"]('ymap', {
+  var map = new _components_map_map__WEBPACK_IMPORTED_MODULE_9__["default"]('ymap', {
     zoom: 17,
     center: [44.898317, 37.354456]
   });

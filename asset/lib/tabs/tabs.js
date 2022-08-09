@@ -1,16 +1,35 @@
-export function tabs(elem) {
-  this.tablist = elem;
+// export function tabs(elem) {
+//   this.tablist = elem;
+//   this.activePanel = new Set();
+// }
+
+export function tabs(elemList) {
+  this.tablists = elemList;
   this.activePanel = new Set();
 }
 
+// export function init() {
+//   this.setListeners();
+//   this.activateTab(this.tablist.querySelector('[role="tab"]'));
+// }
+
 export function init() {
   this.setListeners();
-  this.activateTab(this.tablist.querySelector('[role="tab"]'));
+  this.tablists.forEach((item) => {
+    this.activateTab(item.querySelector('[role="tab"]'));
+  });
 }
 
+// export function setListeners() {
+//   this.tablist.addEventListener('click', this);
+//   this.tablist.addEventListener('keydown', this);
+// }
+
 export function setListeners() {
-  this.tablist.addEventListener('click', this);
-  this.tablist.addEventListener('keydown', this);
+  this.tablists.forEach((item) => {
+    item.addEventListener('click', this);
+    item.addEventListener('keydown', this);
+  });
 }
 
 export function getPanelsId(tab) {
@@ -18,21 +37,28 @@ export function getPanelsId(tab) {
   return id;
 }
 
-export function deactivateTab(tab) {
-  tab.setAttribute('tabindex', '-1');
-  tab.setAttribute('aria-selected', false);
-  tab.classList.remove('active');
+export function deactivateTab(id) {
+  const tabList = document.querySelectorAll(`#${id}`);
+  tabList.forEach((item) => {
+    item.setAttribute('tabindex', '-1');
+    item.setAttribute('aria-selected', false);
+    item.classList.remove('active');
+  });
 }
 
 export function activateTab(tab) {
-  if(this.activeTab) this.deactivateTab(this.activeTab);
-  tab.setAttribute('tabindex', '0');
-  tab.setAttribute('aria-selected', true);
-  tab.classList.add('active');
+  const tabId = tab.getAttribute('id');
+  const tabList = document.querySelectorAll(`#${tabId}`);
+  if(this.activeTabId) this.deactivateTab(this.activeTabId);
+  tabList.forEach((item) => {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-selected', true);
+    item.classList.add('active');
+  });
   const panelsId = this.getPanelsId(tab);
   const panels = panelsId.map((id) => document.querySelector(`#${id}`));
   this.showPanel(panels);
-  this.activeTab = tab;
+  this.activeTabId = tabId;
 }
 
 export function hidePanel() {
