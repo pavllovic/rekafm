@@ -1,0 +1,14 @@
+.select--value {
+  overflow: hidden;
+  width: 100%;
+  height: calc(var(--fs-text-accent) * 1.1);
+  color: inherit;
+  font-family: var(--font-accent);
+  font-size: var(--fs-text-accent);
+  font-weight: 500;
+  line-height: 1.1;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

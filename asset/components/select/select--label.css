@@ -1,0 +1,56 @@
+.select--label {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.75em 1em;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0;
+
+  /* transition-duration: var(--dur-main);
+  transition-property: color;
+  transition-timing-function: var(--easing-main); */
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: color, opacity;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+}
+
+.form .select--label:not(:first-child) {
+  margin-top: 0;
+}
+
+.select--label::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bs-corparate, rgba(138, 140, 206, 100%));
+  content: "";
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition-duration: var(--dur-main);
+  transition-property: transform;
+  transition-timing-function: var(--easing-main);
+}
+
+.select--label:hover {
+  color: var(--bs-contrast, rgba(255, 255, 255, 100%));
+}
+
+.select--label:hover::after {
+  transform: scaleY(1);
+}
+
+.open .select--label {
+  opacity: 1;
+  transition-delay: 0s, calc(var(--dur-main) / 2);
+}
+
+@media (min-width: 80em) {
+  .select--label {
+    /* padding: calc(1em / 1.5) calc(1em / 0.9); */
+  }
+}

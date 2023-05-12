@@ -1,0 +1,196 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='wrapper')
+    header(class='header')
+      include ../components/navigation/navigation.pug
+      +navigation()
+    div(class='hero')
+      picture
+        source(srcset=`${require(`Images/hero/partnership-portrait.webp`)} 375w, ${require(`Images/hero/partnership-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/partnership.webp`)} 1280w, 
+          ${require(`Images/hero/partnership-2x.webp`)} 2560w, 
+          ${require(`Images/hero/partnership-4x.webp`)} 4096w`
+          type='image/webp')
+        source(srcset=`${require(`Images/hero/partnership-portrait.webp`)} 375w, ${require(`Images/hero/partnership-portrait-2x.webp`)} 750w, 
+          ${require(`Images/hero/partnership.jpg`)} 1280w, 
+          ${require(`Images/hero/partnership-2x.jpg`)} 2560w, 
+          ${require(`Images/hero/partnership-4x.jpg`)} 4096w`
+          type='image/jpg')
+        img(src=require('Images/hero/partnership.jpg') width='1280' height='656' alt='рукопожатие')
+      div(class='body')
+        div(class='heading-sm')
+          h1 Приглашение <br/> к сотрудничеству
+          p(class='text') Предложите услуги нашей управляющей компании собственникам объектов и получайте агентское вознаграждение от заключенного контракта.
+      a(class='ui-btnDownload' href='https://drive.google.com/file/d/1nVsr7fV97USlvLyt2hduEV4Wk3dTj5cP/view?usp=share_link' title='drive.google.com' target='_blank')
+        span(class='text') скачать презентацию
+        span(class='icon')
+          svg(class='icon-go' focusable='false' aria-hidden='true')
+            use(href='#icon-btn-top-right')
+    section.block
+      div(class='description-block')
+        h2(class='description-block__heading') Управляющая компания — это…
+        div(class='description-block__body')
+          p Команда из 300 квалифицированных инженеров различной специализации, техников универсалов, электриков и сантехников, которая осуществляет комплексное техническое обслуживание объектов недвижимости: инженерных систем, оборудования, внутренней и прилегающей территории.
+          h3 КОМУ ЭТО ИНТЕРЕСНО
+          p Собственникам объектов индустриального назначения, складов, офисов. Использование управляющей компании дешевле и эффективнее содержания собственной службы эксплуатации.
+    section.block.partnership-cards 
+      h2 КАК начать СОТРУДНИЧАТЬ
+      ul(class='card-list card-list_dark')
+        li(class='item')
+          div(class='card-partnership')
+            div(class='card-partnership__icon')
+              span 1 шаг
+            div(class='card-partnership__body')
+              h3(class='card-partnership__title') Предложите возможность ТО объекта недвижимости
+              p(class='card-partnership__text') Для этого будет привлечена Группа компаний «РЕКА».
+        li(class='item')
+          div(class='card-partnership')
+            div(class='card-partnership__icon')
+              span 2 шаг
+            div(class='card-partnership__body')
+              h3(class='card-partnership__title') Отправьте анкету собственнику
+              p(class='card-partnership__text') Если он согласился. Или привлеките нашего специалиста для составления Технического задания.
+              a(class='ui-link' href='https://docs.google.com/spreadsheets/d/1M5A7-vQ9TUUi_LsVAslZcZDzpV4awMk2/edit?usp=share_link&ouid=104748304016833355195&rtpof=true&sd=true' target='_blank' title='docs.google.com')
+                span(class='text') ссылка на анкету
+                span(class='icon')
+                  svg(class='icon-go' focusable='false' aria-hidden='true')
+                    use(href='#icon-16-link')
+        li(class='item')
+          div(class='card-partnership')
+            div(class='card-partnership__icon')
+              span 3 шаг
+            div(class='card-partnership__body')
+              h3(class='card-partnership__title') Получите коммерческое предложение
+              p(class='card-partnership__text') А после этого передайте его клиенту для изучения.
+        li(class='item')
+          div(class='card-partnership')
+            div(class='card-partnership__icon')
+              span 4 шаг
+            div(class='card-partnership__body')
+              h3(class='card-partnership__title') Заключите с нами агентский договор
+              p(class='card-partnership__text') В то время как мы заключаем с собственником объекта договор на техническое обслуживание объекта.
+    section.block.partnership-money
+      div(class='partnership-money__body')
+        div(class='partnership-money__main')
+          h2 КАК это ОПЛАЧИВАЕТСЯ
+          p(class='partnership-money__text') Ежемесячно, в течение всего срока действия договора между управляющей компанией и собственником объекта в проценте от вознаграждения, указанной в контракте по принципу «Openbook».
+        div(class='partnership-money__table')
+          div(class='partnership-table')
+            h3(class='partnership-table__heading') Мы предлагаем следущее
+            table(class='partnership-table__body')
+              tbody 
+                tr
+                  th Вознаграждение УК
+                  th Комиссия агента
+                tr
+                  td 10%
+                  td 15%
+                tr
+                  td 15%
+                  td 20%
+                tr
+                  td 20%
+                  td 25%
+      div(class='partnership-money__aside')
+        div(class='partnership-example')
+          h3(class='partnership-example__heading') Пример
+          div(class='partnership-example__body')
+            div(class='partnership-example__item')
+              div(class='partnership-example__price')
+                span 1 500 000
+                span(class='partnership-example__currency') рублей/мес
+              p(class='partnership-example__text') Стоимость технического обслуживания здания 15 тыс. м2
+            div(class='partnership-example__item')
+              div(class='partnership-example__price')
+                span 300 000 
+                span(class='partnership-example__currency') рублей/мес
+              p(class='partnership-example__text') Вознаграждение управляющей компании, согласно контракта — 20%
+            div(class='partnership-example__item')
+              div(class='partnership-example__price')
+                span 75 000
+                span(class='partnership-example__currency') рублей/мес
+              p(class='partnership-example__text') Агентское вознаграждение, согласно контракта — 25%
+    section.block.partnership-form.js-form-order
+      div(class='box')
+        h2(class='heading') Остались вопросы?
+        p(class='message') Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.
+      form(class='form form-order--form js-order-audit' name='order-partnership-call' action='/' method='POST')
+        label(for='order-call-name')
+          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё ]+$' maxlength='50' placeholder=' ' id='order-partnership-call-name' required)
+          span(class='ui-input-placeholder') ваше имя
+        label(for='order-call-phone')
+          input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder=' ' id='order-partnership-call-phone' required)
+          span(class='ui-input-placeholder') телефон
+        button(class='ui-btnForward' type='submit')
+          span(class='text') заказать обратный звонок
+          span(class='icon')
+            svg(focusable='false' aria-hidden='true')
+              use(href='#icon-16-go')
+        p(class='note') Нажимая на кнопку «Заказать обратный звонок», вы даете согласие на обработку персональных данных и соглашаетесь с 
+          a(class='ui-linkFade' href="#") политикой конфиденциальности
+      div(class='contacts')
+        div(class='contact')
+          p(class='label') пишите
+          a(class='ui-link'  href='mailto:to@reka.fm') 
+            span(class='text' data-text='to@reka.fm') to@reka.fm
+        div(class='contact')
+          p(class='label') звоните
+          a(class='ui-link' href='tel:+74957891200') 
+            span(class='text' data-text='+7 (495) 789-12-00') +7 (495) 789-12-00
+      div(class='form-order--response no-transition')
+        div(class='form-order--response-content no-transition')
+          button(class='ui-btnClose' type='button' data-btn='response-close')
+            span
+            span
+          div(class='token' aria-hidden='true')
+            svg(focusable='false')
+              use(href="#icon-24-phone")
+          div(class='box')
+            p(class='heading') звонок успешно заказан!
+            p(class='message') В ближайшее время наш менеджер свяжется с вами.
+          button(class='ui-btnForward' type='button' data-btn='response-close')
+            span(class='text') закрыть
+            span(class='icon')
+              svg(focusable='false' aria-hidden='true')
+                use(href='#icon-16-go')
+        div(class='form-order--response-overlay no-transition' data-btn='response-close')
+  include ../components/footer/footer.pug
+  include ../components/modalCall/modalCall.pug
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg
+  include ../images/icons/icon-32/sprite-icon-32.svg
+  include ../images/icons/icon-72/sprite-icon-72.svg
+  include ../images/icons/icon-btn/sprite-icon-btn.svg
+  include ../images/icons/icon-social/sprite-icon-social.svg

@@ -9,7 +9,6 @@ Modal.prototype = {
   openModal: lib.openModal,
   closeModal: function() {
     lib.closeModal.call(this);
-    console.log('dfsgsdfsfd');
     this.modal.classList.remove('error-handler');
     this.modal.classList.remove('success-handler');
   },

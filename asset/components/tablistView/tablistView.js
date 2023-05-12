@@ -7,7 +7,13 @@ const TablistView = function (elem) {
 
 TablistView.prototype = {
   constructor: TablistView,
-  init: lib.init,
+  // init: lib.init,
+  init: function() {
+    this.setListeners();
+    this.tablists.forEach((item) => {
+      this.activateTab(item.querySelector('[role="tab"]'));
+    });
+  },
   setListeners: function() {
     lib.setListeners.call(this);
     // for backend

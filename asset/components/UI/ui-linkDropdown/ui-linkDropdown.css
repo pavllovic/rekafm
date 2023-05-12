@@ -12,6 +12,8 @@
 
 .ui-linkDropdown .text {
   color: inherit;
+  pointer-events: all;
+  text-decoration: none;
   transition-duration: var(--dur-main);
   transition-property: color;
   transition-timing-function: var(--easing-main);
@@ -29,6 +31,7 @@
   border-color: var(--border-color, rgba(228, 228, 228, 100%));
   margin-left: calc(1em / 2.25);
   border-radius: 50%;
+  pointer-events: all;
   transition-duration: var(--dur-main);
   transition-property: transform;
   transition-timing-function: var(--easing-main);

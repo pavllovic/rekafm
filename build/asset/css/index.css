@@ -128,11 +128,13 @@
 .swiper-thumbs :not(button).ui-thumb:not(:last-child) {
   margin-bottom: 0.5em;
 }
-.swiper-thumbs .ui-thumb:not(:last-child):nth-child(n + 5) {
+.swiper-thumbs .ui-thumb:not(:last-child):nth-child(5),
+.swiper-thumbs .ui-thumb:nth-child(n + 6) {
   opacity: 0;
   transform: scale(0.5);
 }
-.open-gallery .swiper-thumbs .ui-thumb:not(:last-child):nth-child(n + 5) {
+.open-gallery .swiper-thumbs .ui-thumb:not(:last-child):nth-child(5),
+.open-gallery .swiper-thumbs .ui-thumb:nth-child(n + 6) {
   opacity: 1;
   transform: scale(1);
 }
@@ -301,12 +303,13 @@
 }
 .block-hero .image-mask {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 62.31%;
   margin-top: auto;
+  transform: translate3d(0, 0, 0);
 }
 .block-hero .image-mask::after,
 .block-hero .image-mask::before,
@@ -409,7 +412,7 @@
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 100%);
   background-color: var(--bs-contrast, rgba(255, 255, 255, 100%));
-  background-image: url(../../asset/images/bg/index/map-mobile.svg);
+  background-image: url(../../asset/images/bg/index/map-mob.svg);
   background-position: center right;
   background-repeat: no-repeat;
   background-size: contain;
@@ -459,7 +462,7 @@
 }
 @media (min-width: 60em) {
   .map {
-    background-image: url(../../asset/images/bg/index/map-desktop.svg);
+    background-image: url(../../asset/images/bg/index/map-desk.svg);
   }
 }
 @media (min-width: 80em) {
@@ -487,7 +490,7 @@
     left: 2.5em;
     width: calc(100% - 2.5em * 2);
     height: 38.75em;
-    background-image: url(../../asset/images/bg/index/map-desktop.svg);
+    background-image: url(../../asset/images/bg/index/map-desk.svg);
     background-size: auto 100%;
     transform: translateY(calc(-100% + 28.125em));
   }

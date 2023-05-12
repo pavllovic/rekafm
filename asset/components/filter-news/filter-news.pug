@@ -1,0 +1,23 @@
+form(class='filter-news' name='filter-news' action='' method='post' data-filter='news')
+  div(class='ui-select js-select')
+    div(class='input js-input' role='combobox' tabindex='0' id='combobox'
+      aria-activedescendant=''
+      aria-autocomplete='none'
+      aria-owns='type-news-listbox'
+      aria-expanded='false'
+      aria-haspopup='type-news-listbox')
+      div(class='value') новости
+      span(class='icon')
+        svg(focusable='false' aria-hidden='true')
+          use(href='#icon-16-dropdown-open')
+    div(class='options js-options' role='listbox' id='type-news-listbox')
+      input(class='visually-hidden' type='radio' name='filter-news' id='filter-news-1' value='1' checked)
+      label(class='filter-news--label' for='filter-news-1' role='option') 
+        span(class='text') новости 
+      input(class='visually-hidden' type='radio' name='filter-news' id='filter-news-2' value='2')
+      label(class='filter-news--label' for='filter-news-2' role='option') 
+        span(class='text') статьи
+      input(class='visually-hidden' type='radio' name='filter-news' id='filter-news-3' value='3')
+      label(class='filter-news--label' for='filter-news-3' role='option') 
+        span(class='text') ответственность
+      span(class='filter-news--bg')

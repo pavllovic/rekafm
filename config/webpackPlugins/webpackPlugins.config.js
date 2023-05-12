@@ -10,7 +10,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const MediaQueryPlugin = require('media-query-plugin');
 
 const miniCssExtractPlugin = (isDev) => {
   return new MiniCssExtractPlugin({
@@ -18,17 +17,6 @@ const miniCssExtractPlugin = (isDev) => {
     chunkFilename: isDev ? 'asset/css/[id].css' : 'asset/css/[id].css'
   });
 };
-
-// const mediaQueryPlugin = () => {
-//   return new MediaQueryPlugin({
-//     include: [
-//       'common'
-//     ],
-//     queries: {
-//       '(min-width: 992px)': 'resize',
-//     }
-//   });
-// };
 
 const copyWebpackPlugin = (isDev) => {
   const pathToCopy = 'asset/lib';
@@ -64,14 +52,14 @@ const copyWebpackPlugin = (isDev) => {
 
 const ignoreEmitPlugin = () => {
   return new IgnoreEmitPlugin([
-    /(uikit)\.style\.js$/, /(uikit|management|service|_404|privacy)\.js$/
+    /(uikit)\.style\.js$/, /(uikit|_404|privacy)\.js$/
   ]);
 };
 
 const htmlWebpackSkipAssetsPlugin = () => {
   return new HtmlWebpackSkipAssetsPlugin({
     excludeAssets: [
-      /(uikit)\.style\.js$/, /(uikit|management|service|_404|privacy)\.js$/
+      /(uikit)\.style\.js$/, /(uikit|_404|privacy)\.js$/
     ]
   });
 };
@@ -80,11 +68,11 @@ const htmlWebpackPlagin = (isDev) => {
   const pages = [
     {name: 'index', title: 'рекафм', chunks: ['common', 'index']},
     {name: 'fire_safety', title: 'рекафм | пожарная безопасность', chunks: ['common']},
-    {name: 'audit', title: 'рекафм | технический аудит недвижимости', chunks: ['common', 'audit_emergency_mamagement']},
-    {name: 'service', title: 'рекафм | эксплуатация и техническое обслуживание недвижимости', chunks: ['common']},
-    {name: 'management', title: 'рекафм | управление недвижимостью', chunks: ['common', 'audit_emergency_mamagement']},
+    {name: 'audit', title: 'рекафм | технический аудит недвижимости', chunks: ['common', 'audit_emergency_management']},
+    {name: 'service', title: 'рекафм | эксплуатация и техническое обслуживание недвижимости', chunks: ['common', 'service']},
+    {name: 'management', title: 'рекафм | управление недвижимостью', chunks: ['common', 'audit_emergency_management']},
     {name: 'femida', title: 'рекафм | юридическое сопровождение', chunks: ['common']},
-    {name: 'emergency', title: 'рекафм | аварийно-диспетчерская служба', chunks: ['common', 'audit_emergency_mamagement']},
+    {name: 'emergency', title: 'рекафм | аварийно-диспетчерская служба', chunks: ['common', 'audit_emergency_management']},
     {name: 'accaunting_and_hr', title: 'рекафм | клининг', chunks: ['common']},
     {name: 'cleaning', title: 'рекафм | клининг', chunks: ['common']},
     {name: '_404', title: 'рекафм | 404', chunks: ['common', '_404']},
@@ -95,6 +83,9 @@ const htmlWebpackPlagin = (isDev) => {
     {name: 'rent', title: 'рекафм | управление арендными отношениями', chunks: ['common', 'commerce']},
     {name: 'build', title: 'рекафм | помещение', chunks: ['common', 'build']},
     {name: 'uikit', title: 'рекафм | uikit', chunks: ['uikit', 'common']},
+    {name: 'response-call', title: 'рекафм | заявка зарегистрирована', chunks: ['common']},
+    {name: 'response-audit', title: 'рекафм | заявка зарегистрирована', chunks: ['common']},
+    {name: 'partnership', title: 'рекафм | партнерство', chunks: ['common', 'audit_emergency_management']},
   ];
 
   return pages.map((page) => {

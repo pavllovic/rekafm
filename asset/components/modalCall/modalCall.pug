@@ -11,14 +11,19 @@ div(class='modal js-modal-call no-transition' aria-hidden='true' role='dialog' d
         h2(class='heading') связаться с нами
         p(class='message') Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.
       form(class='form js-order-call' name='order-call' action='/' method='POST')
+        +select('service', 'выбрать услугу')
         label(for='order-call-name')
           //- span(class='visually-hidden' for='order-call-name') ваше имя
-          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder=' ' id='order-call-name' required)
+          input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё ]+$' maxlength='50' placeholder=' ' id='order-call-name' required)
           span(class='ui-input-placeholder') ваше имя
         label(for='order-call-phone')
           //- span(class='visually-hidden') телефон
           input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder=' ' id='order-call-phone' required)
           span(class='ui-input-placeholder') телефон
+        label(for='order-call-email')
+          //- span(class='visually-hidden' for='order-call-name') ваше имя
+          input(class='ui-input' type='text' name='email' maxlength='50' placeholder=' ' id='order-call-email')
+          span(class='ui-input-placeholder') email
         button(class='ui-btnForward' type='submit')
           span(class='text') заказать обратный звонок
           span(class='icon')

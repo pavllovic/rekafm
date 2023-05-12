@@ -1,12 +1,14 @@
 ul(class='menu js-menu')
-  li(class='item' data-dropdown='btn' aria-expanded='false')
-    a(class='ui-linkDropdown' href='./management.html') 
-      span(class='text') управление недвижимостью
-      span(class='icon' aria-hidden='true')
+  li(class='item' data-dropdown='item' aria-expanded='false')
+    //- a(class='ui-linkDropdown' href='./management.html') 
+    div(class='ui-linkDropdown') 
+      //- span(class='text') управление недвижимостью
+      a(class='text' href='./management.html') управление недвижимостью
+      span(class='icon' aria-role='button' data-dropdown='btn')
     div(data-dropdown='panel')
       ul(class='submenu' data-dropdown='content')
-        li(class='item')
-          a(class='ui-link' href='./management.html') перейти в раздел
+        //- li(class='item')
+        //-   a(class='ui-link' href='./management.html') перейти в раздел
         li(class='item')
           a(class='ui-link' href='./audit.html') технический аудит недвижимости
         li(class='item')
@@ -22,10 +24,10 @@ ul(class='menu js-menu')
   li(class='item')
     a(class='ui-link' href='./commerce.html') 
       span(class='text') продажа и аренда
-  li(class='item' data-dropdown='btn' aria-expanded='false')
+  li(class='item' data-dropdown='item' aria-expanded='false')
     a(class='ui-linkDropdown' href='javascript:void(0);') 
       span(class='text') консалтинг
-      span(class='icon' aria-hidden='true')
+      span(class='icon' aria-hidden='true' data-dropdown='btn')
     div(data-dropdown='panel')
       ul(class='submenu' data-dropdown='content')
         li(class='item')
@@ -35,3 +37,6 @@ ul(class='menu js-menu')
   li(class='item')
     a(class='ui-link link-news' href='./news_list.html') 
       span(class='text') новости
+  li(class='item')
+    a(class='ui-link link-partnership' href='./partnership.html') 
+      span(class='text') Партнерство

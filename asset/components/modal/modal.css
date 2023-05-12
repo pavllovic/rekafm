@@ -6,6 +6,7 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
+  min-height: calc(var(--vh) * 100);
   flex-direction: column;
   color: var(--bs-contrast, rgba(255, 255, 255, 100%));
 

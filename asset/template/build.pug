@@ -49,7 +49,8 @@ block content
         div(class='gallery js-gallery')
           div(class='swiper swiper-build swiper-backface-hidden js-swiper-build')
             div(class='swiper-wrapper')
-              - const slides = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]
+              //- - const slides = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]
+              - const slides = [1,2,3,4,5,6]
                 each slide in slides 
                   div(class='swiper-slide' aria-roledescription='slide')
                     div(class='image')
@@ -90,6 +91,9 @@ block content
           h1(class='name') ПОМЕЩЕНИЕ СВОБОДНОГО НАЗНАЧЕНИЯ, ГАСТЕЛЛО 41
           p(class='address') МО, Домодедовский район, «Голден лайн», с. 1
           p(class='price') 450 млн рублей
+          div
+            p(class='type-price') включая <span>НДС</span>
+            p(class='type-price') <span>(осн)</span>
         ul(class='list')
           li(class='item')
             span(class='name') Площадь

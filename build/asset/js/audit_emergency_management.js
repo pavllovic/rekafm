@@ -49,65 +49,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var Lib_form_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Lib/form/form */ "./asset/lib/form/form.js");
-/* harmony import */ var Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Lib/form/form-handlers.js */ "./asset/lib/form/form-handlers.js");
-/* harmony import */ var Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Lib/form/form-send.js */ "./asset/lib/form/form-send.js");
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+/* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var Lib_form_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! Lib/form/form */ "./asset/lib/form/form.js");
+/* harmony import */ var Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Lib/form/form-handlers.js */ "./asset/lib/form/form-handlers.js");
+/* harmony import */ var Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! Lib/form/form-send.js */ "./asset/lib/form/form-send.js");
 
 
 
 
 
 
-var OrderAuditForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.form;
+
+var OrderAuditForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.form;
 OrderAuditForm.prototype = {
   constructor: OrderAuditForm,
   init: function init() {
     this.price = this.form.querySelector('[data-audit="value"]');
+    this.inputPrice = this.form.querySelector('input[name="price"]');
     this.wrap = document.querySelector('.js-form-order');
-    Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.init.call(this);
+    Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.init.call(this);
   },
   setListeners: function setListeners() {
     var _this = this;
 
-    Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.setListeners.call(this);
-    this.form.querySelector('input[name="square"]').addEventListener('input', function (e) {
-      _this.updatePrice(e.target);
-    });
+    Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.setListeners.call(this);
+    var inputSquare = this.form.querySelector('input[name="square"]');
+
+    if (inputSquare) {
+      inputSquare.addEventListener('input', function (e) {
+        _this.updatePrice(e.target);
+      });
+    }
+
     this.wrap.querySelectorAll('[data-btn="response-close"]').forEach(function (elem) {
       elem.addEventListener('click', function () {
         return _this.hideFormResposne();
       });
     });
   },
-  destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.destroy,
-  getFormData: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.getFormData,
-  submitForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.submitForm,
-  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_5__.sendForm,
-  resetForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.resetForm,
-  showSubmitting: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.showSubmitting,
-  showFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.showFormResposne,
-  // hideFormResposne: lib.hideFormResposne,
+  destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.destroy,
+  getFormData: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.getFormData,
+  submitForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.submitForm,
+  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_6__.sendForm,
+  resetForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.resetForm,
+  showSubmitting: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.showSubmitting,
+  showFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.showFormResposne,
   hideFormResposne: function hideFormResposne() {
     this.wrap.classList.remove('success-handler');
   },
-  handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_3__.handleEvent,
-  sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_4__.sendFormHandler,
+  handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_4__.handleEvent,
+  sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_5__.sendFormHandler,
+  setPriceList: function setPriceList(priceList) {
+    this.priceList = priceList;
+  },
   updatePrice: function updatePrice(input) {
-    var price = 0;
-    if (input.value <= 50) price = '16 800';
-    if (input.value > 50 && input.value <= 100) price = '24 000';
-    if (input.value > 100 && input.value <= 250) price = '36 000';
-    if (input.value > 250 && input.value <= 500) price = '72 000';
-    if (input.value > 500 && input.value <= 1000) price = '120 000';
+    var value = +input.value;
+    var length = this.priceList.length - 1;
 
-    if (input.value > 1000) {
-      price = new Intl.NumberFormat('ru-RU').format(Math.round(input.value * 67.2, 2));
-    }
+    if (this.priceList && value) {
+      var audit = this.priceList.find(function (item, index) {
+        if (index === 0 && value < item.value[1] || index === length && value > item.value[0] || value > item.value[0] && value <= item.value[1]) return item;
+        return undefined;
+      });
 
-    this.price.innerText = price;
+      if (audit) {
+        this.price.innerText = audit.price;
+        this.inputPrice.value = audit.price; // this.inputPrice.innerText = audit.price;
+      }
+    } else {
+      this.price.innerText = '0';
+      this.inputPrice.value = '0'; // this.inputPrice.innerText = '0';
+    } // this.price.innerText = price;
+    // if (input.value <= 50) price = '16 800';
+    // if ((input.value > 50) && (input.value <= 100)) price = '24 000';
+    // if ((input.value > 100) && (input.value <= 250)) price = '36 000';
+    // if ((input.value > 250) && (input.value <= 500)) price = '72 000';
+    // if ((input.value > 500) && (input.value <= 1000)) price = '120 000';
+    // if (input.value > 1000) {
+    //   price = new Intl.NumberFormat('ru-RU').format(Math.round(input.value * 67.2, 2));
+    // }
+
   },
   onSuccessHandler: function onSuccessHandler() {
-    this.wrap.classList.add('success-handler');
+    // this.wrap.classList.add('success-handler');
+    document.location.href = '/response-audit/';
   },
   onErrorHandler: function onErrorHandler() {// this.wrap.classList.add('error-handler');
   }
@@ -286,7 +312,8 @@ var FormValidator = function FormValidator(form) {
   this.errorMessage = {
     name: {
       patternMismatch: 'имя должно состоять только из букв А-Я, A-Z',
-      valueMissing: 'имя должно состоять только из букв А-Я, A-Z'
+      valueMissing: 'имя должно состоять только из букв А-Я, A-Z',
+      tooLong: 'имя должно содержать не более 50-и символов'
     },
     phone: {
       patternMismatch: 'введите номер в формате +7 (9__) ___-__-__',
@@ -295,6 +322,10 @@ var FormValidator = function FormValidator(form) {
     square: {
       patternMismatch: 'только цифры',
       valueMissing: 'только цифры'
+    },
+    email: {
+      valueMissing: 'укажите ваш e-mail',
+      tooLong: 'email должен содержать не более 50-и символов'
     }
   };
 };
@@ -4988,6 +5019,38 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.find.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.find.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $find = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").find);
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
+
+var FIND = 'find';
+var SKIPS_HOLES = true;
+
+// Shouldn't skip holes
+if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.find` method
+// https://tc39.es/ecma262/#sec-array.prototype.find
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
+  find: function find(callbackfn /* , that = undefined */) {
+    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND);
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.array.for-each.js":
 /*!***********************************************************!*\
   !*** ./node_modules/core-js/modules/es.array.for-each.js ***!
@@ -5955,9 +6018,9 @@ $({ global: true, bind: true, forced: MSIE }, {
 
 /***/ }),
 
-/***/ "./asset/styles/audit.emergency.mamagement.css":
+/***/ "./asset/styles/audit.emergency.management.css":
 /*!*****************************************************!*\
-  !*** ./asset/styles/audit.emergency.mamagement.css ***!
+  !*** ./asset/styles/audit.emergency.management.css ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -6817,7 +6880,7 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 /*!*********************************************!*\
-  !*** ./asset/audit.emergency.mamagement.js ***!
+  !*** ./asset/audit.emergency.management.js ***!
   \*********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
@@ -6826,7 +6889,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
 /* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var Styles_audit_emergency_mamagement_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Styles/audit.emergency.mamagement.css */ "./asset/styles/audit.emergency.mamagement.css");
+/* harmony import */ var Styles_audit_emergency_management_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Styles/audit.emergency.management.css */ "./asset/styles/audit.emergency.management.css");
 /* harmony import */ var _components_carousel_carousel_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/carousel/carousel.js */ "./asset/components/carousel/carousel.js");
 /* harmony import */ var _components_showList_showList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/showList/showList */ "./asset/components/showList/showList.js");
 /* harmony import */ var _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/formValidator/formValidator.js */ "./asset/lib/formValidator/formValidator.js");
@@ -6868,15 +6931,129 @@ var initCarouselTariff = function initCarouselTariff() {
 };
 
 initCarouselTariff();
+var priceListAudit = [{
+  value: [0, 60],
+  price: '11 875'
+}, {
+  value: [60, 90],
+  price: '13 375'
+}, {
+  value: [90, 120],
+  price: '14 750'
+}, {
+  value: [120, 160],
+  price: '16 125'
+}, {
+  value: [160, 200],
+  price: '17 500'
+}, {
+  value: [200, 250],
+  price: '18 875'
+}, {
+  value: [250, 300],
+  price: '20 250'
+}, {
+  value: [300, 380],
+  price: '21 625'
+}, {
+  value: [380, 470],
+  price: '23 000'
+}, {
+  value: [470, 600],
+  price: '24 375'
+}, {
+  value: [600, 800],
+  price: '25 750'
+}, {
+  value: [800, 1000],
+  price: '27 125'
+}, {
+  value: [1000, 1300],
+  price: '28 500'
+}, {
+  value: [1300, 1600],
+  price: '29 875'
+}, {
+  value: [1600, 1900],
+  price: '31 250'
+}, {
+  value: [1900, 2300],
+  price: '32 750'
+}, {
+  value: [2300, 2500],
+  price: '37 500'
+}, {
+  value: [2500, 2700],
+  price: '42 500'
+}, {
+  value: [2700, 2900],
+  price: '48 875'
+}, {
+  value: [2900, 3200],
+  price: '58 125'
+}, {
+  value: [3200, 3600],
+  price: '65 875'
+}, {
+  value: [3600, 4000],
+  price: '73 250'
+}, {
+  value: [4000, 4400],
+  price: '80 937'
+}, {
+  value: [4400, 4800],
+  price: '88 587'
+}, {
+  value: [4800, 5200],
+  price: '96 212'
+}, {
+  value: [5200, 6000],
+  price: '105 687'
+}, {
+  value: [6000, 7000],
+  price: '123 000'
+}, {
+  value: [7000, 8500],
+  price: '149 562'
+}, {
+  value: [8500, 10000],
+  price: '175 937'
+}, {
+  value: [10000, 12000],
+  price: '210 500'
+}, {
+  value: [12000, 15000],
+  price: '244 750'
+}, {
+  value: [15000, 19000],
+  price: '309 562'
+}, {
+  value: [19000, 24000],
+  price: '390 500'
+}, {
+  value: [24000, 30000],
+  price: '451 125'
+}, {
+  value: [30000, 38000],
+  price: '570 937'
+}, {
+  value: [38000, 48000],
+  price: '720 375'
+}, {
+  value: [48000, 60000],
+  price: '826 000'
+}];
 
 var initFormOrderAudit = function initFormOrderAudit() {
   var formElem = document.querySelector('.js-order-audit');
+  console.log(formElem);
 
   if (formElem) {
     var formValidator = new _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_6__["default"](formElem);
     var form = new _components_form_order_OrderAuditForm_js__WEBPACK_IMPORTED_MODULE_7__["default"](formElem);
     formValidator.init();
     form.init();
+    form.setPriceList(priceListAudit);
     window.orderAuditForm = form;
     window.orderAuditForm.validator = formValidator;
   }

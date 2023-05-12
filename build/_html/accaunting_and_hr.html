@@ -86,16 +86,13 @@
                 </button>
               </div>
               <ul class="menu js-menu">
-                <li class="item" data-dropdown="btn" aria-expanded="false">
-                  <a class="ui-linkDropdown" href="./management.html">
-                    <span class="text">управление недвижимостью</span>
-                    <span class="icon" aria-hidden="true"></span>
-                  </a>
+                <li class="item" data-dropdown="item" aria-expanded="false">
+                  <div class="ui-linkDropdown">
+                    <a class="text" href="./management.html">управление недвижимостью</a>
+                    <span class="icon" aria-role="button" data-dropdown="btn"></span>
+                  </div>
                   <div data-dropdown="panel">
                     <ul class="submenu" data-dropdown="content">
-                      <li class="item">
-                        <a class="ui-link" href="./management.html">перейти в раздел</a>
-                      </li>
                       <li class="item">
                         <a class="ui-link" href="./audit.html">технический аудит недвижимости</a>
                       </li>
@@ -123,10 +120,10 @@
                     <span class="text">продажа и аренда</span>
                   </a>
                 </li>
-                <li class="item" data-dropdown="btn" aria-expanded="false">
+                <li class="item" data-dropdown="item" aria-expanded="false">
                   <a class="ui-linkDropdown" href="javascript:void(0);">
                     <span class="text">консалтинг</span>
-                    <span class="icon" aria-hidden="true"></span>
+                    <span class="icon" aria-hidden="true" data-dropdown="btn"></span>
                   </a>
                   <div data-dropdown="panel">
                     <ul class="submenu" data-dropdown="content">
@@ -142,6 +139,11 @@
                 <li class="item">
                   <a class="ui-link link-news" href="./news_list.html">
                     <span class="text">новости</span>
+                  </a>
+                </li>
+                <li class="item">
+                  <a class="ui-link link-partnership" href="./partnership.html">
+                    <span class="text">Партнерство</span>
                   </a>
                 </li>
               </ul>
@@ -393,16 +395,13 @@
           </svg>
         </span>
         <ul class="menu js-menu">
-          <li class="item" data-dropdown="btn" aria-expanded="false">
-            <a class="ui-linkDropdown" href="./management.html">
-              <span class="text">управление недвижимостью</span>
-              <span class="icon" aria-hidden="true"></span>
-            </a>
+          <li class="item" data-dropdown="item" aria-expanded="false">
+            <div class="ui-linkDropdown">
+              <a class="text" href="./management.html">управление недвижимостью</a>
+              <span class="icon" aria-role="button" data-dropdown="btn"></span>
+            </div>
             <div data-dropdown="panel">
               <ul class="submenu" data-dropdown="content">
-                <li class="item">
-                  <a class="ui-link" href="./management.html">перейти в раздел</a>
-                </li>
                 <li class="item">
                   <a class="ui-link" href="./audit.html">технический аудит недвижимости</a>
                 </li>
@@ -429,10 +428,10 @@
               <span class="text">продажа и аренда</span>
             </a>
           </li>
-          <li class="item" data-dropdown="btn" aria-expanded="false">
+          <li class="item" data-dropdown="item" aria-expanded="false">
             <a class="ui-linkDropdown" href="javascript:void(0);">
               <span class="text">консалтинг</span>
-              <span class="icon" aria-hidden="true"></span>
+              <span class="icon" aria-hidden="true" data-dropdown="btn"></span>
             </a>
             <div data-dropdown="panel">
               <ul class="submenu" data-dropdown="content">
@@ -448,6 +447,11 @@
           <li class="item">
             <a class="ui-link link-news" href="./news_list.html">
               <span class="text">новости</span>
+            </a>
+          </li>
+          <li class="item">
+            <a class="ui-link link-partnership" href="./partnership.html">
+              <span class="text">Партнерство</span>
             </a>
           </li>
         </ul>
@@ -526,9 +530,72 @@
             <p class="message">Закажите обратный звонок, или звоните и пишите нам, чтобы обсудить подробности.</p>
           </div>
           <form class="form js-order-call" name="order-call" action="/" method="POST">
+            <div class="select js-select-service">
+              <div class="select--input js-input" role="combobox" tabindex="0" id="combobox" aria-activedescendant=""
+                aria-autocomplete="none" aria-owns="type-service-listbox" aria-expanded="false"
+                aria-haspopup="type-service-listbox">
+                <div class="select--value value"></div>
+                <div class="select--placeholder">выбрать услугу</div>
+                <span class="select--icon">
+                  <svg focusable="false" aria-hidden="true">
+                    <use href="#icon-16-dropdown-open"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="select--options js-options" role="listbox" id="type-service-listbox">
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-1" value="1">
+                <label class="select--label" for="filter-service-1" role="option">
+                  <span class="select--label-text text">Управление коммерческой недвижимостью </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-2" value="2">
+                <label class="select--label" for="filter-service-2" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-3" value="3">
+                <label class="select--label" for="filter-service-3" role="option">
+                  <span class="select--label-text text">Услуги технического аудита </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-4" value="4">
+                <label class="select--label" for="filter-service-4" role="option">
+                  <span class="select--label-text text">Услуги аварийно-диспетчерской службы </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-5" value="5">
+                <label class="select--label" for="filter-service-5" role="option">
+                  <span class="select--label-text text">Аренда/продажа помещения </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-6" value="6">
+                <label class="select--label" for="filter-service-6" role="option">
+                  <span class="select--label-text text">Бухгалтерские услуги </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-7" value="7">
+                <label class="select--label" for="filter-service-7" role="option">
+                  <span class="select--label-text text">Юридические услуги </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-8" value="8">
+                <label class="select--label" for="filter-service-8" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-9" value="9">
+                <label class="select--label" for="filter-service-9" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-10" value="10">
+                <label class="select--label" for="filter-service-10" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-11" value="11">
+                <label class="select--label" for="filter-service-11" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+                <input class="visually-hidden" type="radio" name="filter-service" id="filter-service-12" value="12">
+                <label class="select--label" for="filter-service-12" role="option">
+                  <span class="select--label-text text">Эксплуатация и техническое обслуживание здания </span>
+                </label>
+              </div>
+            </div>
             <label for="order-call-name">
-              <input class="ui-input" type="text" name="name" pattern="[A-Za-zА-Яа-яЁё]+$" placeholder=" "
-                id="order-call-name" required>
+              <input class="ui-input" type="text" name="name" pattern="[A-Za-zА-Яа-яЁё ]+$" maxlength="50"
+                placeholder=" " id="order-call-name" required>
               <span class="ui-input-placeholder">ваше имя</span>
             </label>
             <label for="order-call-phone">
@@ -536,6 +603,10 @@
                 pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder=" "
                 id="order-call-phone" required>
               <span class="ui-input-placeholder">телефон</span>
+            </label>
+            <label for="order-call-email">
+              <input class="ui-input" type="text" name="email" maxlength="50" placeholder=" " id="order-call-email">
+              <span class="ui-input-placeholder">email</span>
             </label>
             <button class="ui-btnForward" type="submit">
               <span class="text">заказать обратный звонок</span>
@@ -669,6 +740,10 @@
         <symbol id="icon-16-down" viewBox="0 0 16 16">
           <polygon fill="#2e2e2e" style="fill: var(--color, #2e2e2e)"
             points="8.48 12.7 7.42 12.7 2.47 7.75 3.53 6.69 7.2 10.36 7.2 3 8.7 3 8.7 10.36 12.37 6.69 13.43 7.75 8.48 12.7" />
+        </symbol>
+        <symbol id="icon-16-link" viewBox="0 0 16 16">
+          <path fill="#2e2e2e" style="fill: var(--color, #2e2e2e)"
+            d="M3.75729 8.35329C3.18333 8.92725 2.85275 9.68412 2.82639 10.4487C2.80011 11.2108 3.07706 11.9157 3.58051 12.4192C4.08397 12.9226 4.78882 13.1996 5.55099 13.1733C5.92896 13.1602 6.30952 13.0727 6.67016 12.9132C7.03084 12.7536 7.36291 12.5258 7.64638 12.2424L8.53026 11.3585L9.06059 10.8282L10.1212 11.8888L9.59092 12.4192L8.70704 13.303C8.29406 13.716 7.80849 14.0498 7.27699 14.2849C6.74545 14.5201 6.17679 14.6526 5.60268 14.6724C4.44203 14.7124 3.32915 14.2891 2.51985 13.4798C1.71055 12.6705 1.28726 11.5576 1.32728 10.397C1.36722 9.23873 1.86407 8.12519 2.69663 7.29263L3.58051 6.40875L4.11084 5.87842L5.1715 6.93908L4.64117 7.46941L3.75729 8.35329ZM8.35348 3.7571C8.92745 3.18313 9.68431 2.85256 10.4489 2.82619C11.211 2.79991 11.9159 3.07686 12.4193 3.58032C12.9228 4.08377 13.1998 4.78862 13.1735 5.55079C13.1604 5.92877 13.0729 6.30933 12.9134 6.66996C12.7538 7.03064 12.526 7.36272 12.2426 7.64618L11.3587 8.53007L10.8284 9.0604L11.889 10.1211L12.4193 9.59073L13.3032 8.70684C13.7162 8.29387 14.05 7.80829 14.2851 7.2768C14.5203 6.74526 14.6528 6.17659 14.6726 5.60249C14.7126 4.44184 14.2893 3.32896 13.48 2.51966C12.6707 1.71036 11.5578 1.28706 10.3972 1.32708C9.23892 1.36702 8.12538 1.86387 7.29282 2.69643L6.40894 3.58032L5.87861 4.11065L6.93927 5.17131L7.4696 4.64098L8.35348 3.7571ZM5.34828 9.59073L4.81795 10.1211L5.87861 11.1817L6.40894 10.6514L10.6516 6.40875L11.1819 5.87842L10.1212 4.81775L9.59092 5.34808L5.34828 9.59073Z" />
         </symbol>
       </defs>
     </svg>

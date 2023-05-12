@@ -10,7 +10,7 @@
 }
 
 .form label:not(:first-child) {
-  margin-top: 1em;
+  margin-top: 0.75em;
 }
 
 .form [type="submit"] {
@@ -30,7 +30,7 @@
 
 .form .note {
   /* max-width: 23.6em; */
-  max-width: 25em;
+  max-width: 26em;
   margin-top: 1em;
   color: rgba(112, 112, 112, 100%);
   font-size: var(--fs-text-caption);

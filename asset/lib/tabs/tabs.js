@@ -15,8 +15,12 @@ export function tabs(elemList) {
 
 export function init() {
   this.setListeners();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const selector = urlParams.get('tab') ? `#${urlParams.get('tab')}` : '[role="tab"]';
+  this.activeTabId = 'tab-buying';
   this.tablists.forEach((item) => {
-    this.activateTab(item.querySelector('[role="tab"]'));
+    this.activateTab(item.querySelector(`${selector}`));
   });
 }
 
@@ -59,6 +63,12 @@ export function activateTab(tab) {
   const panels = panelsId.map((id) => document.querySelector(`#${id}`));
   this.showPanel(panels);
   this.activeTabId = tabId;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  urlParams.set('tab', tabId);
+  const str = urlParams.toString();
+  const newUrl = `${window.location.origin}${window.location.pathname}?${str}`;
+  window.history.replaceState(null, null, newUrl);
 }
 
 export function hidePanel() {

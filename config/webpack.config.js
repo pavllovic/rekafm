@@ -9,21 +9,14 @@ const optimization = require('./webpackOptimization/optimization.config');
 const entry = {
   common: './asset/common.js',
   index: './asset/index.js',
-  // fire_safety: './asset/fire_safety.js',
-  // audit: './asset/audit.js',
-  audit_emergency_mamagement: './asset/audit.emergency.mamagement.js',
-  // accaunting_and_hr: './asset/accaunting_and_hr.js',
-  // femida: './asset/femida.js',
-  // management: './asset/management.js',
-  // service: './asset/service.js',
-  // emergency: './asset/emergency.js',
+  audit_emergency_management: './asset/audit.emergency.management.js',
   _404: './asset/_404.js',
   privacy: './asset/privacy.js',
+  service: './asset/service.js',
   news_list: './asset/news_list.js',
   news: './asset/news.js',
   commerce: './asset/commerce.js',
   build: './asset/build.js',
-  // cleaning: './asset/cleaning.js',
 }
 
 const devOutput = {

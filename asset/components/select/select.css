@@ -1,0 +1,11 @@
+@import "./select--placeholder.css";
+@import "./selec--input.css";
+@import "./select--icon.css";
+@import "./select--label.css";
+@import "./select--label-text.css";
+@import "./select--options.css";
+@import "./select--value.css";
+
+.select {
+  position: relative;
+}

@@ -1,6 +1,7 @@
 import * as lib from 'Lib/form/form';
 import * as handlers from 'Lib/form/form-handlers.js';
-import { sendFormJSON } from 'Lib/form/form-send.js';
+// import { sendFormJSON } from 'Lib/form/form-send.js';
+import { sendForm } from 'Lib/form/form-send.js';
 
 const OrderCallForm = lib.form;
 
@@ -14,7 +15,8 @@ OrderCallForm.prototype = {
   destroy: lib.destroy,
   getFormData: lib.getFormData,
   submitForm: lib.submitForm,
-  sendForm: sendFormJSON,
+  // sendForm: sendFormJSON,
+  sendForm: sendForm,
   resetForm: lib.resetForm,
   showSubmitting: lib.showSubmitting,
   showFormResposne: lib.showFormResposne,
@@ -22,7 +24,8 @@ OrderCallForm.prototype = {
   handleEvent: lib.handleEvent,
   sendFormHandler: handlers.sendFormHandler,
   onSuccessHandler: function() {
-    this.wrap.classList.add('success-handler');
+    // this.wrap.classList.add('success-handler');
+    document.location.href = '/response-call/';
   },
   onErrorHandler: function() {
     this.wrap.classList.add('error-handler');

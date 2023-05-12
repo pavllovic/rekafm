@@ -6,6 +6,7 @@
   display: flex;
   width: 100%;
   min-height: calc(100vh - 3em);
+  min-height: calc(var(--vh) * 100 - 3em);
   flex-direction: column;
   padding: 1em;
   background-color: var(--bs-primary);
@@ -19,6 +20,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  min-height: calc(var(--vh) * 100);
   animation-delay: var(--dur-second);
   animation-duration: var(--dur-second);
   animation-fill-mode: both;
@@ -176,6 +178,7 @@
 @media (min-width: 80em) {
   .hero {
     min-height: calc(100vh - 4em);
+    min-height: calc(var(--vh) * 100 - 4em);
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 2.5em;

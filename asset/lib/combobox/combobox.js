@@ -61,7 +61,8 @@ export function onOptionChecked(e) {
 
   if(prevOption) {
     prevOption.setAttribute('aria-selected', 'false');
-    prevOption.querySelector('[type="checkbox"]').checked = false;
+    const checkbox = prevOption.querySelector('[type="checkbox"]');
+    if(checkbox) checkbox.checked = false;
   }
   if(option) {
     option.setAttribute('aria-selected', 'true');

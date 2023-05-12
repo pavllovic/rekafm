@@ -6,6 +6,7 @@ const FormValidator = function(form) {
     name: {
       patternMismatch: 'имя должно состоять только из букв А-Я, A-Z',
       valueMissing: 'имя должно состоять только из букв А-Я, A-Z',
+      tooLong: 'имя должно содержать не более 50-и символов'
     },
     phone: {
       patternMismatch: 'введите номер в формате +7 (9__) ___-__-__',
@@ -15,6 +16,10 @@ const FormValidator = function(form) {
       patternMismatch: 'только цифры',
       valueMissing: 'только цифры',
     },
+    email: {
+      valueMissing: 'укажите ваш e-mail',
+      tooLong: 'email должен содержать не более 50-и символов'
+    }
   };
 };
 

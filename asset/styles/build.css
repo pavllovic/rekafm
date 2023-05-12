@@ -226,6 +226,20 @@ h2 {
   text-transform: uppercase;
 }
 
+.block-object .type-price {
+  display: inline;
+  color: var(--bs-corporate, rgba(138, 140, 206, 100%));
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: calc(22 / 16);
+}
+
+.block-object .type-price span {
+  text-transform: uppercase;
+}
+
 .block-object .list {
   display: flex;
   flex-direction: column;

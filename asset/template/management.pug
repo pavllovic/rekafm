@@ -182,7 +182,7 @@ block content
       div(class='form-order js-form-order')
         form(class='form form-order--form js-order-audit' name='order-audit' id='order-audit' action='./management.html' method='POST')
           label(for='order-audit-name')
-            input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё]+$' placeholder=' ' id='order-audit-name' required)
+            input(class='ui-input' type='text' name='name' pattern='[A-Za-zА-Яа-яЁё ]+$' maxlength='50' placeholder=' ' id='order-audit-name' required)
             span(class='ui-input-placeholder') ваше имя
           label(for='order-audit-phone')
             input(class='ui-input js-inputPhone' type='text' inputmode='numeric' name='phone' pattern='\\+7\\s?[\\(]{0,1}9[0-9]{2}[\\)]{0,1}\\s?\\d{3}[-]{0,1}\\d{2}[-]{0,1}\\d{2}' placeholder=' ' id='order-audit-phone' required)
@@ -190,6 +190,7 @@ block content
           label(for='order-audit-square')
             input(class='ui-input js-inputSquare' type='text' inputmode='numeric' name='square' pattern='[0-9]+$' placeholder=' ' id='order-audit-square' required)
             span(class='ui-input-placeholder') площадь помещения, м2
+          input(class='visually-hidden' type='text' name='price' hidden)
           div(class='form-value')
             | Стоимость: <span data-audit='value'>0</span> рублей
           button(class='ui-btnForward' type='submit')

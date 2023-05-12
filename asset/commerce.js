@@ -13,40 +13,46 @@ const initFilterActions = () => {
   const filterElements = document.querySelectorAll('.js-filter');
   const filters = new Map();
   window.filters = filters;
-  filterElements.forEach((element) => {
-    const filterName = element.getAttribute('data-filter');
-    const filter = new FilterActions(element);
-    filters.set(filterName, { filter: filter, controls: [] });
-    filter.init();
-  });
+  if(filterElements.length > 0) {
+    filterElements.forEach((element) => {
+      const filterName = element.getAttribute('data-filter');
+      const filter = new FilterActions(element);
+      filters.set(filterName, { filter: filter, controls: [] });
+      filter.init();
+    });
+  }
 };
 
 initFilterActions();
 
 const initFilterSelects = function() {
   const selectElements = document.querySelectorAll('.js-select');
-  selectElements.forEach((element) => {
-    const select = new Combobox(element);
-    select.init();
-    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
-    const filter = window.filters.get(filterName);
-    filter.controls.push(select);
-    window.filters.set(filterName, filter);
-  });
+  if(selectElements.length > 0) {
+    selectElements.forEach((element) => {
+      const select = new Combobox(element);
+      select.init();
+      const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+      const filter = window.filters.get(filterName);
+      filter.controls.push(select);
+      window.filters.set(filterName, filter);
+    });
+  }
 };
 
 initFilterSelects();
 
 const initFilterMultiSelects = function() {
   const multiSelectElements = document.querySelectorAll('.js-multiSelect');
-  multiSelectElements.forEach((element) => {
-    const multiSelect = new MultiCombobox(element);
-    multiSelect.init();
-    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
-    const filter = window.filters.get(filterName);
-    filter.controls.push(multiSelect);
-    window.filters.set(filterName, filter);
-  });
+  if(multiSelectElements.length > 0) {
+    multiSelectElements.forEach((element) => {
+      const multiSelect = new MultiCombobox(element);
+      multiSelect.init();
+      const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+      const filter = window.filters.get(filterName);
+      filter.controls.push(multiSelect);
+      window.filters.set(filterName, filter);
+    });
+  }
 };
 
 initFilterMultiSelects();
@@ -55,18 +61,20 @@ const initRangeBarSelect = function() {
   const rangeBarSelectElement = document.querySelector('.js-rangeBarSelect');
   const mapRangeBar = new Map();
 
-  rangeBarSelectElement.querySelectorAll('.js-range').forEach((item) => {
-    const name = item.getAttribute('data-price');
-    const rangeBar = new RangeBar(item);
-    rangeBar.init();
-    mapRangeBar.set(name, rangeBar);
-  });
-  const rangeBarSelect = new RangeBarSelect(rangeBarSelectElement, mapRangeBar);
-  rangeBarSelect.init();
-  const filterName = rangeBarSelectElement.closest('[data-filter]').getAttribute('data-filter');
-  const filter = window.filters.get(filterName);
-  filter.controls.push(rangeBarSelect);
-  window.filters.set(filterName, filter);
+  if(rangeBarSelectElement) {
+    rangeBarSelectElement.querySelectorAll('.js-range').forEach((item) => {
+      const name = item.getAttribute('data-price');
+      const rangeBar = new RangeBar(item);
+      rangeBar.init();
+      mapRangeBar.set(name, rangeBar);
+    });
+    const rangeBarSelect = new RangeBarSelect(rangeBarSelectElement, mapRangeBar);
+    rangeBarSelect.init();
+    const filterName = rangeBarSelectElement.closest('[data-filter]').getAttribute('data-filter');
+    const filter = window.filters.get(filterName);
+    filter.controls.push(rangeBarSelect);
+    window.filters.set(filterName, filter);
+  }
 };
 
 initRangeBarSelect();
@@ -75,23 +83,27 @@ const initRangeBar = function() {
   const rangeBarIntElements = document.querySelectorAll('.js-rangeBarInt');
   const rangeBarFloatElements = document.querySelectorAll('.js-rangeBarFloat');
 
-  rangeBarIntElements.forEach((element) => {
-    const rangeBar = new RangeBar(element);
-    rangeBar.init();
-    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
-    const filter = window.filters.get(filterName);
-    filter.controls.push(rangeBar);
-    window.filters.set(filterName, filter);
-  });
+  if(rangeBarIntElements.length > 0) {
+    rangeBarIntElements.forEach((element) => {
+      const rangeBar = new RangeBar(element);
+      rangeBar.init();
+      const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+      const filter = window.filters.get(filterName);
+      filter.controls.push(rangeBar);
+      window.filters.set(filterName, filter);
+    });
+  }
 
-  rangeBarFloatElements.forEach((element) => {
-    const rangeBar = new RangeBar(element);
-    rangeBar.init();
-    const filterName = element.closest('[data-filter]').getAttribute('data-filter');
-    const filter = window.filters.get(filterName);
-    filter.controls.push(rangeBar);
-    window.filters.set(filterName, filter);
-  });
+  if(rangeBarFloatElements.length > 0) {
+    rangeBarFloatElements.forEach((element) => {
+      const rangeBar = new RangeBar(element, 'float');
+      rangeBar.init();
+      const filterName = element.closest('[data-filter]').getAttribute('data-filter');
+      const filter = window.filters.get(filterName);
+      filter.controls.push(rangeBar);
+      window.filters.set(filterName, filter);
+    });
+  }
 };
 
 initRangeBar();
@@ -104,18 +116,22 @@ const initTablistView = function() {
   //   return tablistView;
   // });
   // window.arrTablistView = arrTablistView;
-  const tablistView = new TablistView(tablistViewElements);
-  tablistView.init();
-  window.tablistView = tablistView;
+  if(tablistViewElements.length > 0) {
+    const tablistView = new TablistView(tablistViewElements);
+    tablistView.init();
+    window.tablistView = tablistView;
+  }
 };
 
 initTablistView();
 
 const initFilterMenu = function() {
   const filterMenuElement = document.querySelector('.js-commerceFilter');
-  const filterMenu = new CommerceFilter(filterMenuElement);
-  filterMenu.init();
-  window.filterMenu = filterMenu;
+  if(filterMenuElement) {
+    const filterMenu = new CommerceFilter(filterMenuElement);
+    filterMenu.init();
+    window.filterMenu = filterMenu;
+  }
 };
 
 initFilterMenu();
@@ -128,9 +144,11 @@ const initTablist = function() {
   //   return tablist;
   // });
   // window.arrTablist = arrTablist;
-  const tablist = new Tabs(tablistElements);
-  tablist.init();
-  window.tablist = tablist;
+  if(tablistElements.length > 0) {
+    const tablist = new Tabs(tablistElements);
+    tablist.init();
+    window.tablist = tablist;
+  }
 };
 
 initTablist();
@@ -148,40 +166,40 @@ const initMap = function() {
 
 initMap();
 
-const b = {
-  id: 1,
-  coords: [44.898317, 37.354456],
-  name: 'Ям Голден Лайн',
-  address: 'МО, Домодедовский район, «Голден лайн», с. 1',
-  meta: {
-    price: 470,
-    type: 'Склады',
-    size: '14 758',
-  },
-  badges: ['продается целиком'],
-  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
-  link: './build.html',
-  booked: true,
-};
+// const b = {
+//   id: 1,
+//   coords: [44.898317, 37.354456],
+//   name: 'Ям Голден Лайн',
+//   address: 'МО, Домодедовский район, «Голден лайн», с. 1',
+//   meta: {
+//     price: 470,
+//     type: 'Склады',
+//     size: '14 758',
+//   },
+//   badges: ['продается целиком'],
+//   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
+//   link: './build.html',
+//   booked: true,
+// };
 
-const a = {
-  id: 1,
-  coords: [56.244481, 43.466803],
-  name: 'Ям Голден Лайн',
-  address: 'МО, Домодедовский район, «Голден лайн», с. 1',
-  meta: {
-    price: 470,
-    type: 'Склады',
-    size: '14 758',
-  },
-  badges: ['продается целиком'],
-  thumbUrl: '../asset/images/build/1/thumb/1.jpg',
-  link: './build.html',
-  booked: false,
-};
+// const a = {
+//   id: 1,
+//   coords: [56.244481, 43.466803],
+//   name: 'Ям Голден Лайн',
+//   address: 'МО, Домодедовский район, «Голден лайн», с. 1',
+//   meta: {
+//     price: 470,
+//     type: 'Склады',
+//     size: '14 758',
+//   },
+//   badges: ['продается целиком'],
+//   thumbUrl: '../asset/images/build/1/thumb/1.jpg',
+//   link: './build.html',
+//   booked: false,
+// };
 
 window.map.createObjectCollection();
-window.map.addObjectsInObjectCollection([a, b]);
+// window.map.addObjectsInObjectCollection([a, b]);
 
 const initCommerceControls = function() {
   initFilterActions();

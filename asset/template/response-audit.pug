@@ -1,0 +1,55 @@
+extends ./layout/base.pug
+
+block preload
+
+block styles
+  style. 
+    @font-face {
+      font-display: swap;
+      font-family: DrukCyr;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/DrukCyr-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/DrukCyr-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 500;
+      src:
+        url(#{require("Fonts/PTRootUI-Medium.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Medium.woff")}) format("woff");
+    }
+
+    @font-face {
+      font-display: swap;
+      font-family: PTRootUI;
+      font-weight: 700;
+      src:
+        url(#{require("Fonts/PTRootUI-Bold.woff2")}) format("woff2"),
+        url(#{require("Fonts/PTRootUI-Bold.woff")}) format("woff");
+    }
+
+block content
+  div(class='modal js-modal-call no-transition is-open success-handler' aria-hidden='true' role='dialog' data-modal='modal-call')
+    div(class='header no-transition')
+      include ../components/logo/logo.pug
+    div(class='content no-transition')
+      // component modalCall
+      div(class='modalCall')
+        // UI for success handler modalCall
+        div(class='response no-transition')
+          div(class='token' aria-hidden='true')
+            svg(focusable='false')
+              use(href="#icon-24-phone")
+          div(class='box')
+            p(class='heading') Аудит успешно заказан!
+            p(class='message') В ближайшее время наш менеджер свяжется с вами и предложит выгодные варианты.
+          a(class='ui-btnForward' data-btn='modal-call' href='./management.html')
+            span(class='text') вернуться назад
+            span(class='icon')
+              svg(focusable='false' aria-hidden='true')
+                use(href='#icon-16-go')
+  include ../images/icons/icon-16/sprite-icon-16.svg
+  include ../images/icons/icon-24/sprite-icon-24.svg

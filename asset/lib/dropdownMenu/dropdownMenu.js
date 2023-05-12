@@ -40,7 +40,8 @@ export function removeHeightDropdownMenu(elem) {
   menu.style.setProperty('--height-dropdown', 0);
 }
 
-export function toogleSubmenu(item) {
+export function toogleSubmenu(btn) {
+  const item = btn.closest('[data-dropdown="item"]');
   item === this.openItem ? this.closeSubmenu() : this.openSubmenu(item);
 }
 

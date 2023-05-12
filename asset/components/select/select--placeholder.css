@@ -1,0 +1,24 @@
+.select--placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: inherit;
+  font-family: var(--font-accent);
+  font-size: var(--fs-text-accent);
+  font-weight: 500;
+  line-height: 1.1;
+  opacity: 1;
+  pointer-events: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  transform-origin: left top;
+  transition-duration: var(--dur-main), var(--dur-main);
+  transition-property: color, transform;
+  transition-timing-function: var(--easing-main), var(--easing-main);
+}
+
+.select--value:not(:empty) ~ .select--placeholder {
+  color: var(--bs-secondary);
+  letter-spacing: 0.03em;
+  transform: scale(0.21) translateY(-100%);
+}

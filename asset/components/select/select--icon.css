@@ -1,0 +1,31 @@
+.select--icon {
+  position: absolute;
+  right: 0;
+  display: flex;
+  width: 1.5em;
+  height: 1.5em;
+  align-items: center;
+  justify-content: center;
+
+  /* border: var(--border-size) solid var(--bs-ligth, rgba(228, 228, 228, 100%)); */
+  border: var(--border-dark);
+  border-radius: 50%;
+  pointer-events: none;
+  transition-duration: var(--dur-quick);
+  transition-property: transform;
+  transition-timing-function: var(--easing-quick);
+}
+
+.select.open .select--icon {
+  transform: rotateZ(-540deg);
+  transition-duration: var(--dur-main);
+  transition-timing-function: var(--easing-main);
+}
+
+.select--icon svg {
+  --color: currentcolor;
+
+  width: 1em;
+  height: 1em;
+  fill: var(--color, currentColor);
+}

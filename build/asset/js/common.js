@@ -1,6 +1,39 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./asset/components/UI/ui-select/combobox.js":
+/*!***************************************************!*\
+  !*** ./asset/components/UI/ui-select/combobox.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Lib/combobox/combobox.js */ "./asset/lib/combobox/combobox.js");
+
+var Combobox = Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.combobox;
+Combobox.prototype = {
+  constructor: Combobox,
+  init: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.init,
+  toogleOptions: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.toogleOptions,
+  openOptions: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.openOptions,
+  closeOptions: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.closeOptions,
+  reset: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.reset,
+  onOptionChecked: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.onOptionChecked,
+  onKeydown: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.onKeydown,
+  onComboboxBlur: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.onComboboxBlur,
+  onListboxMouseDown: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.onListboxMouseDown,
+  onOptionFocused: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.onOptionFocused,
+  destroy: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.destroy,
+  handleEvent: Lib_combobox_combobox_js__WEBPACK_IMPORTED_MODULE_0__.handleEvent
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Combobox);
+
+/***/ }),
+
 /***/ "./asset/components/customCursor/customCursor.js":
 /*!*******************************************************!*\
   !*** ./asset/components/customCursor/customCursor.js ***!
@@ -43,6 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Lib/form/form-handlers.js */ "./asset/lib/form/form-handlers.js");
 /* harmony import */ var Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! Lib/form/form-send.js */ "./asset/lib/form/form-send.js");
 
+ // import { sendFormJSON } from 'Lib/form/form-send.js';
 
 
 var OrderCallForm = Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.form;
@@ -56,7 +90,8 @@ OrderCallForm.prototype = {
   destroy: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.destroy,
   getFormData: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.getFormData,
   submitForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.submitForm,
-  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_2__.sendFormJSON,
+  // sendForm: sendFormJSON,
+  sendForm: Lib_form_form_send_js__WEBPACK_IMPORTED_MODULE_2__.sendForm,
   resetForm: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.resetForm,
   showSubmitting: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.showSubmitting,
   showFormResposne: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.showFormResposne,
@@ -64,7 +99,8 @@ OrderCallForm.prototype = {
   handleEvent: Lib_form_form__WEBPACK_IMPORTED_MODULE_0__.handleEvent,
   sendFormHandler: Lib_form_form_handlers_js__WEBPACK_IMPORTED_MODULE_1__.sendFormHandler,
   onSuccessHandler: function onSuccessHandler() {
-    this.wrap.classList.add('success-handler');
+    // this.wrap.classList.add('success-handler');
+    document.location.href = '/response-call/';
   },
   onErrorHandler: function onErrorHandler() {
     this.wrap.classList.add('error-handler');
@@ -125,7 +161,6 @@ Modal.prototype = {
   openModal: Lib_modal_modal_js__WEBPACK_IMPORTED_MODULE_0__.openModal,
   closeModal: function closeModal() {
     Lib_modal_modal_js__WEBPACK_IMPORTED_MODULE_0__.closeModal.call(this);
-    console.log('dfsgsdfsfd');
     this.modal.classList.remove('error-handler');
     this.modal.classList.remove('success-handler');
   },
@@ -354,6 +389,214 @@ Ticker.prototype = {
 
 /***/ }),
 
+/***/ "./asset/lib/combobox/combobox.js":
+/*!****************************************!*\
+  !*** ./asset/lib/combobox/combobox.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "closeOptions": () => (/* binding */ closeOptions),
+/* harmony export */   "combobox": () => (/* binding */ combobox),
+/* harmony export */   "destroy": () => (/* binding */ destroy),
+/* harmony export */   "handleEvent": () => (/* binding */ handleEvent),
+/* harmony export */   "init": () => (/* binding */ init),
+/* harmony export */   "onComboboxBlur": () => (/* binding */ onComboboxBlur),
+/* harmony export */   "onKeydown": () => (/* binding */ onKeydown),
+/* harmony export */   "onListboxMouseDown": () => (/* binding */ onListboxMouseDown),
+/* harmony export */   "onOptionChecked": () => (/* binding */ onOptionChecked),
+/* harmony export */   "onOptionFocused": () => (/* binding */ onOptionFocused),
+/* harmony export */   "openOptions": () => (/* binding */ openOptions),
+/* harmony export */   "reset": () => (/* binding */ reset),
+/* harmony export */   "toogleOptions": () => (/* binding */ toogleOptions)
+/* harmony export */ });
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_find_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.find-index.js */ "./node_modules/core-js/modules/es.array.find-index.js");
+/* harmony import */ var core_js_modules_es_array_find_index_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_index_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! Lib/keyActions/KeysActions */ "./asset/lib/keyActions/KeysActions.js");
+
+
+
+
+function combobox(elem) {
+  this.elem = elem;
+  this.combobox = this.elem.querySelector('[role="combobox"]');
+  this.options = this.elem.querySelector('[role="listbox"]');
+  this.arrayOptions = Array.from(this.options.children); // this.input = this.elem.querySelector('input');
+
+  this.output = this.elem.querySelector('.value'); // state combobox
+
+  this.open = false;
+  this.optionSelectedIndex = 0;
+  this.optionFocusedIndex = 0;
+}
+function init() {
+  this.combobox.addEventListener('blur', this);
+  this.combobox.addEventListener('click', this);
+  this.combobox.addEventListener('keydown', this);
+  this.options.addEventListener('mousedown', this);
+  this.options.addEventListener('click', this);
+}
+function toogleOptions(e) {
+  e.stopPropagation();
+  if (this.arrayOptions.length < 1) return;
+  this.open = !this.open;
+  this.combobox.setAttribute('aria-expanded', "".concat(this.open));
+  this.open ? this.openOptions() : this.closeOptions();
+}
+function openOptions() {
+  this.elem.classList.add('open');
+  var activeId = this.arrayOptions[this.optionSelectedIndex].getAttribute('id');
+  this.combobox.setAttribute('aria-activedescendant', "".concat(activeId));
+  this.onOptionFocused(this.optionSelectedIndex);
+}
+function closeOptions() {
+  this.elem.classList.remove('open');
+  this.combobox.setAttribute('aria-activedescendant', '');
+}
+function reset() {
+  this.combobox.setAttribute('aria-activedescendant', ''); // this.combobox.textContent = this.arrayOptions[0].textContent;
+  // this.arrayOptions[0].querySelector('[type="checkbox"]').setAttribute('checked', true);
+  // this.input.setAttribute('value', this.arrayOptions[0].textContent);
+
+  this.output.textContent = this.arrayOptions[0].textContent;
+  this.arrayOptions[this.optionSelectedIndex].setAttribute('aria-selected', 'false');
+  this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
+  this.arrayOptions[this.optionFocusedIndex].querySelector('[type="checkbox"]').checked = false;
+  this.optionSelectedIndex = 0;
+  this.optionFocusedIndex = 0;
+}
+function onOptionChecked(e) {
+  var role = e.target.getAttribute('role');
+  var prevOption = this.arrayOptions[this.optionSelectedIndex];
+  var option = role === 'option' ? e.target : this.arrayOptions[this.optionFocusedIndex];
+
+  if (prevOption) {
+    prevOption.setAttribute('aria-selected', 'false');
+    var checkbox = prevOption.querySelector('[type="checkbox"]');
+    if (checkbox) checkbox.checked = false;
+  }
+
+  if (option) {
+    option.setAttribute('aria-selected', 'true');
+    var value = option.querySelector('.text').textContent;
+    this.output.innerText = value; // option.querySelector('[type="checkbox"]').setAttribute('checked', true);
+  }
+
+  var index = this.arrayOptions.findIndex(function (item) {
+    return item === option;
+  });
+  this.optionSelectedIndex = index;
+}
+function onKeydown(e) {
+  var max = this.arrayOptions.length - 1;
+  var action = (0,Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.getActionFromKey)(e, this.open);
+
+  switch (action) {
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Next:
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Last:
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.First:
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Previous:
+      e.preventDefault();
+      return this.onOptionFocused((0,Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.getUpdatedIndex)(this.optionFocusedIndex, max, action));
+
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Space:
+      e.preventDefault();
+      return this.toogleOptions(e);
+
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.CloseSelect:
+      e.preventDefault();
+      this.onOptionChecked(e);
+      return this.toogleOptions(e);
+
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Close:
+      e.preventDefault();
+      return this.toogleOptions(e);
+
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Open:
+      e.preventDefault();
+      return this.toogleOptions(e);
+
+    case Lib_keyActions_KeysActions__WEBPACK_IMPORTED_MODULE_3__.KeysActions.Blur:
+      return this.closeOptions();
+
+    default:
+      break;
+  }
+
+  return undefined;
+}
+function onComboboxBlur(e) {
+  if (this.ignoreBlur) {
+    this.ignoreBlur = false;
+    this.combobox.focus();
+    return;
+  }
+
+  if (this.open) this.toogleOptions(e);
+}
+function onListboxMouseDown() {
+  this.ignoreBlur = true;
+}
+function onOptionFocused(index) {
+  var prevOption = this.arrayOptions[this.optionFocusedIndex];
+  var option = this.arrayOptions[index];
+  this.combobox.setAttribute('aria-activedescendant', "".concat(option.id));
+  if (prevOption) prevOption.classList.remove('is-focus');
+  if (option) option.classList.add('is-focus');
+  this.optionFocusedIndex = index;
+}
+function destroy() {
+  this.combobox.removeEventListener('blur', this);
+  this.combobox.removeEventListener('click', this);
+  this.combobox.removeEventListener('keydown', this);
+  this.options.removeEventListener('mousedown', this);
+  this.arrayOptions[this.optionFocusedIndex].classList.remove('is-focus');
+}
+function handleEvent(e) {
+  switch (e.type) {
+    case 'click':
+      // e.preventDefault();
+      // e.stopPropagation();
+      var role = e.target.getAttribute('role');
+
+      if (role === 'combobox') {
+        return this.toogleOptions(e);
+      }
+
+      if (role === 'option') {
+        this.onOptionChecked(e);
+        return this.toogleOptions(e);
+      } // if(role === 'listbox') {
+      //   return this.combobox.focus();
+      // }
+
+
+      break;
+
+    case 'blur':
+      return this.onComboboxBlur(e);
+
+    case 'keydown':
+      return this.onKeydown(e);
+
+    case 'mousedown':
+      return this.onListboxMouseDown();
+
+    default:
+      break;
+  }
+
+  return undefined;
+}
+
+/***/ }),
+
 /***/ "./asset/lib/customCursor/customCursor.js":
 /*!************************************************!*\
   !*** ./asset/lib/customCursor/customCursor.js ***!
@@ -472,7 +715,8 @@ function removeHeightDropdownMenu(elem) {
   var menu = elem;
   menu.style.setProperty('--height-dropdown', 0);
 }
-function toogleSubmenu(item) {
+function toogleSubmenu(btn) {
+  var item = btn.closest('[data-dropdown="item"]');
   item === this.openItem ? this.closeSubmenu() : this.openSubmenu(item);
 }
 function destroy() {
@@ -546,7 +790,8 @@ var FormValidator = function FormValidator(form) {
   this.errorMessage = {
     name: {
       patternMismatch: 'имя должно состоять только из букв А-Я, A-Z',
-      valueMissing: 'имя должно состоять только из букв А-Я, A-Z'
+      valueMissing: 'имя должно состоять только из букв А-Я, A-Z',
+      tooLong: 'имя должно содержать не более 50-и символов'
     },
     phone: {
       patternMismatch: 'введите номер в формате +7 (9__) ___-__-__',
@@ -555,6 +800,10 @@ var FormValidator = function FormValidator(form) {
     square: {
       patternMismatch: 'только цифры',
       valueMissing: 'только цифры'
+    },
+    email: {
+      valueMissing: 'укажите ваш e-mail',
+      tooLong: 'email должен содержать не более 50-и символов'
     }
   };
 };
@@ -999,6 +1248,109 @@ function handleEvent(e) {
 
   return undefined;
 }
+
+/***/ }),
+
+/***/ "./asset/lib/keyActions/Keys.js":
+/*!**************************************!*\
+  !*** ./asset/lib/keyActions/Keys.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var Keys = {
+  Backspace: 'Backspace',
+  Clear: 'Clear',
+  Down: 'ArrowDown',
+  End: 'End',
+  Enter: 'Enter',
+  Escape: 'Escape',
+  Home: 'Home',
+  Left: 'ArrowLeft',
+  PageDown: 'PageDown',
+  PageUp: 'PageUp',
+  Right: 'ArrowRight',
+  Space: ' ',
+  Tab: 'Tab',
+  Up: 'ArrowUp'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Keys);
+
+/***/ }),
+
+/***/ "./asset/lib/keyActions/KeysActions.js":
+/*!*********************************************!*\
+  !*** ./asset/lib/keyActions/KeysActions.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "KeysActions": () => (/* binding */ KeysActions),
+/* harmony export */   "getActionFromKey": () => (/* binding */ getActionFromKey),
+/* harmony export */   "getUpdatedIndex": () => (/* binding */ getUpdatedIndex)
+/* harmony export */ });
+/* harmony import */ var _Keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Keys.js */ "./asset/lib/keyActions/Keys.js");
+
+var KeysActions = {
+  Close: 0,
+  CloseSelect: 1,
+  First: 2,
+  Last: 3,
+  Next: 4,
+  Open: 5,
+  Previous: 6,
+  Select: 7,
+  Space: 8,
+  Type: 9,
+  Blur: 10,
+  Left: 11,
+  Right: 12
+};
+
+var getActionFromKey = function getActionFromKey(e, listboxOpen) {
+  var key = e.key;
+  if (!listboxOpen && (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Enter || key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Space)) return KeysActions.Open;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Down) return KeysActions.Next;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Up) return KeysActions.Previous;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Home) return KeysActions.First;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].End) return KeysActions.Last;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Escape) return KeysActions.Close;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Enter) return KeysActions.CloseSelect;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Space) return KeysActions.Space;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Tab) return KeysActions.Blur;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Left) return KeysActions.Left;
+  if (key === _Keys_js__WEBPACK_IMPORTED_MODULE_0__["default"].Right) return KeysActions.Right;
+  return undefined;
+};
+
+var getUpdatedIndex = function getUpdatedIndex(current, max, action) {
+  switch (action) {
+    case KeysActions.First:
+      return 0;
+
+    case KeysActions.Last:
+      return max;
+
+    case KeysActions.Previous:
+    case KeysActions.Left:
+      return Math.max(0, current - 1);
+
+    case KeysActions.Next:
+    case KeysActions.Right:
+      return Math.min(max, current + 1);
+
+    default:
+      return current;
+  }
+};
+
+
 
 /***/ }),
 
@@ -5611,6 +5963,38 @@ module.exports = function (name) {
     }
   } return WellKnownSymbolsStore[name];
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.array.find-index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.find-index.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $findIndex = (__webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").findIndex);
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
+
+var FIND_INDEX = 'findIndex';
+var SKIPS_HOLES = true;
+
+// Shouldn't skip holes
+if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.findIndex` method
+// https://tc39.es/ecma262/#sec-array.prototype.findindex
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
+  findIndex: function findIndex(callbackfn /* , that = undefined */) {
+    return $findIndex(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND_INDEX);
 
 
 /***/ }),
@@ -13222,6 +13606,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./lib/formValidator/formValidator.js */ "./asset/lib/formValidator/formValidator.js");
 /* harmony import */ var _components_form_OrderCallForm_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/form/OrderCallForm.js */ "./asset/components/form/OrderCallForm.js");
 /* harmony import */ var _components_nav_updateHeightNav_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/nav/updateHeightNav.js */ "./asset/components/nav/updateHeightNav.js");
+/* harmony import */ var _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/UI/ui-select/combobox */ "./asset/components/UI/ui-select/combobox.js");
+
 
 
 
@@ -13250,46 +13636,67 @@ var initInputMask = function initInputMask() {
   });
 };
 
+var initSelectService = function initSelectService() {
+  var elements = document.querySelectorAll('.js-select-service');
+  elements.forEach(function (item) {
+    var select = new _components_UI_ui_select_combobox__WEBPACK_IMPORTED_MODULE_16__["default"](item);
+    select.init();
+  });
+};
+
 var initFormOrderCall = function initFormOrderCall() {
-  var formElem = document.querySelector('.js-order-call');
-  var formValidator = new _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_13__["default"](formElem);
-  var form = new _components_form_OrderCallForm_js__WEBPACK_IMPORTED_MODULE_14__["default"](formElem);
-  formValidator.init();
-  form.init();
-  window.orderCallForm = form;
-  window.orderCallForm.validator = formValidator;
+  var formElem = document.querySelectorAll('.js-order-call');
+  formElem.forEach(function (item) {
+    var formValidator = new _lib_formValidator_formValidator_js__WEBPACK_IMPORTED_MODULE_13__["default"](item);
+    var form = new _components_form_OrderCallForm_js__WEBPACK_IMPORTED_MODULE_14__["default"](item);
+    formValidator.init();
+    form.init();
+  }); // window.orderCallForm = form;
+  // window.orderCallForm.validator = formValidator;
 };
 
 var initTickerCustomCursor = function initTickerCustomCursor() {
   var cursorParent = document.querySelector('.js-ticker');
-  var area = cursorParent.querySelector('.ticker-content');
-  var tickerCustomCursor = new _components_customCursor_customCursor_js__WEBPACK_IMPORTED_MODULE_12__["default"](cursorParent, area);
-  tickerCustomCursor.init();
-  window.tickerCustomCursor = tickerCustomCursor;
+  var area = document.querySelector('.ticker-content');
+
+  if (cursorParent && area) {
+    var tickerCustomCursor = new _components_customCursor_customCursor_js__WEBPACK_IMPORTED_MODULE_12__["default"](cursorParent, area);
+    tickerCustomCursor.init();
+    window.tickerCustomCursor = tickerCustomCursor;
+  }
 };
 
 var initModalCall = function initModalCall() {
   var modalElement = document.querySelector('.js-modal-call');
-  var modalCall = new _components_modal_modal__WEBPACK_IMPORTED_MODULE_11__["default"](modalElement);
-  modalCall.init();
-  window.modalCall = modalCall;
+
+  if (modalElement) {
+    var modalCall = new _components_modal_modal__WEBPACK_IMPORTED_MODULE_11__["default"](modalElement);
+    modalCall.init();
+    window.modalCall = modalCall;
+  }
 };
 
 var initNav = function initNav() {
   var navElement = document.querySelector('.js-nav');
-  var nav = new _components_nav_nav_js__WEBPACK_IMPORTED_MODULE_8__["default"](navElement);
-  nav.init();
-  window.nav = nav;
+
+  if (navElement) {
+    var nav = new _components_nav_nav_js__WEBPACK_IMPORTED_MODULE_8__["default"](navElement);
+    nav.init();
+    window.nav = nav;
+  }
 };
 
 var initMenu = function initMenu() {
   var menuElements = document.querySelectorAll('.js-menu');
-  var arrMenu = Array.from(menuElements).map(function (item) {
-    var menu = new _components_menu_dropdownMenu__WEBPACK_IMPORTED_MODULE_9__["default"](item);
-    menu.init();
-    return menu;
-  });
-  window.arrMenu = arrMenu;
+
+  if (menuElements) {
+    var arrMenu = Array.from(menuElements).map(function (item) {
+      var menu = new _components_menu_dropdownMenu__WEBPACK_IMPORTED_MODULE_9__["default"](item);
+      menu.init();
+      return menu;
+    });
+    window.arrMenu = arrMenu;
+  }
 };
 
 var initTicker = function initTicker() {
@@ -13306,6 +13713,7 @@ initModalCall();
 initTickerCustomCursor();
 initFormOrderCall();
 initInputMask();
+initSelectService();
 window.addEventListener('load', function () {
   var elements = document.querySelectorAll('.no-transition');
   elements.forEach(function (elem) {

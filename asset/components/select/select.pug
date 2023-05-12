@@ -1,0 +1,34 @@
+mixin select(name, placeholder)
+  -
+    const options = [
+      'Управление коммерческой недвижимостью',
+      'Эксплуатация и техническое обслуживание здания',
+      'Услуги технического аудита',
+      'Услуги аварийно-диспетчерской службы',
+      'Аренда/продажа помещения',
+      'Бухгалтерские услуги',
+      'Юридические услуги',
+      'Эксплуатация и техническое обслуживание здания',
+      'Эксплуатация и техническое обслуживание здания',
+      'Эксплуатация и техническое обслуживание здания',
+      'Эксплуатация и техническое обслуживание здания',
+      'Эксплуатация и техническое обслуживание здания',
+    ]
+
+  div(class='select js-select-service')
+    div(class='select--input js-input' role='combobox' tabindex='0' id='combobox'
+      aria-activedescendant=''
+      aria-autocomplete='none'
+      aria-owns=`type-${name}-listbox`
+      aria-expanded='false'
+      aria-haspopup=`type-${name}-listbox`)
+      div(class='select--value value')
+      div(class='select--placeholder') #{placeholder}
+      span(class='select--icon')
+        svg(focusable='false' aria-hidden='true')
+          use(href='#icon-16-dropdown-open')
+    div(class='select--options js-options' role='listbox' id=`type-${name}-listbox`)
+      each item, index in options
+        input(class='visually-hidden' type='radio' name=`filter-${name}` id=`filter-${name}-${index + 1}` value=`${index + 1}`)
+        label(class='select--label' for=`filter-${name}-${index + 1}` role='option') 
+          span(class='select--label-text text') #{item} 

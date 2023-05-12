@@ -149,6 +149,10 @@
   transform: translateX(calc(1em / -1.8));
 }
 
+.footer .menu .item:last-child {
+  display: none;
+}
+
 @media (min-width: 80em) {
   .menu {
     --menu-bg: var(--bs-contrast, rgba(255, 255, 255, 100%));
@@ -257,6 +261,10 @@
 
   .menu .link-news::before {
     display: block;
+  }
+
+  .menu .item:last-child {
+    margin-left: auto;
   }
 
   /* end style submenu */
